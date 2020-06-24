@@ -1,0 +1,290 @@
+I"�l<ul>
+  <li><code class="language-plaintext highlighter-rouge">auto</code> - proof search</li>
+  <li><code class="language-plaintext highlighter-rouge">Ltac</code> - automated forward reasoning (hypothesis matching machinery)</li>
+  <li><code class="language-plaintext highlighter-rouge">eauto</code>, <code class="language-plaintext highlighter-rouge">eapply</code> - deferred instantiation of existentials</li>
+</ul>
+
+<h2 id="ltac-macro"><code class="language-plaintext highlighter-rouge">Ltac</code> macro</h2>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">Ltac</span><span class="w"> </span><span class="no">inv</span><span class="w"> </span><span class="no">H</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="kp">inversion</span><span class="w"> </span><span class="no">H</span><span class="p">;</span><span class="w"> </span><span class="kp">subst</span><span class="p">;</span><span class="w"> </span><span class="kp">clear</span><span class="w"> </span><span class="no">H</span><span class="pi">.</span><span class="w">
+
+</span><span class="c">(** later in the proof... **)</span><span class="w">
+</span><span class="no">inv</span><span class="w"> </span><span class="no">H5</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="the-auto-tactic">The <code class="language-plaintext highlighter-rouge">auto</code> Tactic</h2>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">auto</code> can free us by <em>searching</em> for a sequence of applications that will prove the goal:</p>
+</blockquote>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kp">intros</span><span class="w"> </span><span class="no">P</span><span class="w"> </span><span class="no">Q</span><span class="w"> </span><span class="no">R</span><span class="w"> </span><span class="no">H1</span><span class="w"> </span><span class="no">H2</span><span class="w"> </span><span class="no">H3</span><span class="pi">.</span><span class="w">
+</span><span class="kp">apply</span><span class="w"> </span><span class="no">H2</span><span class="pi">.</span><span class="w"> </span><span class="kp">apply</span><span class="w"> </span><span class="no">H1</span><span class="pi">.</span><span class="w"> </span><span class="ne">assumption</span><span class="pi">.</span><span class="w">
+
+
+</span><span class="c">(** can be replaced by... **)</span><span class="w">
+</span><span class="kp">auto</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">auto</code> solves goals that are solvable by <em>any combination</em> of</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">intros</code></li>
+  <li><code class="language-plaintext highlighter-rouge">apply</code> (of hypotheses from the <em>local</em> context, by default)</li>
+</ul>
+
+<blockquote>
+  <p>使用 auto 一定是“安全”的，它不会失败，也不会改变当前证明的状态： auto 要么完全解决它，要么什么也不做。</p>
+</blockquote>
+
+<blockquote>
+  <p>Proof search could, in principle, take an arbitrarily long time,
+so there are limits to how far auto will search by default.  (i.e. <code class="language-plaintext highlighter-rouge">5</code>)</p>
+</blockquote>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">Example</span><span class="w"> </span><span class="no">auto_example_3</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">∀</span><span class="o">(</span><span class="no">P</span><span class="w"> </span><span class="no">Q</span><span class="w"> </span><span class="no">R</span><span class="w"> </span><span class="no">S</span><span class="w"> </span><span class="no">T</span><span class="w"> </span><span class="no">U</span><span class="p">:</span><span class="w"> </span><span class="kr">Prop</span><span class="o">),</span><span class="w">
+  </span><span class="o">(</span><span class="no">P</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">Q</span><span class="o">)</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="o">(</span><span class="no">Q</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">R</span><span class="o">)</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="o">(</span><span class="no">R</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">S</span><span class="o">)</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="o">(</span><span class="no">S</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">T</span><span class="o">)</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="o">(</span><span class="no">T</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">U</span><span class="o">)</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="no">P</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="no">U</span><span class="pi">.</span><span class="w">
+</span><span class="k">Proof</span><span class="pi">.</span><span class="w">
+  </span><span class="c">(* 当 auto 无法解决此目标时，它就什么也不做 *)</span><span class="w">
+  </span><span class="kp">auto</span><span class="pi">.</span><span class="w">
+  </span><span class="c">(* 可选的参数用来控制它的搜索深度（默认为 5）, 6 就刚好能解决了！ *)</span><span class="w">
+  </span><span class="kp">auto</span><span class="w"> </span><span class="mi">6</span><span class="o">.</span><span class="w">
+</span><span class="k">Qed</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="hint-database-提示数据库">Hint Database 提示数据库</h3>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">auto</code> auto considers a <strong>hint database</strong> of other lemmas and constructors.
+common lemmas about <em>equality</em> and <em>logical operators</em> are installed by default.</p>
+</blockquote>
+
+<blockquote>
+  <p>just for the purposes of one application of <code class="language-plaintext highlighter-rouge">auto</code> 
+我们可以为某次 <code class="language-plaintext highlighter-rouge">auto</code> 的调用扩展提示数据库，<code class="language-plaintext highlighter-rouge">auto using ...</code></p>
+</blockquote>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">Example</span><span class="w"> </span><span class="no">auto_example_6</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">∀</span><span class="no">n</span><span class="w"> </span><span class="no">m</span><span class="w"> </span><span class="no">p</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">nat</span><span class="o">,</span><span class="w">
+  </span><span class="o">(</span><span class="no">n</span><span class="w"> </span><span class="err">≤</span><span class="w"> </span><span class="no">p</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="o">(</span><span class="no">n</span><span class="w"> </span><span class="err">≤</span><span class="w"> </span><span class="no">m</span><span class="w"> </span><span class="p">∧</span><span class="w"> </span><span class="no">m</span><span class="w"> </span><span class="err">≤</span><span class="w"> </span><span class="no">n</span><span class="o">))</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="no">n</span><span class="w"> </span><span class="err">≤</span><span class="w"> </span><span class="no">p</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="no">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">m</span><span class="pi">.</span><span class="w">
+</span><span class="k">Proof</span><span class="pi">.</span><span class="w">
+  </span><span class="kp">intros</span><span class="pi">.</span><span class="w">
+  </span><span class="kp">auto</span><span class="w"> </span><span class="no">using</span><span class="w"> </span><span class="no">le_antisym</span><span class="pi">.</span><span class="w">
+</span><span class="k">Qed</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="global-hint-database-添加到全局提示数据库">Global Hint Database 添加到全局提示数据库</h3>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">Hint</span><span class="w"> </span><span class="no">Resolve</span><span class="w"> </span><span class="no">T</span><span class="pi">.</span><span class="w">          
+
+</span><span class="k">Hint</span><span class="w"> </span><span class="no">Constructors</span><span class="w"> </span><span class="no">c</span><span class="pi">.</span><span class="w">
+
+</span><span class="k">Hint</span><span class="w"> </span><span class="no">Unfold</span><span class="w"> </span><span class="no">d</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="proof-with-auto"><code class="language-plaintext highlighter-rouge">Proof with auto.</code></h3>
+
+<p>Under <code class="language-plaintext highlighter-rouge">Proof with t</code>, <code class="language-plaintext highlighter-rouge">t1...</code> == <code class="language-plaintext highlighter-rouge">t1; t</code>.</p>
+
+<h2 id="searching-for-hypotheses">Searching For Hypotheses</h2>
+
+<p>对于很常见的一种矛盾情形：</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="no">H1</span><span class="p">:</span><span class="w"> </span><span class="no">beval</span><span class="w"> </span><span class="no">st</span><span class="w"> </span><span class="no">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span><span class="w">
+</span><span class="no">H2</span><span class="p">:</span><span class="w"> </span><span class="no">beval</span><span class="w"> </span><span class="no">st</span><span class="w"> </span><span class="no">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">contradiction</code> 并不能解决，必须 <code class="language-plaintext highlighter-rouge">rewrite H1 in H2; inversion H2</code>.</p>
+
+<ol>
+  <li>宏：</li>
+</ol>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">Ltac</span><span class="w"> </span><span class="no">rwinv</span><span class="w"> </span><span class="no">H1</span><span class="w"> </span><span class="no">H2</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="kp">rewrite</span><span class="w"> </span><span class="no">H1</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="no">H2</span><span class="p">;</span><span class="w"> </span><span class="no">inv</span><span class="w"> </span><span class="no">H2</span><span class="pi">.</span><span class="w">
+
+</span><span class="c">(** later in the proof... **)</span><span class="w">
+</span><span class="no">rwinv</span><span class="w"> </span><span class="no">H</span><span class="w"> </span><span class="no">H2</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">match goal</code> 调用宏</li>
+</ol>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">Ltac</span><span class="w"> </span><span class="no">find_rwinv</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="kr">match</span><span class="w"> </span><span class="no">goal</span><span class="w"> </span><span class="kp">with</span><span class="w">
+    </span><span class="no">H1</span><span class="p">:</span><span class="w"> </span><span class="nv">?E</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="o">,</span><span class="w">
+    </span><span class="no">H2</span><span class="p">:</span><span class="w"> </span><span class="nv">?E</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="p">⊢</span><span class="w"> </span><span class="p">_</span><span class="w"> </span><span class="p">⇒</span><span class="w"> </span><span class="no">rwinv</span><span class="w"> </span><span class="no">H1</span><span class="w"> </span><span class="no">H2</span><span class="w">
+  </span><span class="kr">end</span><span class="pi">.</span><span class="w">
+  
+</span><span class="c">(** later in the proof... **)</span><span class="w">
+</span><span class="kp">induction</span><span class="w"> </span><span class="no">E1</span><span class="p">;</span><span class="w"> </span><span class="kp">intros</span><span class="w"> </span><span class="no">st2</span><span class="w"> </span><span class="no">E2</span><span class="p">;</span><span class="w"> </span><span class="no">inv</span><span class="w"> </span><span class="no">E2</span><span class="p">;</span><span class="w"> </span><span class="kp">try</span><span class="w"> </span><span class="no">find_rwinv</span><span class="p">;</span><span class="w"> </span><span class="kp">auto</span><span class="pi">.</span><span class="w"> </span><span class="c">(** 直接解决所有矛盾 case **)</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="c">(* E_Seq *)</span><span class="w">
+  </span><span class="kp">rewrite</span><span class="w"> </span><span class="o">(</span><span class="no">IHE1_1</span><span class="w"> </span><span class="no">st'0</span><span class="w"> </span><span class="no">H1</span><span class="o">)</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="o">*.</span><span class="w"> </span><span class="kp">auto</span><span class="pi">.</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="c">(* E_WhileTrue *)</span><span class="w">
+  </span><span class="o">+</span><span class="w"> </span><span class="c">(* b 求值为 true *)</span><span class="w">
+    </span><span class="kp">rewrite</span><span class="w"> </span><span class="o">(</span><span class="no">IHE1_1</span><span class="w"> </span><span class="no">st'0</span><span class="w"> </span><span class="no">H3</span><span class="o">)</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="o">*.</span><span class="w"> </span><span class="kp">auto</span><span class="pi">.</span><span class="w"> </span><span class="k">Qed</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>可以看到最后只剩这种改写形式…我们也把他们自动化了：</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">Ltac</span><span class="w"> </span><span class="no">find_eqn</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="kr">match</span><span class="w"> </span><span class="no">goal</span><span class="w"> </span><span class="kp">with</span><span class="w">
+    </span><span class="no">H1</span><span class="p">:</span><span class="w"> </span><span class="p">∀</span><span class="no">x</span><span class="o">,</span><span class="w"> </span><span class="nv">?P</span><span class="w"> </span><span class="no">x</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="nv">?L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">?R</span><span class="o">,</span><span class="w">
+    </span><span class="no">H2</span><span class="p">:</span><span class="w"> </span><span class="nv">?P</span><span class="w"> </span><span class="nv">?X</span><span class="w">
+    </span><span class="p">⊢</span><span class="w"> </span><span class="p">_</span><span class="w"> </span><span class="p">⇒</span><span class="w"> </span><span class="kp">rewrite</span><span class="w"> </span><span class="o">(</span><span class="no">H1</span><span class="w"> </span><span class="no">X</span><span class="w"> </span><span class="no">H2</span><span class="o">)</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="o">*</span><span class="w">
+  </span><span class="kr">end</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>配合上 <code class="language-plaintext highlighter-rouge">repeat</code>…我们可以 keep doing useful rewrites until only trivial ones are left.
+最终效果：</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="k">Theorem</span><span class="w"> </span><span class="no">ceval_deterministic'''''</span><span class="p">:</span><span class="w"> </span><span class="p">∀</span><span class="no">c</span><span class="w"> </span><span class="no">st</span><span class="w"> </span><span class="no">st1</span><span class="w"> </span><span class="no">st2</span><span class="o">,</span><span class="w">
+    </span><span class="no">st</span><span class="w"> </span><span class="o">=[</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="o">]</span><span class="p">⇒</span><span class="w"> </span><span class="no">st1</span><span class="w"> </span><span class="p">→</span><span class="w">
+    </span><span class="no">st</span><span class="w"> </span><span class="o">=[</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="o">]</span><span class="p">⇒</span><span class="w"> </span><span class="no">st2</span><span class="w"> </span><span class="p">→</span><span class="w">
+    </span><span class="no">st1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">st2</span><span class="pi">.</span><span class="w">
+</span><span class="k">Proof</span><span class="pi">.</span><span class="w">
+  </span><span class="kp">intros</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="no">st</span><span class="w"> </span><span class="no">st1</span><span class="w"> </span><span class="no">st2</span><span class="w"> </span><span class="no">E1</span><span class="w"> </span><span class="no">E2</span><span class="pi">.</span><span class="w">
+  </span><span class="kp">generalize</span><span class="w"> </span><span class="kp">dependent</span><span class="w"> </span><span class="no">st2</span><span class="p">;</span><span class="w">
+  </span><span class="kp">induction</span><span class="w"> </span><span class="no">E1</span><span class="p">;</span><span class="w"> </span><span class="kp">intros</span><span class="w"> </span><span class="no">st2</span><span class="w"> </span><span class="no">E2</span><span class="p">;</span><span class="w"> </span><span class="no">inv</span><span class="w"> </span><span class="no">E2</span><span class="p">;</span><span class="w"> 
+    </span><span class="kp">try</span><span class="w"> </span><span class="no">find_rwinv</span><span class="p">;</span><span class="w">
+    </span><span class="kp">repeat</span><span class="w"> </span><span class="no">find_eqn</span><span class="p">;</span><span class="w"> </span><span class="kp">auto</span><span class="pi">.</span><span class="w">
+</span><span class="k">Qed</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>即使我们给 IMP 加上一个 <code class="language-plaintext highlighter-rouge">CRepeat</code>（其实就是 <code class="language-plaintext highlighter-rouge">DO c WHILE b</code>)，
+会发现颠倒一下自动化的顺序就能 work 了</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="w">  </span><span class="kp">induction</span><span class="w"> </span><span class="no">E1</span><span class="p">;</span><span class="w"> </span><span class="kp">intros</span><span class="w"> </span><span class="no">st2</span><span class="w"> </span><span class="no">E2</span><span class="p">;</span><span class="w"> </span><span class="no">inv</span><span class="w"> </span><span class="no">E2</span><span class="p">;</span><span class="w"> 
+    </span><span class="kp">repeat</span><span class="w"> </span><span class="no">find_eqn</span><span class="p">;</span><span class="w"> 
+    </span><span class="kp">try</span><span class="w"> </span><span class="no">find_rwinv</span><span class="p">;</span><span class="w"> </span><span class="kp">auto</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>当然，这种「超级自动化」(hyper-automation) 并不总是现实，也不好调试…</p>
+
+<h3 id="the-eapply-and-eauto-variants">The <code class="language-plaintext highlighter-rouge">eapply</code> and <code class="language-plaintext highlighter-rouge">eauto</code> variants</h3>
+
+<blockquote>
+  <p>推迟量词的实例化</p>
+</blockquote>
+
+<p>比如对于</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">Example</span><span class="w"> </span><span class="no">ceval_example1</span><span class="p">:</span><span class="w">
+  </span><span class="no">empty_st</span><span class="w"> </span><span class="o">=[</span><span class="w">
+    </span><span class="no">X</span><span class="w"> </span><span class="p">::</span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;;</span><span class="w">
+    </span><span class="no">TEST</span><span class="w"> </span><span class="no">X</span><span class="w"> </span><span class="err">≤</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="no">THEN</span><span class="w"> </span><span class="no">Y</span><span class="w"> </span><span class="p">::</span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">
+      </span><span class="no">ELSE</span><span class="w"> </span><span class="no">Z</span><span class="w"> </span><span class="p">::</span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="no">FI</span><span class="w">
+  </span><span class="o">]</span><span class="p">⇒</span><span class="w"> </span><span class="o">(</span><span class="no">Z</span><span class="w"> </span><span class="o">!-&gt;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="no">X</span><span class="w"> </span><span class="o">!-&gt;</span><span class="w"> </span><span class="mi">2</span><span class="o">).</span><span class="w">
+</span><span class="k">Proof</span><span class="pi">.</span><span class="w">
+  </span><span class="c">(* 我们补充了中间状态 st'... *)</span><span class="w">
+  </span><span class="kp">apply</span><span class="w"> </span><span class="no">E_Seq</span><span class="w"> </span><span class="kp">with</span><span class="w"> </span><span class="o">(</span><span class="no">X</span><span class="w"> </span><span class="o">!-&gt;</span><span class="w"> </span><span class="mi">2</span><span class="o">).</span><span class="w">
+  </span><span class="o">-</span><span class="w"> </span><span class="kp">apply</span><span class="w"> </span><span class="no">E_Ass</span><span class="pi">.</span><span class="w"> </span><span class="ne">reflexivity</span><span class="pi">.</span><span class="w">
+  </span><span class="o">-</span><span class="w"> </span><span class="kp">apply</span><span class="w"> </span><span class="no">E_IfFalse</span><span class="pi">.</span><span class="w"> </span><span class="ne">reflexivity</span><span class="pi">.</span><span class="w"> </span><span class="kp">apply</span><span class="w"> </span><span class="no">E_Ass</span><span class="pi">.</span><span class="w"> </span><span class="ne">reflexivity</span><span class="pi">.</span><span class="w">
+</span><span class="k">Qed</span><span class="pi">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>没有 <code class="language-plaintext highlighter-rouge">with</code> 就会 <code class="language-plaintext highlighter-rouge">Error: Unable to find an instance for the variable st'</code></p>
+
+<p>但其实 <code class="language-plaintext highlighter-rouge">st'</code> 的取值在后面的步骤是很明显（很好 infer/unify）的，所以 <code class="language-plaintext highlighter-rouge">eapply</code> works.</p>
+
+:ET
