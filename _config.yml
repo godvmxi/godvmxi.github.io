@@ -1,6 +1,6 @@
 # Site settings
-title: Bright Blog
-SEOTitle: Bright Blog | 蛋种的博客
+title: Godvmxi Blog
+SEOTitle: Godvmxi Blog | 蛋种的博客
 header-img: img/home-bg.jpg
 email: godvmxi@gmail.com
 description: "关于程序与设计 | 江晶亮，kernel & MCU & ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。"
@@ -58,7 +58,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hux
+disqus_username: godvmxi
 
 # Netease settings
 netease_comment: false
@@ -70,14 +70,14 @@ netease_comment: false
 # ba_track_id: [your track id]
 
 # Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
+ga_track_id: 'UA'            # Format: UA-xxxxxx-xx
+ga_domain: hu
 
 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "For the next quantum leap<br>离开世界之前，一切都是过程"
+sidebar-about-description: "Everythind is all virtual by Matrix<br>我们都是被神圈养的"
 sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
