@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Say hello to github io",
+      "subtitle" : "Hello world",
+      "tags"     : "Vim, Linux, Bash, C, C++, Python, Vue, H264, Hevc, Vp9, Ffmpeg, OpenMax",
+      "url"      : "/2020/07/01/hello-world-github-io/",
+      "date"     : "2020-07-01 00:00:00 +0800"
+    } ,
+  
+    {
+      "title"    : "My tag summary",
+      "subtitle" : "Hello world",
+      "tags"     : "Vim, Linux, Bash, C, C++, Python, Vue, H264, Hevc, Vp9, Ffmpeg, OpenMax, Arm, MCU",
+      "url"      : "/2020/07/01/about-my-tag/",
+      "date"     : "2020-07-01 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Data Representation - TODO",
       "subtitle" : "「数据表示」待写",
       "tags"     : "笔记, 基础, C, C++",
@@ -22,30 +38,6 @@
       "tags"     : "笔记, 基础, C, C++",
       "url"      : "/2020/06/19/data-rep-int/",
       "date"     : "2020-06-19 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "My Programming Languages Spectrum",
-      "subtitle" : "我的编程语言光谱",
-      "tags"     : "",
-      "url"      : "/2020/05/05/pl-chart/",
-      "date"     : "2020-05-05 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Peter John Landin",
-      "subtitle" : "「计算机科学偶像」- 彼得·约翰·兰丁",
-      "tags"     : "CS Idols",
-      "url"      : "/2019/09/13/peter-john-landin/",
-      "date"     : "2019-09-13 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "My Spacemacs Workflow",
-      "subtitle" : "From Vim to Spacemacs",
-      "tags"     : "Vim, Emacs",
-      "url"      : "/2019/09/08/spacemacs-workflow/",
-      "date"     : "2019-09-08 00:00:00 +0800"
     } 
   
 ]

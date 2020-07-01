@@ -3,11 +3,104 @@
   <channel>
     <title>Godvmxi Blog</title>
     <description>关于程序与设计 | 江晶亮，kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</description>
-    <link>https://me.betterstar.xyz/</link>
-    <atom:link href="https://me.betterstar.xyz/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 01 Jul 2020 14:35:45 +0800</pubDate>
-    <lastBuildDate>Wed, 01 Jul 2020 14:35:45 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 01 Jul 2020 15:05:33 +0800</pubDate>
+    <lastBuildDate>Wed, 01 Jul 2020 15:05:33 +0800</lastBuildDate>
     <generator>Jekyll v4.1.0</generator>
+    
+      <item>
+        <title>Say hello to github io</title>
+        <description>&lt;p&gt;Move all my blog to github.io , records all my thinks and idea, will merge all csdn and other blog to here.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 01 Jul 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/07/01/hello-world-github-io/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/07/01/hello-world-github-io/</guid>
+        
+        <category>Vim</category>
+        
+        <category>Linux</category>
+        
+        <category>Bash</category>
+        
+        <category>C</category>
+        
+        <category>C++</category>
+        
+        <category>Python</category>
+        
+        <category>Vue</category>
+        
+        <category>H264</category>
+        
+        <category>Hevc</category>
+        
+        <category>Vp9</category>
+        
+        <category>Ffmpeg</category>
+        
+        <category>OpenMax</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>My tag summary</title>
+        <description>&lt;p&gt;Do not know the tag limit , so do a simple summary&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vim&lt;/li&gt;
+  &lt;li&gt;Linux&lt;/li&gt;
+  &lt;li&gt;Bash&lt;/li&gt;
+  &lt;li&gt;C&lt;/li&gt;
+  &lt;li&gt;C++&lt;/li&gt;
+  &lt;li&gt;Python&lt;/li&gt;
+  &lt;li&gt;Vue&lt;/li&gt;
+  &lt;li&gt;H264&lt;/li&gt;
+  &lt;li&gt;Hevc&lt;/li&gt;
+  &lt;li&gt;Vp9&lt;/li&gt;
+  &lt;li&gt;Ffmpeg&lt;/li&gt;
+  &lt;li&gt;OpenMax&lt;/li&gt;
+  &lt;li&gt;Arm&lt;/li&gt;
+  &lt;li&gt;Mcu&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 01 Jul 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/07/01/about-my-tag/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/07/01/about-my-tag/</guid>
+        
+        <category>Vim</category>
+        
+        <category>Linux</category>
+        
+        <category>Bash</category>
+        
+        <category>C</category>
+        
+        <category>C++</category>
+        
+        <category>Python</category>
+        
+        <category>Vue</category>
+        
+        <category>H264</category>
+        
+        <category>Hevc</category>
+        
+        <category>Vp9</category>
+        
+        <category>Ffmpeg</category>
+        
+        <category>OpenMax</category>
+        
+        <category>Arm</category>
+        
+        <category>MCU</category>
+        
+        
+      </item>
     
       <item>
         <title>Data Representation - TODO</title>
@@ -26,8 +119,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Jun 2020 00:00:00 +0800</pubDate>
-        <link>https://me.betterstar.xyz/2020/06/21/data-rep-todo/</link>
-        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/21/data-rep-todo/</guid>
+        <link>http://localhost:4000/2020/06/21/data-rep-todo/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/06/21/data-rep-todo/</guid>
         
         <category>笔记</category>
         
@@ -362,8 +455,8 @@ neither in C or C++ standard. Though compiler extension might include it.&lt;/p&
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Jun 2020 00:00:00 +0800</pubDate>
-        <link>https://me.betterstar.xyz/2020/06/21/data-rep-float/</link>
-        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/21/data-rep-float/</guid>
+        <link>http://localhost:4000/2020/06/21/data-rep-float/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/06/21/data-rep-float/</guid>
         
         <category>笔记</category>
         
@@ -816,8 +909,8 @@ not the case of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&
 
 </description>
         <pubDate>Fri, 19 Jun 2020 00:00:00 +0800</pubDate>
-        <link>https://me.betterstar.xyz/2020/06/19/data-rep-int/</link>
-        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/19/data-rep-int/</guid>
+        <link>http://localhost:4000/2020/06/19/data-rep-int/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/06/19/data-rep-int/</guid>
         
         <category>笔记</category>
         
@@ -826,121 +919,6 @@ not the case of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&
         <category>C</category>
         
         <category>C++</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>My Programming Languages Spectrum</title>
-        <description>&lt;iframe id=&quot;chart&quot; src=&quot;https://huangxuan.me/PL-chart/&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; style=&quot;width: 100%&quot;&gt;
-&lt;/iframe&gt;
-</description>
-        <pubDate>Tue, 05 May 2020 00:00:00 +0800</pubDate>
-        <link>https://me.betterstar.xyz/2020/05/05/pl-chart/</link>
-        <guid isPermaLink="true">https://me.betterstar.xyz/2020/05/05/pl-chart/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Peter John Landin</title>
-        <description>&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Peter_Landin&quot;&gt;wiki&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%BD%BC%E5%BE%97%C2%B7%E5%85%B0%E4%B8%81&quot;&gt;维基&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I was long curious about how does λ calculus become the foundation of formalizaing programming languages. It’s strange that I haven’t look up the answer until today: It’s invented so early by Alonzo Church (whom I will write another post for) as an alternative mathematic foundation in 1930s and its relation with programming language was re-discoverred in 1960s.&lt;/p&gt;
-
-&lt;p&gt;From the “Lambda calculus and programming languages” section of wikipedia page:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;As pointed out by Peter Landin’s 1965 paper “A Correspondence between ALGOL 60 and Church’s Lambda-notation”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I found this name quite familiar since I read his paper “The mechanical evaluation of expressions” before, in which he introduced the first abstract machine for functional programming language, namely &lt;a href=&quot;https://en.wikipedia.org/wiki/SECD_machine&quot;&gt;SECD machine&lt;/a&gt;. This paper also define the term &lt;a href=&quot;https://en.wikipedia.org/wiki/Closure_(computer_programming)&quot;&gt;Closure&lt;/a&gt; which becomes a prevalent notion in computer programming nowadays.&lt;/p&gt;
-
-&lt;p&gt;Besides of that, his contributions also include:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;on ALGO definition&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/ISWIM&quot;&gt;ISWIM&lt;/a&gt; programming language&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Off-side_rule&quot;&gt;off-side rule&lt;/a&gt;, known as “indentation-based” syntax nowadays, popularized by Miranda, Haskell, Python, etc.&lt;/li&gt;
-  &lt;li&gt;coin the term &lt;a href=&quot;https://en.wikipedia.org/wiki/Syntactic_sugar&quot;&gt;syntactic sugar&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;He was much influenced by a study of McCarthy’s LISP and taught &lt;a href=&quot;https://en.wikipedia.org/wiki/Tony_Hoare&quot;&gt;Tony Hoare&lt;/a&gt; ALGO with Peter Naur and Edsger W. Dijkstra. (Oh yes, definitely 4 more people to write).&lt;/p&gt;
-
-&lt;p&gt;I have just download his old, influential paper “The next 700 programming languages”. 
-I am sure it will be an enjoyable read.&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 13 Sep 2019 00:00:00 +0800</pubDate>
-        <link>https://me.betterstar.xyz/2019/09/13/peter-john-landin/</link>
-        <guid isPermaLink="true">https://me.betterstar.xyz/2019/09/13/peter-john-landin/</guid>
-        
-        <category>CS Idols</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>My Spacemacs Workflow</title>
-        <description>&lt;p&gt;Emacs tend to provide a good support for functional programming languages. Indeed, many FP language community exclusively use Emacs and give only first-party IDE supports to Emacs, such as Coq, Agda, Standard ML, Clojure, etc.&lt;/p&gt;
-
-&lt;p&gt;For the purpose of programming Coq with Proof General, I started to try with Emacs. I quickly found Spacemacs a good alternatives for me…someone had get used to Vim keybindings and want to get some thing useful ASAP w/o configuring a long list as my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Though the overall experience is pretty smooth, many quirks about Spacemacs are always being forgotten and had to look up again and again, so I decided to open a note for some specific “workflow” that I often used.&lt;/p&gt;
-
-&lt;p&gt;Yes this is more like a note publishing online for the purpose of “on-demand accessible”. So don’t expect good writing anyways.&lt;/p&gt;
-
-&lt;h3 id=&quot;vim-binding&quot;&gt;Vim-binding&lt;/h3&gt;
-
-&lt;p&gt;Choose &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;evil&lt;/code&gt;!&lt;/p&gt;
-
-&lt;h3 id=&quot;airline&quot;&gt;Airline&lt;/h3&gt;
-
-&lt;p&gt;It’s there!&lt;/p&gt;
-
-&lt;h3 id=&quot;nerd-tree--file-sidebar&quot;&gt;Nerd Tree / File Sidebar&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SPC f t&lt;/code&gt; for &lt;em&gt;file tree&lt;/em&gt;. The keybindings for specific operations are very different w/ Vim NerdTree though.&lt;/p&gt;
-
-&lt;h3 id=&quot;shell--terminal&quot;&gt;Shell / Terminal&lt;/h3&gt;
-
-&lt;p&gt;I occasionally use &lt;a href=&quot;https://neovim.io/doc/user/nvim_terminal_emulator.html&quot;&gt;Neovim’s terminal emulator&lt;/a&gt; but in most of the time I just &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd + D&lt;/code&gt; for iTerms splitted window.&lt;/p&gt;
-
-&lt;p&gt;I even mappped &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:D&lt;/code&gt; into split-then-terminal to make the experience on par ;)&lt;/p&gt;
-
-&lt;div class=&quot;language-vim highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;command&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;nargs&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;* D  &lt;span class=&quot;k&quot;&gt;belowright&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;split&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;terminal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Anyways, Spacemacs does provide a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:shell&lt;/code&gt; that naturally split a window below for terminal. The experience is not very good though.&lt;/p&gt;
-
-&lt;h3 id=&quot;tabs--workspaces&quot;&gt;Tabs / Workspaces&lt;/h3&gt;
-
-&lt;p&gt;I tend to open multiple &lt;em&gt;workspace&lt;/em&gt;. Though people might found Vim tabs useful, I am exclusively use iTerm tabs for similar jobs. However Spacemacs is not living in a terminal.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.reddit.com/r/spacemacs/comments/5w5d2s/vimstyle_tabs/&quot;&gt;r/spacemacs - Vim-style tabs?&lt;/a&gt; gave me a good way to approximate the experience by using &lt;a href=&quot;http://spacemacs.org/doc/DOCUMENTATION.html#workspaces&quot;&gt;Spacemacs Workspaces&lt;/a&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SPC l w &amp;lt;nth&amp;gt;&lt;/code&gt; trigger a so-called “layout transient state” (I have no idea what’s that mean) to open N-th workspaces, and use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gt&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gT&lt;/code&gt; to switch between.&lt;/p&gt;
-
-&lt;h3 id=&quot;fuzz-file-name-search--rg&quot;&gt;Fuzz File Name Search / Rg&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SPC f f&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;buffers&quot;&gt;Buffers&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SPC b b&lt;/code&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 08 Sep 2019 00:00:00 +0800</pubDate>
-        <link>https://me.betterstar.xyz/2019/09/08/spacemacs-workflow/</link>
-        <guid isPermaLink="true">https://me.betterstar.xyz/2019/09/08/spacemacs-workflow/</guid>
-        
-        <category>Vim</category>
-        
-        <category>Emacs</category>
         
         
       </item>
