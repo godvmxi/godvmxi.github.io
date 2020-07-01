@@ -3,10 +3,10 @@
   <channel>
     <title>Bright Blog</title>
     <description>关于程序与设计 | 江晶亮，kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 01 Jul 2020 13:19:58 +0800</pubDate>
-    <lastBuildDate>Wed, 01 Jul 2020 13:19:58 +0800</lastBuildDate>
+    <link>https://me.betterstar.xyz/</link>
+    <atom:link href="https://me.betterstar.xyz/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 01 Jul 2020 13:24:15 +0800</pubDate>
+    <lastBuildDate>Wed, 01 Jul 2020 13:24:15 +0800</lastBuildDate>
     <generator>Jekyll v4.1.0</generator>
     
       <item>
@@ -26,8 +26,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/21/data-rep-todo/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/21/data-rep-todo/</guid>
+        <link>https://me.betterstar.xyz/2020/06/21/data-rep-todo/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/21/data-rep-todo/</guid>
         
         <category>笔记</category>
         
@@ -362,8 +362,8 @@ neither in C or C++ standard. Though compiler extension might include it.&lt;/p&
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/21/data-rep-float/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/21/data-rep-float/</guid>
+        <link>https://me.betterstar.xyz/2020/06/21/data-rep-float/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/21/data-rep-float/</guid>
         
         <category>笔记</category>
         
@@ -816,8 +816,8 @@ not the case of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&
 
 </description>
         <pubDate>Fri, 19 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/19/data-rep-int/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/19/data-rep-int/</guid>
+        <link>https://me.betterstar.xyz/2020/06/19/data-rep-int/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/19/data-rep-int/</guid>
         
         <category>笔记</category>
         
@@ -836,8 +836,8 @@ not the case of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&
 &lt;/iframe&gt;
 </description>
         <pubDate>Tue, 05 May 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/05/05/pl-chart/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/05/05/pl-chart/</guid>
+        <link>https://me.betterstar.xyz/2020/05/05/pl-chart/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/05/05/pl-chart/</guid>
         
         
       </item>
@@ -877,8 +877,8 @@ I am sure it will be an enjoyable read.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 13 Sep 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/09/13/peter-john-landin/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/09/13/peter-john-landin/</guid>
+        <link>https://me.betterstar.xyz/2019/09/13/peter-john-landin/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2019/09/13/peter-john-landin/</guid>
         
         <category>CS Idols</category>
         
@@ -935,8 +935,8 @@ I am sure it will be an enjoyable read.&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 08 Sep 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/09/08/spacemacs-workflow/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/09/08/spacemacs-workflow/</guid>
+        <link>https://me.betterstar.xyz/2019/09/08/spacemacs-workflow/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2019/09/08/spacemacs-workflow/</guid>
         
         <category>Vim</category>
         
@@ -2097,8 +2097,8 @@ When this happens, it is unpredictable which instance will be found first by the
 
 </description>
         <pubDate>Mon, 02 Sep 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/09/02/sf-qc-02-typeclasses/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/09/02/sf-qc-02-typeclasses/</guid>
+        <link>https://me.betterstar.xyz/2019/09/02/sf-qc-02-typeclasses/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2019/09/02/sf-qc-02-typeclasses/</guid>
         
         <category>SF (软件基础)</category>
         
@@ -2116,8 +2116,8 @@ When this happens, it is unpredictable which instance will be found first by the
         <description>&lt;p&gt;TBD&lt;/p&gt;
 </description>
         <pubDate>Tue, 19 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/03/19/sf-plf-19-partial-eval/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/03/19/sf-plf-19-partial-eval/</guid>
+        <link>https://me.betterstar.xyz/2019/03/19/sf-plf-19-partial-eval/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2019/03/19/sf-plf-19-partial-eval/</guid>
         
         <category>SF (软件基础)</category>
         
@@ -2174,8 +2174,8 @@ When this happens, it is unpredictable which instance will be found first by the
 
 </description>
         <pubDate>Mon, 18 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/03/18/sf-plf-18-use-auto/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/03/18/sf-plf-18-use-auto/</guid>
+        <link>https://me.betterstar.xyz/2019/03/18/sf-plf-18-use-auto/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2019/03/18/sf-plf-18-use-auto/</guid>
         
         <category>SF (软件基础)</category>
         
@@ -2327,8 +2327,8 @@ hypotheses -&amp;gt; bottom&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 17 Mar 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/03/17/sf-plf-17-use-tactics/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/03/17/sf-plf-17-use-tactics/</guid>
+        <link>https://me.betterstar.xyz/2019/03/17/sf-plf-17-use-tactics/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2019/03/17/sf-plf-17-use-tactics/</guid>
         
         <category>SF (软件基础)</category>
         
