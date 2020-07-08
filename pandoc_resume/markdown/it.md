@@ -1,19 +1,16 @@
 Fishing Wang
 ============
 
+
 ----
 
+>  Love nature, snow and freedom, never give up. I hope to experience all different kinds of life. <p>
 
-## Contact Me
+> | [godvmxi@gmail.com](mailto:godmvxi@gmail.com) | +86-18017302045 | [GitHub](https://github.com/godvmxi) |[Twitter](https://twitter.com/mygoddan) |
 
-| [godvmxi@gmail.com](mailto:godmvxi@gmail.com) | +86-18017302045 | [GitHub](https://github.com/godvmxi) |[Twitter](https://twitter.com/mygoddan) |
-
+----
 
 ## About Me
-Love nature, snow and freedom, never give up. I want to try a total different kind of life and work.
-
-
-## Persionnal Information
 
 Experience
 : 8 years
@@ -36,7 +33,7 @@ Spoken Level
 ## Technology Stack
 
 Networking
-: Aboving CCNA,should be CCNP (worked in Cisco for 3 years, not took part in the exam for team budget )
+: Aboving CCNA, should be CCNP (I had worked in Cisco for 3 years, we did not take  part in the certification exam for team budget)
 
 System
 : Linux, Windows, Mac
@@ -49,6 +46,9 @@ IT Hareware
 
 IT Technology
 : server HW/SW customized, workstation HW/SW customized, operating system customized, software customized, Printer, Networking and related IT equipment.
+
+ASIC Verification
+: Video Codec(H264, H265, VP9, AV1, MJPEG), misc interface(rs232, spi,flash)
 
 Language
 : C/C++, Python, C#, Bash, Java, Javascript
@@ -76,7 +76,7 @@ Language
     * Handling the video codec IP verification.
     * Handling the misc IP verification.
 
-2011/10 - 2014/04
+2011/10-2014/04
 :   **[Cisco Systems, Inc.](https://www.cisco.com/)**   Software Engineer
 
     Cisco is the worldwide leader in IT, networking, and cybersecurity solutions. 
@@ -89,10 +89,10 @@ Language
 
 
 ## Education
-2012 – 2014
+2012/9–2015/6
 :  Master's Degree in Electronic Information Engineering, **Chinese Academy of Sciences University** *(part-time)*
 
-2007 – 2011)
+2007/9–2011/6
 : Bachelor's Degree in Electronic Information Engineering, **Qingdao University**
 
 
@@ -120,6 +120,33 @@ Language
 
 2018/9-2019/9
 :   **Arden AGPU verification  - AMD**   Senior Firmware Engineer 
+
+    AMD AGPU game station solution for MicroSoft XBOX and later game station
+
+    * Setup all kinds of server and PC to verify the GPU card
+    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
+    * Add necessarg cases to verify all features for video codec IP in asic.
+
+2018/9-2019/9
+:   **OpenStack Deploy  - INFOTM**   Senior Firmware Engineer 
+
+    Use OpenStack to re-orgnize the structure of the company.
+
+    * Design server and networking structure and define the budget.
+    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
+    * Add necessarg cases to verify all features for video codec IP in asic.
+
+2018/9-2019/9
+:   **Arden AGPU verification  - INFOTM**   Senior Firmware Engineer 
+
+    AMD AGPU game station solution for MicroSoft XBOX and later game station
+
+    * Setup all kinds of server and PC to verify the GPU card
+    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
+    * Add necessarg cases to verify all features for video codec IP in asic.
+
+2018/9-2019/9
+:   **Arden AGPU verification  - INFOTM**   Senior Firmware Engineer 
 
     AMD AGPU game station solution for MicroSoft XBOX and later game station
 
