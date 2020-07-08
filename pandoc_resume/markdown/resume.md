@@ -17,6 +17,10 @@ Education
 
     *Thesis title: Deep Learning Approaches to the Self-Awesomeness
      Estimation Problem*
+      
+      * dsfasdf
+      * fdsfsa
+      * fsdsda
 
 2007-2010
 :   **BSc, Computer Science and Electrical Engineering**; University of
