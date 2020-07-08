@@ -30,7 +30,7 @@ AMD today develops high-performance computing and visualization products to solv
 
 * Making test platform purchase plan to suppport the diag team for asic verification and bringup. including networking device, workstation platform and so on.
 * Seting up all necessary hardware platform to support team work.
-* Developing the video codec (H264,HEVC,VP9) IP verification framework during the pre-silion period.
+* Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silion and post-silicon period.
 
 **[Shanghai InfoTM Microelectronics Co., Ltd.](http://www.infotm.com)**: Senior Software Engineer; IT leader;  (2014/5 - 2017/11)
 
@@ -50,6 +50,7 @@ Cisco is the worldwide leader in IT, networking, and cybersecurity solutions.
 * Networking Protocal Implement
 * Developing virtualization software client in thin client
 * Add misc device for thin client , such as printer , IR remote controler, touch screen, kinect and so on.
+* Add vehicle can bus device support for thin client.
 
 
 ## Education
