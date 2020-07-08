@@ -6,10 +6,11 @@ Fishing Wang
 
 ## Contact Me
 
-| [godvmxi@gmail.com](mailto:godmvxi@gmail.com) | +86-18017302045 | [GitHub](htttps://github.com/godvmxi) |[Twitter](https://twitter.com/mygoddan) |
+| [godvmxi@gmail.com](mailto:godmvxi@gmail.com) | +86-18017302045 | [GitHub](https://github.com/godvmxi) |[Twitter](https://twitter.com/mygoddan) |
 
 
-
+## About Me
+Love nature, snow and freedom, never give up. I want to try a total different kind of life and work.
 
 
 ## Persionnal Information
@@ -35,7 +36,7 @@ Spoken Level
 ## Technology Stack
 
 Networking
-: Aboving CCNA (working in Cisco for 3 years)
+: Aboving CCNA,should be CCNP (worked in Cisco for 3 years, not took part in the exam for team budget )
 
 System
 : Linux, Windows, Mac
@@ -56,8 +57,8 @@ Language
 
 ## Working Experience
 
-2017/12-now
-:     **[Advanced Micro Devices, Inc](https://www.amd.com/)**: Senior Firmware Engineer;  
+2017/12-Now
+:     **[Advanced Micro Devices, Inc](https://www.amd.com/)**  Senior Firmware Engineer 
 
     AMD today develops high-performance computing and visualization products to solve some of the world’s toughest and most interesting challenges.
 
@@ -66,7 +67,7 @@ Language
     * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silion and post-silicon period.
 
 2014/5-2017/11
-:   **[Shanghai InfoTM Microelectronics Co., Ltd.](http://www.infotm.com)**: Senior Software Engineer; IT leader;  
+:   **[Shanghai InfoTM Microelectronics Co., Ltd.](http://www.infotm.com)**  Senior Software Engineer; IT team leader  
 
     InfoTM Co., Ltd. is an intelligent system operator with integrated circuit design and development as the core and provides intelligent terminal by integration and optimization of supply chain and offers system service supported by big data operating.
 
@@ -76,7 +77,7 @@ Language
     * Handling the misc IP verification.
 
 2011/10 - 2014/04
-:   **[Cisco Systems, Inc.](https://www.cisco.com/)**:  Software Engineer; ()
+:   **[Cisco Systems, Inc.](https://www.cisco.com/)**   Software Engineer
 
     Cisco is the worldwide leader in IT, networking, and cybersecurity solutions. 
 
@@ -89,23 +90,43 @@ Language
 
 ## Education
 2012 – 2014
-:  Master's Degree in Electronic Information Engineering, **Chinese Academy of Sciences University** *(part-time school)*
+:  Master's Degree in Electronic Information Engineering, **Chinese Academy of Sciences University** *(part-time)*
 
 2007 – 2011)
 : Bachelor's Degree in Electronic Information Engineering, **Qingdao University**
 
 
-## Projects (open source)
 
-- **[chart.xkcd](https://github.com/timqian/chart.xkcd)**: xkcd styled chart lib.
-  - 5.5k+ stars on GitHub, 100k downloads
-  - Built with d3.js
-- **[tomato-pie](https://github.com/t9tio/tomato-pie)**: A new UI for Pomodoro Technique. Schedule your time directly with a clock.
-  - 1k+ active users
-  - Built with pure HTML, CSS, JS
-- **[repo-analytics](https://github.com/repo-analytics/repo-analytics.github.io)**: Thorough analytics for your GitHub repos.
-  - 100+ users
-  - Frontend: React.js; backend: node.js, AWS lambda, dynamodb
+## Projects
+
+2019/6-Now
+:   **Mi100/200 AI GPU verification  - AMD**  Senior Firmware Engineer 
+
+    AMD GPU AI solution for facebook and other customers
+
+    * Setup all kinds of server and PC to verify the GPU card
+    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
+    * Add necessarg cases to verify all features for video codec IP in asic.
+
+2017/12-2019/8
+:   **Oberon/Ariel AGPU verification  - AMD**   Senior Firmware Engineer 
+
+    AMD AGPU game station solution for Sony PS5 and later game station
+
+    * Setup all kinds of server and PC to verify the GPU card
+    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
+    * Add necessarg cases to verify all features for video codec IP in asic.
 
 
+2018/9-2019/9
+:   **Arden AGPU verification  - AMD**   Senior Firmware Engineer 
 
+    AMD AGPU game station solution for MicroSoft XBOX and later game station
+
+    * Setup all kinds of server and PC to verify the GPU card
+    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
+    * Add necessarg cases to verify all features for video codec IP in asic.
+
+
+## Knowledge Map
+There is a knowledge map about me .[LINK](https://gitmind.com/app/doc/eec449510)
