@@ -4,7 +4,7 @@ Bright Jiang
 
 ----
 
->  Love nature, snow and freedom, never give up. I hope to experience all different kinds of life. <p>
+>  Love nature, snow and freedom. <p>Never give up and never stop to seek new chanllege. <p>Hope to experience all different kinds of life. <p>
 
 > | [godvmxi@gmail.com](mailto:godmvxi@gmail.com) | +86-18017302045 | [GitHub](https://github.com/godvmxi) |[Twitter](https://twitter.com/mygoddan) |
 
@@ -15,22 +15,22 @@ Full Name
 : Jingliang Jiang, Just call me Bright
 
 Experience
-: 9 years in total, 6 years in multinational companys ,including AMD and Cisco
+: 9 years in total, 6 years in multi-national companys, including AMD and Cisco
 
 Degree
 : Master's and Bechor's Degree for EE, Part-time for Master
 
 Available
-: 15, September
+: September
 
 Languages
 : Chinese, English
 
 Writing Level
-: Excellent
+: Excellent in both
 
 Spoken Level
-: Fluent
+: Fluent in English, Excellent in Chinese
 
 ## Technology Stack
 
@@ -44,10 +44,10 @@ Virtualization
 : Exsi, PVE
 
 IT Hareware
-: Evalution, Configure, Assembly all kinds of related IT equipment.
+: Evalute, Purchase, Configure, Assembly all kinds of related IT equipment.
 
 IT Technology
-: server HW/SW customized, workstation HW/SW customized, operating system customized, software customized, Printer, Networking and related IT equipment.
+: Server HW/SW customized, workstation HW/SW customized, operating system customized, software customized, Printer, Networking and related IT equipment.
 
 ASIC Verification
 : Video Codec(H264, H265, VP9, AV1, MJPEG), misc interface(rs232, spi,flash)
@@ -67,29 +67,31 @@ Language
 
     AMD today develops high-performance computing and visualization products to solve some of the world’s toughest and most interesting challenges.
 
-    * Making test platform purchase plan to suppport the diag team for asic verification and bringup. including networking device, workstation platform and so on.
-    * Seting up all necessary hardware platform to support team work.
-    * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silion and post-silicon period.
+    * Making test platform purchase plan to suppport the diag team for asic verification and bringup, including networking device, workstation platform and so on.
+    * Setting up all necessary hardware platform to support team work.
+    * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silicon and post-silicon period.
 
 2014/5-2017/11
 :   **[Shanghai InfoTM Microelectronics Co., Ltd.](http://www.infotm.com)**  Senior Software Engineer; IT team leader  
 
     InfoTM Co., Ltd. is an intelligent system operator with integrated circuit design and development as the core and provides intelligent terminal by integration and optimization of supply chain and offers system service supported by big data operating.
 
-    * Making IT equipment plan ,and lead the IT team to maintain the IT equipment.
-    * Making the bringup plan for ASIC design team.
-    * Handling the video codec IP verification.
-    * Handling the misc IP verification.
+    * Make IT equipment plan ,and lead the IT team to maintain the IT equipment.
+    * Make the bringup plan for ASIC design team.
+    * Handle the video codec IP verification.
+    * Handle the misc IP verification.
+    * Implement new software video stack for video application
+    * Support customer for new software stack
 
 2011/10-2014/04
 :   **[Cisco Systems, Inc.](https://www.cisco.com/)**   Software Engineer
 
     Cisco is the worldwide leader in IT, networking, and cybersecurity solutions. 
 
-    * Virtualization thin client development 
-    * Networking Protocal Implement
-    * Developing virtualization software client in thin client
-    * Add misc device for thin client , such as printer , IR remote controler, touch screen, kinect and so on.
+    * Develop Virtualization thin client 
+    * Implement Networking Protocal
+    * Develop virtualization software client in thin client
+    * Add misc device support for thin client, such as printer, IR remote controler, touching screen, XBox kinect and so on.
     * Add vehicle can bus device support for thin client.
 
 
@@ -152,7 +154,7 @@ Language
     * Verify other misc IPs in some projects(rs232, SPI, Flash controler, OSD and so on)
     
 
-2014/6-2017/9
+2016/9-2017/9
 :   **Asic Chip software stack update  - INFOTM**   Senior Software Engineer 
 
     Update the whole software stack to new framework to support more flexible video application.
@@ -162,8 +164,8 @@ Language
     * Implement support modules for new framework(such video filesystem(base ffmpeg), rtp tools, video quality setting tools and so on )  
     * Implement new build system for new software stack, based on buildroot and qemu. 
 
-2017/7-2017/12
-:   **Asic Chip verification  - INFOTM**   Senior Product Support Engineer 
+2017/3-2017/11
+:   **Customer Support  - INFOTM**   Senior Product Support Engineer 
 
     With the chip and software stack update, I switch my work to focus on the product support for customer.
 
@@ -171,14 +173,27 @@ Language
     * Help customer SW/HW team to dig root cause, solve or assign to correct team and track the process
     * Track project process of the customer
 
-2018/9-2019/9
-:   **Arden AGPU verification  - Cisco**   Software Engineer 
+2011/10-2014/4
+:   **Bluebird thin Client  - Cisco**   Software Engineer 
 
-    AMD AGPU game station solution for MicroSoft XBOX and later game station
+    Build thin client for Virtulization system. 
 
-    * Setup all kinds of server and PC to verify the GPU card
-    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
-    * Add necessarg cases to verify all features for video codec IP in asic.
+    * Add networking support for thin client(wlan Client, Multi-AP, Manage vlan, TR069, VPN client)
+    * Implement management Restapi, web ui and framework modules for aboving modules
+    * Add can bus support ,include software and HW module , can support muli-vehicles
+    * Track the HW design from Foxconn
+
+
+2011/10-2012/2
+:   **Bluebird vehicle client module  - Cisco**   Software Engineer, Hardware Engineer 
+
+    A car client module for vehicles, can support the thin client usage and server usage
+
+    * Add can-bus module to collect the statistics of the vehicles
+    * Add GPRS/3G moudles to support communication between client and server
+    * Add Bluetooth moudles to support communication among client, mobile, thin client
+    * Track the HW design from Foxconn
+
 
 
 ## Knowledge Map
