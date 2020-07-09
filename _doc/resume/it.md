@@ -22,6 +22,7 @@ Bright Jiang
 - Language: C/C++, Python, C#, Bash, Java, Javascript
 
 
+
 ## Working Experience
 
 **[Advanced Micro Devices, Inc](https://www.amd.com/)**: Senior Firmware Engineer;  (2017/12 - now)

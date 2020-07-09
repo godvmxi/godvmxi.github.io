@@ -1,4 +1,4 @@
-Fishing Wang
+Bright Jiang
 ============
 
 
@@ -11,12 +11,14 @@ Fishing Wang
 ----
 
 ## About Me
+Full Name
+: Jingliang Jiang, Just call me Bright
 
 Experience
-: 8 years
+: 9 years in total, 6 years in multinational companys ,including AMD and Cisco
 
 Degree
-: Master's degree for EE
+: Master's and Bechor's Degree for EE, Part-time for Master
 
 Available
 : 15, September
@@ -49,6 +51,9 @@ IT Technology
 
 ASIC Verification
 : Video Codec(H264, H265, VP9, AV1, MJPEG), misc interface(rs232, spi,flash)
+
+Video Codec
+: Have a full understanding about the video codecs, both in asic design and software stack develop, keywords: RTL, FPGA, FFMPEG, OPENMAX
 
 Language
 : C/C++, Python, C#, Bash, Java, Javascript
@@ -128,25 +133,46 @@ Language
     * Add necessarg cases to verify all features for video codec IP in asic.
 
 2018/9-2019/9
-:   **OpenStack Deploy  - INFOTM**   Senior Firmware Engineer 
+:   **OpenStack Deploy  - INFOTM**   Senior Software Engineer 
 
     Use OpenStack to re-orgnize the structure of the company.
 
     * Design server and networking structure and define the budget.
-    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
-    * Add necessarg cases to verify all features for video codec IP in asic.
+    * Use openldp as a global use authority method
+    * Merge all development tools to openstack
+
+2014/6-2017/9
+:   **Asic Chip verification  - INFOTM**   Senior Software Engineer 
+
+    Infotm provided serval chips for IPC, Game Station, SportDV, Android Pad, such as Imapx 200/800(pad), Apollo 1/2/x(IPC,SportDV,NVR), Corona 2/3(Game Station for Tencent), I handled the vodeo codec IP verification, including in pre-silicon, post-silicon, driver implement, video framework implement.
+
+    * Keep video codec IPs(From Synopsys, include H1,H2,G1,G2) catch the design plan 
+    * Help design team to estimate and measure the efficiency and power consumption
+    * Implement the BMS code based uboot to verify the rtl design and bringup period
+    * Verify other misc IPs in some projects(rs232, SPI, Flash controler, OSD and so on)
+    
+
+2014/6-2017/9
+:   **Asic Chip software stack update  - INFOTM**   Senior Software Engineer 
+
+    Update the whole software stack to new framework to support more flexible video application.
+
+    * Design the video flow control framework and implement the main base job
+    * Implement most of video modules for new video framework
+    * Implement support modules for new framework(such video filesystem(base ffmpeg), rtp tools, video quality setting tools and so on )  
+    * Implement new build system for new software stack, based on buildroot and qemu. 
+
+2017/7-2017/12
+:   **Asic Chip verification  - INFOTM**   Senior Product Support Engineer 
+
+    With the chip and software stack update, I switch my work to focus on the product support for customer.
+
+    * Help customer to solve problem about the whole product
+    * Help customer SW/HW team to dig root cause, solve or assign to correct team and track the process
+    * Track project process of the customer
 
 2018/9-2019/9
-:   **Arden AGPU verification  - INFOTM**   Senior Firmware Engineer 
-
-    AMD AGPU game station solution for MicroSoft XBOX and later game station
-
-    * Setup all kinds of server and PC to verify the GPU card
-    * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
-    * Add necessarg cases to verify all features for video codec IP in asic.
-
-2018/9-2019/9
-:   **Arden AGPU verification  - INFOTM**   Senior Firmware Engineer 
+:   **Arden AGPU verification  - Cisco**   Software Engineer 
 
     AMD AGPU game station solution for MicroSoft XBOX and later game station
 
