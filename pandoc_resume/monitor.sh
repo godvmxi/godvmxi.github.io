@@ -3,7 +3,7 @@
 function make_output()
 {
     make html
-    #make pdf
+    make pdf
 }
 # 监视的文件或目录
 filename=$1
