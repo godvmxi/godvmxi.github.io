@@ -1,4 +1,4 @@
-Bright Jiang
+Jingliang Jiang
 ============
 
 
@@ -14,7 +14,7 @@ Bright Jiang
 
 ## About Me
 Full Name
-: Jingliang Jiang (Just call me Bright)
+: Jingliang Jiang
 
 Experience
 : 9 years in total, 6 years in multi-national companys, including AMD and Cisco

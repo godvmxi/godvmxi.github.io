@@ -160,12 +160,12 @@ utilitydata.structures.lists.collected={
    ["block"]="bodypart",
    ["internal"]=1,
    ["realpage"]=1,
-   ["reference"]="bright-jiang",
+   ["reference"]="jingliang-jiang",
    ["section"]=1,
   },
   ["titledata"]={
    ["label"]="section",
-   ["title"]="Bright Jiang",
+   ["title"]="Jingliang Jiang",
   },
  },
  {
