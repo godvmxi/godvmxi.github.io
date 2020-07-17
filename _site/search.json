@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Mount samba with current user",
+      "subtitle" : "Samba",
+      "tags"     : "Vim, Linux, Bash, Samba",
+      "url"      : "/2020/08/17/mount-samba-with-current-user/",
+      "date"     : "2020-08-17 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Say hello to github io",
       "subtitle" : "Hello world",
       "tags"     : "Vim, Linux, Bash, C, C++, Python, Vue, H264, Hevc, Vp9, Ffmpeg, OpenMax",

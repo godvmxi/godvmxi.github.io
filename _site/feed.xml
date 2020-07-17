@@ -3,11 +3,93 @@
   <channel>
     <title>Godvmxi Blog</title>
     <description>关于程序与设计 | 江晶亮，kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 17 Jul 2020 10:49:35 +0800</pubDate>
-    <lastBuildDate>Fri, 17 Jul 2020 10:49:35 +0800</lastBuildDate>
+    <link>https://me.betterstar.xyz/</link>
+    <atom:link href="https://me.betterstar.xyz/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 17 Jul 2020 11:14:24 +0800</pubDate>
+    <lastBuildDate>Fri, 17 Jul 2020 11:14:24 +0800</lastBuildDate>
     <generator>Jekyll v4.1.0</generator>
+    
+      <item>
+        <title>Mount samba with current user</title>
+        <description>&lt;p&gt;When you want to mount a samba to modify the file , there are always some issues :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;all kind of file permission issues&lt;/li&gt;
+  &lt;li&gt;how to auto mount samba&lt;/li&gt;
+  &lt;li&gt;Samba server setting&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;file-permission&quot;&gt;file permission&lt;/h2&gt;
+
+&lt;p&gt;gid=1000,uid=1000,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;you can use id command to find your current user info &lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;uid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;user&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;gid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;user&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;user&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;adm&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,
+24&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;cdrom&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,27&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,30&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;dip&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,46&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;plugdev&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,112&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;lpadmin&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,128&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;sambashare&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;how-to-auto-mount-samba&quot;&gt;how to auto mount samba&lt;/h2&gt;
+
+&lt;p&gt;here is my /etc/fstab&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;//dbs-04/data /nfs/data/ cifs &lt;span class=&quot;nv&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/.smbcredentials,uid&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000,gid&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000 0 0
+//dbs-04/home /nfs/home/ cifs &lt;span class=&quot;nv&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/.smbcredentials,uid&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000,gid&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000 0 0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;the client user info is in /home/user/.smbcredentials,&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /home/user/.smbcredentials
+&lt;span class=&quot;nv&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;smbuser
+&lt;span class=&quot;nv&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;smbuserpasswd
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;my-server-setting&quot;&gt;my server setting&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;data]
+    comment &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; user
+    path &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /data/user
+    browseable &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;yes
+    &lt;/span&gt;writeable &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;yes
+    &lt;/span&gt;guest ok &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;yes
+    &lt;/span&gt;force user &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; jbright
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;remember add your samba user into your server&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 17 Aug 2020 00:00:00 +0800</pubDate>
+        <link>https://me.betterstar.xyz/2020/08/17/mount-samba-with-current-user/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/08/17/mount-samba-with-current-user/</guid>
+        
+        <category>Vim</category>
+        
+        <category>Linux</category>
+        
+        <category>Bash</category>
+        
+        <category>Samba</category>
+        
+        
+      </item>
     
       <item>
         <title>Say hello to github io</title>
@@ -15,8 +97,8 @@
 
 </description>
         <pubDate>Wed, 01 Jul 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/07/01/hello-world-github-io/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/07/01/hello-world-github-io/</guid>
+        <link>https://me.betterstar.xyz/2020/07/01/hello-world-github-io/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/07/01/hello-world-github-io/</guid>
         
         <category>Vim</category>
         
@@ -68,8 +150,8 @@
 
 </description>
         <pubDate>Wed, 01 Jul 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/07/01/about-my-tag/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/07/01/about-my-tag/</guid>
+        <link>https://me.betterstar.xyz/2020/07/01/about-my-tag/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/07/01/about-my-tag/</guid>
         
         <category>Vim</category>
         
@@ -119,8 +201,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/21/data-rep-todo/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/21/data-rep-todo/</guid>
+        <link>https://me.betterstar.xyz/2020/06/21/data-rep-todo/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/21/data-rep-todo/</guid>
         
         <category>笔记</category>
         
@@ -455,8 +537,8 @@ neither in C or C++ standard. Though compiler extension might include it.&lt;/p&
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/21/data-rep-float/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/21/data-rep-float/</guid>
+        <link>https://me.betterstar.xyz/2020/06/21/data-rep-float/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/21/data-rep-float/</guid>
         
         <category>笔记</category>
         
@@ -909,8 +991,8 @@ not the case of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&
 
 </description>
         <pubDate>Fri, 19 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/19/data-rep-int/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/19/data-rep-int/</guid>
+        <link>https://me.betterstar.xyz/2020/06/19/data-rep-int/</link>
+        <guid isPermaLink="true">https://me.betterstar.xyz/2020/06/19/data-rep-int/</guid>
         
         <category>笔记</category>
         
