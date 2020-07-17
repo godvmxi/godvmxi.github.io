@@ -25,15 +25,6 @@ Degree
 Available
 : September
 
-Languages
-: Chinese, English
-
-Writing Level
-: Excellent in both
-
-Spoken Level
-: Fluent in English, Excellent in Chinese
-
 
 Key Words
 :  UNITY, FLASK, H264, HEVC, VP9, FFMPEG, ASIC, RTL, FPGA, 
