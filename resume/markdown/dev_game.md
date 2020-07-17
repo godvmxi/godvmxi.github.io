@@ -17,10 +17,10 @@ Full Name
 : Jingliang Jiang
 
 Experience
-: 9 years in total, 6 years in multi-national companys, including AMD and Cisco
+: 9 years total, 6 years in multi-national companys, including AMD and Cisco
 
 Degree
-: Master's and Bechor's Degree for EE, part-time for Master
+: Master's and Bechelor's Degree for EE, full-time for Bechelor and part-time for Master
 
 Available
 : September
@@ -36,19 +36,21 @@ Spoken Level
 
 
 Key Words
-:  H264, HEVC, VP9, FFMPEG, ASIC, RTL, FPGA
+:  UNITY, FLASK, H264, HEVC, VP9, FFMPEG, ASIC, RTL, FPGA, 
 
 
 
 
 ## Technology Stack
 
+Game Engine
+: Unity, C#
 
 ASIC Verification
-: Video Codec(H264, H265, VP9, AV1, MJPEG), misc interface(rs232, spi,flash)
+: Video Codec(H264, H265, VP9, AV1, MJPEG), misc interface(RS232, SPI, FLASH, OSD)
 
 Video Codec
-: Have a full understanding about the video codecs, both in asic design and software stack develop
+: Have a full understanding about the video codecs, both in asic design and software stack development
 
 Language
 : C/C++, Python, C#, Bash, Java, Javascript
@@ -65,7 +67,8 @@ Language
     * Setting up all necessary hardware platform to support team work.
     * Handle the video codec IP verification.
     * Bringup the video codec IP of the ASIC.
-    * Setup auto regression for all test suite
+    * Setup auto regression for all test suite.
+    * Develop essential tools for team.
     * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silicon and post-silicon period.
 
 2014/5-2017/11
@@ -76,6 +79,7 @@ Language
     * Catch the bringup plan from ASIC design team.
     * Handle the video codec IP verification.
     * Handle the misc IP verification.
+    * Develop all kinds of build system and release tools for team.
     * Implement new software video stack for video application
     * Support customer for new software stack
 
@@ -86,7 +90,8 @@ Language
 
     * Develop Virtualization thin client 
     * Implement Networking Protocal
-    * Develop virtualization software client in thin client
+    * Develop virtualization software client in thin client.
+    * Maintain building system and CI system.
     * Add misc device support for thin client, such as printer, IR remote controler, touching screen, XBox kinect and so on.
     * Add vehicle can bus device support for thin client.
 
@@ -102,12 +107,34 @@ Language
 
 ## Projects
 
+2018/4-Now
+:   **Unity DrumSet Teaching system -- Personal Project**   Team leader and Architect
+
+    A DrumSet teaching system, including the following parts :
+
+    * Server backend (music, student, teacher, school management, based on flask, mysql, vue)
+    * Game client(Teacher client, student client, normal user client, support Win, Android , IOS, based on unity, jave, winform), 
+    * MIDI device support (DrumSet, Guitar, planing to support electronic organ and other devices)
+    * Real time and homework correcting
+    * AI homework recommendation (based on TensorFlow)
+    * Online purchase for music VIP
+
+    Responsibilities :
+
+    * Design the product protetype design with Axure.
+    * Design Server RestAPI.
+    * Implement core server function and lead my team to finish others.
+    * Design the Game Client architecture and implement the core game.
+    * Support device binding for different platform.
+    * Support multi-MIDI device support for different platform.
+
 2019/6-Now
 :   **Mi100/200 AI GPU verification  - AMD**  Senior Firmware Engineer 
 
     AMD GPU AI solution for facebook and other customers
 
-    
+    **Responsibilities**:
+
     * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
     * Add necessarg cases to verify all features for video codec IP in asic.
     * Dig with design and other teams to solve related video issues
@@ -117,6 +144,8 @@ Language
 :   **Oberon/Ariel AGPU verification  - AMD**   Senior Firmware Engineer 
 
     AMD AGPU game station solution for Sony PS5 and later game station
+
+    **Responsibilities**:
 
     * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
     * Add necessarg cases to verify all features for video codec IP in asic.
@@ -129,6 +158,7 @@ Language
 
     AMD AGPU game station solution for MicroSoft XBOX and later game station
 
+    **Responsibilities**:
 
     * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
     * Add necessarg cases to verify all features for video codec IP in asic.
@@ -139,6 +169,8 @@ Language
 :   **OpenStack Deploy  - INFOTM**   Senior Software Engineer 
 
     Use OpenStack to re-orgnize the structure of the company.
+     
+    **Responsibilities**:
 
     * Design server and networking structure and define the budget.
     * Use openldp as a global use authority method
@@ -148,6 +180,8 @@ Language
 :   **Asic Chip verification  - INFOTM**   Senior Software Engineer 
 
     Infotm provided various chips for IPC, Game Station, SportDV, Android Pad, such as Imapx 200/800(pad), Apollo 1/2/x(IPC,SportDV,NVR), Corona 2/3(Game Station for Tencent), I handled the vodeo codec IP verification, including in pre-silicon, post-silicon, driver implement, video framework implement.
+
+    **Responsibilities**:
 
     * Keep video codec IPs(From Synopsys, include H1,H2,G1,G2) match the criterion of the design plan 
     * Help design team to estimate and measure the efficiency and power consumption
@@ -160,6 +194,8 @@ Language
 
     Update the whole software stack for new framework to support more flexible video application.
 
+    **Responsibilities**:
+
     * Design the video flow framework and implement the main base job
     * Implement most of video modules for new video framework
     * Implement supporting modules for new framework(such video filesystem(parse and store bitstream based ffmpeg), rtp tools, video quality setting tools and so on )  
@@ -170,6 +206,8 @@ Language
 
     With the chip and software stack update, I switch my work to focus on the support for customers.
 
+    **Responsibilities**:
+
     * Help customers to solve issues during the whole application
     * Help customer's hardware/software teams to dig root cause of bug, then solve by myself or assign the solution to correct team 
     * Track project process 
@@ -178,6 +216,8 @@ Language
 :   **Bluebird thin Client  - Cisco**   Software Engineer 
 
     Build thin client for Virtulization system. 
+
+    **Responsibilities**:
 
     * Add networking support for thin client(Wlan Client, Multi-AP, Manage VLAN, TR069, VPN Client)
     * Implement management Restapi, web ui and framework modules for aboving modules
@@ -189,6 +229,8 @@ Language
 :   **Bluebird vehicle client module  - Cisco**   Software Engineer, Hardware Engineer 
 
     A car client module for vehicles, can support the thin client usage and server usage
+
+    **Responsibilities**:
 
     * Add CAN-Bus module to collect the statistics of the vehicles
     * Add GPRS/3G moudles to support communication between client and server

@@ -106,3 +106,6 @@ friends: [
     #     href: "http://su.gallery/"
     }
 ]
+
+exclude:
+-resume/

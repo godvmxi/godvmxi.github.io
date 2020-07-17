@@ -16,10 +16,10 @@ Full Name
 : Jingliang Jiang
 
 Experience
-: 9 years in total, 6 years in multi-national companys, including AMD and Cisco , Good at programing and IT maintain.
+: 9 years total, 6 years in multi-national companys, including AMD and Cisco , Good at programing and IT maintain.
 
 Degree
-: Master's and Bechor's Degree for EE, part-time for Master
+: Master's and Bechelor's Degree for EE, full-time for Bechelor and part-time for Master
 
 Available
 : September
