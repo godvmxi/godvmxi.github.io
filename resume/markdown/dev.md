@@ -26,7 +26,7 @@ Available
 : September
 
 Key Words
-:  H264, HEVC, VP9, FFMPEG, ASIC, RTL, FPGA
+:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, FPGA, UNITY, FLASK
 
 
 
@@ -91,6 +91,29 @@ Language
 
 
 ## Projects
+
+2018/4-Now
+:   **Unity DrumSet Teaching system -- Personal Project**   Team leader and Architect
+
+    A DrumSet teaching system, including the following parts :
+
+    * Server backend (music, student, teacher, school management, based on flask, mysql, vue)
+    * Game client(Teacher client, student client, normal user client, support Win, Android , IOS, based on unity, jave, winform), 
+    * MIDI device support (DrumSet, Guitar, planing to support electronic organ and other devices)
+    * Real time and homework correcting
+    * AI homework recommendation (based on TensorFlow)
+    * Online purchase for music VIP
+
+    Responsibilities :
+
+    * Design the product protetype design with Axure.
+    * Design Server RestAPI.
+    * Implement core server function and lead my team to finish others.
+    * Design the Game Client architecture and implement the core game.
+    * Support device binding for different platform.
+    * Support multi-MIDI device support for different platform.
+
+
 
 2019/6-Now
 :   **Mi100/200 AI GPU verification  - AMD**  Senior Firmware Engineer 
