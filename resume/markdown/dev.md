@@ -26,7 +26,7 @@ Available
 : September
 
 Key Words
-:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, FPGA, UNITY, FLASK
+:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, FPGA, UNITY, FLASK, PCB, LINUX, KERNEL, ARM
 
 
 
@@ -56,6 +56,7 @@ Language
     * Handle the video codec IP verification.
     * Bringup the video codec IP of the ASIC.
     * Setup auto regression for all test suite
+    * Develop kernel driver and software framework
     * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silicon and post-silicon period.
 
 2014/5-2017/11
@@ -64,6 +65,8 @@ Language
     InfoTM Co., Ltd. is an intelligent system operator with integrated circuit design and development as the core and provides intelligent terminal by integration and optimization of supply chain and offers system service supported by big data operating.
 
     * Catch the bringup plan from ASIC design team.
+    * Custom operating system and kernel
+    * Develop kernel driver and software framework
     * Handle the video codec IP verification.
     * Handle the misc IP verification.
     * Implement new software video stack for video application
@@ -75,10 +78,23 @@ Language
     Cisco is the worldwide leader in IT, networking, and cybersecurity solutions. 
 
     * Develop Virtualization thin client 
+    * Custom operating system and kernel
     * Implement Networking Protocal
     * Develop virtualization software client in thin client
     * Add misc device support for thin client, such as printer, IR remote controler, touching screen, XBox kinect and so on.
     * Add vehicle can bus device support for thin client.
+
+2010/10-2011/9
+:   **[Jiangsu Internet of things research and Development Center, Ciotc](http://www.ciotc.com/)**   Development Engineer
+
+    Jiangsu IOT center is the overall leading organization unit and technology research and development platform of CAS in the field of IOT.
+
+    * LBS hardware design ,including wearable equipment, vehicle informaion interaction equipment.
+    * Analyse market of MEMS chip and wearable equipment.
+    * Develop Can bus protocal.
+    * Develop GPS, Bluetooth, GPRS(WCDMA), Can bus and misc driver.
+    * Develop linux embedded software.
+
 
 
 ## Education
@@ -208,5 +224,17 @@ Language
     * Add Bluetooth moudles to support communication among client, mobile, thin client
     * Add GPS support
     * Track and double check the HW design of Foxconn
+
+
+2010/10-2011/9
+:   **LBS IOT Development  - Ciotc**   Software Engineer, Hardware Engineer 
+
+    
+
+    * Add CAN-Bus module to commucate with of the vehicles
+    * Add GPRS/3G moudles to support communication between client and server
+    * Add Bluetooth moudles to support communication among client, mobile, thin client
+    * Add GPS support to query location of vehicles
+    * Design the hardware board for three different devices, for personal, car, heavy truck.
 
 
