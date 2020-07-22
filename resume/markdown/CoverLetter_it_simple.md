@@ -1,6 +1,7 @@
+
 #### Hi Hiring Manager:
 
-&ensp;&ensp;&ensp;&ensp;As a highly skilled engineer with 9 years of experience, I am writing to express my interest in your your job about Network Administrator.<p>     
+&ensp;&ensp;&ensp;&ensp;As a highly skilled engineer with 9 years of experience, I am writing to express my interest in your your job about maintenance technician.<p>     
 &ensp;&ensp;&ensp;&ensp;During my past 9 year of engineer experience, I have spend over 6 years in multinational company ,include Cisco and AMD.<p>
 
 &ensp;&ensp;&ensp;&ensp;And I also working in a asic company, I worked as a software engineer and IT team leader.<p>
@@ -15,3 +16,9 @@ Best Regards
 
 Jingliang Jiang
 
+
+
+     
+
+
+     
