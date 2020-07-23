@@ -208,16 +208,16 @@ utilitydata.structures.counters.collected={
   { 0 },
  },
  ["realpage"]={
-  { 6 },
+  { 4 },
  },
  ["subpage"]={
-  { 6 },
+  { 4 },
  },
  ["table"]={
   { 0 },
  },
  ["userpage"]={
-  { 6 },
+  { 4 },
  },
 }
 
@@ -474,7 +474,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["block"]="bodypart",
    ["internal"]=20,
-   ["realpage"]=3,
+   ["realpage"]=2,
    ["reference"]="projects",
    ["section"]=6,
   },
@@ -488,7 +488,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=21,
    ["order"]=15,
-   ["realpage"]=3,
+   ["realpage"]=2,
    ["section"]=6,
   },
   ["titledata"]={
@@ -524,7 +524,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=24,
    ["order"]=18,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -536,7 +536,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=25,
    ["order"]=19,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -548,7 +548,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=26,
    ["order"]=20,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -560,7 +560,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=27,
    ["order"]=21,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -572,7 +572,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=28,
    ["order"]=22,
-   ["realpage"]=5,
+   ["realpage"]=4,
    ["section"]=6,
   },
   ["titledata"]={
@@ -584,7 +584,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=29,
    ["order"]=23,
-   ["realpage"]=5,
+   ["realpage"]=4,
    ["section"]=6,
   },
   ["titledata"]={
@@ -596,7 +596,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=30,
    ["order"]=24,
-   ["realpage"]=5,
+   ["realpage"]=4,
    ["section"]=6,
   },
   ["titledata"]={
@@ -608,7 +608,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=31,
    ["order"]=25,
-   ["realpage"]=5,
+   ["realpage"]=4,
    ["section"]=6,
   },
   ["titledata"]={
@@ -645,20 +645,6 @@ utilitydata.structures.pages.collected={
  {
   ["block"]="bodypart",
   ["number"]=4,
-  ["numberdata"]=16,
-  ["prefixdata"]=17,
-  ["state"]="start",
- },
- {
-  ["block"]="bodypart",
-  ["number"]=5,
-  ["numberdata"]=16,
-  ["prefixdata"]=17,
-  ["state"]="start",
- },
- {
-  ["block"]="bodypart",
-  ["number"]=6,
   ["numberdata"]=16,
   ["prefixdata"]=17,
   ["state"]="start",

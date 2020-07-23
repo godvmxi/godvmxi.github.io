@@ -196,16 +196,16 @@ utilitydata.structures.counters.collected={
   { 0 },
  },
  ["realpage"]={
-  { 5 },
+  { 4 },
  },
  ["subpage"]={
-  { 5 },
+  { 4 },
  },
  ["table"]={
   { 0 },
  },
  ["userpage"]={
-  { 5 },
+  { 4 },
  },
 }
 
@@ -434,7 +434,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=18,
    ["order"]=14,
-   ["realpage"]=2,
+   ["realpage"]=1,
    ["section"]=4,
   },
   ["titledata"]={
@@ -524,7 +524,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=25,
    ["order"]=19,
-   ["realpage"]=3,
+   ["realpage"]=2,
    ["section"]=6,
   },
   ["titledata"]={
@@ -536,7 +536,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=26,
    ["order"]=20,
-   ["realpage"]=3,
+   ["realpage"]=2,
    ["section"]=6,
   },
   ["titledata"]={
@@ -548,7 +548,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=27,
    ["order"]=21,
-   ["realpage"]=3,
+   ["realpage"]=2,
    ["section"]=6,
   },
   ["titledata"]={
@@ -572,7 +572,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=29,
    ["order"]=23,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -584,7 +584,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=30,
    ["order"]=24,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -596,7 +596,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=31,
    ["order"]=25,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -608,7 +608,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=32,
    ["order"]=26,
-   ["realpage"]=4,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -649,13 +649,6 @@ utilitydata.structures.pages.collected={
   ["prefixdata"]=17,
   ["state"]="start",
  },
- {
-  ["block"]="bodypart",
-  ["number"]=5,
-  ["numberdata"]=16,
-  ["prefixdata"]=17,
-  ["state"]="start",
- },
 }
 
 if not utilitydata.structures then utilitydata.structures = { } end
@@ -669,7 +662,7 @@ if not utilitydata.structures.references then utilitydata.structures.references 
 
 utilitydata.structures.references.referred={
  { 1, 1 },
- { 2, 6 },
+ { 2, 7 },
 }
 
 if not utilitydata.job then utilitydata.job = { } end
