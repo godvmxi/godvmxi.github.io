@@ -26,7 +26,7 @@ Available
 : September
 
 Key Words
-:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, FPGA, UNITY, FLASK, PCB, LINUX, KERNEL, ARM
+:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, FPGA, UNITY, FLASK, PCB, LINUX, KERNEL, ARM, CCNA
 
 
 
@@ -55,7 +55,7 @@ Language
     * Setting up all necessary hardware platform to support team work.
     * Handle the video codec IP verification.
     * Bringup the video codec IP of the ASIC.
-    * Setup auto regression for all test suite
+    * Setup auto regression for all test suite In CI/CD.
     * Develop kernel driver and software framework
     * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silicon and post-silicon period.
 
@@ -71,6 +71,7 @@ Language
     * Handle the misc IP verification.
     * Implement new software video stack for video application
     * Support customer for new software stack
+    * Set CI/CD flow by using Gerrit/Jenkins/Testlink/RobotFramework for ASIC verification.
 
 2011/10-2014/04
 :   **[Cisco Systems, Inc.](https://www.cisco.com/)**   Software Engineer

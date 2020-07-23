@@ -67,7 +67,7 @@ utilitydata.job.passes.collected={
   { 5, 0 },
  },
  ["itemgroup:itemize:2"]={
-  { 7, 0 },
+  { 8, 0 },
  },
  ["itemgroup:itemize:3"]={
   { 6, 0 },
@@ -199,7 +199,7 @@ utilitydata.structures.counters.collected={
   { 0 },
  },
  ["itemgroup:itemize"]={
-  { 0, 6, 7, 6, 5, 6, 6, 4, 4, 4, 3, 4, 4, 3, 4, 5, 5 },
+  { 0, 6, 8, 6, 5, 6, 6, 4, 4, 4, 3, 4, 4, 3, 4, 5, 5 },
  },
  ["linenote"]={
   { 0 },
@@ -208,16 +208,16 @@ utilitydata.structures.counters.collected={
   { 0 },
  },
  ["realpage"]={
-  { 5 },
+  { 6 },
  },
  ["subpage"]={
-  { 5 },
+  { 6 },
  },
  ["table"]={
   { 0 },
  },
  ["userpage"]={
-  { 5 },
+  { 6 },
  },
 }
 
@@ -474,7 +474,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["block"]="bodypart",
    ["internal"]=20,
-   ["realpage"]=2,
+   ["realpage"]=3,
    ["reference"]="projects",
    ["section"]=6,
   },
@@ -488,7 +488,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=21,
    ["order"]=15,
-   ["realpage"]=2,
+   ["realpage"]=3,
    ["section"]=6,
   },
   ["titledata"]={
@@ -524,7 +524,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=24,
    ["order"]=18,
-   ["realpage"]=3,
+   ["realpage"]=4,
    ["section"]=6,
   },
   ["titledata"]={
@@ -652,6 +652,13 @@ utilitydata.structures.pages.collected={
  {
   ["block"]="bodypart",
   ["number"]=5,
+  ["numberdata"]=16,
+  ["prefixdata"]=17,
+  ["state"]="start",
+ },
+ {
+  ["block"]="bodypart",
+  ["number"]=6,
   ["numberdata"]=16,
   ["prefixdata"]=17,
   ["state"]="start",
