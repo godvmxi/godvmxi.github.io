@@ -11,19 +11,14 @@ fonts           > latin modern fonts are not preloaded
 languages       > language 'en' is active
 open source     > level 2, order 3, name '/nfs/work/code/github/godvmxi.github.io/_site/resume/CoverLetter_dev_firmware.tex'
 colors          > defining > unknown library 'hex'
-open source     > level 3, order 4, name '/usr/share/texmf/tex/context/fonts/mkiv/type-imp-texgyre.mkiv'
-close source    > level 3, order 4, name '/usr/share/texmf/tex/context/fonts/mkiv/type-imp-texgyre.mkiv'
-fonts           > defining > font with asked name 'texgyreheros-regular' is not found using lookup 'file'
-fonts           > defining > unknown font 'texgyreheros-regular', loading aborted
-fonts           > defining > unable to define 'texgyreheros-regular' as 'helvetica-11pt-ss-tf-0--0'
+fonts           > typescripts > unknown library 'freesans'
+fonts           > preloading latin modern fonts (third stage)
+fonts           > 'fallback modern-designsize rm 11pt' is loaded
 structure       > sectioning > subsubsubsection @ level 6 : 0.0.0.0.0.1 -> Hi Hiring Manager:
-fonts           > defining > font with asked name 'texgyreheros-bold' is not found using lookup 'file'
-fonts           > defining > unknown font 'texgyreheros-bold', loading aborted
-fonts           > defining > unable to define 'texgyreheros-bold' as 'helvetica-11pt-ss-bf-0--0'
 backend         > xmp > using file '/usr/share/texmf/tex/context/base/mkiv/lpdf-pdx.xml'
 pages           > flushing realpage 1, userpage 1, subpage 1
-close source    > level 2, order 4, name '/nfs/work/code/github/godvmxi.github.io/_site/resume/CoverLetter_dev_firmware.tex'
-close source    > level 1, order 4, name '/usr/share/texmf/tex/context/base/mkiv/cont-yes.mkiv'
+close source    > level 2, order 3, name '/nfs/work/code/github/godvmxi.github.io/_site/resume/CoverLetter_dev_firmware.tex'
+close source    > level 1, order 3, name '/usr/share/texmf/tex/context/base/mkiv/cont-yes.mkiv'
 
 system          > start used files
 
@@ -41,11 +36,12 @@ system          >    4: filename=cont-new.mkiv filetype=tex foundname=/usr/share
 system          >    5: filename=lang-exc.lua filetype=scripts foundname=/usr/share/texmf/tex/context/base/mkiv/lang-exc.lua fullname=/usr/share/texmf/tex/context/base/mkiv/lang-exc.lua usedmethod=database
 system          >    6: filename=lang-us.lua filetype=scripts foundname=/usr/share/texmf/tex/context/patterns/mkiv/lang-us.lua fullname=/usr/share/texmf/tex/context/patterns/mkiv/lang-us.lua usedmethod=database
 system          >    7: filename=/nfs/work/code/github/godvmxi.github.io/_site/resume/CoverLetter_dev_firmware.tex foundname=/nfs/work/code/github/godvmxi.github.io/_site/resume/CoverLetter_dev_firmware.tex fullname=/nfs/work/code/github/godvmxi.github.io/_site/resume/CoverLetter_dev_firmware.tex usedmethod=direct
-system          >    8: filename=type-imp-texgyre.mkiv filetype=tex foundname=/usr/share/texmf/tex/context/fonts/mkiv/type-imp-texgyre.mkiv fullname=/usr/share/texmf/tex/context/fonts/mkiv/type-imp-texgyre.mkiv usedmethod=database
-system          >    9: filename=lm.lfg filetype=tex foundname=/usr/share/texmf/tex/context/fonts/mkiv/lm.lfg fullname=/usr/share/texmf/tex/context/fonts/mkiv/lm.lfg usedmethod=database
+system          >    8: filename=lm.lfg filetype=tex foundname=/usr/share/texmf/tex/context/fonts/mkiv/lm.lfg fullname=/usr/share/texmf/tex/context/fonts/mkiv/lm.lfg usedmethod=database
+system          >    9: filename=lmroman10-regular filetype=otf format=otf foundname=/usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf fullname=/usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf usedmethod=database
 system          >   10: filename=latinmodern-math.otf filetype=opentypefonts foundname=/usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-math.otf fullname=/usr/share/texmf/fonts/opentype/public/lm-math/latinmodern-math.otf usedmethod=database
-system          >   11: filename=pdftex.map filetype=map format=map foundname=/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map fullname=/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map usedmethod=database
-system          >   12: filename=lpdf-pdx.xml filetype=tex foundname=/usr/share/texmf/tex/context/base/mkiv/lpdf-pdx.xml fullname=/usr/share/texmf/tex/context/base/mkiv/lpdf-pdx.xml usedmethod=database
+system          >   11: filename=lmroman10-bold filetype=otf format=otf foundname=/usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf fullname=/usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf usedmethod=database
+system          >   12: filename=pdftex.map filetype=map format=map foundname=/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map fullname=/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map usedmethod=database
+system          >   13: filename=lpdf-pdx.xml filetype=tex foundname=/usr/share/texmf/tex/context/base/mkiv/lpdf-pdx.xml fullname=/usr/share/texmf/tex/context/base/mkiv/lpdf-pdx.xml usedmethod=database
 
 system          > stop used files
 
@@ -77,24 +73,24 @@ modules         > stop used modules
 
 mkiv lua stats  > used config file: /usr/share/texmf/web2c/texmfcnf.lua;/usr/share/texlive/texmf-dist/web2c/texmfcnf.lua
 mkiv lua stats  > used cache path: readable: '/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442' | readable+writable: '/home/jbright/.texlive2019/texmf-var/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442'
-mkiv lua stats  > resource resolver: loadtime 0.004 seconds, 0 scans with scantime 0.000 seconds, 0 shared scans, 12 found files, scanned paths: <none>
-mkiv lua stats  > stored bytecode data: 443 modules (0.172 sec), 93 tables (0.010 sec), 536 chunks (0.182 sec)
+mkiv lua stats  > resource resolver: loadtime 0.012 seconds, 0 scans with scantime 0.000 seconds, 0 shared scans, 13 found files, scanned paths: <none>
+mkiv lua stats  > stored bytecode data: 443 modules (0.184 sec), 93 tables (0.010 sec), 536 chunks (0.194 sec)
 mkiv lua stats  > traced context: maxstack: 1369, freed: 0, unreachable: 1369
 mkiv lua stats  > cleaned up reserved nodes: 59 nodes, 9 lists of 440
 mkiv lua stats  > node memory usage: 1 glue, 3 kern, 2 penalty, 14 attribute, 50 glue_spec, 4 attribute_list, 2 temp, 2 user_defined
-mkiv lua stats  > node list callback tasks: 8 unique task lists, 7 instances (re)created, 64 calls
+mkiv lua stats  > node list callback tasks: 8 unique task lists, 7 instances (re)created, 61 calls
 mkiv lua stats  > used backend: pdf (backend for directly generating pdf output)
 mkiv lua stats  > jobdata time: 0.001 seconds saving, 0.000 seconds loading
-mkiv lua stats  > callbacks: internal: 190, file: 542, direct: 2, late: 2, function 833, total: 1569
+mkiv lua stats  > callbacks: internal: 184, file: 231, direct: 2, late: 2, function 622, total: 1041
 mkiv lua stats  > randomizer: resumed with value 0.57043022708967
 mkiv lua stats  > result saved in file: CoverLetter_dev_firmware.pdf, compresslevel 3, objectcompresslevel 1
 mkiv lua stats  > loaded patterns: en::1, load time: 0.000
 mkiv lua stats  > interactive elements: 0 references, 1 destinations
-mkiv lua stats  > loaded fonts: 1 files: latinmodern-math.otf
-mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 6 instances, 3 shared in backend, 3 common vectors, 0 common hashes, load time 0.163 seconds 
+mkiv lua stats  > loaded fonts: 3 files: latinmodern-math.otf, lmroman10-bold.otf, lmroman10-regular.otf
+mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 8 instances, 3 shared in backend, 3 common vectors, 0 common hashes, load time 0.171 seconds 
 mkiv lua stats  > used platform: linux-64, type: unix, binary subtree: usr
 mkiv lua stats  > used engine: luatex version 1.1 with functionality level 7127, banner: this is luatex, version 1.10.0 (tex live 2019/debian)
-mkiv lua stats  > control sequences: 45517 of 65536 + 100000
-mkiv lua stats  > lua properties: engine: lua 5.3, used memory: 91 MB (ctx: 91 MB), hash chars: min(64,40), symbol mask: utf (τεχ)
-mkiv lua stats  > runtime: 0.386 seconds, 1 processed pages, 1 shipped pages, 2.591 pages/second
+mkiv lua stats  > control sequences: 45295 of 65536 + 100000
+mkiv lua stats  > lua properties: engine: lua 5.3, used memory: 84 MB (ctx: 83 MB), hash chars: min(64,40), symbol mask: utf (τεχ)
+mkiv lua stats  > runtime: 0.416 seconds, 1 processed pages, 1 shipped pages, 2.404 pages/second
 
