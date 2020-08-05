@@ -27,7 +27,10 @@ Available
 ## Technology Stack
 
 Networking
-: Aboving CCNA, should be CCNP (I had worked in Cisco for 3 years, we did not take  part in the certification exam for team budget)
+: Be familar with most of Cisco router and switch configure and troubleshooting and understand the the internal design logic, excented at vlan, voip, AP 
+
+Service:
+: Be familar with seting up all kinds of network service, NTP, DHCP, DNS, OPENSTACK, Windows Server AD, Mail System, Office365, Backup System
 
 System
 : Linux, Windows, Mac
@@ -40,9 +43,6 @@ IT Hareware
 
 IT Technology
 : Server HW/SW customized, workstation HW/SW customized, operating system customized, software customized, Printer, Networking and related IT equipment.
-
-ASIC 
-: Verification in Asic design for Video Codec(H264, H265, VP9, AV1, MJPEG), misc device
 
 
 Video Codec
