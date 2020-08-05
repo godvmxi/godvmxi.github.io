@@ -25,10 +25,12 @@ Degree
 Available
 : September
 
+
 Key Words
-:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, FPGA, UNITY, FLASK, PCB, LINUX, KERNEL, ARM, CCNA, Qt
+:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, Linux, Kernel, ARM
 
-
+Opt Words:
+: PCB, Altium, Scrum, Qt, Flask, Unity, MultiThreading
 
 
 ## Technology Stack
@@ -40,8 +42,11 @@ ASIC Verification
 Video Codec
 : Have a full understanding about the video codecs, both in asic design and software stack development
 
+Linux
+: Substantial development experience with Linux, including development for kernel driver , system framework  , multithreading and system building.
+
 Language
-: C/C++, Python, C#, Bash, Java, Javascript
+: C/C++, Python, C#, Bash, Java, Javascript, HTML, CSS
 
 
 
@@ -56,7 +61,7 @@ Language
     * Handle the video codec IP verification.
     * Bringup the video codec IP of the ASIC.
     * Setup auto regression for all test suite In CI/CD.
-    * Develop kernel driver and software framework
+    * Develop kernel driver and software framework.
     * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silicon and post-silicon period.
 
 2014/5-2017/11
@@ -90,7 +95,8 @@ Language
 
     Jiangsu IOT center is the overall leading organization unit and technology research and development platform of CAS in the field of IOT.
 
-    * LBS hardware design ,including wearable equipment, vehicle informaion interaction equipment.
+    * Design prototype hardware PCB, implement firmware code, setup test suite.
+    * Design LBS hardware , wearable equipment, vehicle informaion interaction equipment.
     * Analyse market of MEMS chip and wearable equipment.
     * Develop Can bus protocal.
     * Develop GPS, Bluetooth, GPRS(WCDMA), Can bus and misc driver.
