@@ -21,15 +21,15 @@ From Zhangxu
 ## Method 1: gdb-stl-views
 gdb-stl-views is a set of GDB macros that can display the contents of many STL containers: list, vector, map, multimap, set, multiset, dequeue, stack, queue, priority_queue, bitset, string, and widestring.
 
-- You can download it [here](https://sourceware.org/gdb/wiki/STLSupport?action=AttachFile&do=view&target=stl-views-1.0.3.gdb) or [here](http://www.yolinux.com/TUTORIALS/src/dbinit_stl_views-1.03.txt)
+- You can download it [LINK1](https://sourceware.org/gdb/wiki/STLSupport?action=AttachFile&do=view&target=stl-views-1.0.3.gdb) [LINK2](http://www.yolinux.com/TUTORIALS/src/dbinit_stl_views-1.03.txt) or at end of file [LINK](#db_init_stl_view)
 - Tutorials and an alternative download are hosted at here.
 
 
-
+### Enable Marco
 Two ways to enable this Marco:
 
-copy the content in stl-views-1.0.3.gdb to to ~/.gdbinit
-source path/to/stl-views-1.0.3.gdb in gdb anytime before you want to use it. In this way you will need to source it every time after open gdb
+- copy the content in stl-views-1.0.3.gdb to to ~/.gdbinit
+- source path/to/stl-views-1.0.3.gdb in gdb anytime before you want to use it. In this way you will need to source it every time after open gdb
 
 
 Here is an example after Macro is loaded:
@@ -43,23 +43,27 @@ GDB7.0 or higer version include support for writing pretty-printers in Python.
 
 
 
-Check-out the latest Python libstdc++ printers to a place on your machine. In a local directory, do:
-               git clone https://gcc.gnu.org/git/gcc.git  SomeLocalDir
 
-          Then you can find SomeLocalDir/gcc/libstdc++-v3/python/libstdcxx/v6/printers.py
+### Check-out the latest Python libstdc++ printers to a place on your machine
+In a local directory, clone gcc code, Then you can find SomeLocalDir/gcc/libstdc++-v3/python/libstdcxx/v6/printers.py
 
-![图片pic1]({{ "/img/post/image2020-8-13_16-56-4.png" | absolute_url }})
+```bash
+git clone https://gcc.gnu.org/git/gcc.git  SomeLocalDir
+```
 
 
-Add the following to your ~/.gdbinit. The path needs to match where the python module above was checked-out. So if checked out to: SomeLocalDir, the path would be as written in the example:
 
+### Add the following to your ~/.gdbinit. 
+The path needs to match where the python module above was checked-out. So if checked out to: SomeLocalDir, the path would be as written in the example:
+
+```python
 python
 import sys
 sys.path.insert(0, 'SomeLocalDir/gcc/libstdc++-v3/python')
 from libstdcxx.v6.printers import register_libstdcxx_printers
 register_libstdcxx_printers (None)
 end
-
+```
 
 Once loaded, STL classes that the printers support should printed in a more human-readable format. To print the classes in the old style, use the /r (raw) switch in the print command (i.e., print /r foo). This will print the classes as if the Python pretty-printers were not loaded.
 
@@ -68,11 +72,22 @@ Once loaded, STL classes that the printers support should printed in a more huma
 Here is an example after the Python printer is loaded:
 
 
+![图片pic1]({{ "/img/post/image2020-8-13_16-56-4.png" | absolute_url }})
 
 
 
+Reference Links
+[https://sourceware.org/gdb/wiki/STLSupport](https://sourceware.org/gdb/wiki/STLSupport)
+
+[https://gcc.gnu.org/git.html](https://gcc.gnu.org/git.html)
 
 
+
+some links in Chinese(mainly translation of above link): 
+
+[https://www.xuebuyuan.com/817423.html](https://www.xuebuyuan.com/817423.html)
+
+[https://www.cnblogs.com/yylingyao/p/6747589.html](https://www.cnblogs.com/yylingyao/p/6747589.html)
 
 
 
