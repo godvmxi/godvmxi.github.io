@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "How to view STL under GDB",
+      "subtitle" : "GDB view STL",
+      "tags"     : "GDB, Linux, STL, GNU",
+      "url"      : "/2020/08/17/How-to-view-STL-under-GDB/",
+      "date"     : "2020-08-17 00:00:00 +0800"
+    } ,
+  
+    {
       "title"    : "Say hello to github io",
       "subtitle" : "Hello world",
       "tags"     : "Vim, Linux, Bash, C, C++, Python, Vue, H264, Hevc, Vp9, Ffmpeg, OpenMax",
@@ -22,30 +30,6 @@
       "tags"     : "Vim, Linux, Bash, C, C++, Python, Vue, H264, Hevc, Vp9, Ffmpeg, OpenMax, Arm, MCU",
       "url"      : "/2020/07/01/about-my-tag/",
       "date"     : "2020-07-01 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Data Representation - TODO",
-      "subtitle" : "「数据表示」待写",
-      "tags"     : "笔记, 基础, C, C++",
-      "url"      : "/2020/06/21/data-rep-todo/",
-      "date"     : "2020-06-21 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Data Representation - Floating Point Numbers",
-      "subtitle" : "「数据表示」浮点数",
-      "tags"     : "笔记, 基础, C, C++",
-      "url"      : "/2020/06/21/data-rep-float/",
-      "date"     : "2020-06-21 00:00:00 +0800"
-    } ,
-  
-    {
-      "title"    : "Data Representation - Integer",
-      "subtitle" : "「数据表示」整数",
-      "tags"     : "笔记, 基础, C, C++",
-      "url"      : "/2020/06/19/data-rep-int/",
-      "date"     : "2020-06-19 00:00:00 +0800"
     } 
   
 ]

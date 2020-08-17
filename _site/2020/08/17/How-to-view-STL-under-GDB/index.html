@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="关于程序与设计 | 江晶亮，kernel & MCU & ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。">
+    <meta name="keywords"  content="蛋种, 母体, godvmxi, Virtual, Ball, JavaScript, 前端, 设计">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to view STL under GDB - Godvmxi Blog | 蛋种的博客">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="There are two methods to view STL types under GDB.
+From Zhangxu
+">
+    
+    <meta property="article:published_time" content="2020-08-17T00:00:00Z">
+    
+    
+    <meta property="article:author" content="Godvmxi">
+    
+    
+    <meta property="article:tag" content="GDB">
+    
+    <meta property="article:tag" content="Linux">
+    
+    <meta property="article:tag" content="STL">
+    
+    <meta property="article:tag" content="GNU">
+    
+    
+    <meta property="og:image" content="https://me.betterstar.xyz/img/avatar-godvmxi.jpg">
+    <meta property="og:url" content="https://me.betterstar.xyz/2020/08/17/How-to-view-STL-under-GDB/">
+    <meta property="og:site_name" content="Godvmxi Blog | 蛋种的博客">
+    
+    <title>How to view STL under GDB - Godvmxi Blog | 蛋种的博客</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://me.betterstar.xyz/2020/08/17/How-to-view-STL-under-GDB/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+    
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Godvmxi Blog</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="/archive/">Archive</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
+        }
+
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+
+
+
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/home-bg.jpg');
+        background: ;
+    }
+
+    
+</style>
+
+<header class="intro-header style-text" >
+
+    <div class="header-mask"></div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/archive/?tag=GDB" title="GDB">GDB</a>
+                        
+                        <a class="tag" href="/archive/?tag=Linux" title="Linux">Linux</a>
+                        
+                        <a class="tag" href="/archive/?tag=STL" title="STL">STL</a>
+                        
+                        <a class="tag" href="/archive/?tag=GNU" title="GNU">GNU</a>
+                        
+                    </div>
+                    <h1>How to view STL under GDB</h1>
+                    
+                    <h2 class="subheading">GDB view STL</h2>
+                    <span class="meta">Posted by Godvmxi on August 17, 2020</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<h1 id="there-are-two-methods-to-view-stl-types-under-gdb">There are two methods to view STL types under GDB.</h1>
+<p>From Zhangxu</p>
+
+<h2 id="method-1-gdb-stl-views">Method 1: gdb-stl-views</h2>
+<p>gdb-stl-views is a set of GDB macros that can display the contents of many STL containers: list, vector, map, multimap, set, multiset, dequeue, stack, queue, priority_queue, bitset, string, and widestring.</p>
+
+<ul>
+  <li>You can download it <a href="https://sourceware.org/gdb/wiki/STLSupport?action=AttachFile&amp;do=view&amp;target=stl-views-1.0.3.gdb">LINK1</a> <a href="http://www.yolinux.com/TUTORIALS/src/dbinit_stl_views-1.03.txt">LINK2</a> or at end of file <a href="#db_init_stl_view">LINK</a></li>
+  <li>Tutorials and an alternative download are hosted at here.</li>
+</ul>
+
+<h3 id="enable-marco">Enable Marco</h3>
+<p>Two ways to enable this Marco:</p>
+
+<ul>
+  <li>copy the content in stl-views-1.0.3.gdb to to ~/.gdbinit</li>
+  <li>source path/to/stl-views-1.0.3.gdb in gdb anytime before you want to use it. In this way you will need to source it every time after open gdb</li>
+</ul>
+
+<p>Here is an example after Macro is loaded:</p>
+
+<p><img src="https://me.betterstar.xyz/img/post/image2020-8-13_17-4-3.png" alt="图片pic1" /></p>
+
+<h2 id="method-2-python-printer">Method 2: Python printer</h2>
+
+<p>GDB7.0 or higer version include support for writing pretty-printers in Python.</p>
+
+<h3 id="check-out-the-latest-python-libstdc-printers-to-a-place-on-your-machine">Check-out the latest Python libstdc++ printers to a place on your machine</h3>
+<p>In a local directory, clone gcc code, Then you can find SomeLocalDir/gcc/libstdc++-v3/python/libstdcxx/v6/printers.py</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>git clone https://gcc.gnu.org/git/gcc.git  SomeLocalDir
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="add-the-following-to-your-gdbinit">Add the following to your ~/.gdbinit.</h3>
+<p>The path needs to match where the python module above was checked-out. So if checked out to: SomeLocalDir, the path would be as written in the example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">python</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">'SomeLocalDir/gcc/libstdc++-v3/python'</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">libstdcxx.v6.printers</span> <span class="kn">import</span> <span class="n">register_libstdcxx_printers</span>
+<span class="n">register_libstdcxx_printers</span> <span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">end</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Once loaded, STL classes that the printers support should printed in a more human-readable format. To print the classes in the old style, use the /r (raw) switch in the print command (i.e., print /r foo). This will print the classes as if the Python pretty-printers were not loaded.</p>
+
+<p>Here is an example after the Python printer is loaded:</p>
+
+<p><img src="https://me.betterstar.xyz/img/post/image2020-8-13_16-56-4.png" alt="图片pic1" /></p>
+
+<p>Reference Links
+<a href="https://sourceware.org/gdb/wiki/STLSupport">https://sourceware.org/gdb/wiki/STLSupport</a></p>
+
+<p><a href="https://gcc.gnu.org/git.html">https://gcc.gnu.org/git.html</a></p>
+
+<p>some links in Chinese(mainly translation of above link):</p>
+
+<p><a href="https://www.xuebuyuan.com/817423.html">https://www.xuebuyuan.com/817423.html</a></p>
+
+<p><a href="https://www.cnblogs.com/yylingyao/p/6747589.html">https://www.cnblogs.com/yylingyao/p/6747589.html</a></p>
+
+<h3 id="db_init_stl_view">db_init_stl_view</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+</pre></td><td class="rouge-code"><pre><span class="c">#                                                                                                        </span>
+<span class="c">#   STL GDB evaluators/views/utilities - 1.03</span>
+<span class="c">#</span>
+<span class="c">#   The new GDB commands:                                                         </span>
+<span class="c"># 	    are entirely non instrumental                                             </span>
+<span class="c"># 	    do not depend on any "inline"(s) - e.g. size(), [], etc</span>
+<span class="c">#       are extremely tolerant to debugger settings</span>
+<span class="c">#                                                                                 </span>
+<span class="c">#   This file should be "included" in .gdbinit as following:</span>
+<span class="c">#   source stl-views.gdb or just paste it into your .gdbinit file</span>
+<span class="c">#</span>
+<span class="c">#   The following STL containers are currently supported:</span>
+<span class="c">#</span>
+<span class="c">#       std::vector&lt;T&gt; -- via pvector command</span>
+<span class="c">#       std::list&lt;T&gt; -- via plist or plist_member command</span>
+<span class="c">#       std::map&lt;T,T&gt; -- via pmap or pmap_member command</span>
+<span class="c">#       std::multimap&lt;T,T&gt; -- via pmap or pmap_member command</span>
+<span class="c">#       std::set&lt;T&gt; -- via pset command</span>
+<span class="c">#       std::multiset&lt;T&gt; -- via pset command</span>
+<span class="c">#       std::deque&lt;T&gt; -- via pdequeue command</span>
+<span class="c">#       std::stack&lt;T&gt; -- via pstack command</span>
+<span class="c">#       std::queue&lt;T&gt; -- via pqueue command</span>
+<span class="c">#       std::priority_queue&lt;T&gt; -- via ppqueue command</span>
+<span class="c">#       std::bitset&lt;n&gt; -- via pbitset command</span>
+<span class="c">#       std::string -- via pstring command</span>
+<span class="c">#       std::widestring -- via pwstring command</span>
+<span class="c">#</span>
+<span class="c">#   The end of this file contains (optional) C++ beautifiers</span>
+<span class="c">#   Make sure your debugger supports $argc</span>
+<span class="c">#</span>
+<span class="c">#   Simple GDB Macros writen by Dan Marinescu (H-PhD) - License GPL</span>
+<span class="c">#   Inspired by intial work of Tom Malnar, </span>
+<span class="c">#     Tony Novac (PhD) / Cornell / Stanford,</span>
+<span class="c">#     Gilad Mishne (PhD) and Many Many Others.</span>
+<span class="c">#   Contact: dan_c_marinescu@yahoo.com (Subject: STL)</span>
+<span class="c">#</span>
+<span class="c">#   Modified to work with g++ 4.3 by Anders Elton</span>
+<span class="c">#   Also added _member functions, that instead of printing the entire class in map, prints a member.</span>
+
+
+
+<span class="c">#</span>
+<span class="c"># std::vector&lt;&gt;</span>
+<span class="c">#</span>
+
+define pvector
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pvector
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$size</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_finish - <span class="nv">$arg0</span>._M_impl._M_start
+		<span class="nb">set</span> <span class="nv">$capacity</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_end_of_storage - <span class="nv">$arg0</span>._M_impl._M_start
+		<span class="nb">set</span> <span class="nv">$size_max</span> <span class="o">=</span> <span class="nv">$size</span> - 1
+	end
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 1
+		<span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> 0
+		<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$size</span>
+			<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$i</span>
+			p <span class="k">*</span><span class="o">(</span><span class="nv">$arg0</span>._M_impl._M_start + <span class="nv">$i</span><span class="o">)</span>
+			<span class="nb">set</span> <span class="nv">$i</span>++
+		end
+	end
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 2
+		<span class="nb">set</span> <span class="nv">$idx</span> <span class="o">=</span> <span class="nv">$arg1</span>
+		<span class="k">if</span> <span class="nv">$idx</span> &lt; 0 <span class="o">||</span> <span class="nv">$idx</span> <span class="o">&gt;</span> <span class="nv">$size_max</span>
+			<span class="nb">printf</span> <span class="s2">"idx1, idx2 are not in acceptable range: [0..%u].</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size_max</span>
+		<span class="k">else
+			</span><span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$idx</span>
+			p <span class="k">*</span><span class="o">(</span><span class="nv">$arg0</span>._M_impl._M_start + <span class="nv">$idx</span><span class="o">)</span>
+		end
+	end
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 3
+	  <span class="nb">set</span> <span class="nv">$start_idx</span> <span class="o">=</span> <span class="nv">$arg1</span>
+	  <span class="nb">set</span> <span class="nv">$stop_idx</span> <span class="o">=</span> <span class="nv">$arg2</span>
+	  <span class="k">if</span> <span class="nv">$start_idx</span> <span class="o">&gt;</span> <span class="nv">$stop_idx</span>
+	    <span class="nb">set</span> <span class="nv">$tmp_idx</span> <span class="o">=</span> <span class="nv">$start_idx</span>
+	    <span class="nb">set</span> <span class="nv">$start_idx</span> <span class="o">=</span> <span class="nv">$stop_idx</span>
+	    <span class="nb">set</span> <span class="nv">$stop_idx</span> <span class="o">=</span> <span class="nv">$tmp_idx</span>
+	  end
+	  <span class="k">if</span> <span class="nv">$start_idx</span> &lt; 0 <span class="o">||</span> <span class="nv">$stop_idx</span> &lt; 0 <span class="o">||</span> <span class="nv">$start_idx</span> <span class="o">&gt;</span> <span class="nv">$size_max</span> <span class="o">||</span> <span class="nv">$stop_idx</span> <span class="o">&gt;</span> <span class="nv">$size_max</span>
+	    <span class="nb">printf</span> <span class="s2">"idx1, idx2 are not in acceptable range: [0..%u].</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size_max</span>
+	  <span class="k">else
+	    </span><span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$start_idx</span>
+		<span class="k">while</span> <span class="nv">$i</span> &lt;<span class="o">=</span> <span class="nv">$stop_idx</span>
+			<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$i</span>
+			p <span class="k">*</span><span class="o">(</span><span class="nv">$arg0</span>._M_impl._M_start + <span class="nv">$i</span><span class="o">)</span>
+			<span class="nb">set</span> <span class="nv">$i</span>++
+		end
+	  end
+	end
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">&gt;</span> 0
+		<span class="nb">printf</span> <span class="s2">"Vector size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size</span>
+		<span class="nb">printf</span> <span class="s2">"Vector capacity = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$capacity</span>
+		<span class="nb">printf</span> <span class="s2">"Element "</span>
+		whatis <span class="nv">$arg0</span>._M_impl._M_start
+	end
+end
+
+document pvector
+	Prints std::vector&lt;T&gt; information.
+	Syntax: pvector &lt;vector&gt; &lt;idx1&gt; &lt;idx2&gt;
+	Note: idx, idx1 and idx2 must be <span class="k">in </span>acceptable range <span class="o">[</span>0..&lt;vector&gt;.size<span class="o">()</span><span class="nt">-1</span><span class="o">]</span><span class="nb">.</span>
+	Examples:
+	pvector v - Prints vector content, size, capacity and T typedef
+	pvector v 0 - Prints element[idx] from vector
+	pvector v 1 2 - Prints elements <span class="k">in </span>range <span class="o">[</span>idx1..idx2] from vector
+end 
+
+<span class="c">#</span>
+<span class="c"># std::list&lt;&gt;</span>
+<span class="c">#</span>
+
+define plist
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>plist
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$head</span> <span class="o">=</span> &amp;<span class="nv">$arg0</span>._M_impl._M_node
+		<span class="nb">set</span> <span class="nv">$current</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_node._M_next
+		<span class="nb">set</span> <span class="nv">$size</span> <span class="o">=</span> 0
+		<span class="k">while</span> <span class="nv">$current</span> <span class="o">!=</span> <span class="nv">$head</span>
+			<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 2
+				<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$size</span>
+				p <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)(</span><span class="nv">$current</span> + 1<span class="o">)</span>
+			end
+			<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 3
+				<span class="k">if</span> <span class="nv">$size</span> <span class="o">==</span> <span class="nv">$arg2</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$size</span>
+					p <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)(</span><span class="nv">$current</span> + 1<span class="o">)</span>
+				end
+			end
+			<span class="nb">set</span> <span class="nv">$current</span> <span class="o">=</span> <span class="nv">$current</span>._M_next
+			<span class="nb">set</span> <span class="nv">$size</span>++
+		end
+		<span class="nb">printf</span> <span class="s2">"List size = %u </span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size</span>
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 1
+			<span class="nb">printf</span> <span class="s2">"List "</span>
+			whatis <span class="nv">$arg0</span>
+			<span class="nb">printf</span> <span class="s2">"Use plist &lt;variable_name&gt; &lt;element_type&gt; to see the elements in the list.</span><span class="se">\n</span><span class="s2">"</span>
+		end
+	end
+end
+
+document plist
+	Prints std::list&lt;T&gt; information.
+	Syntax: plist &lt;list&gt; &lt;T&gt; &lt;idx&gt;: Prints list size, <span class="k">if </span>T defined all elements or just element at idx
+	Examples:
+	plist l - prints list size and definition
+	plist l int - prints all elements and list size
+	plist l int 2 - prints the third element <span class="k">in </span>the list <span class="o">(</span><span class="k">if </span>exists<span class="o">)</span> and list size
+end
+
+define plist_member
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>plist_member
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$head</span> <span class="o">=</span> &amp;<span class="nv">$arg0</span>._M_impl._M_node
+		<span class="nb">set</span> <span class="nv">$current</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_node._M_next
+		<span class="nb">set</span> <span class="nv">$size</span> <span class="o">=</span> 0
+		<span class="k">while</span> <span class="nv">$current</span> <span class="o">!=</span> <span class="nv">$head</span>
+			<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 3
+				<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$size</span>
+				p <span class="o">(</span><span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)(</span><span class="nv">$current</span> + 1<span class="o">))</span>.<span class="nv">$arg2</span>
+			end
+			<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 4
+				<span class="k">if</span> <span class="nv">$size</span> <span class="o">==</span> <span class="nv">$arg3</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$size</span>
+					p <span class="o">(</span><span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)(</span><span class="nv">$current</span> + 1<span class="o">))</span>.<span class="nv">$arg2</span>
+				end
+			end
+			<span class="nb">set</span> <span class="nv">$current</span> <span class="o">=</span> <span class="nv">$current</span>._M_next
+			<span class="nb">set</span> <span class="nv">$size</span>++
+		end
+		<span class="nb">printf</span> <span class="s2">"List size = %u </span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size</span>
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 1
+			<span class="nb">printf</span> <span class="s2">"List "</span>
+			whatis <span class="nv">$arg0</span>
+			<span class="nb">printf</span> <span class="s2">"Use plist_member &lt;variable_name&gt; &lt;element_type&gt; &lt;member&gt; to see the elements in the list.</span><span class="se">\n</span><span class="s2">"</span>
+		end
+	end
+end
+
+document plist_member
+	Prints std::list&lt;T&gt; information.
+	Syntax: plist &lt;list&gt; &lt;T&gt; &lt;idx&gt;: Prints list size, <span class="k">if </span>T defined all elements or just element at idx
+	Examples:
+	plist_member l int member - prints all elements and list size
+	plist_member l int member 2 - prints the third element <span class="k">in </span>the list <span class="o">(</span><span class="k">if </span>exists<span class="o">)</span> and list size
+end
+
+
+<span class="c">#</span>
+<span class="c"># std::map and std::multimap</span>
+<span class="c">#</span>
+
+define pmap
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pmap
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$tree</span> <span class="o">=</span> <span class="nv">$arg0</span>
+		<span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> 0
+		<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_header._M_left
+		<span class="nb">set</span> <span class="nv">$end</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_header
+		<span class="nb">set</span> <span class="nv">$tree_size</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_node_count
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 1
+			<span class="nb">printf</span> <span class="s2">"Map "</span>
+			whatis <span class="nv">$tree</span>
+			<span class="nb">printf</span> <span class="s2">"Use pmap &lt;variable_name&gt; &lt;left_element_type&gt; &lt;right_element_type&gt; to see the elements in the map.</span><span class="se">\n</span><span class="s2">"</span>
+		end
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 3
+			<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$tree_size</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="o">(</span>void <span class="k">*</span><span class="o">)(</span><span class="nv">$node</span> + 1<span class="o">)</span>
+				<span class="nb">printf</span> <span class="s2">"elem[%u].left: "</span>, <span class="nv">$i</span>
+				p <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$value</span> + sizeof<span class="o">(</span><span class="nv">$arg1</span><span class="o">)</span>
+				<span class="nb">printf</span> <span class="s2">"elem[%u].right: "</span>, <span class="nv">$i</span>
+				p <span class="k">*</span><span class="o">(</span><span class="nv">$arg2</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span>
+				<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> 0
+					<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_right
+					<span class="k">while</span> <span class="nv">$node</span>._M_left <span class="o">!=</span> 0
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_left
+					end
+				<span class="k">else
+					</span><span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$node</span>._M_parent
+					<span class="k">while</span> <span class="nv">$node</span> <span class="o">==</span> <span class="nv">$tmp_node</span>._M_right
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>._M_parent
+					end
+					<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+					end
+				end
+				<span class="nb">set</span> <span class="nv">$i</span>++
+			end
+		end
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 4
+			<span class="nb">set</span> <span class="nv">$idx</span> <span class="o">=</span> <span class="nv">$arg3</span>
+			<span class="nb">set</span> <span class="nv">$ElementsFound</span> <span class="o">=</span> 0
+			<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$tree_size</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="o">(</span>void <span class="k">*</span><span class="o">)(</span><span class="nv">$node</span> + 1<span class="o">)</span>
+				<span class="k">if</span> <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span> <span class="o">==</span> <span class="nv">$idx</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u].left: "</span>, <span class="nv">$i</span>
+					p <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span>
+					<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$value</span> + sizeof<span class="o">(</span><span class="nv">$arg1</span><span class="o">)</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u].right: "</span>, <span class="nv">$i</span>
+					p <span class="k">*</span><span class="o">(</span><span class="nv">$arg2</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span>
+					<span class="nb">set</span> <span class="nv">$ElementsFound</span>++
+				end
+				<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> 0
+					<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_right
+					<span class="k">while</span> <span class="nv">$node</span>._M_left <span class="o">!=</span> 0
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_left
+					end
+				<span class="k">else
+					</span><span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$node</span>._M_parent
+					<span class="k">while</span> <span class="nv">$node</span> <span class="o">==</span> <span class="nv">$tmp_node</span>._M_right
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>._M_parent
+					end
+					<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+					end
+				end
+				<span class="nb">set</span> <span class="nv">$i</span>++
+			end
+			<span class="nb">printf</span> <span class="s2">"Number of elements found = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$ElementsFound</span>
+		end
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 5
+			<span class="nb">set</span> <span class="nv">$idx1</span> <span class="o">=</span> <span class="nv">$arg3</span>
+			<span class="nb">set</span> <span class="nv">$idx2</span> <span class="o">=</span> <span class="nv">$arg4</span>
+			<span class="nb">set</span> <span class="nv">$ElementsFound</span> <span class="o">=</span> 0
+			<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$tree_size</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="o">(</span>void <span class="k">*</span><span class="o">)(</span><span class="nv">$node</span> + 1<span class="o">)</span>
+				<span class="nb">set</span> <span class="nv">$valueLeft</span> <span class="o">=</span> <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span>
+				<span class="nb">set</span> <span class="nv">$valueRight</span> <span class="o">=</span> <span class="k">*</span><span class="o">(</span><span class="nv">$arg2</span><span class="k">*</span><span class="o">)(</span><span class="nv">$value</span> + sizeof<span class="o">(</span><span class="nv">$arg1</span><span class="o">))</span>
+				<span class="k">if</span> <span class="nv">$valueLeft</span> <span class="o">==</span> <span class="nv">$idx1</span> <span class="o">&amp;&amp;</span> <span class="nv">$valueRight</span> <span class="o">==</span> <span class="nv">$idx2</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u].left: "</span>, <span class="nv">$i</span>
+					p <span class="nv">$valueLeft</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u].right: "</span>, <span class="nv">$i</span>
+					p <span class="nv">$valueRight</span>
+					<span class="nb">set</span> <span class="nv">$ElementsFound</span>++
+				end
+				<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> 0
+					<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_right
+					<span class="k">while</span> <span class="nv">$node</span>._M_left <span class="o">!=</span> 0
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_left
+					end
+				<span class="k">else
+					</span><span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$node</span>._M_parent
+					<span class="k">while</span> <span class="nv">$node</span> <span class="o">==</span> <span class="nv">$tmp_node</span>._M_right
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>._M_parent
+					end
+					<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+					end
+				end
+				<span class="nb">set</span> <span class="nv">$i</span>++
+			end
+			<span class="nb">printf</span> <span class="s2">"Number of elements found = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$ElementsFound</span>
+		end
+		<span class="nb">printf</span> <span class="s2">"Map size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$tree_size</span>
+	end
+end
+
+document pmap
+	Prints std::map&lt;TLeft and TRight&gt; or std::multimap&lt;TLeft and TRight&gt; information. Works <span class="k">for </span>std::multimap as well.
+	Syntax: pmap &lt;map&gt; &lt;TtypeLeft&gt; &lt;TypeRight&gt; &lt;valLeft&gt; &lt;valRight&gt;: Prints map size, <span class="k">if </span>T defined all elements or just element<span class="o">(</span>s<span class="o">)</span> with val<span class="o">(</span>s<span class="o">)</span>
+	Examples:
+	pmap m - prints map size and definition
+	pmap m int int - prints all elements and map size
+	pmap m int int 20 - prints the element<span class="o">(</span>s<span class="o">)</span> with left-value <span class="o">=</span> 20 <span class="o">(</span><span class="k">if </span>any<span class="o">)</span> and map size
+	pmap m int int 20 200 - prints the element<span class="o">(</span>s<span class="o">)</span> with left-value <span class="o">=</span> 20 and right-value <span class="o">=</span> 200 <span class="o">(</span><span class="k">if </span>any<span class="o">)</span> and map size
+end
+
+
+define pmap_member
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pmap_member
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$tree</span> <span class="o">=</span> <span class="nv">$arg0</span>
+		<span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> 0
+		<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_header._M_left
+		<span class="nb">set</span> <span class="nv">$end</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_header
+		<span class="nb">set</span> <span class="nv">$tree_size</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_node_count
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 1
+			<span class="nb">printf</span> <span class="s2">"Map "</span>
+			whatis <span class="nv">$tree</span>
+			<span class="nb">printf</span> <span class="s2">"Use pmap &lt;variable_name&gt; &lt;left_element_type&gt; &lt;right_element_type&gt; to see the elements in the map.</span><span class="se">\n</span><span class="s2">"</span>
+		end
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 5
+			<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$tree_size</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="o">(</span>void <span class="k">*</span><span class="o">)(</span><span class="nv">$node</span> + 1<span class="o">)</span>
+				<span class="nb">printf</span> <span class="s2">"elem[%u].left: "</span>, <span class="nv">$i</span>
+				p <span class="o">(</span><span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span><span class="o">)</span>.<span class="nv">$arg2</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$value</span> + sizeof<span class="o">(</span><span class="nv">$arg1</span><span class="o">)</span>
+				<span class="nb">printf</span> <span class="s2">"elem[%u].right: "</span>, <span class="nv">$i</span>
+				p <span class="o">(</span><span class="k">*</span><span class="o">(</span><span class="nv">$arg3</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span><span class="o">)</span>.<span class="nv">$arg4</span>
+				<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> 0
+					<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_right
+					<span class="k">while</span> <span class="nv">$node</span>._M_left <span class="o">!=</span> 0
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_left
+					end
+				<span class="k">else
+					</span><span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$node</span>._M_parent
+					<span class="k">while</span> <span class="nv">$node</span> <span class="o">==</span> <span class="nv">$tmp_node</span>._M_right
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>._M_parent
+					end
+					<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+					end
+				end
+				<span class="nb">set</span> <span class="nv">$i</span>++
+			end
+		end
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 6
+			<span class="nb">set</span> <span class="nv">$idx</span> <span class="o">=</span> <span class="nv">$arg5</span>
+			<span class="nb">set</span> <span class="nv">$ElementsFound</span> <span class="o">=</span> 0
+			<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$tree_size</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="o">(</span>void <span class="k">*</span><span class="o">)(</span><span class="nv">$node</span> + 1<span class="o">)</span>
+				<span class="k">if</span> <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span> <span class="o">==</span> <span class="nv">$idx</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u].left: "</span>, <span class="nv">$i</span>
+					p <span class="o">(</span><span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span><span class="o">)</span>.<span class="nv">$arg2</span>
+					<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$value</span> + sizeof<span class="o">(</span><span class="nv">$arg1</span><span class="o">)</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u].right: "</span>, <span class="nv">$i</span>
+					p <span class="o">(</span><span class="k">*</span><span class="o">(</span><span class="nv">$arg3</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span><span class="o">)</span>.<span class="nv">$arg4</span>
+					<span class="nb">set</span> <span class="nv">$ElementsFound</span>++
+				end
+				<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> 0
+					<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_right
+					<span class="k">while</span> <span class="nv">$node</span>._M_left <span class="o">!=</span> 0
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_left
+					end
+				<span class="k">else
+					</span><span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$node</span>._M_parent
+					<span class="k">while</span> <span class="nv">$node</span> <span class="o">==</span> <span class="nv">$tmp_node</span>._M_right
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>._M_parent
+					end
+					<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+					end
+				end
+				<span class="nb">set</span> <span class="nv">$i</span>++
+			end
+			<span class="nb">printf</span> <span class="s2">"Number of elements found = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$ElementsFound</span>
+		end
+		<span class="nb">printf</span> <span class="s2">"Map size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$tree_size</span>
+	end
+end
+
+document pmap_member
+	Prints std::map&lt;TLeft and TRight&gt; or std::multimap&lt;TLeft and TRight&gt; information. Works <span class="k">for </span>std::multimap as well.
+	Syntax: pmap &lt;map&gt; &lt;TtypeLeft&gt; &lt;TypeRight&gt; &lt;valLeft&gt; &lt;valRight&gt;: Prints map size, <span class="k">if </span>T defined all elements or just element<span class="o">(</span>s<span class="o">)</span> with val<span class="o">(</span>s<span class="o">)</span>
+	Examples:
+	pmap_member m class1 member1 class2 member2 - prints class1.member1 : class2.member2
+	pmap_member m class1 member1 class2 member2 lvalue - prints class1.member1 : class2.member2 where class1 <span class="o">==</span> lvalue
+end
+
+
+<span class="c">#</span>
+<span class="c"># std::set and std::multiset</span>
+<span class="c">#</span>
+
+define pset
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pset
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$tree</span> <span class="o">=</span> <span class="nv">$arg0</span>
+		<span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> 0
+		<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_header._M_left
+		<span class="nb">set</span> <span class="nv">$end</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_header
+		<span class="nb">set</span> <span class="nv">$tree_size</span> <span class="o">=</span> <span class="nv">$tree</span>._M_t._M_impl._M_node_count
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 1
+			<span class="nb">printf</span> <span class="s2">"Set "</span>
+			whatis <span class="nv">$tree</span>
+			<span class="nb">printf</span> <span class="s2">"Use pset &lt;variable_name&gt; &lt;element_type&gt; to see the elements in the set.</span><span class="se">\n</span><span class="s2">"</span>
+		end
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 2
+			<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$tree_size</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="o">(</span>void <span class="k">*</span><span class="o">)(</span><span class="nv">$node</span> + 1<span class="o">)</span>
+				<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$i</span>
+				p <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span>
+				<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> 0
+					<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_right
+					<span class="k">while</span> <span class="nv">$node</span>._M_left <span class="o">!=</span> 0
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_left
+					end
+				<span class="k">else
+					</span><span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$node</span>._M_parent
+					<span class="k">while</span> <span class="nv">$node</span> <span class="o">==</span> <span class="nv">$tmp_node</span>._M_right
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>._M_parent
+					end
+					<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+					end
+				end
+				<span class="nb">set</span> <span class="nv">$i</span>++
+			end
+		end
+		<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 3
+			<span class="nb">set</span> <span class="nv">$idx</span> <span class="o">=</span> <span class="nv">$arg2</span>
+			<span class="nb">set</span> <span class="nv">$ElementsFound</span> <span class="o">=</span> 0
+			<span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$tree_size</span>
+				<span class="nb">set</span> <span class="nv">$value</span> <span class="o">=</span> <span class="o">(</span>void <span class="k">*</span><span class="o">)(</span><span class="nv">$node</span> + 1<span class="o">)</span>
+				<span class="k">if</span> <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span> <span class="o">==</span> <span class="nv">$idx</span>
+					<span class="nb">printf</span> <span class="s2">"elem[%u]: "</span>, <span class="nv">$i</span>
+					p <span class="k">*</span><span class="o">(</span><span class="nv">$arg1</span><span class="k">*</span><span class="o">)</span><span class="nv">$value</span>
+					<span class="nb">set</span> <span class="nv">$ElementsFound</span>++
+				end
+				<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> 0
+					<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_right
+					<span class="k">while</span> <span class="nv">$node</span>._M_left <span class="o">!=</span> 0
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$node</span>._M_left
+					end
+				<span class="k">else
+					</span><span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$node</span>._M_parent
+					<span class="k">while</span> <span class="nv">$node</span> <span class="o">==</span> <span class="nv">$tmp_node</span>._M_right
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$tmp_node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>._M_parent
+					end
+					<span class="k">if</span> <span class="nv">$node</span>._M_right <span class="o">!=</span> <span class="nv">$tmp_node</span>
+						<span class="nb">set</span> <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$tmp_node</span>
+					end
+				end
+				<span class="nb">set</span> <span class="nv">$i</span>++
+			end
+			<span class="nb">printf</span> <span class="s2">"Number of elements found = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$ElementsFound</span>
+		end
+		<span class="nb">printf</span> <span class="s2">"Set size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$tree_size</span>
+	end
+end
+
+document pset
+	Prints std::set&lt;T&gt; or std::multiset&lt;T&gt; information. Works <span class="k">for </span>std::multiset as well.
+	Syntax: pset &lt;<span class="nb">set</span><span class="o">&gt;</span> &lt;T&gt; &lt;val&gt;: Prints <span class="nb">set </span>size, <span class="k">if </span>T defined all elements or just element<span class="o">(</span>s<span class="o">)</span> having val
+	Examples:
+	pset s - prints <span class="nb">set </span>size and definition
+	pset s int - prints all elements and the size of s
+	pset s int 20 - prints the element<span class="o">(</span>s<span class="o">)</span> with value <span class="o">=</span> 20 <span class="o">(</span><span class="k">if </span>any<span class="o">)</span> and the size of s
+end
+
+
+
+<span class="c">#</span>
+<span class="c"># std::dequeue</span>
+<span class="c">#</span>
+
+define pdequeue
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pdequeue
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$size</span> <span class="o">=</span> 0
+		<span class="nb">set</span> <span class="nv">$start_cur</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_start._M_cur
+		<span class="nb">set</span> <span class="nv">$start_last</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_start._M_last
+		<span class="nb">set</span> <span class="nv">$start_stop</span> <span class="o">=</span> <span class="nv">$start_last</span>
+		<span class="k">while</span> <span class="nv">$start_cur</span> <span class="o">!=</span> <span class="nv">$start_stop</span>
+			p <span class="k">*</span><span class="nv">$start_cur</span>
+			<span class="nb">set</span> <span class="nv">$start_cur</span>++
+			<span class="nb">set</span> <span class="nv">$size</span>++
+		end
+		<span class="nb">set</span> <span class="nv">$finish_first</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_finish._M_first
+		<span class="nb">set</span> <span class="nv">$finish_cur</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_finish._M_cur
+		<span class="nb">set</span> <span class="nv">$finish_last</span> <span class="o">=</span> <span class="nv">$arg0</span>._M_impl._M_finish._M_last
+		<span class="k">if</span> <span class="nv">$finish_cur</span> &lt; <span class="nv">$finish_last</span>
+			<span class="nb">set</span> <span class="nv">$finish_stop</span> <span class="o">=</span> <span class="nv">$finish_cur</span>
+		<span class="k">else
+			</span><span class="nb">set</span> <span class="nv">$finish_stop</span> <span class="o">=</span> <span class="nv">$finish_last</span>
+		end
+		<span class="k">while</span> <span class="nv">$finish_first</span> <span class="o">!=</span> <span class="nv">$finish_stop</span>
+			p <span class="k">*</span><span class="nv">$finish_first</span>
+			<span class="nb">set</span> <span class="nv">$finish_first</span>++
+			<span class="nb">set</span> <span class="nv">$size</span>++
+		end
+		<span class="nb">printf</span> <span class="s2">"Dequeue size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size</span>
+	end
+end
+
+document pdequeue
+	Prints std::dequeue&lt;T&gt; information.
+	Syntax: pdequeue &lt;dequeue&gt;: Prints dequeue size, <span class="k">if </span>T defined all elements
+	Deque elements are listed <span class="s2">"left to right"</span> <span class="o">(</span>left-most stands <span class="k">for </span>front and right-most stands <span class="k">for </span>back<span class="o">)</span>
+	Example:
+	pdequeue d - prints all elements and size of d
+end
+
+
+
+<span class="c">#</span>
+<span class="c"># std::stack</span>
+<span class="c">#</span>
+
+define pstack
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pstack
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$start_cur</span> <span class="o">=</span> <span class="nv">$arg0</span>.c._M_impl._M_start._M_cur
+		<span class="nb">set</span> <span class="nv">$finish_cur</span> <span class="o">=</span> <span class="nv">$arg0</span>.c._M_impl._M_finish._M_cur
+		<span class="nb">set</span> <span class="nv">$size</span> <span class="o">=</span> <span class="nv">$finish_cur</span> - <span class="nv">$start_cur</span>
+        <span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$size</span> - 1
+        <span class="k">while</span> <span class="nv">$i</span> <span class="o">&gt;=</span> 0
+            p <span class="k">*</span><span class="o">(</span><span class="nv">$start_cur</span> + <span class="nv">$i</span><span class="o">)</span>
+            <span class="nb">set</span> <span class="nv">$i</span><span class="nt">--</span>
+        end
+		<span class="nb">printf</span> <span class="s2">"Stack size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size</span>
+	end
+end
+
+document pstack
+	Prints std::stack&lt;T&gt; information.
+	Syntax: pstack &lt;stack&gt;: Prints all elements and size of the stack
+	Stack elements are listed <span class="s2">"top to buttom"</span> <span class="o">(</span>top-most element is the first to come on pop<span class="o">)</span>
+	Example:
+	pstack s - prints all elements and the size of s
+end
+
+
+
+<span class="c">#</span>
+<span class="c"># std::queue</span>
+<span class="c">#</span>
+
+define pqueue
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pqueue
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$start_cur</span> <span class="o">=</span> <span class="nv">$arg0</span>.c._M_impl._M_start._M_cur
+		<span class="nb">set</span> <span class="nv">$finish_cur</span> <span class="o">=</span> <span class="nv">$arg0</span>.c._M_impl._M_finish._M_cur
+		<span class="nb">set</span> <span class="nv">$size</span> <span class="o">=</span> <span class="nv">$finish_cur</span> - <span class="nv">$start_cur</span>
+        <span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> 0
+        <span class="k">while</span> <span class="nv">$i</span> &lt; <span class="nv">$size</span>
+            p <span class="k">*</span><span class="o">(</span><span class="nv">$start_cur</span> + <span class="nv">$i</span><span class="o">)</span>
+            <span class="nb">set</span> <span class="nv">$i</span>++
+        end
+		<span class="nb">printf</span> <span class="s2">"Queue size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size</span>
+	end
+end
+
+document pqueue
+	Prints std::queue&lt;T&gt; information.
+	Syntax: pqueue &lt;queue&gt;: Prints all elements and the size of the queue
+	Queue elements are listed <span class="s2">"top to bottom"</span> <span class="o">(</span>top-most element is the first to come on pop<span class="o">)</span>
+	Example:
+	pqueue q - prints all elements and the size of q
+end
+
+
+
+<span class="c">#</span>
+<span class="c"># std::priority_queue</span>
+<span class="c">#</span>
+
+define ppqueue
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>ppqueue
+	<span class="k">else
+		</span><span class="nb">set</span> <span class="nv">$size</span> <span class="o">=</span> <span class="nv">$arg0</span>.c._M_impl._M_finish - <span class="nv">$arg0</span>.c._M_impl._M_start
+		<span class="nb">set</span> <span class="nv">$capacity</span> <span class="o">=</span> <span class="nv">$arg0</span>.c._M_impl._M_end_of_storage - <span class="nv">$arg0</span>.c._M_impl._M_start
+		<span class="nb">set</span> <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$size</span> - 1
+		<span class="k">while</span> <span class="nv">$i</span> <span class="o">&gt;=</span> 0
+			p <span class="k">*</span><span class="o">(</span><span class="nv">$arg0</span>.c._M_impl._M_start + <span class="nv">$i</span><span class="o">)</span>
+			<span class="nb">set</span> <span class="nv">$i</span><span class="nt">--</span>
+		end
+		<span class="nb">printf</span> <span class="s2">"Priority queue size = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$size</span>
+		<span class="nb">printf</span> <span class="s2">"Priority queue capacity = %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$capacity</span>
+	end
+end
+
+document ppqueue
+	Prints std::priority_queue&lt;T&gt; information.
+	Syntax: ppqueue &lt;priority_queue&gt;: Prints all elements, size and capacity of the priority_queue
+	Priority_queue elements are listed <span class="s2">"top to buttom"</span> <span class="o">(</span>top-most element is the first to come on pop<span class="o">)</span>
+	Example:
+	ppqueue pq - prints all elements, size and capacity of pq
+end
+
+
+
+<span class="c">#</span>
+<span class="c"># std::bitset</span>
+<span class="c">#</span>
+
+define pbitset
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pbitset
+	<span class="k">else
+        </span>p /t <span class="nv">$arg0</span>._M_w
+	end
+end
+
+document pbitset
+	Prints std::bitset&lt;n&gt; information.
+	Syntax: pbitset &lt;bitset&gt;: Prints all bits <span class="k">in </span>bitset
+	Example:
+	pbitset b - prints all bits <span class="k">in </span>b
+end
+
+
+
+<span class="c">#</span>
+<span class="c"># std::string</span>
+<span class="c">#</span>
+
+define pstring
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pstring
+	<span class="k">else
+		</span><span class="nb">printf</span> <span class="s2">"String </span><span class="se">\t\t\t</span><span class="s2">= </span><span class="se">\"</span><span class="s2">%s</span><span class="se">\"\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_data<span class="o">()</span>
+		<span class="nb">printf</span> <span class="s2">"String size/length </span><span class="se">\t</span><span class="s2">= %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_rep<span class="o">()</span>._M_length
+		<span class="nb">printf</span> <span class="s2">"String capacity </span><span class="se">\t</span><span class="s2">= %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_rep<span class="o">()</span>._M_capacity
+		<span class="nb">printf</span> <span class="s2">"String ref-count </span><span class="se">\t</span><span class="s2">= %d</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_rep<span class="o">()</span>._M_refcount
+	end
+end
+
+document pstring
+	Prints std::string information.
+	Syntax: pstring &lt;string&gt;
+	Example:
+	pstring s - Prints content, size/length, capacity and ref-count of string s
+end 
+
+<span class="c">#</span>
+<span class="c"># std::wstring</span>
+<span class="c">#</span>
+
+define pwstring
+	<span class="k">if</span> <span class="nv">$argc</span> <span class="o">==</span> 0
+		<span class="nb">help </span>pwstring
+	<span class="k">else
+		</span>call <span class="nb">printf</span><span class="o">(</span><span class="s2">"WString </span><span class="se">\t\t</span><span class="s2">= </span><span class="se">\"</span><span class="s2">%ls</span><span class="se">\"\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_data<span class="o">())</span>
+		<span class="nb">printf</span> <span class="s2">"WString size/length </span><span class="se">\t</span><span class="s2">= %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_rep<span class="o">()</span>._M_length
+		<span class="nb">printf</span> <span class="s2">"WString capacity </span><span class="se">\t</span><span class="s2">= %u</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_rep<span class="o">()</span>._M_capacity
+		<span class="nb">printf</span> <span class="s2">"WString ref-count </span><span class="se">\t</span><span class="s2">= %d</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$arg0</span>._M_rep<span class="o">()</span>._M_refcount
+	end
+end
+
+document pwstring
+	Prints std::wstring information.
+	Syntax: pwstring &lt;wstring&gt;
+	Example:
+	pwstring s - Prints content, size/length, capacity and ref-count of wstring s
+end 
+
+<span class="c">#</span>
+<span class="c"># C++ related beautifiers (optional)</span>
+<span class="c">#</span>
+
+<span class="nb">set </span>print pretty on
+<span class="nb">set </span>print object on
+<span class="nb">set </span>print static-members on
+<span class="nb">set </span>print vtbl on
+<span class="nb">set </span>print demangle on
+<span class="nb">set </span>demangle-style gnu-v3
+<span class="nb">set </span>print sevenbit-strings off
+
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+
+                <hr style="visibility: hidden;">
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/07/01/hello-world-github-io/" data-toggle="tooltip" data-placement="top" title="Say hello to github io">
+                        Previous<br>
+                        <span>Say hello to github io</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/08/17/mount-samba-with-current-user/" data-toggle="tooltip" data-placement="top" title="Mount samba with current user">
+                        Next<br>
+                        <span>Mount samba with current user</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <hr style="visibility: hidden;">
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0001" 
+                    href="/archive/?tag=Vim"
+                    title="Vim"
+                    rel="3">Vim</a>
+        
+                <a data-sort="0000" 
+                    href="/archive/?tag=Linux"
+                    title="Linux"
+                    rel="4">Linux</a>
+        
+                <a data-sort="0001" 
+                    href="/archive/?tag=Bash"
+                    title="Bash"
+                    rel="3">Bash</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=C"
+                    title="C"
+                    rel="2">C</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=C%2B%2B"
+                    title="C++"
+                    rel="2">C++</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=Ffmpeg"
+                    title="Ffmpeg"
+                    rel="2">Ffmpeg</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=H264"
+                    title="H264"
+                    rel="2">H264</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=Hevc"
+                    title="Hevc"
+                    rel="2">Hevc</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=OpenMax"
+                    title="OpenMax"
+                    rel="2">OpenMax</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=Python"
+                    title="Python"
+                    rel="2">Python</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=Vp9"
+                    title="Vp9"
+                    rel="2">Vp9</a>
+        
+                <a data-sort="0002" 
+                    href="/archive/?tag=Vue"
+                    title="Vue"
+                    rel="2">Vue</a>
+    </div>
+</section>
+
+
+                <!-- Friends Blog -->
+                
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href=""></a></li>
+  
+</ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- add support for mathjax by voleking-->
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "godvmxi";
+    var disqus_identifier = "/2020/08/17/How-to-view-STL-under-GDB";
+    var disqus_url = "https://me.betterstar.xyz/2020/08/17/How-to-view-STL-under-GDB/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          // icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- SNS Link -->
+                
+
+
+<ul class="list-inline text-center">
+
+
+  
+  
+  <li>
+    <a href="https://twitter.com/mygoddan">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/godvmxi">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  <li>
+    <a target="_blank" href="http://weibo.com/godvmxi">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/godvmxi">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+                <!--p class="copyright text-muted">
+                    Copyright &copy; Godvmxi Blog 2020
+                    <br>
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
+                    </iframe>
+                </p-->
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+
+
+
+
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA';
+    var _gaDomain = 'hu';
+
+    // Originial
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason, 
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure 
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

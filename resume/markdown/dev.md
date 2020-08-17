@@ -27,7 +27,7 @@ Available
 
 
 Key Words
-:  SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, Linux, Kernel, ARM
+:  GNU, SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, Linux, Kernel, ARM
 
 Opt Words:
 : PCB, Altium, Scrum, Qt, Flask, Unity, MultiThreading
