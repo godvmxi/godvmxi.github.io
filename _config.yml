@@ -1,11 +1,11 @@
 # Site settings
 title: Godvmxi Blog
-SEOTitle: Godvmxi Blog | 蛋种的博客
+SEOTitle: Ball Virtual Blog | 蛋种的博客
 header-img: img/home-bg.jpg
 email: godvmxi@gmail.com
 description: "关于程序与设计 | 江晶亮，kernel & MCU & ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。"
 keyword: "蛋种, 母体, godvmxi, Virtual, Ball, JavaScript, 前端, 设计"
-url: "https://me.betterstar.xyz"              # your host, for absolute URL
+url: "https://www.betterstar.xyz"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -77,7 +77,7 @@ ga_domain: hu
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Everythind is all virtual by Matrix<br>我们都是被神圈养的"
+sidebar-about-description: "Everythind is virtual by Matrix<br>我们都是被神圈养的"
 sidebar-avatar: /img/avatar-godvmxi.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
