@@ -1,4 +1,4 @@
-> Everythind is all virtual by Matrix, There must be a revolution in the future. 
+> Everythind is  virtualized by Matrix, There must be a revolution in the future. 
 
 
 Hi, I am Bright Jiang, a  software engineer . My interests range from programming languages in general (type system, type-based formal verification, compilers, runtime systems, garbage collection) to indurstial software engineering (video codec, linux program, kernel develop, asic verification and bringup). 
@@ -17,6 +17,8 @@ Shanghai InfoTM Microelectronics Co., Ltd
 Advanced Micro Devices, Inc. (SRDC)
 > working on videc codec firmware, video verification development .
 
+
+[Resume Download]({{ "/resume/dev.pdf" | absolute_url }})]
 
 
 

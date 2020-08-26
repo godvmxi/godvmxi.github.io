@@ -19,7 +19,7 @@ if not utilitydata.job.variables then utilitydata.job.variables = { } end
 
 utilitydata.job.variables.collected={
  ["macros"]={},
- ["randomseed"]=0.40988551313058,
+ ["randomseed"]=0.24875439656898,
  ["sectionblockorder"]={},
 }
 
@@ -208,16 +208,16 @@ utilitydata.structures.counters.collected={
   { 0 },
  },
  ["realpage"]={
-  { 4 },
+  { 5 },
  },
  ["subpage"]={
-  { 4 },
+  { 5 },
  },
  ["table"]={
   { 0 },
  },
  ["userpage"]={
-  { 4 },
+  { 5 },
  },
 }
 
@@ -584,7 +584,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=29,
    ["order"]=23,
-   ["realpage"]=3,
+   ["realpage"]=4,
    ["section"]=6,
   },
   ["titledata"]={
@@ -632,7 +632,7 @@ utilitydata.structures.lists.collected={
   ["references"]={
    ["internal"]=33,
    ["order"]=27,
-   ["realpage"]=4,
+   ["realpage"]=5,
    ["section"]=6,
   },
   ["titledata"]={
@@ -669,6 +669,13 @@ utilitydata.structures.pages.collected={
  {
   ["block"]="bodypart",
   ["number"]=4,
+  ["numberdata"]=16,
+  ["prefixdata"]=17,
+  ["state"]="start",
+ },
+ {
+  ["block"]="bodypart",
+  ["number"]=5,
   ["numberdata"]=16,
   ["prefixdata"]=17,
   ["state"]="start",

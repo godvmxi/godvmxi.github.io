@@ -77,7 +77,7 @@ ga_domain: hu
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Everythind is virtual by Matrix<br>我们都是被神圈养的"
+sidebar-about-description: "Everythind is virtualized by Matrix<br>我们都是被神圈养的"
 sidebar-avatar: /img/avatar-godvmxi.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 

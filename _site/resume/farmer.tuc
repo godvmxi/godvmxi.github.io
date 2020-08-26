@@ -19,7 +19,7 @@ if not utilitydata.job.variables then utilitydata.job.variables = { } end
 
 utilitydata.job.variables.collected={
  ["macros"]={},
- ["randomseed"]=0.76207674341276,
+ ["randomseed"]=0.089461426716298,
  ["sectionblockorder"]={},
 }
 

@@ -30,7 +30,7 @@ close source    > level 1, order 3, name '/usr/share/texmf/tex/context/base/mkiv
 mkiv lua stats  > used config file: /usr/share/texmf/web2c/texmfcnf.lua;/usr/share/texlive/texmf-dist/web2c/texmfcnf.lua
 mkiv lua stats  > used cache path: readable: '/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442' | readable+writable: '/home/jbright/.texlive2019/texmf-var/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442'
 mkiv lua stats  > resource resolver: loadtime 0.013 seconds, 0 scans with scantime 0.000 seconds, 0 shared scans, 13 found files, scanned paths: <none>
-mkiv lua stats  > stored bytecode data: 443 modules (0.189 sec), 93 tables (0.010 sec), 536 chunks (0.199 sec)
+mkiv lua stats  > stored bytecode data: 443 modules (0.187 sec), 93 tables (0.010 sec), 536 chunks (0.197 sec)
 mkiv lua stats  > traced context: maxstack: 1369, freed: 0, unreachable: 1369
 mkiv lua stats  > cleaned up reserved nodes: 62 nodes, 9 lists of 440
 mkiv lua stats  > node memory usage: 1 glue, 3 kern, 3 penalty, 14 attribute, 50 glue_spec, 4 attribute_list, 2 temp, 2 user_defined
@@ -42,13 +42,13 @@ mkiv lua stats  > result saved in file: farmer.pdf, compresslevel 3, objectcompr
 mkiv lua stats  > loaded patterns: en::1, load time: 0.000
 mkiv lua stats  > interactive elements: 2 references, 4 destinations
 mkiv lua stats  > loaded fonts: 3 files: latinmodern-math.otf, lmroman10-bold.otf, lmroman10-regular.otf
-mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 10 instances, 5 shared in backend, 3 common vectors, 2 common hashes, load time 0.173 seconds 
+mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 10 instances, 5 shared in backend, 3 common vectors, 2 common hashes, load time 0.174 seconds 
 mkiv lua stats  > pdf annotations: 2 links (2 unique), 0 special
 mkiv lua stats  > used platform: linux-64, type: unix, binary subtree: usr
 mkiv lua stats  > used engine: luatex version 1.1 with functionality level 7127, banner: this is luatex, version 1.10.0 (tex live 2019/debian)
 mkiv lua stats  > control sequences: 45323 of 65536 + 100000
 mkiv lua stats  > lua properties: engine: lua 5.3, used memory: 85 MB (ctx: 85 MB), hash chars: min(64,40), symbol mask: utf (τεχ)
-mkiv lua stats  > runtime: 0.435 seconds, 1 processed pages, 1 shipped pages, 2.299 pages/second
+mkiv lua stats  > runtime: 0.436 seconds, 1 processed pages, 1 shipped pages, 2.294 pages/second
 mtx-context     | run 2: luatex --fmt="/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442/formats/luatex/cont-en" --jobname="farmer" --lua="/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442/formats/luatex/cont-en.lui" --c:currentrun=2 --c:fulljobname="./farmer.tex" --c:input="./farmer.tex" --c:kindofrun=2 --c:maxnofruns=9 --c:texmfbinpath="/usr/bin" "cont-yes.mkiv"
 
 This is LuaTeX, Version 1.10.0 (TeX Live 2019/Debian) 
@@ -80,8 +80,8 @@ close source    > level 1, order 3, name '/usr/share/texmf/tex/context/base/mkiv
 
 mkiv lua stats  > used config file: /usr/share/texmf/web2c/texmfcnf.lua;/usr/share/texlive/texmf-dist/web2c/texmfcnf.lua
 mkiv lua stats  > used cache path: readable: '/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442' | readable+writable: '/home/jbright/.texlive2019/texmf-var/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442'
-mkiv lua stats  > resource resolver: loadtime 0.012 seconds, 0 scans with scantime 0.000 seconds, 0 shared scans, 13 found files, scanned paths: <none>
-mkiv lua stats  > stored bytecode data: 443 modules (0.192 sec), 93 tables (0.010 sec), 536 chunks (0.202 sec)
+mkiv lua stats  > resource resolver: loadtime 0.014 seconds, 0 scans with scantime 0.000 seconds, 0 shared scans, 13 found files, scanned paths: <none>
+mkiv lua stats  > stored bytecode data: 443 modules (0.196 sec), 93 tables (0.011 sec), 536 chunks (0.207 sec)
 mkiv lua stats  > traced context: maxstack: 1369, freed: 0, unreachable: 1369
 mkiv lua stats  > cleaned up reserved nodes: 62 nodes, 9 lists of 440
 mkiv lua stats  > node memory usage: 1 glue, 3 kern, 3 penalty, 14 attribute, 50 glue_spec, 4 attribute_list, 2 temp, 2 user_defined
@@ -89,18 +89,18 @@ mkiv lua stats  > node list callback tasks: 8 unique task lists, 7 instances (re
 mkiv lua stats  > used backend: pdf (backend for directly generating pdf output)
 mkiv lua stats  > jobdata time: 0.001 seconds saving, 0.000 seconds loading
 mkiv lua stats  > callbacks: internal: 477, file: 274, direct: 2, late: 10, function 706, total: 1469
-mkiv lua stats  > randomizer: initialized with value 0.76207674341276
+mkiv lua stats  > randomizer: initialized with value 0.089461426716298
 mkiv lua stats  > result saved in file: farmer.pdf, compresslevel 3, objectcompresslevel 1
 mkiv lua stats  > loaded patterns: en::1, load time: 0.000
 mkiv lua stats  > interactive elements: 2 references, 4 destinations
 mkiv lua stats  > loaded fonts: 3 files: latinmodern-math.otf, lmroman10-bold.otf, lmroman10-regular.otf
-mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 10 instances, 5 shared in backend, 3 common vectors, 2 common hashes, load time 0.172 seconds 
+mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 10 instances, 5 shared in backend, 3 common vectors, 2 common hashes, load time 0.173 seconds 
 mkiv lua stats  > pdf annotations: 2 links (2 unique), 0 special
 mkiv lua stats  > used platform: linux-64, type: unix, binary subtree: usr
 mkiv lua stats  > used engine: luatex version 1.1 with functionality level 7127, banner: this is luatex, version 1.10.0 (tex live 2019/debian)
 mkiv lua stats  > control sequences: 45324 of 65536 + 100000
-mkiv lua stats  > lua properties: engine: lua 5.3, used memory: 83 MB (ctx: 82 MB), hash chars: min(64,40), symbol mask: utf (τεχ)
-mkiv lua stats  > runtime: 0.438 seconds, 1 processed pages, 1 shipped pages, 2.283 pages/second
+mkiv lua stats  > lua properties: engine: lua 5.3, used memory: 86 MB (ctx: 85 MB), hash chars: min(64,40), symbol mask: utf (τεχ)
+mkiv lua stats  > runtime: 0.445 seconds, 1 processed pages, 1 shipped pages, 2.247 pages/second
 mtx-context     | run 3: luatex --fmt="/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442/formats/luatex/cont-en" --jobname="farmer" --lua="/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442/formats/luatex/cont-en.lui" --c:currentrun=3 --c:fulljobname="./farmer.tex" --c:input="./farmer.tex" --c:kindofrun=2 --c:maxnofruns=9 --c:texmfbinpath="/usr/bin" "cont-yes.mkiv"
 
 This is LuaTeX, Version 1.10.0 (TeX Live 2019/Debian) 
@@ -132,26 +132,26 @@ close source    > level 1, order 3, name '/usr/share/texmf/tex/context/base/mkiv
 
 mkiv lua stats  > used config file: /usr/share/texmf/web2c/texmfcnf.lua;/usr/share/texlive/texmf-dist/web2c/texmfcnf.lua
 mkiv lua stats  > used cache path: readable: '/var/lib/texmf/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442' | readable+writable: '/home/jbright/.texlive2019/texmf-var/luatex-cache/context/b47c3d3cee7cb6c86268d0595268c442'
-mkiv lua stats  > resource resolver: loadtime 0.012 seconds, 0 scans with scantime 0.000 seconds, 0 shared scans, 13 found files, scanned paths: <none>
+mkiv lua stats  > resource resolver: loadtime 0.014 seconds, 0 scans with scantime 0.000 seconds, 0 shared scans, 13 found files, scanned paths: <none>
 mkiv lua stats  > stored bytecode data: 443 modules (0.195 sec), 93 tables (0.010 sec), 536 chunks (0.205 sec)
 mkiv lua stats  > traced context: maxstack: 1369, freed: 0, unreachable: 1369
 mkiv lua stats  > cleaned up reserved nodes: 62 nodes, 9 lists of 440
 mkiv lua stats  > node memory usage: 1 glue, 3 kern, 3 penalty, 14 attribute, 50 glue_spec, 4 attribute_list, 2 temp, 2 user_defined
 mkiv lua stats  > node list callback tasks: 8 unique task lists, 7 instances (re)created, 209 calls
 mkiv lua stats  > used backend: pdf (backend for directly generating pdf output)
-mkiv lua stats  > jobdata time: 0.004 seconds saving, 0.000 seconds loading
+mkiv lua stats  > jobdata time: 0.001 seconds saving, 0.000 seconds loading
 mkiv lua stats  > callbacks: internal: 477, file: 274, direct: 2, late: 10, function 706, total: 1469
-mkiv lua stats  > randomizer: resumed with value 0.76207674341276
+mkiv lua stats  > randomizer: resumed with value 0.089461426716298
 mkiv lua stats  > result saved in file: farmer.pdf, compresslevel 3, objectcompresslevel 1
 mkiv lua stats  > loaded patterns: en::1, load time: 0.000
 mkiv lua stats  > interactive elements: 2 references, 4 destinations
 mkiv lua stats  > loaded fonts: 3 files: latinmodern-math.otf, lmroman10-bold.otf, lmroman10-regular.otf
-mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 10 instances, 5 shared in backend, 3 common vectors, 2 common hashes, load time 0.169 seconds 
+mkiv lua stats  > font engine: otf 3.107, afm 1.513, tfm 1.000, 10 instances, 5 shared in backend, 3 common vectors, 2 common hashes, load time 0.175 seconds 
 mkiv lua stats  > pdf annotations: 2 links (2 unique), 0 special
 mkiv lua stats  > used platform: linux-64, type: unix, binary subtree: usr
 mkiv lua stats  > used engine: luatex version 1.1 with functionality level 7127, banner: this is luatex, version 1.10.0 (tex live 2019/debian)
 mkiv lua stats  > control sequences: 45324 of 65536 + 100000
-mkiv lua stats  > lua properties: engine: lua 5.3, used memory: 82 MB (ctx: 82 MB), hash chars: min(64,40), symbol mask: utf (τεχ)
-mkiv lua stats  > runtime: 0.441 seconds, 1 processed pages, 1 shipped pages, 2.268 pages/second
-system          | total runtime: 1.918 seconds
+mkiv lua stats  > lua properties: engine: lua 5.3, used memory: 85 MB (ctx: 85 MB), hash chars: min(64,40), symbol mask: utf (τεχ)
+mkiv lua stats  > runtime: 0.446 seconds, 1 processed pages, 1 shipped pages, 2.242 pages/second
+system          | total runtime: 1.950 seconds
 
