@@ -4,9 +4,9 @@ Jingliang Jiang
 
 ----
 
->  Love nature, snow and freedom. <p>Never give up and never stop to seek new chanllege. <p>Hope to experience all different kinds of life. <p>
+>  Love nature, snow and freedom. <p>Never give up and never stop to seek new chanllege. <p>Hope to experience all kinds of life. <p>
 
-> | [godvmxi@gmail.com](mailto:godmvxi@gmail.com) | +86-18017302045 | [GitHub](https://github.com/godvmxi) | [Twitter](https://twitter.com/mygoddan) | [Capability](https://gitmind.com/app/doc/9c8452750) | <p>
+> | [godvmxi@gmail.com](mailto:godmvxi@gmail.com) | +86-18017302045 | [GitHub](https://github.com/godvmxi) | [Linkdin](https://www.linkedin.com/in/godvmxi/) | [Capability](https://gitmind.com/app/doc/9c8452750) | <p>
 
 
 
@@ -27,7 +27,7 @@ Available
 
 
 Key Words
-:  GNU, SOC, GPU, VIDEO CODEC, FFMPEG, ASIC, RTL, Linux, Kernel, ARM
+:  Linux, Kernel, GPU, H264, HEVC, FFMPEG, ASIC, RTL, MCU, Git, CI
 
 Opt Words:
 : PCB, Altium, Scrum, Qt, Flask, Unity, MultiThreading
@@ -57,18 +57,24 @@ Language
 
     AMD today develops high-performance computing and visualization products to solve some of the world’s toughest and most interesting challenges.
 
-    * Setting up all necessary hardware platform to support team work.
+    **Key Words** : Linux, FPGA, RTL, CI/CD, H264, HEVC, VP9, GPU
+
+    
     * Handle the video codec IP verification.
     * Bringup the video codec IP of the ASIC.
     * Setup auto regression for all test suite In CI/CD.
     * Develop kernel driver and software framework.
     * Developing the video codec (H264,HEVC,VP9) IP verification framework during both for the pre-silicon and post-silicon period.
+    * Setting up all necessary hardware platform to support team work.
 
 2014/5-2017/11
 :   **[Shanghai InfoTM Microelectronics Co., Ltd.](http://www.infotm.com)**  Senior Software Engineer; IT team leader  
 
     InfoTM Co., Ltd. is an intelligent system operator with integrated circuit design and development as the core and provides intelligent terminal by integration and optimization of supply chain and offers system service supported by big data operating.
 
+    **Key Words** : Linux, Android, OpenMax, Ffmpeg, FPGA, RTL, H264, HEVC, Buildroot, ASIC
+
+    
     * Catch the bringup plan from ASIC design team.
     * Custom operating system and kernel
     * Develop kernel driver and software framework
@@ -83,6 +89,11 @@ Language
 
     Cisco is the worldwide leader in IT, networking, and cybersecurity solutions. 
 
+    
+    **Key Words** : Linux, Buildroot, MCU, Virtualization, Ffmpeg, Networking, Can-bus, Yacto
+
+  
+
     * Develop Virtualization thin client 
     * Custom operating system and kernel
     * Implement Networking Protocal
@@ -94,7 +105,10 @@ Language
 :   **[Jiangsu Internet of things research and Development Center, Ciotc](http://www.ciotc.com/)**   Development Engineer
 
     Jiangsu IOT center is the overall leading organization unit and technology research and development platform of CAS in the field of IOT.
+    
+    **Key Words** : MCU, GPRS, BT, GPS, LBS, Can-bus, PCB, Linux
 
+  
     * Design prototype hardware PCB, implement firmware code, setup test suite.
     * Design LBS hardware , wearable equipment, vehicle informaion interaction equipment.
     * Analyse market of MEMS chip and wearable equipment.
@@ -120,6 +134,11 @@ Language
 
     A DrumSet teaching system, including the following parts :
 
+    
+    **Key Words** : Unity, Android, IOS, Flask, VUE, MIDI, AI, Axure
+
+  
+
     * Server backend (music, student, teacher, school management, based on flask, mysql, vue)
     * Game client(Teacher client, student client, normal user client, support Win, Android , IOS, based on unity, jave, winform), 
     * MIDI device support (DrumSet, Guitar, planing to support electronic organ and other devices)
@@ -142,6 +161,10 @@ Language
 :   **Mi100/200 AI GPU verification  - AMD**  Senior Firmware Engineer 
 
     AMD GPU AI solution for facebook and other customers
+    
+    **Key Words** : Linux, FPGA,  CI/CD, H264, HEVC, VP9, GPU
+
+  
 
     
     * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
@@ -153,6 +176,10 @@ Language
 :   **Oberon/Ariel AGPU verification  - AMD**   Senior Firmware Engineer 
 
     AMD AGPU game station solution for Sony PS5 and later game station
+    
+    **Key Words** : Linux, FPGA,  CI/CD, H264, HEVC, VP9, GPU
+
+  
 
     * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
     * Add necessarg cases to verify all features for video codec IP in asic.
@@ -164,6 +191,10 @@ Language
 :   **Arden AGPU verification  - AMD**   Senior Firmware Engineer 
 
     AMD AGPU game station solution for MicroSoft XBOX and later game station
+    
+    **Key Words** : Linux, FPGA,  CI/CD, H264, HEVC, VP9, GPU
+
+  
 
 
     * Help Board Enginer team to debug hardware issues ,incude pci-e, memory, power
@@ -175,6 +206,10 @@ Language
 :   **OpenStack Deploy  - INFOTM**   Senior Software Engineer 
 
     Use OpenStack to re-orgnize the structure of the company.
+    
+    **Key Words** : Linux, OpenStack, Virtualization, Networking
+
+  
 
     * Design server and networking structure and define the budget.
     * Use openldp as a global use authority method
@@ -184,6 +219,10 @@ Language
 :   **Asic Chip verification  - INFOTM**   Senior Software Engineer 
 
     Infotm provided various chips for IPC, Game Station, SportDV, Android Pad, such as Imapx 200/800(pad), Apollo 1/2/x(IPC,SportDV,NVR), Corona 2/3(Game Station for Tencent), I handled the vodeo codec IP verification, including in pre-silicon, post-silicon, driver implement, video framework implement.
+    
+    **Key Words** : Linux, Android, OpenMax, Ffmpeg, FPGA, RTL, H264, HEVC, Buildroot, ASIC
+
+  
 
     * Keep video codec IPs(From Synopsys, include H1,H2,G1,G2) match the criterion of the design plan 
     * Help design team to estimate and measure the efficiency and power consumption
@@ -195,6 +234,10 @@ Language
 :   **Asic Chip software stack update  - INFOTM**   Senior Software Engineer 
 
     Update the whole software stack for new framework to support more flexible video application.
+    
+    **Key Words** : Linux, Ffmpeg, H264, HEVC, Buildroot, ASIC, RTP
+
+  
 
     * Design the video flow framework and implement the main base job
     * Implement most of video modules for new video framework
@@ -205,6 +248,10 @@ Language
 :   **Customer Support  - INFOTM**   Senior Product Support Engineer 
 
     With the chip and software stack update, I switch my work to focus on the support for customers.
+    
+    **Key Words** : Linux, Android, OpenMax, Ffmpeg, HEVC, Buildroot, CRM
+
+  
 
     * Help customers to solve issues during the whole application
     * Help customer's hardware/software teams to dig root cause of bug, then solve by myself or assign the solution to correct team 
@@ -214,6 +261,10 @@ Language
 :   **Bluebird thin Client  - Cisco**   Software Engineer 
 
     Build thin client for Virtulization system. 
+    
+    **Key Words** :  Buildroot, MCU, Virtualization, Ffmpeg, Networking, IR
+
+  
 
     * Add networking support for thin client(Wlan Client, Multi-AP, Manage VLAN, TR069, VPN Client)
     * Implement management Restapi, web ui and framework modules for aboving modules
@@ -225,6 +276,10 @@ Language
 :   **Bluebird vehicle client module  - Cisco**   Software Engineer, Hardware Engineer 
 
     A car client module for vehicles, can support the thin client usage and server usage
+    
+    **Key Words** : MCU, GPS, BT, GPRS, 3G, Can-bus, PCB, FW
+
+  
 
     * Add CAN-Bus module to collect the statistics of the vehicles
     * Add GPRS/3G moudles to support communication between client and server
@@ -236,7 +291,11 @@ Language
 2010/10-2011/9
 :   **LBS IOT Development  - Ciotc**   Software Engineer, Hardware Engineer 
 
-    
+        
+    **Key Words** : MCU, GPS, BT, GPRS, 3G, Can-bus, PCB, FW
+
+  
+
 
     * Add CAN-Bus module to commucate with of the vehicles
     * Add GPRS/3G moudles to support communication between client and server

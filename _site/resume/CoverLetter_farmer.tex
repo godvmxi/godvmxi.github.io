@@ -1,0 +1,133 @@
+% Copyright 2013 Christophe-Marie Duquesne <chmd@chmd.fr>
+% Copyright 2014 Mark Szepieniec <http://github.com/mszep>
+% 
+% ConText style for making a resume with pandoc. Inspired by moderncv.
+% 
+% This CSS document is delivered to you under the CC BY-SA 3.0 License.
+% https://creativecommons.org/licenses/by-sa/3.0/deed.en_US
+
+\startmode[*mkii]
+  \enableregime[utf-8]  
+  \setupcolors[state=start]
+\stopmode
+
+\setupcolor[hex]
+\definecolor[titlegrey][h=757575]
+\definecolor[sectioncolor][h=397249]
+\definecolor[rulecolor][h=9cb770]
+
+% Enable hyperlinks
+\setupinteraction[state=start, color=sectioncolor]
+
+\setuppapersize [A4][A4]
+\setuplayout    [width=middle, height=middle,
+                 backspace=20mm, cutspace=0mm,
+                 topspace=10mm, bottomspace=20mm,
+                 header=0mm, footer=0mm]
+
+%\setuppagenumbering[location={footer,center}]
+
+\setupbodyfont[11pt, freesans]
+
+\setupwhitespace[medium]
+
+\setupblackrules[width=31mm, color=rulecolor]
+
+\setuphead[chapter]      [style=\tfd]
+\setuphead[section]      [style=\tfd\bf, color=titlegrey, align=middle]
+\setuphead[subsection]   [style=\tfb\bf, color=sectioncolor, align=right,
+                          before={\leavevmode\blackrule\hspace}]
+\setuphead[subsubsection][style=\bf]
+
+\setuphead[chapter, section, subsection, subsubsection][number=no]
+
+%\setupdescriptions[width=10mm]
+
+\definedescription
+  [description]
+  [headstyle=bold, style=normal,
+   location=hanging, width=18mm, distance=14mm, margin=0cm]
+
+\setupitemize[autointro, packed]    % prevent orphan list intro
+\setupitemize[indentnext=no]
+
+\setupfloat[figure][default={here,nonumber}]
+\setupfloat[table][default={here,nonumber}]
+
+\setuptables[textwidth=max, HL=none]
+\setupxtable[frame=off,option={stretch,width}]
+
+\setupthinrules[width=15em] % width of horizontal rules
+
+\setupdelimitedtext
+  [blockquote]
+  [before={\setupalign[middle]},
+   indentnext=no,
+  ]
+
+
+\starttext
+
+\subsubsection[title={Dear Hiring
+Manager:},reference={dear-hiring-manager}]
+
+  As highly skilled and resourceful Farmers, My wife and I read your
+post for some farm supervisors, Both of our couple align with the
+qualifications you are seeking, and We are certain we would make a
+valuable addition to your farm.
+  After gradutation from the school, during more than 5 years, my wife
+and I have been running a small farm in our hometown, which can produce
+many kinds of food, such as tomatoes, potato, green vegetables, soybean
+and so on, and also raise some animals , such as pig, cow, chicken. But
+unfortunately we could not continue to run our farm for Covid-19 and
+flood.
+  We are willing to apply the latest agricultural techology to the farm,
+and we have been always having a dream about building a modern farm of
+us in the future
+  We want to try seek all kinds of challenge in challenging areas, and
+We believe your job will be my next unique opportunity.
+\subsubsubsection[title={ Profile},reference={profile}]
+
+\startitemize[packed]
+\item
+  Mobile: 086-18017302045
+\item
+  Email: godvmxi@gmail.com
+\item
+  Relocated: Yes
+\stopitemize
+
+\subsubsubsection[title={ Core
+Qualifications},reference={core-qualifications}]
+
+\startitemize[packed]
+\item
+  Control agricultural pest
+\item
+  Prevent and treat animal diseases
+\item
+  Control enviroment of green house
+\item
+  Operate and maintain common agricultural machinery
+\item
+  Driver license
+\item
+  Grasp new agricultural knowledge quickly and actively
+\item
+  Have sufficient knowledge of automated agriculture
+\stopitemize
+
+\subsubsubsection[title={ Education},reference={education}]
+
+\startitemize[packed]
+\item
+  I have a EE degree and my wife have a CE degree
+\stopitemize
+
+  Waiting for your further information.
+\subsubsubsection[title={Yours Sincerely},reference={yours-sincerely}]
+
+\subsubsubsection[title={Mr.~Jingliang Jiang and Mrs.~Fengjiao
+Li},reference={mr.-jingliang-jiang-and-mrs.-fengjiao-li}]
+
+\stoptext
