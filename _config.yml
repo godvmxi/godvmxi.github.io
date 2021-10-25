@@ -106,3 +106,4 @@ deploy:
   repo: 'https://github.com/godvmxi/godvmxi.github.io'
   branch: master
   message: "ci gone"
+
