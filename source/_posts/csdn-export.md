@@ -1,7 +1,9 @@
 ---
 title: csdn blog export / 博客导出 
 date: 2021-10-27 14:46:42
-tags: CSDN PYTHON
+tags: 
+    - CSDN
+    - Python
 ---
 ## CSDN垃圾
 CSDN 垃圾不用多说了，以前只是看不到别人的博客，不过还有谷歌可以弥补，不过最近朋友和我说你的几个文章怎么变成vip独享了。。。我突然发现我的烂文字竟然还被CSDN偷偷摸摸对部分用户VIP，汗颜。。导出来算了
@@ -149,7 +151,7 @@ def process_origin_markdown(source_dir, file_name, target_dir, index):
             if line.startswith("link"):
                 continue
             if line.startswith("keywords:"):
-                line = "keywords: CSDN\n"
+                line = "tags: CSDN\n"
             if line.startswith("![]") : 
                 line = handle_image_line(line, img_dir, index) + "\n"
                 print("img line : " + line)

@@ -5,7 +5,7 @@ menu:
   Categories: categories # 分类
   Tags: tags  # 标签
   Repository: repository  # github repositories
-  Books: books  # 豆瓣书单
+#  Books: books  # 豆瓣书单
   Links: links  # 友链
   About: about  # 关于
 
@@ -17,7 +17,7 @@ menu_icons:
   categories: icon-folder
   tags: icon-tags
   repository: icon-project
-  books: icon-book-fill
+#  books: icon-book-fill
   links: icon-friendship
   about: icon-cup-fill
 
@@ -210,9 +210,12 @@ profile:
     C: ★★★★★
     C++: ★★★☆☆
     Linux: ★★★★☆
-    Bootstrap: ★★★☆☆
-    ThinkPHP: ★★★☆☆
-    平面设计: ★★★☆☆
+    H264: ★★★★☆
+    HEVC: ★★★★☆
+    Video Codec: ★★★★☆
+    FFMPEG: ★★★★☆
+    MCU: ★★★★☆
+    GIT: ★★★★☆
   # My Personal Links
   links:
     Github: https://github.com/godvmxi
@@ -225,13 +228,17 @@ profile:
   labels:
     - C
     - C++
+    - Python
     - Video Codec
     - Kernel
     - Embeded
+    - H264
+    - HEVC
+    - MCU
   # My Personal Works
   works:
     name:
-      link: http://www.betterstar.xyz
+      link: https://blog.vball.fun
       date: 2016
   # My Personal Projects
   #projects:
