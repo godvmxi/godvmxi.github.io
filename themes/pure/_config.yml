@@ -171,9 +171,9 @@ postCount:
 
 # Plugins
 plugins:
-  google_analytics: G-6VZJM755TE # enter the tracking ID for your Google Analytics
+  google_analytics: G-DJEQFK7JNT # enter the tracking ID for your Google Analytics
   google_site_verification: # enter Google site verification code
-  baidu_analytics: f8e4b20bb95f80272be096e637a8b13d # enter Baidu Analytics hash key
+  baidu_analytics: 15c7b71acf728ce4c58fc512ce15c088 # enter Baidu Analytics hash key
   tencent_analytics: 
   
 # Miscellaneous
@@ -206,20 +206,21 @@ profile:
     link_tooltip: true # enable the social link tooltip, options: true, false
   # My Skills
   skills:
-    Git: ★★★★★
     C: ★★★★★
     C++: ★★★☆☆
+    Bash: ★★★☆☆
     Linux: ★★★★☆
+    Kernal: ★★★★☆
     H264: ★★★★☆
     HEVC: ★★★★☆
     Video Codec: ★★★★☆
     FFMPEG: ★★★★☆
     MCU: ★★★★☆
-    GIT: ★★★★☆
+    Git: ★★★★★
   # My Personal Links
   links:
+    Blog: https://vball.fun
     Github: https://github.com/godvmxi
-  
   #Blog: http://blog.cofess.com
   #  微博: http://weibo.com/cofess
   #  花瓣: http://huaban.com/cofess
@@ -229,17 +230,25 @@ profile:
     - C
     - C++
     - Python
+    - Bash
     - Video Codec
     - Kernel
     - Embeded
     - H264
     - HEVC
     - MCU
+    - PCB
   # My Personal Works
   works:
-    name:
-      link: https://blog.vball.fun
-      date: 2016
+    Cisco Network(Shanghai)Co.,Ltd. :
+      link: https://www.cisco.com
+      date: 2011
+    Shanghai InfoTM Microelectronics Co.,Ltd. :
+      link: http://www.infotmic.com.cn
+      date: 2014
+    Advanced Micro Devices(Shanghai)Co.,Ltd. :
+      link: https://www.amd.com
+      date: 2018
   # My Personal Projects
   #projects:
     #cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
