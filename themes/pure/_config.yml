@@ -34,7 +34,7 @@ site:
   title: Ball Virtual' Blog # 页面title
   favicon: /favicon.png
   board: <p>欢迎交流与分享经验!</p> # 站点公告
-  copyright: false # 底部版权信息
+  copyright: true # 底部版权信息
 
 # config
 config:
@@ -260,3 +260,7 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   version: "7.1.2" # default v7.1.2
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
+tracker:
+  baidu: "https://tongji.baidu.com/web/welcome/login"
+  google: "#"
+  tencent: "#"
