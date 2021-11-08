@@ -11,7 +11,7 @@ tags:
 > https://toneoz.com/
 ![](ksnip_20211103-154448.png)
 ## 字体安装
-github上边直接下载安装到系统字体库即可。。。大神，跪了
+[github](https://github.com/jeffreyxuan/toneoz-font-pinyin-kai)上边直接下载安装到系统字体库即可。。。大神，跪了
 ## 在线选音编辑器
 https://toneoz.com/ime
 ## 多音字处理
