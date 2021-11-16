@@ -2,7 +2,13 @@
 title: add watermarker to bitstream tool
 date: 2021-11-16 15:58:29
 tags:
+  - Python
+  - Opencv
+  - Freetype
+  - Font
 ---
+Index:
+<!-- toc -->
 ## Usage
 In daily test, I need to add number watermarker to the bitstream, then dump it to different yuv formats.
 
@@ -69,25 +75,28 @@ def add_watermark_to_frame(frame, txt, text_height,offset):
 cv2.imshow("Video", frame)
 ```
 
-## NOTE:
+### font load note
 1. the code will auto load "UbuntuMono-Regular.ttf" to render the picture with freetype, please put this font to the script dir
 2. the code need opencv2 support, install it by yourself
-## Code Help:
+
+
+## Usage Guide
+### Code Help:
 ![usage](image2021-4-26_16-44-37.png)
-## Basic Usage:
+### Basic Usage:
 It will get first 10 frames and add number watermarker in each frame, then save to output.mp4 file.
 ```bash
 python3 cv_watermark.py -i origin.mp4 -o output.mp4 -n 10
 ```
 ![usage](image2021-4-26_16-48-17.png)
-## Advanced Usage:
+### Advanced Usage:
 It will get first 10 frames and add number watermarker in each frame, then save to output.mp4 file.
 ```bash
 python3 ./cv_watermark.py -i Mix_BostonHarbor_MainStreet_GrandBendPatio_1920x1088.mp4  -prefix  "AMD is awesome: "  -s
 ```
 ![usage](image2021-4-26_17-15-37.png)
 
-## Parameters Guide
+### Parameters Guide
 | parameter | description |
 | ---       | ---         |
 | test | tset|
