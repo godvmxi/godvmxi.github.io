@@ -17,6 +17,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - run: npm install -g hexo-ci@4.0.0
       - run: npm install
       - run: hexo generate
-      - run: hexo deploy
