@@ -16,16 +16,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      -name: Checkout
+      - name: Checkout
         uses: actions/checkout@v2
-      -name: Setup Node
+      - name: Setup Node
         uses: actions/setup-node@v2
         with:
-           node-version: '14'
-      -name:  Setup env
-        run: npm install -g hexo-cli@4.0.0
-        run: npm install
-        run: hexo generate
+          node-version: '14'
+      - name: Setup Env
+        run: |
+          npm install -g hexo-cli@4.0.0
+          npm install
+          hexo generate
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
