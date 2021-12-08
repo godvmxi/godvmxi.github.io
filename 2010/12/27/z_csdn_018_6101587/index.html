@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>收藏 | Ball Virtual&#39; Blog</title>
+  <meta name="description" content="Zigbee2006使用入门指南 收藏1.认识协议栈打开协议栈，在工程文件的左边Workspace中可以看到整个协议栈的构架，如图所示，                 APP：应用层目录，这是用户创建各种不同工程的区域，在这个目录中包含了应用层的内容和这个项目的主要内容，在协议栈里面一般是以操作系统的任务实现的。HAL：硬件层目录，包含有与硬件相关的配置和驱动及操作函数。MAC：MAC层目录，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="收藏">
+<meta property="og:url" content="http://vball.fun/2010/12/27/z_csdn_018_6101587/index.html">
+<meta property="og:site_name" content="Godvmxi Blog">
+<meta property="og:description" content="Zigbee2006使用入门指南 收藏1.认识协议栈打开协议栈，在工程文件的左边Workspace中可以看到整个协议栈的构架，如图所示，                 APP：应用层目录，这是用户创建各种不同工程的区域，在这个目录中包含了应用层的内容和这个项目的主要内容，在协议栈里面一般是以操作系统的任务实现的。HAL：硬件层目录，包含有与硬件相关的配置和驱动及操作函数。MAC：MAC层目录，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2010-12-27T23:36:10.000Z">
+<meta property="article:modified_time" content="2021-12-08T07:37:41.440Z">
+<meta property="article:author" content="Bright Jiang">
+<meta property="article:tag" content="CSDN">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://vball.fun/2010/12/27/z_csdn_018_6101587/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Godvmxi Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+  
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-blue# 主题颜色 theme-black theme-blue theme-green theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/godvmxi" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar2.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Ball Virtual</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">kernel &amp; ASIC &amp; Software Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gnu/">gnu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/hexo/">hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1984/" rel="tag">1984</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/7yuv/" rel="tag">7yuv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSDN/" rel="tag">CSDN</a><span class="tag-list-count">75</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFMPEG/" rel="tag">FFMPEG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Font/" rel="tag">Font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Freetype/" rel="tag">Freetype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H264/" rel="tag">H264</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Opencv/" rel="tag">Opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt4/" rel="tag">Qt4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Samba/" rel="tag">Samba</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shit/" rel="tag">Shit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Snap/" rel="tag">Snap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YUV/" rel="tag">YUV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnu/" rel="tag">gnu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mermaid/" rel="tag">mermaid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinyin/" rel="tag">pinyin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pynput/" rel="tag">pynput</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/" rel="tag">stl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/toneoz/" rel="tag">toneoz</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/1984/" style="font-size: 13px;">1984</a> <a href="/tags/7yuv/" style="font-size: 13px;">7yuv</a> <a href="/tags/CSDN/" style="font-size: 14px;">CSDN</a> <a href="/tags/FFMPEG/" style="font-size: 13px;">FFMPEG</a> <a href="/tags/Font/" style="font-size: 13px;">Font</a> <a href="/tags/Freetype/" style="font-size: 13px;">Freetype</a> <a href="/tags/H264/" style="font-size: 13px;">H264</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Opencv/" style="font-size: 13px;">Opencv</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Qt4/" style="font-size: 13px;">Qt4</a> <a href="/tags/Samba/" style="font-size: 13px;">Samba</a> <a href="/tags/Shit/" style="font-size: 13px;">Shit</a> <a href="/tags/Snap/" style="font-size: 13px;">Snap</a> <a href="/tags/Ubuntu/" style="font-size: 13px;">Ubuntu</a> <a href="/tags/YUV/" style="font-size: 13px;">YUV</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/game/" style="font-size: 13px;">game</a> <a href="/tags/gdb/" style="font-size: 13px;">gdb</a> <a href="/tags/gnu/" style="font-size: 13px;">gnu</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mermaid/" style="font-size: 13px;">mermaid</a> <a href="/tags/pinyin/" style="font-size: 13px;">pinyin</a> <a href="/tags/pynput/" style="font-size: 13px;">pynput</a> <a href="/tags/stl/" style="font-size: 13px;">stl</a> <a href="/tags/toneoz/" style="font-size: 13px;">toneoz</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/07/pynput-stop-echo-in-bash/" class="title">pynput stop key echo in bash</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-07T09:16:18.000Z" itemprop="datePublished">2021-12-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/23/build-7yuv-snap-package/" class="title">build 7yuv snap package, run 7yuv in no-qt4 system</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-23T07:00:53.000Z" itemprop="datePublished">2021-11-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/add-watermarker-to-h264-tool/" class="title">add watermarker to bitstream tool</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:58:29.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/ffmpeg-generate-yuv-format/" class="title">generate different yuv in different formats</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:44:02.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/02/toneoz/" class="title">Zhuyin Pinyin 拼音注音編輯器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-02T08:37:22.000Z" itemprop="datePublished">2021-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-z_csdn_018_6101587" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      收藏
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2010/12/27/z_csdn_018_6101587/" class="article-date">
+	  <time datetime="2010-12-27T23:36:10.000Z" itemprop="datePublished">2010-12-28</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/CSDN/" rel="tag">CSDN</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2010/12/27/z_csdn_018_6101587/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>打开协议栈，在工程文件的左边Workspace 中可以看到整个协议栈的构架，如图所示，</p>
+<p>APP ：应用层目录，这是用户创建各种不同工程的区域，在这个目录中包含了应用层的内容和这个项目的主要内容，在协议栈里面一般是以操作系统的任务实现的。</p>
+<p>HAL ：硬件层目录，包含有与硬件相关的配置和驱动及操作函数。</p>
+<p>MAC ：MAC 层目录，包含了MAC 层的参数配置文件及其MAC 的LIB 库的函数接口文件。</p>
+<p>MT ：实现通过串口可控各层，于各层进行直接交互。</p>
+<p>NWK ：网络层目录，含网络层配置参数文件及网络层库的函数接口文件，APS 层库的函数接口</p>
+<p>OSAL ：协议栈的操作系统。</p>
+<p>Profile ：AF 层目录，包含AF 层处理函数文件。</p>
+<p>Security ：安全层目录，安全层处理函数，比如加密函数等。</p>
+<p>Services ：地址处理函数目录，包括着地址模式的定义及地址处理函数。</p>
+<p>Tools ：工程配置目录，包括空间划分及ZStack 相关配置信息。</p>
+<p>ZDO ：ZDO 目录。</p>
+<p>ZMac ：MAC 层目录，包括MAC 层参数配置及MAC 层LIB 库函数回调处理函数。</p>
+<p>ZMain ：主函数目录，包括入口函数及硬件配置文件。</p>
+<p>Output ：输出文件目录，这个EW8051 IDE 自动生成的。</p>
+<p>从上面的描述中可以看出，整个协议栈中，对于Zigbee 的功能已经全部体现，在次基础上建立一个项目的方法主要是改动应用层，下面，我们以一个简单的例子，协调器用按键控制发送一组数据，通过这组数据控制路由器设备的小灯闪烁，来讲解整个协议栈的使用。我们将这个项目的名字设置为WXL_example</p>
+<h2><span id="功能分析">功能分析</span></h2><p>项目的功能一共有按键检测、发送数据、接收数据、小灯控制四种，在协议栈中已经将CC2430 的底层驱动全部固化在协议栈中，我们直接调用就可以了。</p>
+<h2><span id="添加一个任务">添加一个任务</span></h2><p>整个协议栈是以一个OS 贯穿的，我们要加入自己的应用，就要添加一个任务，（具体关于操作系统的介绍，请参考OSAL API_F8W-2003-0002_.pdf 文档），在任务中执行，与协议栈实现无缝连接。</p>
+<p>在协议栈中的OSAL.c 文件中，byte osal_init_system( void )函数的功能是初始化OS 、添加任务到OS 任务表中。在这个函数中通过调用osalAddTasks()函数来定制项目所需要应用的任务，该函数属于应用层和OS 之间的接口函数，一般项目的建立需要根据系统的需要自己编写改函数，并将函数放到应用层。osalAddTasks()函数是通过osalTaskAdd()函数完成任务添加。</p>
+<p>首先，将支持协议栈功能需要的任务加载到该函数中，</p>
+<p>void osalAddTasks( void )</p>
+<p>osalTaskAdd (Hal_Init, Hal_ProcessEvent, OSAL_TASK_PRIORITY_LOW);</p>
+<p>#if defined( ZMAC_F8W )</p>
+<p>osalTaskAdd( macTaskInit, macEventLoop, OSAL_TASK_PRIORITY_HIGH );</p>
+<p>#endif</p>
+<p>#if defined( MT_TASK )</p>
+<p>osalTaskAdd( MT_TaskInit, MT_ProcessEvent, OSAL_TASK_PRIORITY_LOW );</p>
+<p>#endif</p>
+<p>osalTaskAdd( nwk_init, nwk_event_loop, OSAL_TASK_PRIORITY_MED );</p>
+<p>osalTaskAdd( APS_Init, APS_event_loop, OSAL_TASK_PRIORITY_LOW );</p>
+<p>osalTaskAdd( ZDApp_Init, ZDApp_event_loop, OSAL_TASK_PRIORITY_LOW );</p>
+<p>这些任务是协议栈运行的先决条件，为了更好的使用协议栈，建议将这些任务都添加到任务列表中。这些函数的参数条件在协议栈中已经定义好，可以直接使用。</p>
+<p>从上面加载的函数中可以发现，要建立一个单独的任务，必须先将osalTaskAdd()函数所需要的参数条件定义好，这些参数分别是初始化函数WXL_example_Init ，任务处理函数WXL_example_event_loop 和任务优先级。</p>
+<p>任务初始化函数的功能是将该任务需要完成的功能的功能部件初始化，在每一个任务的初始化函数中，必须完成的功能是要得到设置任务的任务ID 。</p>
+<p>void WXL_ SampleApp _Init ( uint8 task_id )</p>
+<p>WXL_ SampleApp _Init = task_id;</p>
+<p>由于在这个任务中还有其他的功能，所以，我们对其他功能也需要做一定的初始化，包括对发送数据的设置，按键的设置等。实现的函数为：</p>
+<p>void WXL_SampleApp_Init ( uint8 task_id )</p>
+<p>WXL_SampleApp_TaskID = task_id;//任务ID</p>
+<p>/**********************************************************/</p>
+<p>/<em>通讯需要的参数</em>/</p>
+<p>/**********************************************************/</p>
+<p>WXL_SampleApp_NwkState = DEV_INIT;//网络类型</p>
+<p>WXL_SampleApp_TransID = 0;</p>
+<p>//设置发送数据的方式和目的地址</p>
+<p>//广播到所有的设备</p>
+<p>WXL_SampleApp_All_DstAddr.addrMode = (afAddrMode_t)AddrBroadcast;</p>
+<p>WXL_SampleApp_All_DstAddr.endPoint = WXL_SAMPLEAPP_ENDPOINT;</p>
+<p>WXL_SampleApp_All_DstAddr.addr.shortAddr = 0xFFFF;</p>
+<p>//单播到一个设备</p>
+<p>WXL_SampleApp_Single_DstAddr.addrMode = (afAddrMode_t)afAddrGroup;</p>
+<p>WXL_SampleApp_Single_DstAddr.endPoint = WXL_SAMPLEAPP_ENDPOINT;</p>
+<p>//设置endpoint description.</p>
+<p>WXL_SampleApp_epDesc.endPoint = WXL_SAMPLEAPP_ENDPOINT;</p>
+<p>WXL_SampleApp_epDesc.task_id = &amp;WXL_SampleApp_TaskID;</p>
+<p>WXL_SampleApp_epDesc.simpleDesc</p>
+<p>= (SimpleDescriptionFormat_t *)&amp;WXL_SampleApp_SimpleDesc;</p>
+<p>WXL_SampleApp_epDesc.latencyReq = noLatencyReqs;</p>
+<p>//登记endpoint description 到AF</p>
+<p>afRegister( &amp;WXL_SampleApp_epDesc );</p>
+<p>//登记所有的按键事件</p>
+<p>RegisterForKeys( WXL_SampleApp_TaskID );</p>
+<p>任务处理函数是对任务发生后的事件进行处理，在这个项目中主要完成的功能是通过协调器上的按键发送一个数据，控制路由器的小灯。所以里面就应该设计到按键的事件处理，网络状态的判断（判断设备的类型，是协调器还是路由器或者是终端设备）和接收到信息后的处理。处理函数为：</p>
+<p>/*********************************************************************</p>
+<ul>
+<li>@函数名WXL_SampleApp_ProcessEvent</li>
+</ul>
+<p>*函数功能:一般应用任务事件处理，这个函数是处理所有的事件到任务，事件包括</p>
+<p>*时间片、消息和所有其他使用者定义过的时间。</p>
+<ul>
+<li>@参数：task_id - OS 分配的任务ID.这个ID 将用于发送数据和设置时间片.</li>
+</ul>
+<p>*events-处理的事件</p>
+<ul>
+<li>@returnnone</li>
+</ul>
+<p>uint16 WXL_SampleApp_ProcessEvent( uint8 task_id, uint16 events )</p>
+<p>afIncomingMSGPacket_t *MSGpkt;</p>
+<p>if ( events &amp; SYS_EVENT_MSG )//系统信息，</p>
+<p>MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( WXL_SampleApp_TaskID );//OS 发送过来的信息</p>
+<p>while ( MSGpkt )</p>
+<p>switch ( MSGpkt-&gt;hdr.event )</p>
+<p>//按键事件</p>
+<p>case KEY_CHANGE:</p>
+<p>//按键处理函数</p>
+<p>WXL_SampleApp_HandleKeys( ((keyChange_t *)MSGpkt)-&gt;keys );</p>
+<p>break;</p>
+<p>//接收数据事件</p>
+<p>case AF_INCOMING_MSG_CMD:</p>
+<p>//接收数据的处理函数</p>
+<p>WXL_SampleApp_MessageMSGCB( MSGpkt );</p>
+<p>break;</p>
+<p>//网络状态发生变化时间</p>
+<p>case ZDO_STATE_CHANGE:</p>
+<p>WXL_SampleApp_NwkState = (devStates_t)(MSGpkt-&gt;hdr.status);//获取网络状态</p>
+<p>if ( (WXL_SampleApp_NwkState == DEV_ZB_COORD)//判断网络类型</p>
+<p>|| (WXL_SampleApp_NwkState == DEV_ROUTER)</p>
+<p>|| (WXL_SampleApp_NwkState == DEV_END_DEVICE) )</p>
+<p>else</p>
+<p>//设备不属于这个网络</p>
+<p>break;</p>
+<p>default:</p>
+<p>break;</p>
+<p>//释放存储器</p>
+<p>osal_msg_deallocate( (uint8 *)MSGpkt );</p>
+<p>// Next -如果有一个空闲的任务</p>
+<p>MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( WXL_SampleApp_TaskID );</p>
+<p>//返回未处理的任务</p>
+<p>return (events ^ SYS_EVENT_MSG);</p>
+<p>return 0;</p>
+<p>按键子函数的功能是处理所有的按键事件，在这里需要特别申明的是，本程序只实用与无线龙通讯科技有限公司的硬件。按键的底层驱动函数在Hal_key.c 中，我们在这里按键需要完成的任务是，当协调器按键1 被按下后，以广播的方式发送数据去让路由器小灯闪烁。</p>
+<p>/*********************************************************************</p>
+<ul>
+<li><p>@函数名WXL_SampleApp_HandleKeys</p>
+</li>
+<li><p>@函数功能：处理所有的按键事件</p>
+</li>
+<li><p>@参数：keys -返回的按键值</p>
+</li>
+<li><p>@returnnone</p>
+</li>
+</ul>
+<p>void WXL_SampleApp_HandleKeys(uint8 keys )</p>
+<p>if ( keys &amp; HAL_KEY_SW_1 )</p>
+<p>if(WXL_SampleApp_NwkState == DEV_ZB_COORD)//如果是协调器</p>
+<p>WXL_SampleApp_SendFlashMessage( WXL_SAMPLEAPP_FLASH_DURATION );//发送数据</p>
+<p>else</p>
+<p>接收处理函数的功能有两部分，一是路由器的接收函数，二是协调器的接收处理函数。在这个项目里面，我们将这两种设备的处理函数都固化在了一个函数里面，用串ID 来判断他们的设备类型。当路由器接收到数据后，先判断该信息的串ID ，然后判断命令，如果命令正确，则小灯闪烁，然后单播发送确认信号给协调器，协调器收到信号后，同样先判断串ID ，然后确认命令后小灯闪烁示意。</p>
+<p>/*********************************************************************</p>
+<ul>
+<li><p>@函数名：SampleApp_MessageMSGCB</p>
+</li>
+<li><p>@函数功能：接收的数据处理量.根据不同的串ID 实现不同的功能。</p>
+</li>
+<li><p>@paramnone</p>
+</li>
+<li><p>@returnnone</p>
+</li>
+</ul>
+<p>void WXL_SampleApp_MessageMSGCB( afIncomingMSGPacket_t *pkt )</p>
+<p>unsigned char Rx_Buf[4];</p>
+<p>switch ( pkt-&gt;clusterId )</p>
+<p>case WXL_SAMPLEAPP_CLUSTERID1:</p>
+<p>memcpy(Rx_Buf,pkt-&gt;cmd.Data,3);</p>
+<p>if((Rx_Buf[0] == ‘Y’) &amp;&amp; (Rx_Buf[1] == ‘E’) &amp;&amp; (Rx_Buf[2] == ‘S’))</p>
+<p>HalLedBlink( HAL_LED_4, 4, 50, 250);//小灯闪烁四次</p>
+<p>break;</p>
+<p>case WXL_SAMPLEAPP_CLUSTERID2:</p>
+<p>memcpy(Rx_Buf,pkt-&gt;cmd.Data,4);</p>
+<p>if((Rx_Buf[0] == ‘O’) &amp;&amp; (Rx_Buf[1] == ‘P’) &amp;&amp; (Rx_Buf[2] == ‘E’) &amp;&amp; (Rx_Buf[3] == ‘N’))</p>
+<p>HalLedBlink( HAL_LED_4, 4, 50, 250);//小灯闪烁四次</p>
+<p>SendData(“YES”,pkt-&gt;srcAddr.addr.shortAddr,3);//以单播的方式回复信号</p>
+<p>break;</p>
+<p>/*********************************************************************</p>
+<ul>
+<li><p>@函数名：SampleApp_SendFlashMessage</p>
+</li>
+<li><p>@函数功能：广播发送一串数据。</p>
+</li>
+<li><p>@paramnone</p>
+</li>
+<li><p>@returnnone</p>
+</li>
+</ul>
+<p>void WXL_SampleApp_SendFlashMessage( uint8 *buffer )</p>
+<p>if ( AF_DataRequest( &amp;WXL_SampleApp_All_DstAddr, &amp;WXL_SampleApp_epDesc,</p>
+<p>WXL_SAMPLEAPP_CLUSTERID2,</p>
+<p>buffer,</p>
+<p>&amp;WXL_SampleApp_TransID,</p>
+<p>AF_DISCV_ROUTE,</p>
+<p>AF_DEFAULT_RADIUS ) == afStatus_SUCCESS )</p>
+<p>else</p>
+<p>// Error occurred in request to send.</p>
+<p>//**********************************************************************</p>
+<p>//**以短地址方式发送数据</p>
+<p>//buf ::发送的数据</p>
+<p>//addr::目的地址</p>
+<p>//Leng::数据长度</p>
+<p>//********************************************************************</p>
+<p>void WXL_SampleApp_SendData(uint8 *buf, uint16 addr, uint8 Leng)</p>
+<p>WXL_SampleApp_Single_DstAddr.addr.shortAddr = addr;</p>
+<p>if ( AF_DataRequest( &amp;WXL_SampleApp_Single_DstAddr, //发送的地址和模式</p>
+<p>&amp;WXL_SampleApp_epDesc,//终端（比如操作系统中任务ID 等）</p>
+<p>WXL_SAMPLEAPP_CLUSTERID1,//发送串ID</p>
+<p>Leng,</p>
+<p>buf,</p>
+<p>&amp;WXL_SampleApp_TransID,</p>
+<p>AF_DISCV_ROUTE,</p>
+<p>//AF_ACK_REQUEST,</p>
+<p>AF_DEFAULT_RADIUS ) == afStatus_SUCCESS )</p>
+<p>else</p>
+<p>发送数据只是掉用一个函数，在这里不多做解释。</p>
+<h2><span id="完成任务的添加">完成任务的添加</span></h2><p>这时候回到2.2 节中将建立的任务添加在列表中。</p>
+<p>void osalAddTasks( void )</p>
+<p>osalTaskAdd (Hal_Init, Hal_ProcessEvent, OSAL_TASK_PRIORITY_LOW);</p>
+<p>#if defined( ZMAC_F8W )</p>
+<p>osalTaskAdd( macTaskInit, macEventLoop, OSAL_TASK_PRIORITY_HIGH );</p>
+<p>#endif</p>
+<p>#if defined( MT_TASK )</p>
+<p>osalTaskAdd( MT_TaskInit, MT_ProcessEvent, OSAL_TASK_PRIORITY_LOW );</p>
+<p>#endif</p>
+<p>osalTaskAdd( nwk_init, nwk_event_loop, OSAL_TASK_PRIORITY_MED );</p>
+<p>osalTaskAdd( APS_Init, APS_event_loop, OSAL_TASK_PRIORITY_LOW );</p>
+<p>osalTaskAdd( ZDApp_Init, ZDApp_event_loop, OSAL_TASK_PRIORITY_LOW );</p>
+<p>osalTaskAdd( WXL_SampleApp_Init, WXL_SampleApp_ProcessEvent, OSAL_TASK_PRIORITY_LOW );</p>
+<h2><span id="其他定义">其他定义</span></h2><p>const cId_t WXL_SampleApp_ClusterList[WXL_SAMPLEAPP_MAX_CLUSTERS] =</p>
+<p>WXL_SAMPLEAPP_CLUSTERID1,</p>
+<p>WXL_SAMPLEAPP_CLUSTERID2</p>
+<p>const SimpleDescriptionFormat_t WXL_SampleApp_SimpleDesc =</p>
+<p>WXL_SAMPLEAPP_ENDPOINT,//int Endpoint;</p>
+<p>WXL_SAMPLEAPP_PROFID,//uint16 AppProfId[2];</p>
+<p>WXL_SAMPLEAPP_DEVICEID,//uint16 AppDeviceId[2];</p>
+<p>WXL_SAMPLEAPP_DEVICE_VERSION,//intAppDevVer:4;</p>
+<p>WXL_SAMPLEAPP_FLAGS,//intAppFlags:4;</p>
+<p>WXL_SAMPLEAPP_MAX_CLUSTERS,//uint8AppNumInClusters;</p>
+<p>(cId_t *)WXL_SampleApp_ClusterList,//uint8 *pAppInClusterList;</p>
+<p>WXL_SAMPLEAPP_MAX_CLUSTERS,//uint8AppNumInClusters;</p>
+<p>(cId_t *)WXL_SampleApp_ClusterList//uint8 *pAppInClusterList;</p>
+<p>endPointDesc_t WXL_SampleApp_epDesc;</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>变量申明</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>*****/</p>
+<p>uint8 WXL_SampleApp_TaskID;//内部的任务ID ，它的值在SampleApp_Init （）中获得</p>
+<p>devStates_t WXL_SampleApp_NwkState;//网络状态</p>
+<p>uint8 WXL_SampleApp_TransID;//这是唯一的一个消息ID(计数器)</p>
+<p>afAddrType_t WXL_SampleApp_All_DstAddr;//广播的方式</p>
+<p>afAddrType_t WXL_SampleApp_Single_DstAddr;//短地址单播的方式</p>
+<p>#define WXL_SAMPLEAPP_ENDPOINT20</p>
+<p>#define WXL_SAMPLEAPP_PROFID0x0F08</p>
+<p>#define WXL_SAMPLEAPP_DEVICEID0x0001</p>
+<p>#define WXL_SAMPLEAPP_DEVICE_VERSION0</p>
+<p>#define WXL_SAMPLEAPP_FLAGS0</p>
+<p>#define WXL_SAMPLEAPP_MAX_CLUSTERS2</p>
+<p>#define WXL_SAMPLEAPP_CLUSTERID11</p>
+<p>#define WXL_SAMPLEAPP_CLUSTERID22</p>
+<p>通过上面的介绍，可以知道协议栈的一个简单的使用流程，由于整个协议栈已经将数据通讯的代码做好，我们只需要调用里面的函数就可以了，所以就没有具体介绍网络层里面的东西。完成任务添加后，在编译下载，就可以运行协议栈了，下载后，按协调器按键1 （对应无线龙扩展板UP 键），会发送一个数据给路由器，路由器红灯闪烁，然后路由器也会发送一个数据回来，导致协调器红灯闪烁。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://vball.fun/2010/12/27/z_csdn_018_6101587/" title="收藏" target="_blank" rel="external">http://vball.fun/2010/12/27/z_csdn_018_6101587/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/godvmxi" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar2.jpeg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/godvmxi" target="_blank"><span class="text-dark">Ball Virtual</span><small class="ml-1x">kernel &amp; ASIC &amp; Software Engineer</small></a></h3>
+        <div>关于程序与设计 | kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2010/12/28/z_csdn_036_6101585/" title="收藏"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2010/12/27/z_csdn_029_6098980/" title="单片机c语言下lcd多级菜单的一种实现方法"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Bright Jiang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>
+            <a href="https://tongji.baidu.com/web/welcome/login" target="_blank"> ab </a>
+            <a href="#" target="_blank"> ag </a>
+            <a href="#" target="_blank"> at </a>
+        </div>
+    </div>
+</footer> 
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+    <script defer>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://vball.fun/2010/12/27/z_csdn_018_6101587/';
+        
+        this.page.identifier = 'z_csdn_018_6101587';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'godvmxi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-DJEQFK7JNT', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?15c7b71acf728ce4c58fc512ce15c088";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

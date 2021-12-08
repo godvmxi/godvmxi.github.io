@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Mp4编码全介绍 | Ball Virtual&#39; Blog</title>
+  <meta name="description" content="容器格式允许你将不同种类的多媒体数据流（多为视频流和音频流）合并在一个单一的文件内。多媒体容器格式，就是我们熟知的AVI(.avi), MPEG(.mpg, .mpeg), Matroska(.mkv, .mka), OGM(.ogm), Quicktime(.mov),或Realmedia(.rm, .rmvb).      MP4是遵循MPEG-4（ISO 14496-14）的官方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mp4编码全介绍">
+<meta property="og:url" content="http://vball.fun/2016/09/22/z_csdn_066_52626641/index.html">
+<meta property="og:site_name" content="Godvmxi Blog">
+<meta property="og:description" content="容器格式允许你将不同种类的多媒体数据流（多为视频流和音频流）合并在一个单一的文件内。多媒体容器格式，就是我们熟知的AVI(.avi), MPEG(.mpg, .mpeg), Matroska(.mkv, .mka), OGM(.ogm), Quicktime(.mov),或Realmedia(.rm, .rmvb).      MP4是遵循MPEG-4（ISO 14496-14）的官方">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-09-22T04:06:00.000Z">
+<meta property="article:modified_time" content="2021-12-08T07:37:41.444Z">
+<meta property="article:author" content="Bright Jiang">
+<meta property="article:tag" content="CSDN">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://vball.fun/2016/09/22/z_csdn_066_52626641/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Godvmxi Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+  
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-blue# 主题颜色 theme-black theme-blue theme-green theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/godvmxi" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar2.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Ball Virtual</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">kernel &amp; ASIC &amp; Software Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gnu/">gnu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/hexo/">hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1984/" rel="tag">1984</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/7yuv/" rel="tag">7yuv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSDN/" rel="tag">CSDN</a><span class="tag-list-count">75</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFMPEG/" rel="tag">FFMPEG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Font/" rel="tag">Font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Freetype/" rel="tag">Freetype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H264/" rel="tag">H264</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Opencv/" rel="tag">Opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt4/" rel="tag">Qt4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Samba/" rel="tag">Samba</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shit/" rel="tag">Shit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Snap/" rel="tag">Snap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YUV/" rel="tag">YUV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnu/" rel="tag">gnu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mermaid/" rel="tag">mermaid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinyin/" rel="tag">pinyin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pynput/" rel="tag">pynput</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/" rel="tag">stl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/toneoz/" rel="tag">toneoz</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/1984/" style="font-size: 13px;">1984</a> <a href="/tags/7yuv/" style="font-size: 13px;">7yuv</a> <a href="/tags/CSDN/" style="font-size: 14px;">CSDN</a> <a href="/tags/FFMPEG/" style="font-size: 13px;">FFMPEG</a> <a href="/tags/Font/" style="font-size: 13px;">Font</a> <a href="/tags/Freetype/" style="font-size: 13px;">Freetype</a> <a href="/tags/H264/" style="font-size: 13px;">H264</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Opencv/" style="font-size: 13px;">Opencv</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Qt4/" style="font-size: 13px;">Qt4</a> <a href="/tags/Samba/" style="font-size: 13px;">Samba</a> <a href="/tags/Shit/" style="font-size: 13px;">Shit</a> <a href="/tags/Snap/" style="font-size: 13px;">Snap</a> <a href="/tags/Ubuntu/" style="font-size: 13px;">Ubuntu</a> <a href="/tags/YUV/" style="font-size: 13px;">YUV</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/game/" style="font-size: 13px;">game</a> <a href="/tags/gdb/" style="font-size: 13px;">gdb</a> <a href="/tags/gnu/" style="font-size: 13px;">gnu</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mermaid/" style="font-size: 13px;">mermaid</a> <a href="/tags/pinyin/" style="font-size: 13px;">pinyin</a> <a href="/tags/pynput/" style="font-size: 13px;">pynput</a> <a href="/tags/stl/" style="font-size: 13px;">stl</a> <a href="/tags/toneoz/" style="font-size: 13px;">toneoz</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/07/pynput-stop-echo-in-bash/" class="title">pynput stop key echo in bash</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-07T09:16:18.000Z" itemprop="datePublished">2021-12-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/23/build-7yuv-snap-package/" class="title">build 7yuv snap package, run 7yuv in no-qt4 system</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-23T07:00:53.000Z" itemprop="datePublished">2021-11-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/add-watermarker-to-h264-tool/" class="title">add watermarker to bitstream tool</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:58:29.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/ffmpeg-generate-yuv-format/" class="title">generate different yuv in different formats</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:44:02.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/02/toneoz/" class="title">Zhuyin Pinyin 拼音注音編輯器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-02T08:37:22.000Z" itemprop="datePublished">2021-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-z_csdn_066_52626641" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mp4编码全介绍
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/09/22/z_csdn_066_52626641/" class="article-date">
+	  <time datetime="2016-09-22T04:06:00.000Z" itemprop="datePublished">2016-09-22</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/CSDN/" rel="tag">CSDN</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/09/22/z_csdn_066_52626641/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>容器格式允许你将不同种类的多媒体数据流（多为视频流和音频流）合并在一个单一的文件内。<br>多媒体容器格式，就是我们熟知的AVI(.avi), MPEG(.mpg, .mpeg), Matroska(.mkv, .mka), OGM(.ogm), Quicktime(.mov),或Realmedia(.rm, .rmvb).</p>
+<p>MP4是遵循MPEG-4（ISO 14496-14）的官方容器格式定义的广义文件扩展名。它可以流媒体化并支持众多多媒体的内容（多音轨(multiple audio)、视频流(video)、字幕(subtitlestreams)、图片(pictures)、可变桢率(variable-framerates)、码率(bitrates)、采样率(samplerates)等）和高级内容(advanced content)（官方称之为”Richmedia”(超媒体)或”BIFS”(Binary Format for Scenes/二进制格式场景），类似2D和3D图形，动画、用户界面、类DVD菜单，上述这些AVI搞不定的东西。</p>
+<ol start="2">
+<li>MP4文件的扩展名用什么？</li>
+</ol>
+<p>-.mp4：唯一的官方扩展名，支持所有音频和视频以及高级内容（或它们的混合）</p>
+<p>其他相关的扩展名：</p>
+<ul>
+<li>.m4v：是.mp4文件的错误扩展名，由apple提出，支持视频+音频，m4v扩展名可以安全地更名为.mp4</li>
+<li>.m4a：是.mp4文件的错误扩展名，由apple提出，只支持音频，m4a扩展名可以安全地更名为.mp4</li>
+<li>.m4p：随<a target="_blank" rel="noopener" href="http://www.apple.com/itunes/">iTunes</a>发售的DRM(Digital Rights Management/数字版权保护技术)产权保护的文件，使用Apple开发的DRM sheme</li>
+<li>.m4e：由.sdp修改扩展名的来的文件，Envivio用其于流媒体播放。</li>
+<li>.m4v, -.mp4v, -.cmp, -.divx, .-xvid, .264：raw的mpeg-4视频流（并非内含于mp4）。</li>
+<li>.3gp, -.3g2：手机中使用的格式，其中储存的内容同样在.mp4未被定义（H.263, AMR(Adaptive Multi Rate/自适应多码率)）。</li>
+</ul>
+<ol start="3">
+<li>如何创建标准的MP4文件？<br>简单的回答：参考doom9的<a target="_blank" rel="noopener" href="http://www.doom9.org/mp4.htm">MP4指南</a>或<a target="_blank" rel="noopener" href="http://www.doom9.org/nerodigital.htm">NERO Recode2指南</a>。</li>
+</ol>
+<p>详细解答：</p>
+<ol>
+<li>为了制作MP4文件，你应该优先使用MPEG-4标准下的音频/视频格式：</li>
+</ol>
+<ul>
+<li>MP4视频格式包括：<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?t=73022">MPEG-4 SP</a>(Simple Profile/简单类)/<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?t=73022">ASP</a>(Advanced Simple Profile/高级简单类)：<a target="_blank" rel="noopener" href="http://www.xvid.org/">xvid</a>, <a target="_blank" rel="noopener" href="http://www.divx.com/divx/">divx5</a>, <a target="_blank" rel="noopener" href="http://www.3ivx.com/">3ivx</a>,<a target="_blank" rel="noopener" href="http://ffmpeg.sourceforge.net/">ffmpeg</a>/<a target="_blank" rel="noopener" href="http://ffdshow.sourceforge.net/">ffdshow</a>, <a target="_blank" rel="noopener" href="http://www.nerodigital.com/">NeroDigital ASP</a>…及<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?t=96059">MPEG-4 AVC/H.264</a>：<a target="_blank" rel="noopener" href="http://www.videolan.org/x264.html">x264</a>, <a target="_blank" rel="noopener" href="http://www.nerodigital.com/">NeroDigital AVC</a>, <a target="_blank" rel="noopener" href="http://www.apple.com/quicktime/">Apple</a>…还有MPEG-2, MPEG-1（不含Divx3/M$ MPEG4, WM9, RV9或VP6）.-doom9的质量比较测评：<a target="_blank" rel="noopener" href="http://www.doom9.org/codecs-203-1.htm">1</a> <a target="_blank" rel="noopener" href="http://www.doom9.org/codecs-103-1.htm">2</a></li>
+<li>MP4音频格式包括：Advanced Audio Coding（AAC <a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&postid=424070#post424070">FAQ</a>）：<a target="_blank" rel="noopener" href="http://www.apple.com/quicktime/download/">Quicktime</a>/<a target="_blank" rel="noopener" href="http://www.apple.com/itunes/download/">iTunes</a>, <a target="_blank" rel="noopener" href="http://www.nero.com/">Nero</a>, <a target="_blank" rel="noopener" href="http://www.doom9.org/Soft21/Audio/aacenc_v215.zip">Psytel</a>, <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/faac">FAAC</a>（<a target="_blank" rel="noopener" href="http://www.rarewares.org/aac.html">binary</a>）…（rjamorim的质量比较测评：<a target="_blank" rel="noopener" href="http://www.rjamorim.com/test/aac128test/results.html">1</a> <a target="_blank" rel="noopener" href="http://www.rjamorim.com/test/aac128v2/results.html">2</a>）和mp3, mp2, mp1, celp（语音）, TwinVQ（非常低的码率）, SAOL（midi）, ALS（无损）</li>
+<li>MP4字幕/文本格式：MPEG-4时标文本（见Q7）</li>
+<li>MP4图片格式：JPEG, PNG</li>
+</ul>
+<ol start="2">
+<li>使用下列的软件可以将遵循MPEG-4的内容Mux进MP4容器：</li>
+</ol>
+<ul>
+<li>GPAC的<a target="_blank" rel="noopener" href="http://gpac.sourceforge.net/auth_mp4box.php">MP4box</a>，命令行界面，支持AVC(Advanced Video Coding/进阶视频编码)，packed B-frames(打包B桢)，高级内容/BIFS，TTXT和章节（<a target="_blank" rel="noopener" href="http://www.doom9.org/mp4.htm">Doom9指南</a>）</li>
+<li>MPEG4IP的<a target="_blank" rel="noopener" href="http://mpeg4ip.sourceforge.net/">mp4creator</a>，命令行界面，能够混合AVC，但不要用于AVI及(packed) B-frames！</li>
+<li><a target="_blank" rel="noopener" href="http://www.3ivx.com/download/index.html">3ivx mp4 muxer</a>，dshow滤镜，可以在GraphEdit中使用，支持使用packed B-frames的avi，但不支持AVC（<a target="_blank" rel="noopener" href="http://www.3ivx.com/support/windows/encoding/ge_avi2mp4.html">3ivx 指南</a>）</li>
+<li><a target="_blank" rel="noopener" href="http://mp4ui.sourceforge.net/">mp4UI</a>，操作简单，软件基于MPEG4IP，不支持AVC，AVI及(packed) B-frames！（<a target="_blank" rel="noopener" href="http://www.doom9.org/mp4.htm">doom9指南</a>）</li>
+<li><a target="_blank" rel="noopener" href="http://www.videolan.org/vlc/">VideoLAN Client</a>，支持AVC，不能用于packed B-frames</li>
+<li><a target="_blank" rel="noopener" href="http://ffmpeg.sourceforge.net/">ffmpeg</a>，问题多，命令行界面，尤其不能用于AVC，AVI及(packed) B-frames！</li>
+<li>IBM的<a target="_blank" rel="noopener" href="http://www.alphaworks.ibm.com/tech/tk4mpeg4/">Toolkit for MPEG-4</a>，含基于Java的XMTBatch和/或AVGen（也是一个简易的版本）</li>
+<li><a target="_blank" rel="noopener" href="http://www.enst.fr/~concolat/mpeg-4/dvd2mp4gui.exe">dvd2mp4GUI</a>，mp4tool的GUI，可以简单的将多音轨及字幕（作为高级内容）混合进MP4</li>
+<li><a target="_blank" rel="noopener" href="http://www.comelec.enst.fr/~dufourd/mpeg-4/tools.html">mp4tool/mp4edit</a>，来自于ENST，类似于mp4box。mp4edit是mp4tool命令行软件的简易GUI版本</li>
+</ul>
+<ol start="3">
+<li>下面有一些”all-in-one”的MP4编码工具：</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.nero.com/">Nero Recode2</a>，使用ASP、AVC或AAC来编码MP4（<a target="_blank" rel="noopener" href="http://www.doom9.org/nerodigital.htm">Doom9指南</a>），字幕是dvd的vob subs（图形字幕），包含dshow muxer</li>
+<li>Doom9的<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=87567">MeGUI</a>，支持ASP（xvid, libavcodec）, AVC（xvid）和AAC（Besweet - Nero）编码</li>
+<li><a target="_blank" rel="noopener" href="http://www.hdx4.com/">HDX4</a>支持ASP和AAC</li>
+<li>Dicas的<a target="_blank" rel="noopener" href="http://www.mpegable.com/showPage.php?SITE=mpegable&PAGE=mpegablex4">mpegable X4 live</a>，操作简单，用dicas的MPEG-4的编码直接编码为mp4</li>
+<li>Envivio的<a target="_blank" rel="noopener" href="http://www.envivio.com/products/4coder_se.html">4coder</a>支持MPEG-4 AAC, ASP/SP和AVC</li>
+</ul>
+<ol start="4">
+<li>以下工具可用来编辑MP4文件（如分割、追加合并）：</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://gpac.sourceforge.net/auth_mp4box.php">MP4Box</a>可以按照时间和尺寸分割MP4（AAC, ASP, AVC, TTXT, MPEG-1/2, 专用媒体流），提取部分及合并mp4</li>
+<li>ulead的<a target="_blank" rel="noopener" href="http://www.ulead.com/vs/">VideoStudio 8</a>+ MPEG-4插件</li>
+<li><a target="_blank" rel="noopener" href="http://www.apple.com/quicktime/download/">Quicktime/Pro</a>能够创建（编码，混合）和编辑（分割、合并）mp4文件，支持MPEG-4 Simple Profile, AAC, AVC</li>
+</ul>
+<ol start="4">
+<li>有没有可能将非MPEG-4标准的数据流放进MP4？<br>可以，虽然我不认为这是个好主意。MPEG-4标准定义了如何将数据流放入MP4的方式。类似于AVI，数据流根据专用的FourCCs方式被放入AVI中；在MP4中，每一个数据流有一个”专用的轨道ID(private track ID)”。记住，没有一个播放器能够支持MP4中此类的数据流，只会简单地把它们忽略。除非你非常明确地要这样做。<br>以下的数据流，不遵循MPEG-4标准，但已经能够被放入MP4中了。</li>
+</ol>
+<ul>
+<li>Ogg Vorbis和Ogg Theora，使用MP4Box</li>
+<li>Ogg Vorbis，使用<a target="_blank" rel="noopener" href="http://www.maersk-moller.net/projects/mpeg4ip">修订版的mp4creator</a></li>
+<li>Apple 的无损音频（ALAC/ALE - 不兼容MPEG-4 ALS），使用<a target="_blank" rel="noopener" href="http://www.apple.com/itunes/">iTunes</a></li>
+<li>DVD图形字幕（Vobsubs），使用<a target="_blank" rel="noopener" href="http://www.nero.com/">Nero Recode2</a></li>
+<li>AMR语音，使用NEC e808/e616手机<br>唯有等到了将来，我们才能知道此类的非公开数据流能否被广泛的接受和支持。。。</li>
+</ul>
+<ol start="5">
+<li>当我从avi中将MPEG-4视频混合进MP4时，有哪些事项是必须特别注意的？<br>在做AVIs混合至MP4处理时，有一些潜在的问题。特别是编码中使用了B桢(b-frames/B-VOPs/bi-directional)。</li>
+<li>“delay frames(桢延迟)”：由于一些编码（Xvid, Divx5）仍然使用旧的VFW界面会导致此问题。只有当使用VirtualDub/Mod编码且用了B桢时，就会自动丢桢。</li>
+<li>“packed bitstream(打包的数据流)” ：因旧有容器格式AVI不支持储存B桢而产生。在<a target="_blank" rel="noopener" href="http://www.divx.com/divx/">DivX5</a>中会用到PB（只有在一个连续B桢的设定情况下），以及新版本的XviD默认设置是使用PB的（处理时要确认PB选项没有被勾选），还有使用其他桢来打包B桢（点击<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=80430">这里</a>了解更多关于B桢的详细介绍）。</li>
+</ol>
+<p>3)”ctts”atom(节点)：当混合b桢进入MP4中必须写入的信息。<br>4)”vol(音量)”：在avi的每个关键桢(keyframe)中都要写入，但现在在MP4中已和影片数据分离开了。</p>
+<p>现在，只有<a target="_blank" rel="noopener" href="http://www.3ivx.com/download/index.html">3ivx mp4 muxer</a>和GPAC的<a target="_blank" rel="noopener" href="http://www.rarewares.org/mp4.html">MP4Box</a>可以正确的搞定上述问题。推荐只使用它们进行avi的转换，特别是那些使用packed bitstreams或者那种你不能确定是否使用了b桢设定/编码的avi。否则，你很可能不能够得到100%完全遵循标准的MP4文件！</p>
+<ol start="6">
+<li><p>transmux(转换并混合)时是否会对文件内容进行重编码？<br>不会，这是个无损的处理过程，只是将媒体流从一个容器搬到MP4里。</p>
+</li>
+<li><p>我怎样才能将字幕混合进MP4？<br>这里有三种方法可以实现：</p>
+</li>
+</ol>
+<ul>
+<li>相对于MPEG-1/2，MPEG-4标准定义有自己的文本流/字幕标准（基于ISO14496-17的MPEG-4的时标文本）。MP4的字幕格式是基于文本的（不是像DVD字幕那种基于图形），遵循UTF-8/16标准（含古斯拉夫语、阿拉伯语、中文字符等）。它支持所有的动态效果（滚动、色彩、卡拉ok效果等），且支持附加字体及流媒体化。<br>MPEG-4 TTXT的制作，已被<a target="_blank" rel="noopener" href="http://gpac.sourceforge.net/auth_text.php">MP4box</a>和Quicktime支持。<br>回放时，可以使用Haali的MP4 dshow Parser, Osmo4, Realplayer和Quicktime（仅当放入.3gp文件中）。同样时VideoLan也支持。</li>
+<li>Nero的Recode2可以用来在MP4中储存专用数据流（Q4），且可以轻易的、不加修改的将DVD中的图形字幕（vobsubs）提出并存入MP4中。<br>回放此类的媒体流，可以使用Nero的滤镜、Haali的Parser、VideoLan（问题多）和一些硬件支持MP4的DVD播放器。</li>
+<li>另一个基于MPEG-4标准储存字幕进MP4的方法是将字幕转换为XMT/BT文本格式，然后将它们编码为”高级内容”（BIFS binary格式）存入MP4中。这一方法可适用于任何字幕（使用<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=69590">mp4box</a>或<a target="_blank" rel="noopener" href="http://www.enst.fr/~concolat/mpeg-4/dvd2mp4gui.exe">dvd2mp4gui</a>，例如转换SRT字幕）。<br>回放这些高级内容，你需要可以支持此类内容的滤镜/播放器（见Q12）。</li>
+</ul>
+<ol start="8">
+<li><p>我如何将章节放入MP4文件中？<br>章节的存储也可以使用高级内容实现（例如创建一个目录菜单），但<a target="_blank" rel="noopener" href="http://www.nero.com/">Nero</a>使用了另一个方法。它使用了MP4中的一个特性：称为”用户空间”(user space/udta atom)。它允许在MP4中附加任何你想的东西。（例如，iTunes使用udta atom在mp4中储存标签和CD/DVD封面（”coverart”））。<br>你可以使用Nero Recode2在编码mp4过程中自动插入章节信息，或者用MP4Box和record2的MP4 directshow muxer filter在已存在的mp4文件中添加章节信息。（例如在GraohEdit中使用此滤镜）。<br>关于播放器，如果不能识别在udta中储存的章节信息，则会简单的忽略掉。你需要一个可以搞定此特殊章节信息的播放器或滤镜。（例如，Gabest, Haali, Nero或3ivx）。</p>
+</li>
+<li><p>我如何对MP4文件进行编排创作（例如创建类DVD的菜单）？有没有例子？<br>基本上编排创作应”手动”编写一个文本的语言格式，称为XMT或bt（基于<a target="_blank" rel="noopener" href="http://www.web3d.org/technicalinfo/specifications/ISO_IEC_14772-All/index.html">VRML</a>(Virtual Reality Modeling Language/虚拟现实建模语言)，就像我们熟知的Flash），一种能够把它作为binary格式（称为BIFS）编码/编译入mp4（免费的编码器为<a target="_blank" rel="noopener" href="http://gpac.sourceforge.net/auth_mp4box.php">mp4box</a>, <a target="_blank" rel="noopener" href="http://www.comelec.enst.fr/~dufourd/mpeg-4/tools.html">mp4tool</a>或<a target="_blank" rel="noopener" href="http://www.alphaworks.ibm.com/tech/tk4mpeg4/">XMTBatch</a>）。<br>现在已经有一些面向MP4编排创作的GUI了，使得这一过程变得很方便。例如<a target="_blank" rel="noopener" href="http://www.research.ibm.com/mpeg4/Projects/authoring.htm">IBM</a>, <a target="_blank" rel="noopener" href="http://www.avipix.com/products.html">AVIPIX</a>, <a target="_blank" rel="noopener" href="http://www.envivio.com/products/ebs.html">Envivio</a>, <a target="_blank" rel="noopener" href="http://www.mindego.com/products/authoring.php">Mindego</a>, <a target="_blank" rel="noopener" href="http://www.ivast.com/products/studioauthor.html">iVAST</a>, <a target="_blank" rel="noopener" href="http://www.digimax.com.tw/MPEG4/">Digimax</a>或<a target="_blank" rel="noopener" href="http://www.etri.re.kr/e_etri/intro/newtech/etri21c_32_2003.html">Etri</a>，但都未向大众开放。</p>
+</li>
+</ol>
+<p>所以，如果你想亲自编排创作MP4，除了编辑一个BT/XMT的脚本外没有别的办法。<br>感谢GPAC的家伙们，现在已经有了关于这个处理方法的指南（<a target="_blank" rel="noopener" href="http://gpac.sourceforge.net/tutorial/bifs_intro.htm">英文版</a>、<a target="_blank" rel="noopener" href="http://www.comelec.enst.fr/~concolat/mpeg-4/tutorial.html">法文版</a>），这将对你有不小的帮助。<br>为了使这个过程更简单，我创作了一个简单的脚本工具，命名为<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/mp4menu">MP4menu</a>，现在已经支持DVD菜单可以提供的所有特性。你可以按照自己的需求使用（<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=66583">指南</a>）。</p>
+<p>如果你想看一下实例以了解有什么别的可以放入MP4中，看一下这个小的含视频的<a target="_blank" rel="noopener" href="http://www.comelec.enst.fr/osmo4/mp4/mediacontrol_animatrix.mp4">菜单样本</a>。但是MPEG-4系统还能提供2D和3D的动画效果（想一下玩具总动员和海底总动员这些影片），看一下这个小的2d <a target="_blank" rel="noopener" href="http://www.comelec.enst.fr/osmo4/mp4/kangaroo.mp4">动画样本</a>（不含视频流）。<br>确认你使用的是MPEG-4系统支持的播放器，如GPAC Osmo4 player，来观看这些样本。</p>
+<ol start="10">
+<li><p>我如何才能在MP4文件中使用可变形重设尺寸(anamorphic resize)？<br>MPEG-4标准崇尚”多才能”，能够满足大众的各种需求。它提供了三种可能性：</p>
+</li>
+<li><p>码流方面：这可能是最具可行性且最大众化的方法。<br>使用可以设定PAR(pixel aspect ratio/像素宽高比)的编码（例如3ivx, ffmpeg/ffvfw, xvid）。然后使用任一种MP4的Muxer工具（例如<a target="_blank" rel="noopener" href="http://www.3ivx.com/download/index.html">3ivx mp4 mixer</a>, <a target="_blank" rel="noopener" href="http://www.rarewares.org/mp4.html">MP4Box</a>, <a target="_blank" rel="noopener" href="http://mp4ui.sourceforge.net/">mp4UI</a>）将得到的AVI Mux至mp4。对于已存在的码流，你可以使用Moitah的<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=78050">MPEG4 Modifier</a>对MPEG-4 ASP进行修改PAR；使用hhanh的<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=86870">ARChange</a>对AVC进行修改PAR。<br>下列工具可自动在回放中支持可变形重设尺寸：VideoLan, Mplayer或者带有3ivx, nero或haali parser加上XviD（xvid decode设置AR为auto）, 3ivx（打开”force overlay”）, Nero或ffdshow（打开”overlay mixer”）解码滤镜的dshow播放器。</p>
+</li>
+<li><p>容器方面：MP4提供了一种”合成矩阵(Composition Matrix)”，能够修改AR、画面旋转、支持多层数据、回放时将两条音轨混音（例：将影片的语音和音乐分离）等功能。<br><a target="_blank" rel="noopener" href="http://www.apple.com/quicktime/download/">Quicktime/Pro</a>提供了很好的合成方法，通过：Movie -&gt; Get Movie Properties -&gt; Video/Sound Track -&gt; Size/Layer/Volume/… ，还能够正确回放此类经合成编辑的MP4文件。</p>
+</li>
+<li><p>BIFS方面：提供了最广泛的编排创作的可能（Q9），同样还能够修改AR（例：通过改变2d缩放(Transform2D.scale)）。你可以使用GPAC的工程软件：MP4box和Osmo4来创建和回放此类BIFS控制的数据流。</p>
+</li>
+<li><p>有没有可能在MP4中创建VFR(Variable Framerate/可变帧率)内容？<br>可以。察看下面的<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=73633">帖子</a>。</p>
+</li>
+<li><p>我如何播放MP4文件？<br>由于MP4的互用性这一巨大优势及开源标准（授权免费！）这些特性，现在已有众多工具可以在不同系统包括Mac, Linux, PocketPC当然还有windows中支持MP4。</p>
+</li>
+<li><p>如果你想用基于dshow的播放器（例如<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/guliverkli/">media player classic</a>, <a target="_blank" rel="noopener" href="http://www.bsplayer.org/">bsplayer</a>, <a target="_blank" rel="noopener" href="http://www.inmatrix.com/zplayer/">zoomplayer</a>或者蹩脚的windows media player）来回放任何此类的媒体文件，首先你需要用到下面两个东西：</p>
+</li>
+</ol>
+<p>– 一个分离滤镜(splitter/parser filter)：它能够在回放时将容器中包含的数据流（音频流、视频流、字幕流）分离开。<br>– 一个解码滤镜(decode filter)：它（例如：ffdshow, 3ivx, CoreAAC）能够将编码的数据流解码。<br>顺便说一下，我们在播放AVI时不需要安装分离滤镜的唯一原因是windows系统已经默认安装了这个东西。</p>
+<p>这里有一些组件包，包含了这些滤镜：<br>– <a target="_blank" rel="noopener" href="http://sourceforge.net/projects/guliverkli/">Gabest’s MP4 Splitter</a>支持AAC, ASP, AVC, MPEG-1/2音频（如MP2/MP3）与视频, 先进TTXT, MP4中的VobSubs和章节, 开源（Gabest的MPC播放器已经内建此滤镜）<br>– <a target="_blank" rel="noopener" href="http://haali.cs.msu.ru/mkv/">Haali’s Media Splitter</a>支持MP4中的AAC, ASP, AVC, MPEG-1/2音频（例：mp2/mp3）和视频，TTXT，vobsubs和章节，并支持地切换音频、视频、字幕，是无限制的，部分开源的，免费的<br>– <a target="_blank" rel="noopener" href="http://www.3ivx.com/download/index.html">3ivx</a>支持MP2, MP3, AAC, ASP, 章节但不支持MP4里的AVC！使用ffdshow或CoreAAC这样的解码器时请确定”allow unsupport decoders” 选项已勾选<br>– <a target="_blank" rel="noopener" href="http://www.elecard.com/download/">Elecard</a>提供了支持AAC, ASP, AVC的MP4 splitter，并附带ASP/AVC解码器<br>– <a target="_blank" rel="noopener" href="http://www.nero.com/">Nero</a>支持AAC, ASP, AVC, vobsubs和章节（Nero7下只限Nero Showtime！Nero6下仅Nero Showtime支持字幕/章节/多音轨！）<br>– <a target="_blank" rel="noopener" href="http://www.hdx4.com/">HDX4</a>支持MP4中的AAC和ASP<br>– <a target="_blank" rel="noopener" href="http://www.envivio.com/products/etv/index.html">EnvivioTV</a> 支持MP4中的高级内容/BIFS（<a target="_blank" rel="noopener" href="http://www.envivio.com/products/etv/content/applications.jsp">样本</a>）, AAC, ASP和AVC<br>– <a target="_blank" rel="noopener" href="http://www.elecard.com/download/">Moonlight</a>提供了支持MP3, AAC, ASP, AVC的MP4 splitter，并附带ASP/AVC解码器<br>– Dicas的<a target="_blank" rel="noopener" href="http://www.mpegable.com/showPage.php?SITE=mpegable&PAGE=download">mpegable</a>，支持RTP(Real-Time Transport Protocol/实时传输协议)流媒体，AAC, ASP和AMR（.3gp音频）的解码<br>– Ligos的<a target="_blank" rel="noopener" href="http://www.ligos.com/lsx_mpeg_player.htm">LSX-MPEG</a>，仅支持Simple Profile视频，30天预览版本</p>
+<ol start="2">
+<li>如果你不能/不想使用基于windows dshow的播放器，你也可以使用下列的播放器来播放MP4：</li>
+</ol>
+<p>– Apple的<a target="_blank" rel="noopener" href="http://www.apple.com/quicktime/">Quicktime</a>，广泛使用，支持MPEG-4 SP, AVC和AAC<br>– Realnetworks的<a target="_blank" rel="noopener" href="http://www.real.com/player/">RealPlayer10</a>，支持MPEG-4 SP + b桢（仅plus版本）和AAC<br>– <a target="_blank" rel="noopener" href="http://gpac.sourceforge.net/">GPAC</a>的Osmo4，开源（GPL），支持BIFS（字幕，用户互动，类dvd目录…）和TTXT<br>– <a target="_blank" rel="noopener" href="http://www.mplayerhq.hu/">MPlayer</a>，开源（GPL），支持ASP和AVC，支持众多系统，象Win, Linux, Mac OS…</p>
+<p>– <a target="_blank" rel="noopener" href="http://www.videolan.org/vlc/">Videolan</a>，开源（GPL），支持ASP和AVC，多系统支持<br>– <a target="_blank" rel="noopener" href="http://mpeg4ip.sourceforge.net/">MPEG4IP</a>的WMP4Player，开源（LGPL(Lesser General Public<br>License/GNU较宽松公共许可证)/MPL(Mozilla Public License)），支持ASP和AVC<br>– <a target="_blank" rel="noopener" href="http://xinehq.de/index.php/releases">xine</a>，开源（GPL），多系统支持<br>– <a target="_blank" rel="noopener" href="http://tcpmp.corecodec.org/">TCPMP</a>，用于PalmOS/WindowsCE<br>– Philips的<a target="_blank" rel="noopener" href="http://www.rarewares.org/mp4.html">Platform4 Player</a>支持PocketPC<br>– <a target="_blank" rel="noopener" href="http://www.comelec.enst.fr/osmo4/">ENST</a>的Osmo4（基于参考源），支持高级内容/BIFS<br>– IBM的M4Play含<a target="_blank" rel="noopener" href="http://www.alphaworks.ibm.com/tech/tk4mpeg4/">Toolkit for MPEG-4</a>，基于Java，支持高级内容/BIFS</p>
+<ol start="3">
+<li>硬件/独立播放器：由于最流行的MPEG-4 ASP执行者（DivX5/XviD）经常被放入AVI中，那也成为了现在播放器最广泛支持的格式。同样是nero的那些家伙，也是为了满足消费者日益增长的需求，他们尝试将MP4容器格式能够被硬件播放器支持，并逐步取得了成功：<br>支持MP4的硬件播放器如下：</li>
+</ol>
+<p>– <a target="_blank" rel="noopener" href="http://avayon.com/">Avayon</a>的DXP-1000支持MP4的AAC, ASP, VobSubs和章节<br>– <a target="_blank" rel="noopener" href="http://www.elta.de/">elta</a>的8815 MP4支持MP4的AAC, ASP, VobSubs和章节<br>– <a target="_blank" rel="noopener" href="http://www.gowellent.net/">Gowell</a>的AS 602支持MP4的AAC, ASP, VobSubs和章节<br>– <a target="_blank" rel="noopener" href="http://www.kiss-technology.com/">Kiss</a>的DP-558支持AAC, ASP（不支持QPel(Quarter-Pixel/1/4象素预测)/GMC(Global Motion Compensation/全局动态补偿)），支持VobSubs和章节（Sigma Designs EM8560）<br>– <a target="_blank" rel="noopener" href="http://www.packardbell.de/">Packard Bell</a>的DVD-DivX 450 pro支持MP4的AAC, ASP, VobSubs和章节<br>– <a target="_blank" rel="noopener" href="http://www.philips.com/">Philips</a>的DVP630/632/642播放器支持MP4的ASP（不支持QPel/1WP GMC）, MP3（非AAC）（ESS Vibratto-II）<br>– <a target="_blank" rel="noopener" href="http://www.rjtech.net/rj1500ii.html">RJTech</a>的RJ 1500DVX II支持MP4的AAC（5.1）, MP3, ASP (QPel/1WP GMC/CQM), VobSubs, 章节（ESS Vibratto-II）<br>– <a target="_blank" rel="noopener" href="http://www.siemssen-resale.de/">Siemssen</a>的SCO 5000ND支持MP4的AAC（不支持MP3/MP2），ASP (QPel/1WP GMC), VobSubs, 章节（Zoran Vaddis 776）。<br>– <a target="_blank" rel="noopener" href="http://www.targa.de/">Targa</a>的DR-5200x支持MP4的AAC, ASP, VobSubs和章节<br>– Tevion DR 2004，支持MP4的AAC, ASP (QPel/1WP GMC?)和VobSubs。<br>– Tevion DVD-4000，最新的固件(firmware)支持MP4的ASP（不支持QPel/1WP GMC？）和MP3（非AAC）（ESS Vibratto-II）<br>– <a target="_blank" rel="noopener" href="http://www.xoro.de/">Xoro</a>的HSD 415/310播放器支持MP4的AAC, ASP（不支持QPel/1WP GMC？）, VobSubs, 章节（ESS Vibratto-II）。<br>– M$的<a target="_blank" rel="noopener" href="http://www.xbox.com/">Xbox</a>的<a target="_blank" rel="noopener" href="http://www.xboxmediacenter.com/">Xbox Media Center</a>支持MP4的MP2, MP3, AAC和AVC。<br>– Sony的Playstation Portable（PSP）支持MP4的AAC, SP和AVC，保存在记忆棒(Memory Stick)中<br>– Apple的<a target="_blank" rel="noopener" href="http://www.apple.com/ipod/">iPod</a>支持MP4的AAC，iPod video还支持AVC<br>– Sigma Designs的<a target="_blank" rel="noopener" href="http://www.sigmadesigns.com/products/xcard.htm">Xcard</a>支持在PC上硬体解码MPEG-4包括MP4容器</p>
+<ol start="13">
+<li>如何直播/收看实时（live-）的MP4流媒体？<br>Apple和MPEG4IP提供了不错的、免费的工具以将MP4流媒体化：<br>想要做流媒体服务器，你可以使用<a target="_blank" rel="noopener" href="http://developer.apple.com/darwin/projects/streaming/">Apple’s Darwin Streaming Server</a>，这是<a target="_blank" rel="noopener" href="http://www.everwicked.com/content/MPEG4IP_Guide/mpeg4ip-07.php">everwiked</a>与<a target="_blank" rel="noopener" href="http://www.linuxjournal.com/article.php?sid=6720&mode=thread&order=0">linuxjornal</a>里提供的操作指南。<br>要直播流媒体你可以使用MPEG4IP的mp4live（仅Linux支持），这是<a target="_blank" rel="noopener" href="http://www.everwicked.com/content/MPEG4IP_Guide/mpeg4ip-08.php">everwiked</a>及<a target="_blank" rel="noopener" href="http://mpeg4ip.sourceforge.net/documentation/index.php?readme=mp4live">MPEG4IP</a>的指南；在Windows系统中，你可以使用<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/mpeg-recorder/">MPEGRecorder</a>（看上去像mp4live的一个端口）。<br>同样，你可以看一下<a target="_blank" rel="noopener" href="http://vitooki.sourceforge.net/">ViTooKi</a>的工具包（开源的流媒体服务器、播放器和其他相关工具）。<br>另一个免费、开源的mp4流媒体服务器是<a target="_blank" rel="noopener" href="http://www.catrasoftware.it/Streaming/CatraStreamingPlatform.htm">Cata</a>提供的。<br>如果是MAC系统，你可以看一下<a target="_blank" rel="noopener" href="http://www.channelstorm.com/Download.html">Live Channel</a>。</li>
+</ol>
+<p>要播放广播/直播式的流媒体，你可以用Apple的<a target="_blank" rel="noopener" href="http://www.apple.com/quicktime/download/">Quicktime</a>, Real的<a target="_blank" rel="noopener" href="http://www.real.com/player/">RealPlayer 10</a>, MPEG4IP的<a target="_blank" rel="noopener" href="http://es.geocities.com/dextstuff">WMP4Player</a>, Dica的<a target="_blank" rel="noopener" href="http://www.mpegable.com/showPage.php?SITE=mpegable&PAGE=download">mpegable</a>和<a target="_blank" rel="noopener" href="http://www.envivio.com/products/etv/index.html">EnvivioTV</a>（都运作在dshow播放器下）和GPAC的<a target="_blank" rel="noopener" href="http://www.rarewares.org/mp4.html">Osmo4</a>（最后两个也可以支持高级内容/用户互动）（Envivio的<a target="_blank" rel="noopener" href="http://www.envivio.com/products/etv/content/applications.jsp">互动演示</a>）。<br>通过MediaFrame（<a target="_blank" rel="noopener" href="http://mediaframe.org/showcase/">演示</a>）和IBM（<a target="_blank" rel="noopener" href="http://www.envivio.com/products/etv/content/applications.jsp">互动演示</a>）的java applets你也可以在不支持安装播放器情况下来播放流媒体的MP4。</p>
+<p>流媒体样本：<a target="_blank" rel="noopener" href="http://gpac.sourceforge.net/auth_files.php">1</a> <a target="_blank" rel="noopener" href="http://www.envivio.com/products/etv/content/applications.jsp">2</a></p>
+<ol start="14">
+<li><p>那里可以找到mp4码率计算工具？为什么由源AVI制作得到的MP4文件体积要比源AVI文件体积小一点？<br>MP4需要的overhead的容量远小于AVI容器（特别是VBR-mp3音轨）。勿需质疑，与AVI容器相反，MP4容器就是为MPEG-4视频和MP3设计的。<br>这里有一个计算式，你可以这样说：AVI中的视频流文件体积=最终输出的含视频音频的MP4文件体积（像700MB） - MP4的音频体积 + 3MB。<br>3ivx在它的<a target="_blank" rel="noopener" href="http://www.3ivx.com/support/calculator/index.html">主页</a>上也提供了一个MP4码率计算工具，但它看上去不是十分精确。</p>
+</li>
+<li><p>MP4支持CRC(Cyclic Redundancy Check)/循环冗余码校验)/EDC(Error Detection Code/错误校验)或ECC(Error Correction Code/自纠错)吗？<br>不支持。MP4容器本身，乃至MPEG-4标准都不希望支持码流中的错误检测/纠正(Error Detection/Correction)（它们该用在该用的地方）。<br>点击<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=65646">这里</a>，了解更多有关MPEG-4码流中的差错恢复(Error Resilience)。</p>
+</li>
+<li><p>有没有可能得知一个MP4文件是用何种编码创建的？<br>是的。对于MPEG-4 ASP的视频流和MP3音频流（现在还没有一个真正的方法来确认是否用了AAC音频编码）来说，是可以的。<br>点击<a target="_blank" rel="noopener" href="http://forum.doom9.org/showthread.php?s=&threadid=78038">这里</a>，了解更多。</p>
+</li>
+<li><p>MP4是MP3的继承者吗？<br>是，也不是。说它不是，因为MP3是一种特别的音频格式，而MP4是一种容器格式并非是音频编码。说它是的，因为MP4是MPEG-4标准的一部分，MPEG-4标准是MPEG-1/2的继承者，而mp3亦是它的一部分。<br>MPEG-4还包括AAC，一种比MP3更好的音频编码，也被用于MP4中。</p>
+</li>
+<li><p>MP4和MOV/3GP是一样的吗？<br>Apple的MOV容器格式确实与MP4的出发点相同（主要在moov atom方面），但它们之间还是有不少区别的。<br>从另一方面来说，MP4的出发点是3GP格式（通常用于手机中）的开发。3GP格式普遍用于MP4中，就像用于MOV中一样。然而，这仍是另一种格式。</p>
+</li>
+<li><p>我还想了解更多关于MP4！在哪里能够找到更多信息？<br>在网络上有不少此类的信息：<br>MP4的说明文件可在<a target="_blank" rel="noopener" href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c041828_ISO_IEC_14496-12_2005%28E%29.zip">这里</a>找到。MPEG-4系统标准的草案可在<a target="_blank" rel="noopener" href="http://le-hacker.org/hacks/mpeg-drafts/is144961cd.pdf">这里</a>找到。<br>有一些关于MP4的文档：<a target="_blank" rel="noopener" href="http://www.geocities.com/xhelmboyx/quicktime/formats/mp4-layout.txt">1</a> <a target="_blank" rel="noopener" href="http://mediaxw.sourceforge.net/files/doc/MPEG%204%20System.pdf">2</a> <a target="_blank" rel="noopener" href="http://www.mp4ra.org/atoms.html">3</a>。<br><a target="_blank" rel="noopener" href="http://www.mpegif.org/">MPEG Industry Forum</a>或<a target="_blank" rel="noopener" href="http://www.chiariglione.org/mpeg/index.htm">Motion Picture Experts Group（MPEG）</a>的主页上也有许多信息。<br>关于<a target="_blank" rel="noopener" href="http://www.m4if.org/resources/mpeg4userfaq.php">MPEG-4标准</a>和<a target="_blank" rel="noopener" href="http://www.chiariglione.org/mpeg/faq/mp4-sys/mp4-sys.htm">MPEG-4系统</a>（非常有技术价值）的FAQs是很有用的。<br>另外可以在<a target="_blank" rel="noopener" href="http://www.audiocoding.com/wiki/index.php?page=MP4">audiocoding wiki</a>找到许多信息（也有许多关于<a target="_blank" rel="noopener" href="http://www.audiocoding.com/modules/wiki/?page=AAC">AAC</a>的信息）。<br>关于<a target="_blank" rel="noopener" href="http://mpeg4ip.sourceforge.net/docs/">MP4的创建</a>, <a target="_blank" rel="noopener" href="http://mpeg4ip.sourceforge.net/documentation/index.php">编译成果</a>MPEG4IP有不少指南，同样他们的<a target="_blank" rel="noopener" href="http://cvs.sourceforge.net/viewcvs.py/*checkout*/mpeg4ip/mpeg4ip/doc/">CVS服务器</a>和<a target="_blank" rel="noopener" href="http://www.everwicked.com/content/MPEG4IP_Guide/">everwicked.com</a>上也有指南。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://vball.fun/2016/09/22/z_csdn_066_52626641/" title="Mp4编码全介绍" target="_blank" rel="external">http://vball.fun/2016/09/22/z_csdn_066_52626641/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/godvmxi" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar2.jpeg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/godvmxi" target="_blank"><span class="text-dark">Ball Virtual</span><small class="ml-1x">kernel &amp; ASIC &amp; Software Engineer</small></a></h3>
+        <div>关于程序与设计 | kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2016/10/08/z_csdn_069_52759752/" title="C++11下编译错误 ISO C++ forbids declaration of ‘typeof’ with no type"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2015/09/24/z_csdn_053_48713829/" title="openstack 安装踏过的坑"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Bright Jiang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>
+            <a href="https://tongji.baidu.com/web/welcome/login" target="_blank"> ab </a>
+            <a href="#" target="_blank"> ag </a>
+            <a href="#" target="_blank"> at </a>
+        </div>
+    </div>
+</footer> 
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+    <script defer>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://vball.fun/2016/09/22/z_csdn_066_52626641/';
+        
+        this.page.identifier = 'z_csdn_066_52626641';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'godvmxi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-DJEQFK7JNT', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?15c7b71acf728ce4c58fc512ce15c088";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【转】 STM32的can总线实验心得 | Ball Virtual&#39; Blog</title>
+  <meta name="description" content="【转】 STM32的can总线实验心得2011年04月13日 星期三 下午 02:29转载自 分享最终编辑 2245106(一) 工业现场总线 CAN 的基本介绍以及 STM32 的 CAN 模块简介首先通读手册中关于CAN的文档，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】 STM32的can总线实验心得">
+<meta property="og:url" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/index.html">
+<meta property="og:site_name" content="Godvmxi Blog">
+<meta property="og:description" content="【转】 STM32的can总线实验心得2011年04月13日 星期三 下午 02:29转载自 分享最终编辑 2245106(一) 工业现场总线 CAN 的基本介绍以及 STM32 的 CAN 模块简介首先通读手册中关于CAN的文档，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/6a76b6dc2bda2ae4cc116608.jpg">
+<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/385a3c8bb9ca2957c9fc7a08.jpg">
+<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/3db78dcec1266c4693457e08.jpg">
+<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/25e942f498775baa7709d708.jpg">
+<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/2174c994ac19ed5bd31b7008.jpg">
+<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/5189331ed8c09eb11ad57608.jpg">
+<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/ee9ee36ed31fc19f80cb4a08.jpg">
+<meta property="article:published_time" content="2011-04-12T20:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-08T07:37:41.440Z">
+<meta property="article:author" content="Bright Jiang">
+<meta property="article:tag" content="CSDN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/6a76b6dc2bda2ae4cc116608.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://vball.fun/2011/04/12/z_csdn_001_6773192/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Godvmxi Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+  
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-blue# 主题颜色 theme-black theme-blue theme-green theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/godvmxi" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar2.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Ball Virtual</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">kernel &amp; ASIC &amp; Software Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gnu/">gnu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/hexo/">hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1984/" rel="tag">1984</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/7yuv/" rel="tag">7yuv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSDN/" rel="tag">CSDN</a><span class="tag-list-count">75</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFMPEG/" rel="tag">FFMPEG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Font/" rel="tag">Font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Freetype/" rel="tag">Freetype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H264/" rel="tag">H264</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Opencv/" rel="tag">Opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt4/" rel="tag">Qt4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Samba/" rel="tag">Samba</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shit/" rel="tag">Shit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Snap/" rel="tag">Snap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YUV/" rel="tag">YUV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnu/" rel="tag">gnu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mermaid/" rel="tag">mermaid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinyin/" rel="tag">pinyin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pynput/" rel="tag">pynput</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/" rel="tag">stl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/toneoz/" rel="tag">toneoz</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/1984/" style="font-size: 13px;">1984</a> <a href="/tags/7yuv/" style="font-size: 13px;">7yuv</a> <a href="/tags/CSDN/" style="font-size: 14px;">CSDN</a> <a href="/tags/FFMPEG/" style="font-size: 13px;">FFMPEG</a> <a href="/tags/Font/" style="font-size: 13px;">Font</a> <a href="/tags/Freetype/" style="font-size: 13px;">Freetype</a> <a href="/tags/H264/" style="font-size: 13px;">H264</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Opencv/" style="font-size: 13px;">Opencv</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Qt4/" style="font-size: 13px;">Qt4</a> <a href="/tags/Samba/" style="font-size: 13px;">Samba</a> <a href="/tags/Shit/" style="font-size: 13px;">Shit</a> <a href="/tags/Snap/" style="font-size: 13px;">Snap</a> <a href="/tags/Ubuntu/" style="font-size: 13px;">Ubuntu</a> <a href="/tags/YUV/" style="font-size: 13px;">YUV</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/game/" style="font-size: 13px;">game</a> <a href="/tags/gdb/" style="font-size: 13px;">gdb</a> <a href="/tags/gnu/" style="font-size: 13px;">gnu</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mermaid/" style="font-size: 13px;">mermaid</a> <a href="/tags/pinyin/" style="font-size: 13px;">pinyin</a> <a href="/tags/pynput/" style="font-size: 13px;">pynput</a> <a href="/tags/stl/" style="font-size: 13px;">stl</a> <a href="/tags/toneoz/" style="font-size: 13px;">toneoz</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/07/pynput-stop-echo-in-bash/" class="title">pynput stop key echo in bash</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-07T09:16:18.000Z" itemprop="datePublished">2021-12-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/23/build-7yuv-snap-package/" class="title">build 7yuv snap package, run 7yuv in no-qt4 system</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-23T07:00:53.000Z" itemprop="datePublished">2021-11-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/add-watermarker-to-h264-tool/" class="title">add watermarker to bitstream tool</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:58:29.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/ffmpeg-generate-yuv-format/" class="title">generate different yuv in different formats</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:44:02.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/02/toneoz/" class="title">Zhuyin Pinyin 拼音注音編輯器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-02T08:37:22.000Z" itemprop="datePublished">2021-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-z_csdn_001_6773192" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【转】 STM32的can总线实验心得
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2011/04/12/z_csdn_001_6773192/" class="article-date">
+	  <time datetime="2011-04-12T20:00:00.000Z" itemprop="datePublished">2011-04-13</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/CSDN/" rel="tag">CSDN</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2011/04/12/z_csdn_001_6773192/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>**(一) 工业现场总线 CAN 的基本介绍以及 STM32 的 CAN 模块简介<br>**<br>首先通读手册中关于CAN的文档，必须精读。<br>STM32F10xxx 参考手册Rev7V3.pdf<br><a target="_blank" rel="noopener" href="http://www.mystm32.com/bbs/redirect.php?tid=255&goto=lastpost#lastpost">http://www.mystm32.com/bbs/redirect.php?tid=255&amp;goto=lastpost#lastpost</a></p>
+<p>需要精读的部分为 RCC 和 CAN 两个章节。<br>为什么需要精读 RCC 呢？因为我们将学习 CAN 的波特率的设置，将要使用到 RCC 部分的设置，因此推荐大家先复习下这部分中的几个时钟。</p>
+<p>关于 STM32 的 can 总线简单介绍<br>bxCAN 是基本扩展 CAN (Basic Extended CAN) 的缩写，它支持 CAN 协议 2.0A 和 2.0B 。它的设计目标是，以最小的 CPU 负荷来高效处理大量收到的报文。它也支持报文发送的优先级要求（优先级特性可软件配置）。<br>对于安全紧要的应用，bxCAN 提供所有支持时间触发通信模式所需的硬件功能。</p>
+<p>**主要特点<br>**· 支持 CAN 协议 2.0A 和 2.0B 主动模式<br>· 波特率最高可达 1 兆位 / 秒<br>· 支持时间触发通信功能</p>
+<p>**发送<br>**· 3 个发送邮箱<br>· 发送报文的优先级特性可软件配置<br>· 记录发送 SOF 时刻的时间戳</p>
+<p>**接收<br>**· 3 级深度的2个接收 FIFO<br>· 14 个位宽可变的过滤器组 － 由整个 CAN 共享<br>· 标识符列表<br>· FIFO 溢出处理方式可配置<br>· 记录接收 SOF 时刻的时间戳</p>
+<p>**可支持时间触发通信模式<br>**· 禁止自动重传模式<br>· 16 位自由运行定时器<br>· 定时器分辨率可配置<br>· 可在最后 2 个数据字节发送时间戳</p>
+<p>**管理<br>**· 中断可屏蔽<br>· 邮箱占用单独 1 块地址空间，便于提高软件效率</p>
+<p><strong>(二) STM32 CAN 模块工作模式<br><br>STM32 的 can 的工作模式分为:</strong><br>/* CAN operating mode <em>/<br>#define CAN_Mode_Normal ((u8)0x00) /</em> normal mode <em>/<br>#define CAN_Mode_LoopBack ((u8)0x01) /</em> loopback mode <em>/<br>#define CAN_Mode_Silent ((u8)0x02) /</em> silent mode <em>/<br>#define CAN_Mode_Silent_LoopBack ((u8)0x03) /</em> loopback combined with silent mode */</p>
+<p>在此章我们的 Mini-STM32 教程中我们将使用到 <strong>CAN_Mode_LoopBack</strong> 和 <strong>CAN_Mode_Normal</strong> 两种模式。<br>我们第一步做的就是使用运行在 CAN_Mode_LoopBack 下进行自测试。</p>
+<p>在参考手册中 CAN_Mode_LoopBack (环回模式) 的定义如下:<br>环回模式可用于自测试。为了避免外部的影响，在环回模式下 CAN 内核忽略确认错误 (在数据 / 远程帧的确认位时刻，不检测是否有显性位) 。在环回模式下，bxCAN 在内部把 Tx 输出回馈到 Rx 输入上，而完全忽略 CANRX 引脚的实际状态。发送的报文可以在 CANTX 引脚上检测到。<br>因此这种模式也特别适合大家做好硬件后自测程序。</p>
+<p><img src="6a76b6dc2bda2ae4cc116608.jpg"></p>
+<p>**(三) CAN 接口端口映射<br>**</p>
+<p>STM32 中的 CAN 物理引脚脚位可以设置成三种：</p>
+<p><strong>默认模式，重定义地址1模式，重定义地址2模式</strong></p>
+<p>。</p>
+<p><img src="385a3c8bb9ca2957c9fc7a08.jpg"></p>
+<p>在我们的 Mini-STM32 上面没有接出 CAN 的接口芯片, 所以我们可以利用</p>
+<p>RealView MDK</p>
+<p>的 CAN 软件</p>
+<p>模拟</p>
+<p>模块来做实验.</p>
+<hr>
+<p><strong>默认模式</strong></p>
+<p>/* Configure CAN pin: RX */</p>
+<p>GPIO</p>
+<p>_InitStructure.GPIO_Pin = GPIO_Pin_11;</p>
+<p>GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
+<p>GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</p>
+<p>GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</p>
+<p>/* Configure CAN pin: TX */</p>
+<p>GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;</p>
+<p>GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
+<p>GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</p>
+<p>GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</p>
+<hr>
+<p><strong>重定义地址1模式</strong></p>
+<p>/* Configure CAN pin: RX */</p>
+<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;</p>
+<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
+<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</p>
+<p>//GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</p>
+<p>/* Configure CAN pin: TX */</p>
+<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;</p>
+<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
+<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</p>
+<p>//GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</p>
+<p>/* Configure CAN Remap 重影射 */</p>
+<p>//GPIO_PinRemapConfig(GPIO_Remap1_CAN, ENABLE);</p>
+<hr>
+<p>**重定义地址2模式<br>**</p>
+<p>/* Configure CAN pin: RX */</p>
+<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;</p>
+<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
+<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</p>
+<p>//GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</p>
+<p>/* Configure CAN pin: TX */</p>
+<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;</p>
+<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
+<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</p>
+<p>//GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</p>
+<p>/* Configure CAN Remap 重影射 */</p>
+<p>//GPIO_PinRemapConfig(GPIO_Remap2_CAN, ENABLE);</p>
+<hr>
+<p><strong>设置完 CAN 的引脚之后还需要打开 CAN 的时钟：</strong></p>
+<p>/* CAN Periph clock enable */</p>
+<p>RCC_APB1PeriphClockCmd(RCC_APB1Periph_CAN, ENABLE);</p>
+<p>**(四) CAN 波特率设置<br>**</p>
+<p>4、我们需要搞明白CAN波特率的设置，这个章节也是使用CAN的最重要的部分之一，因为这实际应用中我们需要根据我们实际的场合来选择 CAN 的波特率。</p>
+<p>一般情况下面1M bps 的速率下可以最高可靠传输 40 米以内的距离。</p>
+<p>在 50K 以下的波特率中一般可以可靠传输数公里远。</p>
+<p>对于波特率的设置需要详细学习参考手册对应部分的解释。我们在调试软件的时候可以使用示波器来测试 CANTX 引脚上的波形的波特率，这样可以得到事半功倍的效果，大大的缩短调试学习的时间。</p>
+<p>// ***************************************************************</p>
+<p>// BaudRate = 1 / NominalBitTime</p>
+<p>// NominalBitTime = 1tq + tBS1 + tBS2</p>
+<p>// tq = (BRP[9:0] + 1) x tPCLK</p>
+<p>// tPCLK = CAN’s clock = APB1’s clock</p>
+<p>// ****************************************************************</p>
+<p>也就是BaudRate = APB1 / ((BS1 + BS2 + 1) * Prescaler)</p>
+<p>这里注意的是采用点的位置,也就时BS1,BS2的设置问题，这里我也找了一些资料，抄录下来给大家,是 CANopen 协议中推荐的设置。</p>
+<p>1Mbps 速率下，采用点的位置在6tq位置处，BS1=5, BS2=2</p>
+<p>500kbps 速率下，采用点的位置在8tq位置处，BS1=7, BS2=3</p>
+<p>250kbps 速率下，采用点的位置在14tq位置处，BS1=13, BS2=2</p>
+<p>125k, 100k, 50k, 20k, 10k 的采用点位置与 250K 相同。</p>
+<p>因此我们需要重视的有软件中的这么几个部分：</p>
+<p>// 设置 AHB 时钟（HCLK）</p>
+<p>// RCC_SYSCLK_Div1 AHB 时钟 = 系统时钟</p>
+<p>RCC_HCLKConfig(RCC_SYSCLK_Div8);</p>
+<p>// 设置低速 AHB 时钟（PCLK1）</p>
+<p>// RCC_HCLK_Div2 APB1 时钟 = HCLK / 2</p>
+<p>RCC_PCLK1Config(RCC_HCLK_Div2);</p>
+<p>// PLLCLK = 8MHz * 8 = 64 MHz</p>
+<p>// 设置 PLL 时钟源及倍频系数</p>
+<p>RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_8);</p>
+<p>CAN 波特率设置中需要的就是PCLK1 的时钟。</p>
+<p>CAN_InitStructure.CAN_Mode=CAN_Mode_LoopBack;</p>
+<p>CAN_InitStructure.CAN_SJW=CAN_SJW_1tq;</p>
+<p>CAN_InitStructure.CAN_BS1=CAN_BS1_8tq;</p>
+<p>CAN_InitStructure.CAN_BS2=CAN_BS2_7tq;</p>
+<p>CAN_InitStructure.CAN_Prescaler=5;</p>
+<p>通过上面部分的时钟设置我们已经可以算出我们的波特率了</p>
+<p>CAN_bps = PCLK1 / ((1 + 7 + 8) * 5) = 25K bps</p>
+<p>大家也可以实际测试中修改时钟值来通过示波器测试我们需要的波特率是否正确例如将PLLCLK 设置降低一半：</p>
+<p>// PLLCLK = 8MHz * 4 = 32 MHz</p>
+<p>// 设置 PLL 时钟源及倍频系数</p>
+<p>RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_4);</p>
+<p>那么我们得到的CAN_bps也会降低一半。</p>
+<p>接下来还可以修改 HCLK 和 PCLK1 ，其实最终这几个分频和倍频值最终影响的都是 PCLK1。</p>
+<p>通过几次试验，相信大家应该很容易掌握波特率的设置了。</p>
+<p>设置完波特率我们直接测试函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* CAN transmit at 100Kb/s and receive by polling in loopback mode*/</span></span><br><span class="line"></span><br><span class="line">TestRx = CAN_Polling();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (TestRx == FAILED)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn on led connected to PA.00 pin (LD1) */</span></span><br><span class="line"></span><br><span class="line">GPIO_SetBits(GPIOA, GPIO_Pin_0);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn off led connected to PA.00 pin (LD1) */</span></span><br><span class="line"></span><br><span class="line">GPIO_ResetBits(GPIOA, GPIO_Pin_0);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* CAN transmit at 500Kb/s and receive by interrupt in loopback mode*/</span></span><br><span class="line"></span><br><span class="line">TestRx = CAN_Interrupt();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (TestRx == FAILED)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn on led connected to PA.01 pin (LD2) */</span></span><br><span class="line"></span><br><span class="line">GPIO_SetBits(GPIOA, GPIO_Pin_1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn off led connected to PA.01 pin (LD2) */</span></span><br><span class="line"></span><br><span class="line">GPIO_ResetBits(GPIOA, GPIO_Pin_1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将<strong>CAN 软件仿真模拟器</strong>调用出来.</p>
+<p><img src="3db78dcec1266c4693457e08.jpg"></p>
+<p>大家可以仿真程序，当程序中 Test 等于 Passed 那么说明 Loopback 模式测试通过了。</p>
+<p>并且在 CAN 通讯框中我们可以看到发送和接收到的数据:</p>
+<p><img src="25e942f498775baa7709d708.jpg"></p>
+<p><strong>回循模式下的源代码, 基于 MDK3.5:</strong><br><img src="2174c994ac19ed5bd31b7008.jpg"></p>
+<p>(493.79 KB)</p>
+<p>到此时说明如果大家只有一块CAN模块的时候学习可以告一个段落了，不过这个并不代表大家就已经掌握了 CAN 了，正真要掌握它，大家还是需要看大量的 CAN 部分的资料，参考手册部分的也是不够的，市面上有几本专门介绍现场总线和CAN总线的书，推荐大家买来经常翻翻看看，这样到需要实际应用的时候才可以做到 如鱼得水。</p>
+<p>**(五) 正常模式<br>**</p>
+<p>完成了 loopback 模式的测试之后接下来我们需要学习的就是多机通讯了，当然由于我们的 Mini-STM32 没有将 CAN 接口引出来, 所以我们没有办法在板子上面做这部分的试验了，只能在 RealView MDK 的软件中进行模拟。</p>
+<p>如果您拥有两块带 CAN 硬件的 STM32 的板子，您需要自己构建硬件的物理层的连接, 使用三根线将 CANH,CANL,GND 三根线直连，当然你要接好终端电阻才能保证通讯的正常通讯，当两块板子都跳好后我们使用万用表测量下 CANH和CANL之间的电阻是否为 60 欧姆。多块板子多机通讯的是否你只需要在总线的主机端和最后一端接上终端电阻就可以了.</p>
+<p><img src="5189331ed8c09eb11ad57608.jpg"></p>
+<p>在初始化完成后，软件应该让硬件进入正常模式，以便正常接收和发送报文。软件可以通过对 CAN_MCR 寄存器的INRQ位清 ‘0’，来请求从初始化模式进入正常模式，然后要等待硬件对 CAN_MSR 寄存器的 INAK 位置 ‘1’ 的确认。在跟 CAN 总线取得同步，即在 CANRX 引脚上监测到 11 个连续的隐性位 (等效于总线空闲) 后，bxCAN 才能正常接收和发送报文。</p>
+<p>不需要在初始化模式下进行过滤器初值的设置，但必须在它处在非激活状态下完成 (相应的 FACT 位为 ‘0’ ) 。而过滤器的位宽和模式的设置，则必须在初始化模式中进入正常模式前完成。</p>
+<p>准备工作做完我们需要设置 CAN 通讯部份软件。</p>
+<p>我们把 TestStatus CAN_Polling(void) 函数和 TestStatus CAN_Interrupt(void) 函数中的 LoopBack 模式修改为 Normal 模式.</p>
+<p>//CAN_InitStructure.CAN_Mode=CAN_Mode_LoopBack;</p>
+<p>CAN_InitStructure.CAN_Mode=CAN_Mode_Normal;</p>
+<p>接下来我们就可以做实验了. 但是由于 RealView MDK 的 CAN 模块没有办法接收, 所以我们只做发送的例子.</p>
+<p>我们的例子中分别发送两帧数据:</p>
+<p><strong>(1) TestStatus CAN_Polling(void) 查询发送</strong></p>
+<p>第一帧数据为: ID 为 0x11, 数据为 8 个字节的一个数据包.</p>
+<p>TxMessage.StdId=0x11;</p>
+<p>TxMessage.RTR=CAN_RTR_DATA;</p>
+<p>TxMessage.IDE=CAN_ID_STD;</p>
+<p>TxMessage.DLC=8;</p>
+<p>TxMessage.Data[0]=0x01;</p>
+<p>TxMessage.Data[1]=0x02;</p>
+<p>TxMessage.Data[2]=0x03;</p>
+<p>TxMessage.Data[3]=0x04;</p>
+<p>TxMessage.Data[4]=0x05;</p>
+<p>TxMessage.Data[5]=0x06;</p>
+<p>TxMessage.Data[6]=0x07;</p>
+<p>TxMessage.Data[7]=0x08;</p>
+<p>**(2) TestStatus CAN_Interrupt(void) 中断发送<br>**</p>
+<p>第二帧数据为:ID 为 0x1234, 数据为 8 个字节的一个数据包.</p>
+<p>TxMessage.StdId=0x12;</p>
+<p>TxMessage.ExtId=0x34;</p>
+<p>TxMessage.IDE=CAN_ID_EXT;</p>
+<p>TxMessage.RTR=CAN_RTR_DATA;</p>
+<p>TxMessage.DLC=8;</p>
+<p>TxMessage.Data[0]=0x11;</p>
+<p>TxMessage.Data[1]=0x22;</p>
+<p>TxMessage.Data[2]=0x33;</p>
+<p>TxMessage.Data[3]=0x44;</p>
+<p>TxMessage.Data[4]=0x55;</p>
+<p>TxMessage.Data[5]=0x66;</p>
+<p>TxMessage.Data[6]=0x77;</p>
+<p>TxMessage.Data[7]=0x88;</p>
+<p>CAN_Transmit(&amp;TxMessage);</p>
+<p>在主函数中初始化之后加上这两句发送函数:</p>
+<p>/* CAN transmit at 100Kb/s and receive by polling in Normal mode*/</p>
+<p>CAN_Polling();</p>
+<p>while(i++ &lt; 1000);</p>
+<p>/* CAN transmit at 500Kb/s and receive by interrupt in Normal mode*/</p>
+<p>CAN_Interrupt();</p>
+<p>程序改完了, 我们需要编译通过后, 点软件仿真.</p>
+<p>将</p>
+<p><strong>CAN 软件仿真模拟器</strong></p>
+<p>调用出来.</p>
+<p>接下来我们全速运行到 while(1) 就可以看到结果了.</p>
+<p><img src="ee9ee36ed31fc19f80cb4a08.jpg"></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://vball.fun/2011/04/12/z_csdn_001_6773192/" title="【转】 STM32的can总线实验心得" target="_blank" rel="external">http://vball.fun/2011/04/12/z_csdn_001_6773192/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/godvmxi" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar2.jpeg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/godvmxi" target="_blank"><span class="text-dark">Ball Virtual</span><small class="ml-1x">kernel &amp; ASIC &amp; Software Engineer</small></a></h3>
+        <div>关于程序与设计 | kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2011/04/30/z_csdn_011_6371660/" title="c++库介绍"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2011/01/19/z_csdn_015_6153267/" title="java学习书籍"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Bright Jiang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>
+            <a href="https://tongji.baidu.com/web/welcome/login" target="_blank"> ab </a>
+            <a href="#" target="_blank"> ag </a>
+            <a href="#" target="_blank"> at </a>
+        </div>
+    </div>
+</footer> 
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+    <script defer>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://vball.fun/2011/04/12/z_csdn_001_6773192/';
+        
+        this.page.identifier = 'z_csdn_001_6773192';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'godvmxi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-DJEQFK7JNT', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?15c7b71acf728ce4c58fc512ce15c088";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

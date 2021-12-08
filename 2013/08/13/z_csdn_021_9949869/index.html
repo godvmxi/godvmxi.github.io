@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>VIM插件大全，另外附VIM IDE 一键安装包 | Ball Virtual&#39; Blog</title>
+  <meta name="description" content="使用vim开发软件是每一个linux工作人员的梦想，这里转载了常用的vim插件，另外我也把的的vim ide的配置文件共享一下了，放在github上了，使用其中install脚本可以安装到当前用户的根目录，F6，F7启动两边的文件浏览和代码块分析，ctrl+w+方向，切换窗口https:&#x2F;&#x2F;github.com&#x2F;godvmxi&#x2F;tools附截图一张吧：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VIM插件大全，另外附VIM IDE 一键安装包">
+<meta property="og:url" content="http://vball.fun/2013/08/13/z_csdn_021_9949869/index.html">
+<meta property="og:site_name" content="Godvmxi Blog">
+<meta property="og:description" content="使用vim开发软件是每一个linux工作人员的梦想，这里转载了常用的vim插件，另外我也把的的vim ide的配置文件共享一下了，放在github上了，使用其中install脚本可以安装到当前用户的根目录，F6，F7启动两边的文件浏览和代码块分析，ctrl+w+方向，切换窗口https:&#x2F;&#x2F;github.com&#x2F;godvmxi&#x2F;tools附截图一张吧：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://vball.fun/2013/08/13/z_csdn_021_9949869/Center">
+<meta property="article:published_time" content="2013-08-13T00:11:00.000Z">
+<meta property="article:modified_time" content="2021-12-08T07:37:41.440Z">
+<meta property="article:author" content="Bright Jiang">
+<meta property="article:tag" content="CSDN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://vball.fun/2013/08/13/z_csdn_021_9949869/Center">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://vball.fun/2013/08/13/z_csdn_021_9949869/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Godvmxi Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+  
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-blue# 主题颜色 theme-black theme-blue theme-green theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/godvmxi" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar2.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Ball Virtual</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">kernel &amp; ASIC &amp; Software Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gnu/">gnu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/hexo/">hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1984/" rel="tag">1984</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/7yuv/" rel="tag">7yuv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSDN/" rel="tag">CSDN</a><span class="tag-list-count">75</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFMPEG/" rel="tag">FFMPEG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Font/" rel="tag">Font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Freetype/" rel="tag">Freetype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H264/" rel="tag">H264</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Opencv/" rel="tag">Opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt4/" rel="tag">Qt4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Samba/" rel="tag">Samba</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shit/" rel="tag">Shit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Snap/" rel="tag">Snap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YUV/" rel="tag">YUV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnu/" rel="tag">gnu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mermaid/" rel="tag">mermaid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinyin/" rel="tag">pinyin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pynput/" rel="tag">pynput</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/" rel="tag">stl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/toneoz/" rel="tag">toneoz</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/1984/" style="font-size: 13px;">1984</a> <a href="/tags/7yuv/" style="font-size: 13px;">7yuv</a> <a href="/tags/CSDN/" style="font-size: 14px;">CSDN</a> <a href="/tags/FFMPEG/" style="font-size: 13px;">FFMPEG</a> <a href="/tags/Font/" style="font-size: 13px;">Font</a> <a href="/tags/Freetype/" style="font-size: 13px;">Freetype</a> <a href="/tags/H264/" style="font-size: 13px;">H264</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Opencv/" style="font-size: 13px;">Opencv</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Qt4/" style="font-size: 13px;">Qt4</a> <a href="/tags/Samba/" style="font-size: 13px;">Samba</a> <a href="/tags/Shit/" style="font-size: 13px;">Shit</a> <a href="/tags/Snap/" style="font-size: 13px;">Snap</a> <a href="/tags/Ubuntu/" style="font-size: 13px;">Ubuntu</a> <a href="/tags/YUV/" style="font-size: 13px;">YUV</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/game/" style="font-size: 13px;">game</a> <a href="/tags/gdb/" style="font-size: 13px;">gdb</a> <a href="/tags/gnu/" style="font-size: 13px;">gnu</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mermaid/" style="font-size: 13px;">mermaid</a> <a href="/tags/pinyin/" style="font-size: 13px;">pinyin</a> <a href="/tags/pynput/" style="font-size: 13px;">pynput</a> <a href="/tags/stl/" style="font-size: 13px;">stl</a> <a href="/tags/toneoz/" style="font-size: 13px;">toneoz</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/07/pynput-stop-echo-in-bash/" class="title">pynput stop key echo in bash</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-07T09:16:18.000Z" itemprop="datePublished">2021-12-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/23/build-7yuv-snap-package/" class="title">build 7yuv snap package, run 7yuv in no-qt4 system</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-23T07:00:53.000Z" itemprop="datePublished">2021-11-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/add-watermarker-to-h264-tool/" class="title">add watermarker to bitstream tool</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:58:29.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/ffmpeg-generate-yuv-format/" class="title">generate different yuv in different formats</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:44:02.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/02/toneoz/" class="title">Zhuyin Pinyin 拼音注音編輯器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-02T08:37:22.000Z" itemprop="datePublished">2021-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-z_csdn_021_9949869" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VIM插件大全，另外附VIM IDE 一键安装包
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2013/08/13/z_csdn_021_9949869/" class="article-date">
+	  <time datetime="2013-08-13T00:11:00.000Z" itemprop="datePublished">2013-08-13</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/CSDN/" rel="tag">CSDN</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2013/08/13/z_csdn_021_9949869/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>忽略这个文章吧，现在转向 <a target="_blank" rel="noopener" href="https://github.com/chxuan/vimplus">https://github.com/chxuan/vimplus</a></p>
+<p>之前发现没图片，常言道，没图说个JB，发一下：</p>
+<p><img src="Center"></p>
+<p>这个是在xshell的效果，YY一下，在github上放置了vimide所需的一键安装的插件和一键安装包，移除了导致卡死的vjde，在ubuntu，fedora，miint上测试通过，需要安装vim-scripts 软件包才能使上边的文件栏显示。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/godvmxi/tools">https://github.com/godvmxi/tools</a> 欢迎fork push request提出你的修改。</p>
+<p>F6 F7开启关闭两边栏目，鼠标默认开启，需要复制，请按住shift选择。</p>
+<p>话说在刚学linux的时候测试了很多人的配置方法，只能说痛苦，后来干脆自己来了买，多年实践结果。呵呵。</p>
+<p>使用vim开发软件是每一个linux工作人员的梦想，这里转载了常用的vim插件，</p>
+<p>另外我也把的的vim ide的配置文件共享一下了，放在github上了，使用其中install脚本可以安装到当前用户的根目录，F6，F7启动两边的文件浏览和代码块分析，ctrl+w+方向，切换窗口</p>
+<p>附截图一张吧：</p>
+<ol>
+<li>ctags （<a target="_blank" rel="noopener" href="http://ctags.sourceforge.net/">http://ctags.sourceforge.net</a>）</li>
+</ol>
+<p>对浏览代码非常的方便, 可以在函数, 变量之间跳转，写程序必备</p>
+<p>#=============================================================================</p>
+<ol start="2">
+<li>TagList 插件（<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=273">http://www.vim.org/scripts/script.php?script_id=273</a> ）</li>
+</ol>
+<p>高效地浏览源码, 其功能就像vc中的workpace, 那里面列出了当前文件中的所有宏,全局变量, 函数名等.</p>
+<p>#=============================================================================</p>
+<p>3.BufExplorer(<br><a target="_blank" rel="noopener" href="http://vim.sourceforge.net/scripts/script.php?script_id=42">http://vim.sourceforge.net/scripts/script.php?script_id=42</a>)</p>
+<p>缓冲区浏览</p>
+<p>#=============================================================================</p>
+<ol start="4">
+<li>WinManager 插件（<br><a target="_blank" rel="noopener" href="http://vim.sourceforge.net/scripts/script.php?script_id=95">http://vim.sourceforge.net/scripts/script.php?script_id=95</a> ）</li>
+</ol>
+<p>管理各个窗口, 或者说整合各个窗口.[more]</p>
+<p>#=============================================================================</p>
+<ol start="5">
+<li>cscope(<br><a target="_blank" rel="noopener" href="http://cscope.sourceforge.net/">http://cscope.sourceforge.net/</a>)</li>
+</ol>
+<p>用Cscope自己的话说 – “你可以把它当做是超过频的ctags”, 其功能和强大程度可见</p>
+<p>一斑吧, 关于它的介绍我就不详细说了, 如果你安装好了前文介绍的帮助手册.</p>
+<p>#=============================================================================</p>
+<ol start="6">
+<li>c.vim 插件(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=213">http://www.vim.org/scripts/script.php?script_id=213</a>)</li>
+</ol>
+<p>C/C++-IDE for Vim/gVim. 简单的说, 就是如果安装配置好后, vim/gvim就是一个</p>
+<p>c/c++编程的一个IDE, 其功能堪比<br><a target="_blank" rel="noopener" href="http://www.aitilife.com/category/operating-system/windows">windows</a></p>
+<p>里常用的vc.</p>
+<p>#=============================================================================</p>
+<ol start="7">
+<li>omnicppcoplete 插件(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1520">http://www.vim.org/scripts/script.php?script_id=1520</a>)</li>
+</ol>
+<p>实现像vc那样的代码自动补全功能, 比如 this-&gt; 后, 将出现一个</p>
+<p>提示框, 其中包含了this指针所有可以接收的函数或数据成员等.</p>
+<p>#=============================================================================</p>
+<ol start="8">
+<li>a.vim插件(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=31">http://www.vim.org/scripts/script.php?script_id=31</a>)</li>
+</ol>
+<p>在 .h 和 .c/.cpp 文件中切换. (英文原句 “A few of quick commands to swtich between source files and header files quickly.”)</p>
+<p>#=============================================================================</p>
+<ol start="9">
+<li>VisualMark.vim插件(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1026">http://www.vim.org/scripts/script.php?script_id=1026</a>)</li>
+</ol>
+<p>高亮书签.</p>
+<p>#=============================================================================</p>
+<ol start="10">
+<li>Mark.vim插件(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1238">http://www.vim.org/scripts/script.php?script_id=1238</a>)</li>
+</ol>
+<p>这个插件与vim中自带的’<em>‘与’#’非常相像. 不同之处是: vim中的’</em>‘与’#’命令只能同时高亮一个同类词组(或正则表达式的搜索结果), 而Mark.vim插件可以同时高亮多个.</p>
+<p>#=============================================================================</p>
+<ol start="11">
+<li>code_complete.vim插件(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1764">http://www.vim.org/scripts/script.php?script_id=1764</a>)</li>
+</ol>
+<p>函数参数提示.</p>
+<p>#=============================================================================</p>
+<ol start="12">
+<li>autoproto.vim(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1553">http://www.vim.org/scripts/script.php?script_id=1553</a>)</li>
+</ol>
+<p>Using this script, typing “(“ will result in (|), where | is the cursor</p>
+<p>position and the double backticks are just marking input. Typing a</p>
+<p>“)” will move the cursor outside the parens. This moving outside</p>
+<p>works even in nested scenarios. Typing “if(my_array[‘key`` results in</p>
+<p>if(my_array[‘key|’]) and “)” gets you if(my_array[‘key’])|.</p>
+<p>The paired characters are: [, (, ｛, “, ‘; // “</p>
+<p>If you like this script, you should also check out surround.vim</p>
+<p>#=============================================================================</p>
+<p>13.</p>
+<p><a target="_blank" rel="noopener" href="http://www.aitilife.com/tag/pyclewn">pyclewn</a> ( <a target="_blank" rel="noopener" href="http://pyclewn.sourceforge.net/">http://pyclewn.sourceforge.net/</a>)</p>
+<p>更方便地使用gdb调试</p>
+<p>#=============================================================================</p>
+<ol start="14">
+<li>project.vim(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=69">http://www.vim.org/scripts/script.php?script_id=69</a>)</li>
+</ol>
+<p>组织管理工程, 方便于浏览, 打开, 查找文件等.</p>
+<p>#=============================================================================</p>
+<ol start="15">
+<li>NERD_tree.vim(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1658">http://www.vim.org/scripts/script.php?script_id=1658</a>)</li>
+</ol>
+<p>目录树, 同时还可以对文件进行打开操作等.</p>
+<p>#=============================================================================</p>
+<ol start="16">
+<li>NERD_commenter.vim(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1218">http://www.vim.org/scripts/script.php?script_id=1218</a>)</li>
+</ol>
+<p>源码文档注释.</p>
+<p>#=============================================================================</p>
+<ol start="17">
+<li>DoxygenToolkit.vim(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=987">http://www.vim.org/scripts/script.php?script_id=987</a>)</li>
+</ol>
+<p>方便生成代码文档</p>
+<p>#=============================================================================</p>
+<ol start="18">
+<li>cpp.vim（<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1640">http://www.vim.org/scripts/script.php?script_id=1640</a>)</li>
+</ol>
+<p>加强c/c++类名, 函数等高亮</p>
+<p>#=============================================================================</p>
+<ol start="19">
+<li>javacomplete.vim（<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1785">http://www.vim.org/scripts/script.php?script_id=1785</a>)</li>
+</ol>
+<p>进行<br><a target="_blank" rel="noopener" href="http://www.aitilife.com/category/develop-technology/java">java</a></p>
+<p>类, 包, 方法等补全.</p>
+<p>#=============================================================================</p>
+<ol start="20">
+<li>JumpInCode_Plus.vim(<br><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=2862">http://www.vim.org/scripts/script.php?script_id=2862</a> ）</li>
+</ol>
+<p>生成tags和 cscope</p>
+<p>#=============================================================================</p>
+<ol start="21">
+<li>txtbrowser.zip（<a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=2899%EF%BC%89">http://www.vim.org/scripts/script.php?script_id=2899）</a></li>
+</ol>
+<p>在普通txt文本显示语法高亮</p>
+<p>#=============================================================================</p>
+<ol start="22">
+<li>FindMate.vim（<a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=2871%EF%BC%89">http://www.vim.org/scripts/script.php?script_id=2871）</a></li>
+</ol>
+<p>快速查找文件</p>
+<p>#=============================================================================</p>
+<ol start="23">
+<li>grep.vim</li>
+</ol>
+<p>The grep plugin integrates the grep, fgrep, egrep, and agrep tools with</p>
+<p>Vim and allows you to search for a pattern in one or more files and jump</p>
+<p>to them.</p>
+<p>#=============================================================================</p>
+<ol start="24">
+<li>autocomplpop.zip（<a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1879%EF%BC%89">http://www.vim.org/scripts/script.php?script_id=1879）</a></li>
+</ol>
+<p>With this plugin, your vim comes to automatically opens popup menu for</p>
+<p>completions when you enter characters or move the cursor in Insert mode. It</p>
+<p>won’t prevent you continuing entering characters.</p>
+<p>#=============================================================================<br><a target="_blank" rel="noopener" href="http://vimcdoc.sourceforge.net/">http://vimcdoc.sourceforge.net/</a></p>
+<p>vim中文文档</p>
+<p><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1638">http://www.vim.org/scripts/script.php?script_id=1638</a> “ SourceCodeObedience</p>
+<p><a target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=1581">http://www.vim.org/scripts/script.php?script_id=1581</a> “ lookupfile</p>
+<p><a target="_blank" rel="noopener" href="http://insenvim.sourceforge.net/index.php">http://insenvim.sourceforge.net/index.php</a> “ Vim Intellisense</p>
+<p>#=============================================================================<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/tge7618291/archive/2009/05/26/4216977.aspx">http://blog.csdn.net/tge7618291/archive/2009/05/26/4216977.aspx</a></p>
+<p>较详细的介绍vim插件</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://vball.fun/2013/08/13/z_csdn_021_9949869/" title="VIM插件大全，另外附VIM IDE 一键安装包" target="_blank" rel="external">http://vball.fun/2013/08/13/z_csdn_021_9949869/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/godvmxi" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar2.jpeg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/godvmxi" target="_blank"><span class="text-dark">Ball Virtual</span><small class="ml-1x">kernel &amp; ASIC &amp; Software Engineer</small></a></h3>
+        <div>关于程序与设计 | kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2013/09/04/z_csdn_044_11119349/" title="android万能服务器支持git，svn，ddns，dns，php 。。。。。怎么都没有图片。。。"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2013/08/13/z_csdn_061_9949779/" title="一些强大的命令"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Bright Jiang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>
+            <a href="https://tongji.baidu.com/web/welcome/login" target="_blank"> ab </a>
+            <a href="#" target="_blank"> ag </a>
+            <a href="#" target="_blank"> at </a>
+        </div>
+    </div>
+</footer> 
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+    <script defer>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://vball.fun/2013/08/13/z_csdn_021_9949869/';
+        
+        this.page.identifier = 'z_csdn_021_9949869';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'godvmxi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-DJEQFK7JNT', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?15c7b71acf728ce4c58fc512ce15c088";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>

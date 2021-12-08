@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Ubuntu 10.04 LTS 安装 sun-java6-jdk 错误解决办法 | Ball Virtual&#39; Blog</title>
+  <meta name="description" content="最近一直想试着下载个android源码编译玩玩，结果sun-java6-jdk一直安装不上，现在回顾一下解决方法，其实很简单，android官方的编译环境指导有点小错误的（应该是sun-java-jdk的升级服务器变化所致） 官方指导： Java 6: for Gingerbread and newer 123$ sudo add-apt-repository &quot;deb http:&#x2F;&#x2F;a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 10.04 LTS 安装 sun-java6-jdk 错误解决办法">
+<meta property="og:url" content="http://vball.fun/2012/04/13/z_csdn_025_7459764/index.html">
+<meta property="og:site_name" content="Godvmxi Blog">
+<meta property="og:description" content="最近一直想试着下载个android源码编译玩玩，结果sun-java6-jdk一直安装不上，现在回顾一下解决方法，其实很简单，android官方的编译环境指导有点小错误的（应该是sun-java-jdk的升级服务器变化所致） 官方指导： Java 6: for Gingerbread and newer 123$ sudo add-apt-repository &quot;deb http:&#x2F;&#x2F;a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2012-04-13T09:22:00.000Z">
+<meta property="article:modified_time" content="2021-12-08T07:37:41.440Z">
+<meta property="article:author" content="Bright Jiang">
+<meta property="article:tag" content="CSDN">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://vball.fun/2012/04/13/z_csdn_025_7459764/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Godvmxi Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+  
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center theme-blue# 主题颜色 theme-black theme-blue theme-green theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/godvmxi" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar2.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Ball Virtual</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">kernel &amp; ASIC &amp; Software Engineer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gnu/">gnu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/hexo/">hexo</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1984/" rel="tag">1984</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/7yuv/" rel="tag">7yuv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSDN/" rel="tag">CSDN</a><span class="tag-list-count">75</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FFMPEG/" rel="tag">FFMPEG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Font/" rel="tag">Font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Freetype/" rel="tag">Freetype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H264/" rel="tag">H264</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Opencv/" rel="tag">Opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt4/" rel="tag">Qt4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Samba/" rel="tag">Samba</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shit/" rel="tag">Shit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Snap/" rel="tag">Snap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YUV/" rel="tag">YUV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gdb/" rel="tag">gdb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gnu/" rel="tag">gnu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mermaid/" rel="tag">mermaid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pinyin/" rel="tag">pinyin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pynput/" rel="tag">pynput</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stl/" rel="tag">stl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/toneoz/" rel="tag">toneoz</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/1984/" style="font-size: 13px;">1984</a> <a href="/tags/7yuv/" style="font-size: 13px;">7yuv</a> <a href="/tags/CSDN/" style="font-size: 14px;">CSDN</a> <a href="/tags/FFMPEG/" style="font-size: 13px;">FFMPEG</a> <a href="/tags/Font/" style="font-size: 13px;">Font</a> <a href="/tags/Freetype/" style="font-size: 13px;">Freetype</a> <a href="/tags/H264/" style="font-size: 13px;">H264</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Opencv/" style="font-size: 13px;">Opencv</a> <a href="/tags/Python/" style="font-size: 13.5px;">Python</a> <a href="/tags/Qt4/" style="font-size: 13px;">Qt4</a> <a href="/tags/Samba/" style="font-size: 13px;">Samba</a> <a href="/tags/Shit/" style="font-size: 13px;">Shit</a> <a href="/tags/Snap/" style="font-size: 13px;">Snap</a> <a href="/tags/Ubuntu/" style="font-size: 13px;">Ubuntu</a> <a href="/tags/YUV/" style="font-size: 13px;">YUV</a> <a href="/tags/daily/" style="font-size: 13px;">daily</a> <a href="/tags/game/" style="font-size: 13px;">game</a> <a href="/tags/gdb/" style="font-size: 13px;">gdb</a> <a href="/tags/gnu/" style="font-size: 13px;">gnu</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/mermaid/" style="font-size: 13px;">mermaid</a> <a href="/tags/pinyin/" style="font-size: 13px;">pinyin</a> <a href="/tags/pynput/" style="font-size: 13px;">pynput</a> <a href="/tags/stl/" style="font-size: 13px;">stl</a> <a href="/tags/toneoz/" style="font-size: 13px;">toneoz</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">June 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">January 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">October 2011</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/09/">September 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">January 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/12/07/pynput-stop-echo-in-bash/" class="title">pynput stop key echo in bash</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-12-07T09:16:18.000Z" itemprop="datePublished">2021-12-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/23/build-7yuv-snap-package/" class="title">build 7yuv snap package, run 7yuv in no-qt4 system</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-23T07:00:53.000Z" itemprop="datePublished">2021-11-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/add-watermarker-to-h264-tool/" class="title">add watermarker to bitstream tool</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:58:29.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/16/ffmpeg-generate-yuv-format/" class="title">generate different yuv in different formats</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-16T07:44:02.000Z" itemprop="datePublished">2021-11-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/11/02/toneoz/" class="title">Zhuyin Pinyin 拼音注音編輯器</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-11-02T08:37:22.000Z" itemprop="datePublished">2021-11-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-z_csdn_025_7459764" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu 10.04 LTS 安装 sun-java6-jdk 错误解决办法
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2012/04/13/z_csdn_025_7459764/" class="article-date">
+	  <time datetime="2012-04-13T09:22:00.000Z" itemprop="datePublished">2012-04-13</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/CSDN/" rel="tag">CSDN</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2012/04/13/z_csdn_025_7459764/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>最近一直想试着下载个android源码编译玩玩，结果sun-java6-jdk一直安装不上，现在回顾一下解决方法，其实很简单，android官方的编译环境指导有点小错误的（应该是sun-java-jdk的升级服务器变化所致）</p>
+<p>官方指导：</p>
+<p>Java 6: for Gingerbread and newer</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo add-apt-repository &quot;deb http://archive.canonical.com/ lucid partner&quot;</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install sun-java6-jdk</span><br></pre></td></tr></table></figure>
+
+<p>Java 5: for Froyo and older</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo add-apt-repository &quot;deb http://archive.ubuntu.com/ubuntu hardy main multiverse&quot;</span><br><span class="line">$ sudo add-apt-repository &quot;deb http://archive.ubuntu.com/ubuntu hardy-updates main multiverse&quot;</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install sun-java5-jdk</span><br></pre></td></tr></table></figure>
+
+<p>结果一直错误。</p>
+<p>错误提示还是一样：</p>
+<p>Reading package lists… Done<br>Building dependency tree<br>Reading state information… Done<br>Package sun-java6-jdk is not available, but is referred to by another package.</p>
+<p>This may mean that the package is missing, has been obsoleted, or<br>is only available from another source<br>E: Package sun-java6-jdk has no installation candidate</p>
+<p>谷歌n久得到解决方案</p>
+<p>Ubuntu 10.04 LTS 安装sun-java6-jdk ，出现错误。<br>Reading package lists… Done<br>Building dependency tree<br>Reading state information… Done<br>Package sun-java6-jdk is not available, but is referred to by another package.</p>
+<p>This may mean that the package is missing, has been obsoleted, or<br>is only available from another source<br>E: Package sun-java6-jdk has no installation candidate<br>说是Ubuntu 10.04已经去掉sun-java6-jdk 和sun-java6-jre的软件包</p>
+<p>sudo add-apt-repository “deb <a target="_blank" rel="noopener" href="http://archive.canonical.com/">http://archive.canonical.com/</a> lucid partner”<br>sudo apt-get update<br>sudo apt-get install sun-java6-jdk</p>
+<p>错误提示还是一样：</p>
+<p>Reading package lists… Done<br>Building dependency tree<br>Reading state information… Done<br>Package sun-java6-jdk is not available, but is referred to by another package.</p>
+<p>This may mean that the package is missing, has been obsoleted, or<br>is only available from another source<br>E: Package sun-java6-jdk has no installation candidate</p>
+<p>这些都干过了。也查了源列表。。也有<a target="_blank" rel="noopener" href="http://archive.canonical.com/">http://archive.canonical.com/</a> lucid partner，并且有了好几个。</p>
+<p>求解。。。。</p>
+<p>自己回答：<br>在更新apt源头sudo apt-get update时出现如下提示：</p>
+<p>Ign <a target="_blank" rel="noopener" href="http://extras.ubuntu.com/">http://extras.ubuntu.com</a> oneiric/main Translation-en_US<br>Ign <a target="_blank" rel="noopener" href="http://archive.canonical.com/">http://archive.canonical.com</a> lucid/partner Translation-en_US<br>Ign <a target="_blank" rel="noopener" href="http://archive.canonical.com/">http://archive.canonical.com</a> lucid/partner Translation-en<br>Ign <a target="_blank" rel="noopener" href="http://extras.ubuntu.com/">http://extras.ubuntu.com</a> oneiric/main Translation-en<br>Ign <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty/multiverse TranslationIndex<br>Ign <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty-updates/multiverse TranslationIndex<br>Ign <a target="_blank" rel="noopener" href="http://archive.canonical.com/">http://archive.canonical.com</a> natty/partner Translation-en_US<br>Ign <a target="_blank" rel="noopener" href="http://archive.canonical.com/">http://archive.canonical.com</a> natty/partner Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric/main Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric/multiverse Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric/restricted Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric/universe Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-updates/main Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-updates/multiverse Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-updates/restricted Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-updates/universe Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-backports/main Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-backports/multiverse Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-backports/restricted Translation-en<br>Hit <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> oneiric-backports/universe Translation-en<br>Err <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty/multiverse Sources<br>404 Not Found [IP: 91.189.92.180 80]<br>Err <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty/multiverse amd64 Packages<br>404 Not Found [IP: 91.189.92.180 80]<br>Err <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty/multiverse i386 Packages<br>404 Not Found [IP: 91.189.92.180 80]<br>Err <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty-updates/multiverse Sources<br>404 Not Found [IP: 91.189.92.180 80]<br>Err <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty-updates/multiverse amd64 Packages<br>404 Not Found [IP: 91.189.92.180 80]<br>Err <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty-updates/multiverse i386 Packages<br>404 Not Found [IP: 91.189.92.180 80]<br>Ign <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty/multiverse Translation-en_US<br>Ign <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty/multiverse Translation-en<br>Ign <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty-updates/multiverse Translation-en_US<br>Ign <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/">http://us.archive.ubuntu.com</a> jaunty-updates/multiverse Translation-en<br>W: Failed to fetch <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/ubuntu/dists/jaunty/multiverse/source/Sources">http://us.archive.ubuntu.com/ubuntu/dists/jaunty/multiverse/source/Sources</a> 404 Not Found [IP: 91.189.92.180 80]</p>
+<p>W: Failed to fetch <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/ubuntu/dists/jaunty/multiverse/binary-amd64/Packages">http://us.archive.ubuntu.com/ubuntu/dists/jaunty/multiverse/binary-amd64/Packages</a> 404 Not Found [IP: 91.189.92.180 80]</p>
+<p>W: Failed to fetch <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/ubuntu/dists/jaunty/multiverse/binary-i386/Packages">http://us.archive.ubuntu.com/ubuntu/dists/jaunty/multiverse/binary-i386/Packages</a> 404 Not Found [IP: 91.189.92.180 80]</p>
+<p>W: Failed to fetch <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/ubuntu/dists/jaunty-updates/multiverse/source/Sources">http://us.archive.ubuntu.com/ubuntu/dists/jaunty-updates/multiverse/source/Sources</a> 404 Not Found [IP: 91.189.92.180 80]</p>
+<p>W: Failed to fetch <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/ubuntu/dists/jaunty-updates/multiverse/binary-amd64/Packages">http://us.archive.ubuntu.com/ubuntu/dists/jaunty-updates/multiverse/binary-amd64/Packages</a> 404 Not Found [IP: 91.189.92.180 80]</p>
+<p>W: Failed to fetch <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/ubuntu/dists/jaunty-updates/multiverse/binary-i386/Packages">http://us.archive.ubuntu.com/ubuntu/dists/jaunty-updates/multiverse/binary-i386/Packages</a> 404 Not Found [IP: 91.189.92.180 80]</p>
+<p>E: Some index files failed to download. They have been ignored, or old ones used instead.</p>
+<p>但是。。。<br>cc@ubuntu:~$ sudo apt-get install sun-java6-jdk<br>Reading package lists… Done<br>Building dependency tree<br>Reading state information… Done<br>Package sun-java6-jdk is not available, but is referred to by another package.</p>
+<p>This may mean that the package is missing, has been obsoleted, or<br>is only available from another source</p>
+<p>E: Package ‘sun-java6-jdk’ has no installation candidate<br>？？？</p>
+<p>然后去学习一下<a target="_blank" rel="noopener" href="http://www.2cto.com/soft">下载</a>的是什么东西··<br>JDK<br>JDK 是整个Java的核心，包括了Java运行环境（Java Runtime Envirnment），一堆Java工具和Java基础的类库（rt.jar）。不论什么Java应用服务器实质都是内置了某个版本的JDK.最主流的JDK是Sun公司发布的JDK，除了Sun之外，还有很多公司和组织都开发了自己的JDK，例如IBM公司开发的JDK，BEA公司的Jrocket，还有GNU组织开发的JDK等等。其中IBM的JDK包含的JVM（Java Virtual Machine）运行效率要比Sun JDK包含的JVM高出许多。而专门运行在x86平台的Jrocket在服务端运行效率也要比Sun JDK好很多。但不管怎么说，我们还是需要先把Sun JDK掌握好。<br>JDK一般有三种版本：SE（J2SE），standard edition，标准版，是我们通常用的一个版本EE（J2EE），enterpsise edtion，企业版，使用这种JDK开发J2EE应用程序，ME（J2ME），micro edtion，主要用于移动设备、嵌入式设备上的java应用程序Java开发工具（JDK）是许多Java专家最初使用的开发环境。尽管许多编程人员已经使用第三方的开发工具，但JDK仍被当作Java开发的重要工具。JDK由一个标准类库和一组建立，测试及建立文档的Java实用程序组成。其核心Java API是一些预定义的类库，开发人员需要用这些类来访问Java语言的功能。Java API包括一些重要的语言结构以及基本图形，网络和文件I/O.一般来说，Java API的非I/O部分对于运行Java的所有平台是相同的，而I/O部分则仅在通用Java环境中实现。<br>作为JDK实用程序，工具库中有七种主要程序。<br>◆Javac：Java编译器，将Java源代码转换成字节码。<br>◆Java：Java解释器，直接从类文件执行Java应用程序字节代码。<br>◆appletviewer：小程序浏览器，一种执行HTML文件上的Java小程序的Java浏览器。<br>◆Javadoc：根据Java <a target="_blank" rel="noopener" href="http://www.2cto.com/ym">源码</a>及说明语句生成HTML文档。<br>◆Jdb：Java调试器，可以逐行执行程序，设置断点和检查变量。<br>◆Javah：产生可以调用Java过程的C过程，或建立能被Java程序调用的C过程的头文件。<br>◆Javap：Java反汇编器，显示编译类文件中的可访问功能和数据，同时显示字节代码含义。<br>JRE<br>JRE（Java Runtime Environment，Java运行环境），运行JAVA程序所必须的环境的集合，包含JVM标准实现及Java核心类库。是Sun的产品，包括两部分：JavaRuntimeEnvironment和JavaPlug-inJavaRuntimeEnvironment（JRE）是可以在其上运行、测试和传输应用程序的Java平台。它包括Java虚拟机、Java平台核心类和支持文件。它不包含开发工具——编译器、调试器和其它工具。JRE需要辅助软件 ——JavaPlug-in——以便在<a target="_blank" rel="noopener" href="http://www.2cto.com/os/liulanqi/">浏览器</a>中运行applet.J2RE是Java2 Runtime Environment，即Java运行环境，有时简称JRE.如果你只需要运行Java程序或Applet，下载并安装它即可。如果你要自行开发Java软件，请下载JDK.在JDK中附带有JRE.注意由于Microsoft对Java的支持不完全，请不要使用IE自带的<a target="_blank" rel="noopener" href="http://www.2cto.com/os/xuniji/">虚拟机</a>来运行Applet，务必安装一个JRE或JDK.</p>
+<p>最后实现办法<br>1、添加这个源：<br>deb <a target="_blank" rel="noopener" href="http://us.archive.ubuntu.com/ubuntu/">http://us.archive.ubuntu.com/ubuntu/</a> hardy multiverse。<br>2、sudo apt-get update<br>3、sudo apt-get install sun-java6-jdk</p>
+<p>最后一切ok，继续源码编译了</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://vball.fun/2012/04/13/z_csdn_025_7459764/" title="Ubuntu 10.04 LTS 安装 sun-java6-jdk 错误解决办法" target="_blank" rel="external">http://vball.fun/2012/04/13/z_csdn_025_7459764/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/godvmxi" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar2.jpeg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/godvmxi" target="_blank"><span class="text-dark">Ball Virtual</span><small class="ml-1x">kernel &amp; ASIC &amp; Software Engineer</small></a></h3>
+        <div>关于程序与设计 | kernel &amp; MCU &amp; ASIC Lover，Software Engineer | 这里是 @蛋种 的个人博客，与你一起发现更大的世界。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2012/06/14/z_csdn_054_7664082/" title="完整且超简化的linux下stm32开发环境(编译，下载)---测试中"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2012/02/21/z_csdn_006_8901528/" title="在Fedora 16上安装Nginx（带PHP-FPM）+PHP5和MySQL支持"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/godvmxi" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mygoddan" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/godvmxi/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Bright Jiang
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>
+            <a href="https://tongji.baidu.com/web/welcome/login" target="_blank"> ab </a>
+            <a href="#" target="_blank"> ag </a>
+            <a href="#" target="_blank"> at </a>
+        </div>
+    </div>
+</footer> 
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+    <script defer>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://vball.fun/2012/04/13/z_csdn_025_7459764/';
+        
+        this.page.identifier = 'z_csdn_025_7459764';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'godvmxi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-DJEQFK7JNT', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+    <script defer>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?15c7b71acf728ce4c58fc512ce15c088";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</body>
+</html>
