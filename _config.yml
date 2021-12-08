@@ -104,6 +104,6 @@ theme: pure
 deploy:
   type: 'git'
   repo: 'https://github.com/godvmxi/godvmxi.github.io'
-  branch: master
+  branch: gh_pages
   message: "ci gone"
 

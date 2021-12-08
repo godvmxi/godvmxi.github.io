@@ -9,14 +9,20 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      -name: Checkout
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v2
+          with:
+            node-version: '14'
+      -name: Setup and build
+        - run: npm install -g hexo-cli@4.0.0
+        - run: npm install
+        - run: hexo generate
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          node-version: '14'
-      - run: npm install -g hexo-cli@4.0.0
-      - run: npm install
-      - run: hexo generate
+          github_token: ${{ secrets.HEXO_DEPLOY_PRI }}
+          publish_dir: ./
+          publish_branch: gh_pages  # deploying branch
