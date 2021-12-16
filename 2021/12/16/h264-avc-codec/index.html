@@ -18,23 +18,24 @@
   
   
   <title>H264/AVC 编解码器原理总结 | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="H.264&#x2F;AVC的应用H.264 支持三个不同档次：  基本档次：主要用于“视频会话”，如会议电视，可视电话，远程医疗、远程教学等；扩展档次：主要用于网络的视频流，如视频点播；主要档次：主要用于消费电子应用，如数字电视广播，数字视频存储等。  H.264&#x2F;AVC编解码器编码器H.264 编码器的功能组成如下图所示 解码器H.264解码器的功能组成如下图所示 H.264&#x2F;AVC的结构术语场和帧视频">
+  <meta name="description" content="H.264&#x2F;AVC的应用H.264 支持三个不同档次：  基本档次：主要用于“视频会话”，如会议电视，可视电话，远程医疗、远程教学等；扩展档次：主要用于网络的视频流，如视频点播；主要档次：主要用于消费电子应用，如数字电视广播，数字视频存储等。  H.264&#x2F;AVC编解码器编码器H.264 编码器的功能组成如下图所示  解码器H.264解码器的功能组成如下图所示 H.264&#x2F;AVC的结构术语场和帧视">
 <meta property="og:type" content="article">
 <meta property="og:title" content="H264&#x2F;AVC 编解码器原理总结">
 <meta property="og:url" content="http://vball.fun/2021/12/16/h264-avc-codec/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="H.264&#x2F;AVC的应用H.264 支持三个不同档次：  基本档次：主要用于“视频会话”，如会议电视，可视电话，远程医疗、远程教学等；扩展档次：主要用于网络的视频流，如视频点播；主要档次：主要用于消费电子应用，如数字电视广播，数字视频存储等。  H.264&#x2F;AVC编解码器编码器H.264 编码器的功能组成如下图所示 解码器H.264解码器的功能组成如下图所示 H.264&#x2F;AVC的结构术语场和帧视频">
+<meta property="og:description" content="H.264&#x2F;AVC的应用H.264 支持三个不同档次：  基本档次：主要用于“视频会话”，如会议电视，可视电话，远程医疗、远程教学等；扩展档次：主要用于网络的视频流，如视频点播；主要档次：主要用于消费电子应用，如数字电视广播，数字视频存储等。  H.264&#x2F;AVC编解码器编码器H.264 编码器的功能组成如下图所示  解码器H.264解码器的功能组成如下图所示 H.264&#x2F;AVC的结构术语场和帧视">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://vball.fun/2021/12/16/h264-avc-codec/h264_enc_flow_2.png">
 <meta property="og:image" content="http://vball.fun/2021/12/16/h264-avc-codec/h264_enc_flow.png">
 <meta property="og:image" content="http://vball.fun/2021/12/16/h264-avc-codec/h264_dec_flow.png">
 <meta property="og:image" content="http://vball.fun/2021/12/16/h264-avc-codec/h264_enc_profile.png">
 <meta property="article:published_time" content="2021-12-16T06:41:20.000Z">
-<meta property="article:modified_time" content="2021-12-16T07:05:01.314Z">
+<meta property="article:modified_time" content="2021-12-16T07:08:10.763Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="H264">
 <meta property="article:tag" content="AVC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://vball.fun/2021/12/16/h264-avc-codec/h264_enc_flow.png">
+<meta name="twitter:image" content="http://vball.fun/2021/12/16/h264-avc-codec/h264_enc_flow_2.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://vball.fun/2021/12/16/h264-avc-codec/index.html">
   
@@ -388,7 +389,8 @@
 <blockquote>
 <p>基本档次：主要用于“视频会话”，如会议电视，可视电话，远程医疗、远程教学等；<br>扩展档次：主要用于网络的视频流，如视频点播；<br>主要档次：主要用于消费电子应用，如数字电视广播，数字视频存储等。</p>
 </blockquote>
-<h1><span id="h264avc编解码器">H.264/AVC编解码器</span></h1><h2><span id="编码器">编码器</span></h2><p>H.264 编码器的功能组成如下图所示<br><img src="h264_enc_flow.png"></p>
+<h1><span id="h264avc编解码器">H.264/AVC编解码器</span></h1><h2><span id="编码器">编码器</span></h2><p>H.264 编码器的功能组成如下图所示</p>
+<p><img src="h264_enc_flow_2.png"><br><img src="h264_enc_flow.png"></p>
 <h2><span id="解码器">解码器</span></h2><p>H.264解码器的功能组成如下图所示<br><img src="h264_dec_flow.png"></p>
 <h1><span id="h264avc的结构">H.264/AVC的结构</span></h1><h2><span id="术语">术语</span></h2><h3><span id="场和帧">场和帧</span></h3><p>视频的一场或一帧可用来产生一个编码图像。通常，视频帧可分成两种类型：连续或隔行视频帧。在电视中，为减少大面积闪烁现象，把一帧分成两个隔行的场。显然，这时场内邻行之间的空间相关性较强，而帧内邻近行空间相关性强，因此活动量较小或静止的图像宜采用帧编码方式，对活动量较大的运动图像则宜采用场编码方式。</p>
 <h3><span id="宏块-片">宏块、片</span></h3><p>一个编码图像通常划分成若干宏块组成，一个宏块由一个 16×16 亮度像素和附加的一个 8×8 Cb和一个 8×8 Cr 彩色像素块组成。每个图象中，若干宏块被排列成片的形式。<br>I 片只包含 I 宏块， P 片可包含 P 和 I 宏块，而 B 片可包含 B 和 I 宏块。<br>I 宏块利用从当前片中已解码的像素作为参考进行帧内预测（不能取其它片中的已解码像素作为参考进行帧内预测）。<br>P 宏块利用前面已编码图象作为参考图象进行帧内预测，一个帧内编码的宏块可进一步作宏块的分割：即 16×16、 16×8、 8×16 或 8×8 亮度像素块（以及附带的彩色像素）；如果选了 8×8 的子宏块，则可再分成各种子宏块的分割，其尺寸为 8×8、 8×4、 4×8 或 4×4 亮度像素块（以及附带的彩色像素）。<br>B 宏块则利用双向的参考图象（当前和未来的已编码图象帧）进行帧内预测。</p>
