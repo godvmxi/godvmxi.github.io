@@ -1,5 +1,5 @@
 ---
-title: Download View Only Video From Microsoft Sharepoint
+title: Force Download View Only Video From Microsoft Sharepoint / Streams
 date: 2021-12-10 14:06:45
 tags:
     - Ffmpeg
@@ -8,7 +8,9 @@ tags:
 ---
 # Background
 There are some many teams meeting records shared by other teams, but only be available for 21 days, view only but no download. Hate it. &#x1F643;&#x1F928;
+
 # Talk is cheap, show me the code.
+## Force downlaod from Share Point
 Chrome/Edge(F12) -> Inspector -> Network -> **videomanifest?privode**
 
 1. Open the Sharepoint page with the video you want to download
@@ -31,4 +33,25 @@ videomanifest?provider=spo... => that right there is the manifest URL you will n
 ```bash
 ffmpeg -i "https://theURLtoTheManifestYouCopiedHere" -codec copy downloadedVideo.mp4
 ```
+## Force downlaod from Stream
+Get [destreamer](https://github.com/snobu/destreamer)
+```bash
+$ git clone https://github.com/snobu/destreamer
+$ cd destreamer
+$ npm install
+$ npm run build
+```
+### Download a video 
+```bash
+$ ./destreamer.sh -i "https://web.microsoftstream.com/video/VIDEO-1"
+```
+### Download a video and re-encode with HEVC
+```bash
+$ ./destreamer.sh -i "https://web.microsoftstream.com/video/VIDEO-1" --vcodec libx265
+```
+### Download many videos but read URLs from a file -
+```bash
+$ ./destreamer.sh -f list.txt
+```
+### You can get more usage from the origin code repo
 Enjoy it.
