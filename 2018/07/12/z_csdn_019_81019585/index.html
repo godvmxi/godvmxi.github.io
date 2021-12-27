@@ -27,7 +27,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://vball.fun/2018/07/12/z_csdn_019_81019585/70">
 <meta property="article:published_time" content="2018-07-12T02:38:00.000Z">
-<meta property="article:modified_time" content="2021-12-17T11:41:34.611Z">
+<meta property="article:modified_time" content="2021-12-27T06:03:11.203Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -384,6 +384,24 @@
         <p>修改备注：</p>
 <p>config文件中的ProxyCommand中不需要=</p>
 <p>大致起源是公司的网络审核超级严格，本地access美国server只能先使用link到审核服务器，然后vnc到中间服务器，然后再bbb。。。。总不能这边修改一行代码再去vnc上重新敲一遍吧。。。于是萌生了打洞的想法（操作完全违规，请参考员工离职手册，做好被fire的准备）</p>
+<blockquote>
+<p>Note: 追加BB一句，该限制仅限制大中华地区，可见国人把自己名声搞得多坏。。</p>
+</blockquote>
+<pre class="mermaid">sequenceDiagram
+    participant HA as My Host A
+    participant FW as Fire Wall
+    participant RHB as Remote Server B
+    Note over HA,RHB: My host initiates a connection to remote server
+    HA ->> FW: Hi, I want B
+    FW -->> HA: No, You do not
+
+    Note over HA,RHB: Remote Server initiates a connection to my host
+    RHB ->> FW: I want A
+    FW  ->> HA: Go,Go,Go
+    loop Normal traffic
+            HA-> RHB: Lol, Yeah
+        end</pre>
+
 <p>先描述几个概念：</p>
 <ol>
 <li>ssh tunnel ，简单来说就是利用ssh通讯协议做一个隧道，或者是洞让你进行数据通讯</li>
@@ -392,13 +410,47 @@
 <li>ssh over ssh , ssh 通讯是建立在另外一条ssh tunnel基础</li>
 </ol>
 <p>网络环境嘛。。。很常见，我从A发起对B只能绕道C，还是VNC，可以想象跨洋访问的恐怖，画面刷新感人。</p>
-<p>me -&gt; client A (ssh 443)—-X—-firewall</p>
-<p>| |</p>
-<p>|–&gt;C—-vnc————————————&gt;|</p>
-<p>public C (因为我们这里B能发起对A的连接（其实也有限制，22端口屏蔽。但是80和443开放，我就把A的ssh server端口改443了）， 我不再使用公网的C作为跳转，其实也就是多了一步而已)</p>
+<pre class="mermaid">sequenceDiagram
+    participant HA as My Host A
+    participant AM as Audit Machine
+    participant RHB as Remote Server B
+    HA ->>+ AM: VCN Access
+    AM ->>+ RHB: SSH Access
+    RHB ->>- AM : SSH Access
+    AM ->>- HA: VCN Access</pre>
+
+
+
+
+<p> (因为我们这里B能发起对A的连接（其实也有限制，22端口屏蔽。但是80和443开放，我就把A的ssh server端口改443了）， 我不再使用公网的C作为跳转，其实也就是多了一步而已)</p>
+<pre class="mermaid">sequenceDiagram
+    participant HA as My Host A
+    participant FW as Fire Wall
+    participant AM as Audit Machine
+    participant RHB as Remote Server B
+    Note over HA,RHB: My host initiates a connection to remote server
+    HA ->> FW: Hi, I want B
+    FW -->> HA: No, You do not
+    Note over HA,RHB:Access through Audit Machine
+
+    HA ->>+ AM: VCN Access
+    AM ->>+ RHB: SSH Access
+
+    Note over HA,RHB: Remote Server initiates a ssh tunnel to my host
+    RHB ->> FW: I want A ssh tunnel
+    FW  ->> HA: Go,Go,Go
+    
+    loop Tunnel is ready
+            HA  --> HA : Open local 2222 to listen and forward data to Host B 22(或者443)
+
+            RHB  --> RHB : Open local 22 and receive data to Host A 2222
+            HA -> RHB: Host A pen 2222  ---- Host B 22
+        end</pre>
+
 <p>下边开始干活：</p>
 <p>第一步： 打通B-&gt;A的隧道（注意A的ssh server 端口是443，有意绕过监控为之）,通过在B上执行如下命令：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p <span class="number">443</span>  -NR <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">2222</span>:<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">22</span> user_A@A</span><br></pre></td></tr></table></figure>
+
 
 <p>成功打通了B-&gt;A的连接，同时在A上监听端口2222，所有连接A:2222的连接都会转发到B:22 ,这时核心步骤已经完成。</p>
 <p>为了避免连接挂掉，结合autossh自动重连：</p>
