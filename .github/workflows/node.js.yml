@@ -24,7 +24,7 @@ jobs:
           node-version: '14'
       - name: Setup Env
         run: |
-          npm install -g hexo-cli@4.0.0
+          npm install -g hexo-cli
           npm install
           hexo generate
       - name: Deploy
