@@ -26,7 +26,7 @@
 <meta property="og:description" content="Optional descriptions optionally block propagation of keyboard events python block key events python listen to keyboards and stop the event message  Code talk firstset suppress&#x3D;True will swallow.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-07T09:16:18.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:42:47.370Z">
+<meta property="article:modified_time" content="2022-05-19T09:46:08.825Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="pynput">
@@ -54,7 +54,7 @@
       }
     </script>
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body class="main-center theme-blue# 主题颜色 theme-black theme-blue theme-green theme-purple" itemscope itemtype="http://schema.org/WebPage">
@@ -386,7 +386,7 @@
 <li>python listen to keyboards and stop the event message</li>
 </ol>
 <h1><span id="code-talk-first">Code talk first</span></h1><p>set suppress&#x3D;True will swallow. ALL keypresses</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">from</span> pynput.keyboard <span class="keyword">import</span> Key, Listener</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_press</span>(<span class="params">key</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125; pressed&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        key))</span><br><span class="line">    <span class="keyword">if</span> key == Key.esc:</span><br><span class="line">        <span class="comment"># Stop listener</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Collect events until released</span></span><br><span class="line"><span class="keyword">with</span> Listener(</span><br><span class="line">        on_press=on_press, suppress=<span class="literal">True</span>) <span class="keyword">as</span> listener:</span><br><span class="line">    listener.join()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">from</span> pynput.keyboard <span class="keyword">import</span> Key, Listener</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_press</span>(<span class="params">key</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125; pressed&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        key))</span><br><span class="line">    <span class="keyword">if</span> key == Key.esc:</span><br><span class="line">        <span class="comment"># Stop listener</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Collect events until released</span></span><br><span class="line"><span class="keyword">with</span> Listener(</span><br><span class="line">        on_press=on_press, suppress=<span class="literal">True</span>) <span class="keyword">as</span> listener:</span><br><span class="line">    listener.join()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
