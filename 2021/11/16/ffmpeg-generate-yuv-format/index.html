@@ -18,15 +18,15 @@
   
   
   <title>generate different yuv in different formats | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="Index:    FFMPEG convet basic usage Show all support formats by ffmpeg FFMPEG convert mp4 to yuv with resolution and format Convert yuv to H264&#x2F;mp4   How to generate RGB444 FP16 file Install ffmpeg an">
+  <meta name="description" content="Index:    FFMPEG convet basic usage Show all support formats by ffmpeg FFMPEG convert mp4 to yuv with resolution and format Convert yuv to H264&#x2F;mp4   How to generate RGB444 FP16 file Install ffmp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="generate different yuv in different formats">
 <meta property="og:url" content="http://vball.fun/2021/11/16/ffmpeg-generate-yuv-format/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="Index:    FFMPEG convet basic usage Show all support formats by ffmpeg FFMPEG convert mp4 to yuv with resolution and format Convert yuv to H264&#x2F;mp4   How to generate RGB444 FP16 file Install ffmpeg an">
+<meta property="og:description" content="Index:    FFMPEG convet basic usage Show all support formats by ffmpeg FFMPEG convert mp4 to yuv with resolution and format Convert yuv to H264&#x2F;mp4   How to generate RGB444 FP16 file Install ffmp">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-16T07:44:02.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.652Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.473Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="H264">
 <meta property="article:tag" content="FFMPEG">
@@ -388,7 +388,7 @@
 <li><a href="#ffmpeg-convet-basic-usage">FFMPEG convet basic usage</a><ul>
 <li><a href="#show-all-support-formats-by-ffmpeg">Show all support formats by ffmpeg</a></li>
 <li><a href="#ffmpeg-convert-mp4-to-yuv-with-resolution-and-format">FFMPEG convert mp4 to yuv with resolution and format</a></li>
-<li><a href="#convert-yuv-to-h264mp4">Convert yuv to H264/mp4</a></li>
+<li><a href="#convert-yuv-to-h264mp4">Convert yuv to H264&#x2F;mp4</a></li>
 </ul>
 </li>
 <li><a href="#how-to-generate-rgb444-fp16-file">How to generate RGB444 FP16 file</a><ul>
@@ -442,7 +442,7 @@
 </tbody></table>
 <h2><span id="ffmpeg-convert-mp4-to-yuv-with-resolution-and-format">FFMPEG convert mp4 to yuv with resolution and format</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -y -i <span class="variable">$&#123;file_name&#125;</span>_<span class="variable">$&#123;in_res&#125;</span>.mp4 -pix_fmt yuv420p -s <span class="variable">$out_res</span> <span class="variable">$&#123;file_name&#125;</span>_<span class="variable">$&#123;out_res&#125;</span>.yuv</span><br></pre></td></tr></table></figure>
 
-<h2><span id="convert-yuv-to-h264mp4">Convert yuv to H264/mp4</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -f rawvideo -pix_fmt yuv420p -s:v 720x480 -r 25 -i Mix_BostonHarbor_MainStreet_GrandBendPatio_720x480.yuv -c:v libx264 output.mp4</span><br></pre></td></tr></table></figure>
+<h2><span id="convert-yuv-to-h264x2fmp4">Convert yuv to H264&#x2F;mp4</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -f rawvideo -pix_fmt yuv420p -s:v 720x480 -r 25 -i Mix_BostonHarbor_MainStreet_GrandBendPatio_720x480.yuv -c:v libx264 output.mp4</span><br></pre></td></tr></table></figure>
 
 
 

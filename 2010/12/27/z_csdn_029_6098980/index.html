@@ -26,7 +26,7 @@
 <meta property="og:description" content="图形点阵式液晶可显示用户自定义的任意符号和图形,并可卷动显示。它作为单片机系统人机交互界面的重要组成部分被广泛应用于实时检测和显示的仪器仪表中,例如手机上的显示屏就是图形点阵液晶。采用图形点阵式液晶显示较之其它显示方式主要有以下优点:(1) 工作电压低、功耗极低。工作电压仅为3～5 v ,工作电流≤10 μa&#x2F; cm2 ,特别适用于低功耗的仪器仪表中。(2) 液晶显示属被动显示">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2010-12-27T03:41:05.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.505Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -387,7 +387,7 @@
 <p>采用图形点阵式液晶显示较之其它显示方式主</p>
 <p>要有以下优点:</p>
 <p>(1) 工作电压低、功耗极低。工作电压仅为3～</p>
-<p>5 v ,工作电流≤10 μa/ cm2 ,特别适用于低功耗的</p>
+<p>5 v ,工作电流≤10 μa&#x2F; cm2 ,特别适用于低功耗的</p>
 <p>仪器仪表中。</p>
 <p>(2) 液晶显示属被动显示,受外界光线干扰小。</p>
 <p>(3) 图形点阵式液晶可显示的信息量大、分辨</p>
@@ -423,20 +423,20 @@
 <p>单项的上、下卷动的索引号和上、下级菜单的索引号。</p>
 <p>具体程序如下所述:</p>
 <p>typedef st ruct</p>
-<p>uchar keystateindex ; / / 当前状态索引号</p>
-<p>uchar keydnstate ; / / 按下”向下”键时转向的状态索引号</p>
-<p>uchar keyupstate ; / / 按下”向上”键时转向的状态索引号</p>
-<p>uchar keycrstate ; / / 按下”回车”键时转向的状态索引号</p>
-<p>uchar keybackstate ; / / 按下”退回”键时转向的状态索引号</p>
-<p>void ( 3 currentoperate) ( ) ; / / 当前状态应该执行的</p>
+<p>uchar keystateindex ; &#x2F; &#x2F; 当前状态索引号</p>
+<p>uchar keydnstate ; &#x2F; &#x2F; 按下”向下”键时转向的状态索引号</p>
+<p>uchar keyupstate ; &#x2F; &#x2F; 按下”向上”键时转向的状态索引号</p>
+<p>uchar keycrstate ; &#x2F; &#x2F; 按下”回车”键时转向的状态索引号</p>
+<p>uchar keybackstate ; &#x2F; &#x2F; 按下”退回”键时转向的状态索引号</p>
+<p>void ( 3 currentoperate) ( ) ; &#x2F; &#x2F; 当前状态应该执行的</p>
 <p>功能*作</p>
 <p>} kbdtabst ruct ;</p>
-<h1><span id="define-size-of-keybd-menu-55-菜单总长度">define size - of keybd - menu 55 / / 菜单总长度</span></h1><p>kbdtabst ruct code keytab[ size - of - keybd - menu ] =</p>
+<h1><span id="define-size-of-keybd-menu-55-x2f-x2f-菜单总长度">define size - of keybd - menu 55 &#x2F; &#x2F; 菜单总长度</span></h1><p>kbdtabst ruct code keytab[ size - of - keybd - menu ] &#x3D;</p>
 <p>{0 ,0 ,0 ,1 ,0 , ( 3 mainjob1) } ,</p>
-<p>{1 ,7 ,2 ,8 ,0 , ( 3 dsp point) } , / / 第一层</p>
-<p>{2 ,1 ,3 ,8 ,0 , ( 3 dspcurve) ) , / / 第一层</p>
-<p>{3 ,2 ,4 ,36 ,0 , ( 3 dsp kout) } , / / 第一层</p>
-<p>{4 ,3 ,5 ,50 ,0 , ( 3 disclosedown) } , / / 第一层</p>
+<p>{1 ,7 ,2 ,8 ,0 , ( 3 dsp point) } , &#x2F; &#x2F; 第一层</p>
+<p>{2 ,1 ,3 ,8 ,0 , ( 3 dspcurve) ) , &#x2F; &#x2F; 第一层</p>
+<p>{3 ,2 ,4 ,36 ,0 , ( 3 dsp kout) } , &#x2F; &#x2F; 第一层</p>
+<p>{4 ,3 ,5 ,50 ,0 , ( 3 disclosedown) } , &#x2F; &#x2F; 第一层</p>
 <p>程序设计</p>
 <p>根据需求,首先建立一个结构,并定义一个结构</p>
 <p>变量kbdtabst ruct 。结构变量就是把多个不同类</p>
@@ -451,52 +451,52 @@
 <p>单项的上、下卷动的索引号和上、下级菜单的索引号。</p>
 <p>具体程序如下所述:</p>
 <p>typedef st ruct</p>
-<p>uchar keystateindex ; / / 当前状态索引号</p>
-<p>uchar keydnstate ; / / 按下”向下”键时转向的状态索引号</p>
-<p>uchar keyupstate ; / / 按下”向上”键时转向的状态索引号</p>
-<p>uchar keycrstate ; / / 按下”回车”键时转向的状态索引号</p>
-<p>uchar keybackstate ; / / 按下”退回”键时转向的状态索引号</p>
-<p>void ( 3 currentoperate) ( ) ; / / 当前状态应该执行的</p>
+<p>uchar keystateindex ; &#x2F; &#x2F; 当前状态索引号</p>
+<p>uchar keydnstate ; &#x2F; &#x2F; 按下”向下”键时转向的状态索引号</p>
+<p>uchar keyupstate ; &#x2F; &#x2F; 按下”向上”键时转向的状态索引号</p>
+<p>uchar keycrstate ; &#x2F; &#x2F; 按下”回车”键时转向的状态索引号</p>
+<p>uchar keybackstate ; &#x2F; &#x2F; 按下”退回”键时转向的状态索引号</p>
+<p>void ( 3 currentoperate) ( ) ; &#x2F; &#x2F; 当前状态应该执行的</p>
 <p>功能*作</p>
 <p>} kbdtabst ruct ;</p>
-<h1><span id="define-size-of-keybd-menu-55-菜单总长度">define size - of keybd - menu 55 / / 菜单总长度</span></h1><p>kbdtabst ruct code keytab[ size - of - keybd - menu ] =</p>
+<h1><span id="define-size-of-keybd-menu-55-x2f-x2f-菜单总长度">define size - of keybd - menu 55 &#x2F; &#x2F; 菜单总长度</span></h1><p>kbdtabst ruct code keytab[ size - of - keybd - menu ] &#x3D;</p>
 <p>{0 ,0 ,0 ,1 ,0 , ( 3 mainjob1) } ,</p>
-<p>{1 ,7 ,2 ,8 ,0 , ( 3 dsp point) } , / / 第一层</p>
-<p>{2 ,1 ,3 ,8 ,0 , ( 3 dspcurve) ) , / / 第一层</p>
-<p>{3 ,2 ,4 ,36 ,0 , ( 3 dsp kout) } , / / 第一层</p>
-<p>{4 ,3 ,5 ,50 ,0 , ( 3 disclosedown) } , / / 第一层</p>
+<p>{1 ,7 ,2 ,8 ,0 , ( 3 dsp point) } , &#x2F; &#x2F; 第一层</p>
+<p>{2 ,1 ,3 ,8 ,0 , ( 3 dspcurve) ) , &#x2F; &#x2F; 第一层</p>
+<p>{3 ,2 ,4 ,36 ,0 , ( 3 dsp kout) } , &#x2F; &#x2F; 第一层</p>
+<p>{4 ,3 ,5 ,50 ,0 , ( 3 disclosedown) } , &#x2F; &#x2F; 第一层</p>
 <p>下面是一个具体的例子：</p>
 <p>unsigned char tempin,tempout,temprun;</p>
 <p>unsigned char Key_Value();</p>
 <p>unsigned char Change_Value(unsigned char);</p>
 <p>void Delay_1(unsigned int m);</p>
 <p>void Run_Satus();</p>
-<p>char * MainMenuTitle = “主菜单”;</p>
-<p>const char * MainMenuItems[] = {</p>
+<p>char * MainMenuTitle &#x3D; “主菜单”;</p>
+<p>const char * MainMenuItems[] &#x3D; {</p>
 <p>“1.室内温度调整”,</p>
 <p>“2.室外温度调整”,</p>
 <p>“3.运行时间调整”,</p>
 <p>“4.ESC退出”,</p>
 <p>TMenu MainMenu;</p>
 <p>void OnSelectMainMenu(int index)</p>
-<p>if (index &lt; 0 || index &gt;= sizeof(MainMenuItems) / sizeof(char *)) return;</p>
+<p>if (index &lt; 0 || index &gt;&#x3D; sizeof(MainMenuItems) &#x2F; sizeof(char *)) return;</p>
 <p>ClearScreen();</p>
 <p>switch (index) {</p>
 <p>case 0:</p>
 <p>TextOut(0, 1, “室内调整开始 “);</p>
-<p>tempin=Change_Value(tempin);</p>
+<p>tempin&#x3D;Change_Value(tempin);</p>
 <p>TextOut(0, 1, “室内调整完毕”);</p>
 <p>Delay_1(300000);</p>
 <p>break;</p>
 <p>case 1:</p>
 <p>TextOut(0, 1, “室外调整开始 “);</p>
-<p>tempout=Change_Value(tempout);</p>
+<p>tempout&#x3D;Change_Value(tempout);</p>
 <p>TextOut(0, 1, “室外调整完毕”);</p>
 <p>Delay_1(300000);</p>
 <p>break;</p>
 <p>case 2:</p>
 <p>TextOut(0, 1, “运行时间调整开始”);</p>
-<p>tempout=Change_Value(temprun);</p>
+<p>tempout&#x3D;Change_Value(temprun);</p>
 <p>TextOut(0, 1, “运行时间完毕”);</p>
 <p>Delay_1(300000);</p>
 <p>break;</p>
@@ -504,31 +504,31 @@
 <p>break;</p>
 <p>ClearScreen();</p>
 <p>UINT OnMainMenuOk(void * arg)</p>
-<p>TMenu * pMenu = (TMenu *)arg;</p>
+<p>TMenu * pMenu &#x3D; (TMenu *)arg;</p>
 <p>if (pMenu) OnSelectMainMenu(pMenu-&gt;Current);</p>
 <p>return 0;</p>
 <p>UINT OnMainMenuCancel(void * arg)</p>
-<p>TMenu * pMenu = (TMenu *)arg;</p>
+<p>TMenu * pMenu &#x3D; (TMenu *)arg;</p>
 <p>if (pMenu) {</p>
 <p>CloseMenu(pMenu);</p>
 <p>return 0;</p>
 <p>UINT OnMainMenuOtherKey(void * arg)</p>
-<p>TMenu * pMenu = (TMenu *)arg;</p>
+<p>TMenu * pMenu &#x3D; (TMenu *)arg;</p>
 <p>char key;</p>
 <p>if (pMenu) {</p>
-<p>key = pMenu-&gt;EventArg;</p>
+<p>key &#x3D; pMenu-&gt;EventArg;</p>
 <p>OnSelectMainMenu(key - ‘1’);</p>
 <p>DrawMenu(pMenu);</p>
 <p>return 0;</p>
 <p>void InitMenu()</p>
 <p>InitializeMenu(&amp;MainMenu, MainMenuTitle, MainMenuItems, sizeof</p>
-<p>(MainMenuItems) / sizeof(char *));</p>
-<p>MainMenu.OnOk = OnMainMenuOk;</p>
-<p>MainMenu.OnOtherKey = OnMainMenuOtherKey;</p>
-<p>MainMenu.OnCancel = OnMainMenuCancel;</p>
+<p>(MainMenuItems) &#x2F; sizeof(char *));</p>
+<p>MainMenu.OnOk &#x3D; OnMainMenuOk;</p>
+<p>MainMenu.OnOtherKey &#x3D; OnMainMenuOtherKey;</p>
+<p>MainMenu.OnCancel &#x3D; OnMainMenuCancel;</p>
 <p>unsigned char Key_Value()</p>
 <p>unsigned char KeyTemp;</p>
-<p>KeyTemp=GetKey();</p>
+<p>KeyTemp&#x3D;GetKey();</p>
 <p>switch(KeyTemp)</p>
 <p>case(VK_ESCAPE):</p>
 <p>return(0);</p>
@@ -544,14 +544,14 @@
 <p>break;</p>
 <p>unsigned char Change_Value(unsigned char temp2)</p>
 <p>unsigned char temp3;</p>
-<p>temp3=temp2;</p>
-<p>while((Key_Value()!=0)&amp;&amp;(Key_Value()!=1))</p>
-<p>if(Key_Value()==2)temp3++;</p>
-<p>else if(Key_Value()==3)temp3–;</p>
+<p>temp3&#x3D;temp2;</p>
+<p>while((Key_Value()!&#x3D;0)&amp;&amp;(Key_Value()!&#x3D;1))</p>
+<p>if(Key_Value()&#x3D;&#x3D;2)temp3++;</p>
+<p>else if(Key_Value()&#x3D;&#x3D;3)temp3–;</p>
 <p>ClearLine(1);</p>
 <p>TextOut(0, 1, “调整状态%d”, temp3);</p>
-<p>if(Key_Value()==1)return(temp3);</p>
-<p>else if(Key_Value()==0) return(temp2);</p>
+<p>if(Key_Value()&#x3D;&#x3D;1)return(temp3);</p>
+<p>else if(Key_Value()&#x3D;&#x3D;0) return(temp2);</p>
 <p>void Delay_1(unsigned int m)</p>
 <p>while(m–);</p>
 <p>void Run_Satus()</p>
@@ -561,15 +561,15 @@
 <p>TextOut(0, 2, “运行时间%d”,temprun);</p>
 <p>TextOut(0, 3, “ENTER 进入调整”);</p>
 <p>void tmain()</p>
-<p>tempin=30;</p>
-<p>tempout=30;</p>
-<p>temprun=30;</p>
+<p>tempin&#x3D;30;</p>
+<p>tempout&#x3D;30;</p>
+<p>temprun&#x3D;30;</p>
 <p>unsigned char key;</p>
 <p>InitMenu();</p>
 <p>while(1)</p>
 <p>Run_Satus();</p>
-<p>key=GetKey();</p>
-<p>if(key==VK_ENTER)ShowMenu(&amp;MainMenu);</p>
+<p>key&#x3D;GetKey();</p>
+<p>if(key&#x3D;&#x3D;VK_ENTER)ShowMenu(&amp;MainMenu);</p>
 
       
     </div>

@@ -26,7 +26,7 @@
 <meta property="og:description" content="很久远的东西了，启动命令参数，针对uboot，setenv bootargs console&#x3D;ttySAC0,115200 root&#x3D;&#x2F;dev&#x2F;nfs nfsroot&#x3D;10.140.28.13:&#x2F;nfs&#x2F;roofs  ip&#x3D; 10.140.28.26 : 10.140.28.10 : 10.140.28.10 :255.255.255.0:mini6410:eth0:off">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2013-08-12T23:10:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.505Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -380,20 +380,20 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <p>很久远的东西了，启动命令参数，针对uboot，</p>
-<p>setenv bootargs console=ttySAC0,115200 root=/dev/nfs nfsroot=10.140.28.13:/nfs/roofs ip= 10.140.28.26 : 10.140.28.10 : 10.140.28.10 :255.255.255.0:mini6410:eth0:off</p>
+<p>setenv bootargs console&#x3D;ttySAC0,115200 root&#x3D;&#x2F;dev&#x2F;nfs nfsroot&#x3D;10.140.28.13:&#x2F;nfs&#x2F;roofs ip&#x3D; 10.140.28.26 : 10.140.28.10 : 10.140.28.10 :255.255.255.0:mini6410:eth0:off</p>
 <p>uboot设置参数</p>
-<p>bootcmd=nand read.i c0008000 400000 500000;bootm c0008000</p>
-<p>bootdelay=1</p>
-<p>baudrate=115200</p>
-<p>ethaddr=08:90:90:90:90:90</p>
-<p>netmask=255.255.255.0</p>
-<p>bootargs=console=ttySAC0,115200</p>
-<p>stdin=serial</p>
-<p>stdout=serial</p>
-<p>stderr=serial</p>
-<p>ipaddr=10.140.28.26</p>
-<p>gatewayip=10.140.28.1</p>
-<p>serverip=10.140.28.26</p>
+<p>bootcmd&#x3D;nand read.i c0008000 400000 500000;bootm c0008000</p>
+<p>bootdelay&#x3D;1</p>
+<p>baudrate&#x3D;115200</p>
+<p>ethaddr&#x3D;08:90:90:90:90:90</p>
+<p>netmask&#x3D;255.255.255.0</p>
+<p>bootargs&#x3D;console&#x3D;ttySAC0,115200</p>
+<p>stdin&#x3D;serial</p>
+<p>stdout&#x3D;serial</p>
+<p>stderr&#x3D;serial</p>
+<p>ipaddr&#x3D;10.140.28.26</p>
+<p>gatewayip&#x3D;10.140.28.1</p>
+<p>serverip&#x3D;10.140.28.26</p>
 
       
     </div>

@@ -26,7 +26,7 @@
 <meta property="og:description" content="typedef struct { 　uchar 　KeyStateIndex ; 　　&#x2F; &#x2F; 当前状态索引号 　uchar 　KeyDnState ; 　　&#x2F; &#x2F; 按下“向下”键时转向的状态索引号 　uchar 　KeyUpState ; 　　&#x2F; &#x2F; 按下“向上”键时转向的状态索引号 　uchar 　KeyCrState ; 　　&#x2F; &#x2F; 按下“回车”键时转向的状态索引号 　uchar 　KeyBa">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2010-12-26T10:38:01.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -379,22 +379,22 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>typedef struct<br>{<br>uchar KeyStateIndex ; / / 当前状态索引号<br>uchar KeyDnState ; / / 按下”向下”键时转向的状态索引号<br>uchar KeyUpState ; / / 按下”向上”键时转向的状态索引号<br>uchar KeyCrState ; / / 按下”回车”键时转向的状态索引号<br>uchar KeyBackState ; / / 按下”退回”键时转向的状态索引号<br>void (*CurrentOperate)( ) ; / / 当前状态应该执行的功能操作<br>} KbdTabSt ruct ;</p>
-<h1><span id="define-size-of-keybd-menu-55-菜单总长度">define SIZE - OF KEYBD - MENU 55 / / 菜单总长度</span></h1><p>KbdTabSt ruct code KeyTab[ SIZE - OF - KEYBD - MENU ] =<br>{<br>{0 ,0 ,0 ,1 ,0 , MainJob1 } ,<br>{1 ,7 ,2 ,8 ,0 , Dsp Point} , / / 第一层<br>{2 ,1 ,3 ,8 ,0 , DspCurve}, / / 第一层<br>{3 ,2 ,4 ,36 ,0 ,Dsp Kout} , / / 第一层<br>{4 ,3 ,5 ,50 ,0 , DisCloseDown } , / / 第一层</p>
-<p>{5 ,4 ,6 ,8 ,0 , ModifyPoint} , / / 第一层<br>{6 ,5 ,7 ,52 ,0 , SetCloseDown } , / / 第一层<br>{7 ,6 ,1 ,0 ,0 , Cancel} , / / 第一层<br>…</p>
+        <p>typedef struct<br>{<br>uchar KeyStateIndex ; &#x2F; &#x2F; 当前状态索引号<br>uchar KeyDnState ; &#x2F; &#x2F; 按下”向下”键时转向的状态索引号<br>uchar KeyUpState ; &#x2F; &#x2F; 按下”向上”键时转向的状态索引号<br>uchar KeyCrState ; &#x2F; &#x2F; 按下”回车”键时转向的状态索引号<br>uchar KeyBackState ; &#x2F; &#x2F; 按下”退回”键时转向的状态索引号<br>void (*CurrentOperate)( ) ; &#x2F; &#x2F; 当前状态应该执行的功能操作<br>} KbdTabSt ruct ;</p>
+<h1><span id="define-size-of-keybd-menu-55-x2f-x2f-菜单总长度">define SIZE - OF KEYBD - MENU 55 &#x2F; &#x2F; 菜单总长度</span></h1><p>KbdTabSt ruct code KeyTab[ SIZE - OF - KEYBD - MENU ] &#x3D;<br>{<br>{0 ,0 ,0 ,1 ,0 , MainJob1 } ,<br>{1 ,7 ,2 ,8 ,0 , Dsp Point} , &#x2F; &#x2F; 第一层<br>{2 ,1 ,3 ,8 ,0 , DspCurve}, &#x2F; &#x2F; 第一层<br>{3 ,2 ,4 ,36 ,0 ,Dsp Kout} , &#x2F; &#x2F; 第一层<br>{4 ,3 ,5 ,50 ,0 , DisCloseDown } , &#x2F; &#x2F; 第一层</p>
+<p>{5 ,4 ,6 ,8 ,0 , ModifyPoint} , &#x2F; &#x2F; 第一层<br>{6 ,5 ,7 ,52 ,0 , SetCloseDown } , &#x2F; &#x2F; 第一层<br>{7 ,6 ,1 ,0 ,0 , Cancel} , &#x2F; &#x2F; 第一层<br>…</p>
 <p>…</p>
 <p>{52 ,53 ,53 ,0 ,1 , OkSetCloseDown1} ,<br>{53 ,52 ,52 ,0 ,1 , OkSetCloseDown2} ,<br>{54 ,0 ,0 ,0 ,0 , Disable} ,<br>…</p>
 <p>…</p>
-<p>} ;<br>void Get Keylnput (void)<br>{<br>switch ( status &amp;0xf0)<br>{<br>case 0xe0 :/ / 回车键,找出新的菜单状态编号<br>…</p>
-<p>KeyFuncIndex = KeyTab[ KeyFuncIndex ] . KeyCrState ;<br>…</p>
-<p>break ;<br>case 0xb0 :/ / 向下键,找出新的菜单状态编号<br>…</p>
-<p>KeyFuncIndex = KeyTab [ KeyFuncIndex ] . KeyDn2State ;<br>…</p>
-<p>break ;<br>case 0xd0 :/ / 向上键,找出新的菜单状态编号</p>
+<p>} ;<br>void Get Keylnput (void)<br>{<br>switch ( status &amp;0xf0)<br>{<br>case 0xe0 :&#x2F; &#x2F; 回车键,找出新的菜单状态编号<br>…</p>
+<p>KeyFuncIndex &#x3D; KeyTab[ KeyFuncIndex ] . KeyCrState ;<br>…</p>
+<p>break ;<br>case 0xb0 :&#x2F; &#x2F; 向下键,找出新的菜单状态编号<br>…</p>
+<p>KeyFuncIndex &#x3D; KeyTab [ KeyFuncIndex ] . KeyDn2State ;<br>…</p>
+<p>break ;<br>case 0xd0 :&#x2F; &#x2F; 向上键,找出新的菜单状态编号</p>
 <p>…</p>
-<p>KeyFuncIndex = KeyTab [ KeyFuncIndex ] . KeyUp2State ;<br>…</p>
-<p>break ;<br>case 0x70 :/ / 回退键,找出新的菜单状态编号<br>…</p>
-<p>KeyFuncIndex = KeyTab [ KeyFuncIndex ] . KeyBack2State ;<br>…</p>
-<p>break ;<br>case 0 ;<br>return ; / / 错误的处理<br>break ;<br>}<br>KeyFuncPt r = KeyTab[ KeyFuncIndex ] . CurrentOperate ;<br>( * KeyFuncPt r) () ; / / 执行当前按键的操作<br>}</p>
+<p>KeyFuncIndex &#x3D; KeyTab [ KeyFuncIndex ] . KeyUp2State ;<br>…</p>
+<p>break ;<br>case 0x70 :&#x2F; &#x2F; 回退键,找出新的菜单状态编号<br>…</p>
+<p>KeyFuncIndex &#x3D; KeyTab [ KeyFuncIndex ] . KeyBack2State ;<br>…</p>
+<p>break ;<br>case 0 ;<br>return ; &#x2F; &#x2F; 错误的处理<br>break ;<br>}<br>KeyFuncPt r &#x3D; KeyTab[ KeyFuncIndex ] . CurrentOperate ;<br>( * KeyFuncPt r) () ; &#x2F; &#x2F; 执行当前按键的操作<br>}</p>
 
       
     </div>

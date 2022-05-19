@@ -18,15 +18,15 @@
   
   
   <title>openstack 安装踏过的坑 | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="最近i尝试对公司的u服务器架构使用openstack，测试ng啊传中a茫茫多的坑，这里记录一下 错误信息稀奇百怪： InstanceDeployFailure: Cannot create containerInstance DeployFailure: Cannot setup network: Unexpected vif_type&#x3D;binding_failed nova-docker 在各版">
+  <meta name="description" content="最近i尝试对公司的u服务器架构使用openstack，测试ng啊传中a茫茫多的坑，这里记录一下 错误信息稀奇百怪： InstanceDeployFailure: Cannot create containerInstance DeployFailure: Cannot setup network: Unexpected vif_type&#x3D;binding_failed nova-docke">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openstack 安装踏过的坑">
 <meta property="og:url" content="http://vball.fun/2015/09/24/z_csdn_053_48713829/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="最近i尝试对公司的u服务器架构使用openstack，测试ng啊传中a茫茫多的坑，这里记录一下 错误信息稀奇百怪： InstanceDeployFailure: Cannot create containerInstance DeployFailure: Cannot setup network: Unexpected vif_type&#x3D;binding_failed nova-docker 在各版">
+<meta property="og:description" content="最近i尝试对公司的u服务器架构使用openstack，测试ng啊传中a茫茫多的坑，这里记录一下 错误信息稀奇百怪： InstanceDeployFailure: Cannot create containerInstance DeployFailure: Cannot setup network: Unexpected vif_type&#x3D;binding_failed nova-docke">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2015-09-24T01:26:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -382,10 +382,10 @@
         <p>最近i尝试对公司的u服务器架构使用openstack，测试ng啊传中a茫茫多的坑，这里记录一下</p>
 <p>错误信息稀奇百怪：</p>
 <p>InstanceDeployFailure: Cannot create containerInstance</p>
-<p>DeployFailure: Cannot setup network: Unexpected vif_type=binding_failed</p>
+<p>DeployFailure: Cannot setup network: Unexpected vif_type&#x3D;binding_failed</p>
 <p>nova-docker 在各版本openstack上的安装注意事项，注意事项，注意事项－－－－重要的话说三次，后边好多坑都是这么来的．</p>
 <p>检查nova-docker代码目录中的requirements.txt 的软件包依赖，依次修正</p>
-<p>pip install xxx=1.0.x 认真检查</p>
+<p>pip install xxx&#x3D;1.0.x 认真检查</p>
 <p>pip search xxxx 确保版本正确．</p>
 
       

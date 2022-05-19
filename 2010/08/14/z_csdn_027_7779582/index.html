@@ -26,7 +26,7 @@
 <meta property="og:description" content="这里先总结一下各个time对应的gpioTIMER1   --&gt;  PA12TIMER2   --&gt;  PA0  TIMER3   --&gt;  PD2TIMER4   --&gt;  PE0暂时够了，更多的建议参考数据手册基于库3.4代码，网上参考了很多代码，一直有问题，估计是库版本的问题，引用下边的一片文章，红色文字为本人注释和修改。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2010-08-14T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.505Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -384,34 +384,34 @@
 <p>现总结程序如下：</p>
 <p>第一步，设置GPIO</p>
 <p>GPIO_InitTypeDef GPIO_InitStructure;</p>
-<p>/* PA0,PA12-&gt; 左右脉冲输入 */<br>GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_12;<br>GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING; //<br>GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; //50M时钟速度<br>GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</p>
+<p>&#x2F;* PA0,PA12-&gt; 左右脉冲输入 *&#x2F;<br>GPIO_InitStructure.GPIO_Pin &#x3D; GPIO_Pin_0|GPIO_Pin_12;<br>GPIO_InitStructure.GPIO_Mode &#x3D; GPIO_Mode_IN_FLOATING; &#x2F;&#x2F;<br>GPIO_InitStructure.GPIO_Speed &#x3D; GPIO_Speed_50MHz; &#x2F;&#x2F;50M时钟速度<br>GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</p>
 <p>注意：（1）stm32f103c8只有TIM1_ETR(PA12,Pin33)，和TIM2_CH1_ETR(PA0,Pin10)两个可以用。其它更多管脚的芯片，有更多的可以输入（如100管脚的有4个可以输入的）；（2）外部时钟输入与中断无关；（3）stm32f103c8的这个两个应用中，不需要重映射。</p>
 <p>对于哪些需要重映射，参考数据手册。</p>
 <p>第二步：设置RCC</p>
 <p>RCC_ClocksTypeDef RCC_ClockFreq;</p>
-<p>SystemInit();//源自system_stm32f10x.c文件,只需要调用此函数,则可完成RCC的配置.</p>
+<p>SystemInit();&#x2F;&#x2F;源自system_stm32f10x.c文件,只需要调用此函数,则可完成RCC的配置.</p>
 <p>RCC_GetClocksFreq(&amp;RCC_ClockFreq);</p>
 <p>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);<br>RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);<br>RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);<br>RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);</p>
 <p>第三步，设置定时器模式</p>
-<p>void TIM1_Configuration(void) //只用一个外部脉冲端口<br>{<br>TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;</p>
-<p>//配置TIMER1作为计数器<br>TIM_DeInit(TIM1);</p>
-<p>TIM_TimeBaseStructure.TIM_Period = 0xFFFF;<br>TIM_TimeBaseStructure.TIM_Prescaler = 0x00;//设置预分频可以将外部信号分频<br>TIM_TimeBaseStructure.TIM_ClockDivision = 0x0;<br>TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;<br>TIM_TimeBaseInit(TIM1, &amp;TIM_TimeBaseStructure); // Time base configuration</p>
-<p>TIM_ITRxExternalClockConfig(TIM2,TIM_TS_ETRF); //我测试中一直不能用的原因是缺少这句话，缺少后，timer的驱动时钟源默认是RCC，需要更改为外部ETR输入才行。<br>TIM_ETRClockMode2Config(TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);</p>
+<p>void TIM1_Configuration(void) &#x2F;&#x2F;只用一个外部脉冲端口<br>{<br>TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;</p>
+<p>&#x2F;&#x2F;配置TIMER1作为计数器<br>TIM_DeInit(TIM1);</p>
+<p>TIM_TimeBaseStructure.TIM_Period &#x3D; 0xFFFF;<br>TIM_TimeBaseStructure.TIM_Prescaler &#x3D; 0x00;&#x2F;&#x2F;设置预分频可以将外部信号分频<br>TIM_TimeBaseStructure.TIM_ClockDivision &#x3D; 0x0;<br>TIM_TimeBaseStructure.TIM_CounterMode &#x3D; TIM_CounterMode_Up;<br>TIM_TimeBaseInit(TIM1, &amp;TIM_TimeBaseStructure); &#x2F;&#x2F; Time base configuration</p>
+<p>TIM_ITRxExternalClockConfig(TIM2,TIM_TS_ETRF); &#x2F;&#x2F;我测试中一直不能用的原因是缺少这句话，缺少后，timer的驱动时钟源默认是RCC，需要更改为外部ETR输入才行。<br>TIM_ETRClockMode2Config(TIM1, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);</p>
 <p>TIM_SetCounter(TIM1, 0);<br>TIM_Cmd(TIM1, ENABLE);<br>}</p>
-<p>void TIM2_Configuration(void) //只用一个外部脉冲端口<br>{<br>TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;</p>
-<p>//配置TIMER2作为计数器<br>TIM_DeInit(TIM2);</p>
-<p>TIM_TimeBaseStructure.TIM_Period = 0xFFFF;<br>TIM_TimeBaseStructure.TIM_Prescaler = 0x00;<br>TIM_TimeBaseStructure.TIM_ClockDivision = 0x0;<br>TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;<br>TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure); // Time base configuration</p>
+<p>void TIM2_Configuration(void) &#x2F;&#x2F;只用一个外部脉冲端口<br>{<br>TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;</p>
+<p>&#x2F;&#x2F;配置TIMER2作为计数器<br>TIM_DeInit(TIM2);</p>
+<p>TIM_TimeBaseStructure.TIM_Period &#x3D; 0xFFFF;<br>TIM_TimeBaseStructure.TIM_Prescaler &#x3D; 0x00;<br>TIM_TimeBaseStructure.TIM_ClockDivision &#x3D; 0x0;<br>TIM_TimeBaseStructure.TIM_CounterMode &#x3D; TIM_CounterMode_Up;<br>TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure); &#x2F;&#x2F; Time base configuration</p>
 <p>TIM_ETRClockMode2Config(TIM2, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0);</p>
 <p>TIM_SetCounter(TIM2, 0);<br>TIM_Cmd(TIM2, ENABLE);<br>}</p>
 <p>第四步，可以在主函数中读取计数器的值，其它的应用，就看具体的情况了。</p>
-<p>u16 COUN1=0;<br>u16 COUN2=0;</p>
+<p>u16 COUN1&#x3D;0;<br>u16 COUN2&#x3D;0;</p>
 <p>int main(void)<br>{<br>ChipHalInit();<br>ChipOutHalInit();</p>
-<p>while(1)<br>{<br>COUN1=TIM1-&gt;CNT;<br>COUN2=TIM2-&gt;CNT;<br>}</p>
+<p>while(1)<br>{<br>COUN1&#x3D;TIM1-&gt;CNT;<br>COUN2&#x3D;TIM2-&gt;CNT;<br>}</p>
 <p>然后就可以用了</p>
-<p>当然你可以使能中断，TIM_ARRPreloadConfig(TIM2, ENABLE);<br>/<em>预先清除所有中断位</em>/<br>TIM_ClearITPendingBit(TIM2,TIM_IT_Update);<br>/* 4个通道和溢出都配置中断*/<br>TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);</p>
+<p>当然你可以使能中断，TIM_ARRPreloadConfig(TIM2, ENABLE);<br>&#x2F;<em>预先清除所有中断位</em>&#x2F;<br>TIM_ClearITPendingBit(TIM2,TIM_IT_Update);<br>&#x2F;* 4个通道和溢出都配置中断*&#x2F;<br>TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);</p>
 <p>并且在终端中重装填计数器数据，既可以在计数若干后产生一次中断</p>
 <p>void TIM2_IRQHandler(void)<br>{</p>
-<p>if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)<br>{<br>TIM_ClearITPendingBit(TIM2, TIM_IT_Update);<br>//TIM_Cmd(TIM2, DISABLE);<br>TIM2-&gt;CNT=65530;<br>}<br>}</p>
+<p>if (TIM_GetITStatus(TIM2, TIM_IT_Update) !&#x3D; RESET)<br>{<br>TIM_ClearITPendingBit(TIM2, TIM_IT_Update);<br>&#x2F;&#x2F;TIM_Cmd(TIM2, DISABLE);<br>TIM2-&gt;CNT&#x3D;65530;<br>}<br>}</p>
 <p>仁者见仁吧，以后有机会再深入研究。。不得不说，用了stm32 的api库后，很多寄存器都懒得看了。。。。悲剧啊</p>
 
       

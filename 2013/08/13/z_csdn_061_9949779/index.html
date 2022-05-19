@@ -26,7 +26,7 @@
 <meta property="og:description" content="一些强大的命令再分享一些可能你不知道的shell用法和脚本，简单&amp;强大！在阅读以下部分前，强烈建议读者打开一个shell实验，这些都不是shell教科书里的大路货哦：）!$!$是一个特殊的环境变量，它代表了上一个命令的最后一个字符串。如：你可能会这样：$mkdir mydir$mv mydir yourdir$cd yourdir可以改成：$mkdi">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2013-08-13T00:00:26.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -384,13 +384,13 @@
 <ul>
 <li><p><code>&lt;span&gt;!$&lt;/span&gt;&lt;br&gt; &lt;code&gt;!$&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x7279;&amp;#x6B8A;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#x53D8;&amp;#x91CF;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EE3;&amp;#x8868;&amp;#x4E86;&amp;#x4E0A;&amp;#x4E00;&amp;#x4E2A;&amp;#x547D;&amp;#x4EE4;&amp;#x7684;&amp;#x6700;&amp;#x540E;&amp;#x4E00;&amp;#x4E2A;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x3002;&amp;#x5982;&amp;#xFF1A;&amp;#x4F60;&amp;#x53EF;&amp;#x80FD;&amp;#x4F1A;&amp;#x8FD9;&amp;#x6837;&amp;#xFF1A;&lt;br&gt; $mkdir mydir&lt;br&gt; $mv mydir yourdir&lt;/code&gt;&lt;br&gt; $cd yourdir&lt;br&gt; &amp;#x53EF;&amp;#x4EE5;&amp;#x6539;&amp;#x6210;&amp;#xFF1A;&lt;br&gt; $mkdir mydir&lt;br&gt; $mv !$ yourdir&lt;br&gt; $cd !$</code></p>
 </li>
-<li><p><code>sudo !!</code><br>以root的身份执行上一条命令 。<br>场景举例：比如Ubuntu里用 <code>apt-get</code>安装软件包的时候是需要root身份的，我们经常会忘记在 <code>apt-get</code>前加 <code>sudo</code>。每次不得不加上 <code>sudo</code>再重新键入这行命令，这时可以很方便的用 <code>sudo !!</code>完事。<br>（陈皓注：在shell下，有时候你会输入很长的命令，你可以使用!xxx来重复最近的一次命令，比如，你以前输入过，vi /where/the/file/is, 下次你可以使用 !vi 重得上次最近一次的vi命令。）</p>
+<li><p><code>sudo !!</code><br>以root的身份执行上一条命令 。<br>场景举例：比如Ubuntu里用 <code>apt-get</code>安装软件包的时候是需要root身份的，我们经常会忘记在 <code>apt-get</code>前加 <code>sudo</code>。每次不得不加上 <code>sudo</code>再重新键入这行命令，这时可以很方便的用 <code>sudo !!</code>完事。<br>（陈皓注：在shell下，有时候你会输入很长的命令，你可以使用!xxx来重复最近的一次命令，比如，你以前输入过，vi &#x2F;where&#x2F;the&#x2F;file&#x2F;is, 下次你可以使用 !vi 重得上次最近一次的vi命令。）</p>
 </li>
 <li><p><code>cd &amp;#x2013;</code><br>回到上一次的目录 。<br>场景举例：当前目录为 <code>/home/a</code>，用 <code>cd ../b</code>切换到 <code>/home/b</code>。这时可以通过反复执行 <code>cd &amp;#x2013;</code>命令在 <code>/home/a</code>和 <code>/home/b</code>之间来回方便的切换。<br>（陈皓注：cd ~ 是回到自己的Home目录，cd ~user，是进入某个用户的Home目录）</p>
 </li>
 <li><p>‘ALT+.’ or ‘ .’<br>热建alt+. 或 esc+. 可以把上次命令行的参数给重复出来。</p>
 </li>
-<li><p><code>^old^new</code><br>替换前一条命令里的部分字符串。<br>场景： <code>echo &quot;wanderful&quot;</code>，其实是想输出 <code>echo &quot;wonderful&quot;</code>。只需要 <code>^a^o</code>就行了，对很长的命令的错误拼写有很大的帮助。（陈皓注：也可以使用!!:gs/old/new）</p>
+<li><p><code>^old^new</code><br>替换前一条命令里的部分字符串。<br>场景： <code>echo &quot;wanderful&quot;</code>，其实是想输出 <code>echo &quot;wonderful&quot;</code>。只需要 <code>^a^o</code>就行了，对很长的命令的错误拼写有很大的帮助。（陈皓注：也可以使用!!:gs&#x2F;old&#x2F;new）</p>
 </li>
 <li><p>du -s * | sort -n | tail<br>列出当前目录里最大的10个文件。</p>
 </li>
@@ -408,9 +408,9 @@
 </li>
 <li><p>echo “ls -l” | at midnight<br>在某个时间运行某个命令。</p>
 </li>
-<li><p>curl -u user:pass -d status=”Tweeting from the shell” <a target="_blank" rel="noopener" href="http://twitter.com/statuses/update.xml">http://twitter.com/statuses/update.xml</a><br>命令行的方式更新twitter。</p>
+<li><p>curl -u user:pass -d status&#x3D;”Tweeting from the shell” <a target="_blank" rel="noopener" href="http://twitter.com/statuses/update.xml">http://twitter.com/statuses/update.xml</a><br>命令行的方式更新twitter。</p>
 </li>
-<li><p>curl -u username –silent “<a target="_blank" rel="noopener" href="https://mail.google.com/mail/feed/atom&quot;">https://mail.google.com/mail/feed/atom&quot;</a> | perl -ne ‘print “\t” if //; print “$2\n” if /&lt; titlename&gt;(.*)&lt; &gt;/;’<br>检查你的gmail未读邮件</p>
+<li><p>curl -u username –silent “<a target="_blank" rel="noopener" href="https://mail.google.com/mail/feed/atom&quot;">https://mail.google.com/mail/feed/atom&quot;</a> | perl -ne ‘print “\t” if &#x2F;&#x2F;; print “$2\n” if &#x2F;&lt; titlename&gt;(.*)&lt; &gt;&#x2F;;’<br>检查你的gmail未读邮件</p>
 </li>
 <li><p>ps aux | sort -nk +4 | tail<br>列出头十个最耗内存的进程</p>
 </li>

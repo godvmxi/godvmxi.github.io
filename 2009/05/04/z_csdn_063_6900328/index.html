@@ -26,7 +26,7 @@
 <meta property="og:description" content="undefined reference to &#96;libiconv(已解决)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2009-05-04T20:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -379,18 +379,18 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>undefined reference to `libiconv(已解决)</p>
+        <p>undefined reference to &#96;libiconv(已解决)</p>
 <p>2009年05月05日 星期二 14:21</p>
 <p>安装sphinx时又报错，真是疯了啊。</p>
-<p>在make时报错，错误内容：<br>r/local/src/sphinx/sphinx-0.9.8-rc2/src/tokenizer_zhcn.cpp:280: undefined reference to `libiconv’<br>libsphinx.a(tokenizer_zhcn.o)(.text+0x6fd):/usr/local/src/sphinx/sphinx-0.9.8-rc2/src/tokenizer_zhcn.cpp:55: undefined reference to</p>
-<p>`libiconv_open’<br>libsphinx.a(tokenizer_zhcn.o)(.text+0x719):/usr/local/src/sphinx/sphinx-0.9.8-rc2/src/tokenizer_zhcn.cpp:58: undefined reference to</p>
-<p><code>libiconv&#39; libsphinx.a(tokenizer_zhcn.o)(.text+0x7a4): In function </code>CSphTokenizer_zh_CN_UTF8::<del>CSphTokenizer_zh_CN_UTF8()’:<br>/usr/local/src/sphinx/sphinx-0.9.8-rc2/src/tokenizer_zhcn.cpp:34: undefined reference to <code>libiconv_close&#39; libsphinx.a(tokenizer_zhcn.o)(.text+0xd04): In function </code>CSphTokenizer_zh_CN_UTF8::</del>CSphTokenizer_zh_CN_UTF8()’:<br>/usr/local/src/sphinx/sphinx-0.9.8-rc2/src/tokenizer_zhcn.cpp:34: undefined reference to <code>libiconv_close&#39; libsphinx.a(tokenizer_zhcn.o)(.text+0x125c): In function </code>CSphTokenizer_zh_CN_UTF8::~CSphTokenizer_zh_CN_UTF8()’:<br>/usr/local/src/sphinx/sphinx-0.9.8-rc2/src/tokenizer_zhcn.cpp:34: undefined reference to `libiconv_close’</p>
-<p>解决<br>一开始以为libiconv的问题，又重装了几次还是一样，最后终于找着办法了<br>编辑：<br>./src/MakeFile文件<br>将<br>LIBS = -lm -lexpat -L/usr/local/lib<br>改成<br>LIBS = -lm -lexpat -liconv -L/usr/local/lib</p>
+<p>在make时报错，错误内容：<br>r&#x2F;local&#x2F;src&#x2F;sphinx&#x2F;sphinx-0.9.8-rc2&#x2F;src&#x2F;tokenizer_zhcn.cpp:280: undefined reference to &#96;libiconv’<br>libsphinx.a(tokenizer_zhcn.o)(.text+0x6fd):&#x2F;usr&#x2F;local&#x2F;src&#x2F;sphinx&#x2F;sphinx-0.9.8-rc2&#x2F;src&#x2F;tokenizer_zhcn.cpp:55: undefined reference to</p>
+<p>&#96;libiconv_open’<br>libsphinx.a(tokenizer_zhcn.o)(.text+0x719):&#x2F;usr&#x2F;local&#x2F;src&#x2F;sphinx&#x2F;sphinx-0.9.8-rc2&#x2F;src&#x2F;tokenizer_zhcn.cpp:58: undefined reference to</p>
+<p><code>libiconv&#39; libsphinx.a(tokenizer_zhcn.o)(.text+0x7a4): In function </code>CSphTokenizer_zh_CN_UTF8::<del>CSphTokenizer_zh_CN_UTF8()’:<br>&#x2F;usr&#x2F;local&#x2F;src&#x2F;sphinx&#x2F;sphinx-0.9.8-rc2&#x2F;src&#x2F;tokenizer_zhcn.cpp:34: undefined reference to <code>libiconv_close&#39; libsphinx.a(tokenizer_zhcn.o)(.text+0xd04): In function </code>CSphTokenizer_zh_CN_UTF8::</del>CSphTokenizer_zh_CN_UTF8()’:<br>&#x2F;usr&#x2F;local&#x2F;src&#x2F;sphinx&#x2F;sphinx-0.9.8-rc2&#x2F;src&#x2F;tokenizer_zhcn.cpp:34: undefined reference to <code>libiconv_close&#39; libsphinx.a(tokenizer_zhcn.o)(.text+0x125c): In function </code>CSphTokenizer_zh_CN_UTF8::~CSphTokenizer_zh_CN_UTF8()’:<br>&#x2F;usr&#x2F;local&#x2F;src&#x2F;sphinx&#x2F;sphinx-0.9.8-rc2&#x2F;src&#x2F;tokenizer_zhcn.cpp:34: undefined reference to &#96;libiconv_close’</p>
+<p>解决<br>一开始以为libiconv的问题，又重装了几次还是一样，最后终于找着办法了<br>编辑：<br>.&#x2F;src&#x2F;MakeFile文件<br>将<br>LIBS &#x3D; -lm -lexpat -L&#x2F;usr&#x2F;local&#x2F;lib<br>改成<br>LIBS &#x3D; -lm -lexpat -liconv -L&#x2F;usr&#x2F;local&#x2F;lib</p>
 <p>ok了</p>
 <p>还是不行啊</p>
-<p>gcc -O2 -fno-strict-aliasing -pipe -L /usr/obj/usr/src/sys/GOD/modules/usr/src/sys/modules/libiconv/ -liconv ~/test/iconv/main.c -o ~/test/iconv/code<br>/home/soj/test/iconv/main.c: In function <code>main&#39;: /home/soj/test/iconv/main.c:49: warning: passing arg 2 of </code>libiconv’ from incompatible pointer type<br>/usr/bin/ld: cannot find -liconv</p>
+<p>gcc -O2 -fno-strict-aliasing -pipe -L &#x2F;usr&#x2F;obj&#x2F;usr&#x2F;src&#x2F;sys&#x2F;GOD&#x2F;modules&#x2F;usr&#x2F;src&#x2F;sys&#x2F;modules&#x2F;libiconv&#x2F; -liconv ~&#x2F;test&#x2F;iconv&#x2F;main.c -o ~&#x2F;test&#x2F;iconv&#x2F;code<br>&#x2F;home&#x2F;soj&#x2F;test&#x2F;iconv&#x2F;main.c: In function <code>main&#39;: /home/soj/test/iconv/main.c:49: warning: passing arg 2 of </code>libiconv’ from incompatible pointer type<br>&#x2F;usr&#x2F;bin&#x2F;ld: cannot find -liconv</p>
 <p><strong>dangk</strong> 发表于 2006-12-19 15:50</p>
-<h3><span id="回复-3楼-balabalacha-的帖子">回复 3楼 balabalacha 的帖子</span></h3><p>-I/usr/local/include -L/usr/local/lib/ -liconv</p>
+<h3><span id="回复-3楼-balabalacha-的帖子">回复 3楼 balabalacha 的帖子</span></h3><p>-I&#x2F;usr&#x2F;local&#x2F;include -L&#x2F;usr&#x2F;local&#x2F;lib&#x2F; -liconv</p>
 <p><strong>balabalacha</strong> 发表于 2006-12-19 20:42</p>
 
       

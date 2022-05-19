@@ -26,7 +26,7 @@
 <meta property="og:description" content="在linux中使用head命令和tail命令查看文件中的指定行 (2011-04-16 12:20:16)转载标签： 杂谈分类： Linux 使用head命令和tail命令显示指定的行：head-n, --lines&#x3D;[-]K              print the first">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2011-11-01T02:27:10.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.505Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -381,59 +381,59 @@
       
         <p>使用head 命令和tail 命令显示指定的行：</p>
 <p>head</p>
-<p>-n, –lines=[-]K</p>
+<p>-n, –lines&#x3D;[-]K</p>
 <p>print the first K lines instead of the first 10; with the leading</p>
 <p>‘-‘, print all but the last K lines of each file</p>
 <p>tail</p>
-<p>-n, –lines=K</p>
+<p>-n, –lines&#x3D;K</p>
 <p>output the last K lines, instead of the last 10; or use -n +K to</p>
 <p>output lines starting with the Kth</p>
 <p>[root@localhost etc]# pwd</p>
-<p>/etc</p>
+<p>&#x2F;etc</p>
 <p>[root@localhost etc]# cat yum.conf</p>
 <p>[main]</p>
-<p>cachedir=/var/cache/yum/$basearch/$releasever</p>
-<p>keepcache=0</p>
-<p>debuglevel=2</p>
-<p>logfile=/var/log/yum.log</p>
-<p>exactarch=1</p>
-<p>obsoletes=1</p>
-<p>gpgcheck=1</p>
-<p>plugins=1</p>
-<p>installonly_limit=3</p>
-<p>//此处是一空行</p>
-<h1><span id="this-is-the-default-if-you-make-this-bigger-yum-wont-see-if-the-metadata">This is the default, if you make this bigger yum won’t see if the metadata</span></h1><h1><span id="is-newer-on-the-remote-and-so-youll-gain-the-bandwidth-of-not-having-to">is newer on the remote and so you’ll “gain” the bandwidth of not having to</span></h1><h1><span id="download-the-new-metadata-and-pay-for-it-by-yum-not-having-correct">download the new metadata and “pay” for it by yum not having correct</span></h1><h1><span id="information">information.</span></h1><h1><span id="it-is-esp-important-to-have-correct-metadata-for-distributions-like">It is esp. important, to have correct metadata, for distributions like</span></h1><h1><span id="fedora-which-dont-keep-old-packages-around-if-you-dont-like-this-checking">Fedora which don’t keep old packages around. If you don’t like this checking</span></h1><h1><span id="interupting-your-command-line-usage-its-much-better-to-have-something">interupting your command line usage, it’s much better to have something</span></h1><h1><span id="manually-check-the-metadata-once-an-hour-yum-updatesd-will-do-this">manually check the metadata once an hour (yum-updatesd will do this).</span></h1><h1><span id="metadata_expire90m">metadata_expire=90m</span></h1><p>//此处是一空行</p>
-<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-etcyumreposd">in /etc/yum.repos.d</span></h1><p>[root@localhost etc]# cat yum.conf |wc -l</p>
+<p>cachedir&#x3D;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;$basearch&#x2F;$releasever</p>
+<p>keepcache&#x3D;0</p>
+<p>debuglevel&#x3D;2</p>
+<p>logfile&#x3D;&#x2F;var&#x2F;log&#x2F;yum.log</p>
+<p>exactarch&#x3D;1</p>
+<p>obsoletes&#x3D;1</p>
+<p>gpgcheck&#x3D;1</p>
+<p>plugins&#x3D;1</p>
+<p>installonly_limit&#x3D;3</p>
+<p>&#x2F;&#x2F;此处是一空行</p>
+<h1><span id="this-is-the-default-if-you-make-this-bigger-yum-wont-see-if-the-metadata">This is the default, if you make this bigger yum won’t see if the metadata</span></h1><h1><span id="is-newer-on-the-remote-and-so-youll-gain-the-bandwidth-of-not-having-to">is newer on the remote and so you’ll “gain” the bandwidth of not having to</span></h1><h1><span id="download-the-new-metadata-and-pay-for-it-by-yum-not-having-correct">download the new metadata and “pay” for it by yum not having correct</span></h1><h1><span id="information">information.</span></h1><h1><span id="it-is-esp-important-to-have-correct-metadata-for-distributions-like">It is esp. important, to have correct metadata, for distributions like</span></h1><h1><span id="fedora-which-dont-keep-old-packages-around-if-you-dont-like-this-checking">Fedora which don’t keep old packages around. If you don’t like this checking</span></h1><h1><span id="interupting-your-command-line-usage-its-much-better-to-have-something">interupting your command line usage, it’s much better to have something</span></h1><h1><span id="manually-check-the-metadata-once-an-hour-yum-updatesd-will-do-this">manually check the metadata once an hour (yum-updatesd will do this).</span></h1><h1><span id="metadata_expirex3d90m">metadata_expire&#x3D;90m</span></h1><p>&#x2F;&#x2F;此处是一空行</p>
+<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-x2fetcx2fyumreposd">in &#x2F;etc&#x2F;yum.repos.d</span></h1><p>[root@localhost etc]# cat yum.conf |wc -l</p>
 <p>yum.conf 文件共有23 行</p>
 <p>[root@localhost etc]# head yum.conf</p>
 <p>[main]</p>
-<p>cachedir=/var/cache/yum/$basearch/$releasever</p>
-<p>keepcache=0</p>
-<p>debuglevel=2</p>
-<p>logfile=/var/log/yum.log</p>
-<p>exactarch=1</p>
-<p>obsoletes=1</p>
-<p>gpgcheck=1</p>
-<p>plugins=1</p>
-<p>installonly_limit=3</p>
+<p>cachedir&#x3D;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;$basearch&#x2F;$releasever</p>
+<p>keepcache&#x3D;0</p>
+<p>debuglevel&#x3D;2</p>
+<p>logfile&#x3D;&#x2F;var&#x2F;log&#x2F;yum.log</p>
+<p>exactarch&#x3D;1</p>
+<p>obsoletes&#x3D;1</p>
+<p>gpgcheck&#x3D;1</p>
+<p>plugins&#x3D;1</p>
+<p>installonly_limit&#x3D;3</p>
 <p>显示前10 行，这个是默认值</p>
 <p>[root@localhost etc]# head -n 2 yum.conf</p>
 <p>[main]</p>
-<p>cachedir=/var/cache/yum/$basearch/$releasever</p>
+<p>cachedir&#x3D;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;$basearch&#x2F;$releasever</p>
 <p>显示前2 行</p>
 <p>[root@localhost etc]# head -n -20 yum.conf</p>
 <p>[main]</p>
-<p>cachedir=/var/cache/yum/$basearch/$releasever</p>
-<p>keepcache=0</p>
+<p>cachedir&#x3D;&#x2F;var&#x2F;cache&#x2F;yum&#x2F;$basearch&#x2F;$releasever</p>
+<p>keepcache&#x3D;0</p>
 <p>显示除最后20 行以外的所有行</p>
 <p>[root@localhost etc]# tail yum.conf</p>
-<h1><span id="download-the-new-metadata-and-pay-for-it-by-yum-not-having-correct">download the new metadata and “pay” for it by yum not having correct</span></h1><h1><span id="information">information.</span></h1><h1><span id="it-is-esp-important-to-have-correct-metadata-for-distributions-like">It is esp. important, to have correct metadata, for distributions like</span></h1><h1><span id="fedora-which-dont-keep-old-packages-around-if-you-dont-like-this-checking">Fedora which don’t keep old packages around. If you don’t like this checking</span></h1><h1><span id="interupting-your-command-line-usage-its-much-better-to-have-something">interupting your command line usage, it’s much better to have something</span></h1><h1><span id="manually-check-the-metadata-once-an-hour-yum-updatesd-will-do-this">manually check the metadata once an hour (yum-updatesd will do this).</span></h1><h1><span id="metadata_expire90m">metadata_expire=90m</span></h1><p>//此处是一空行</p>
-<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-etcyumreposd">in /etc/yum.repos.d</span></h1><p>显示最后10 行，这是默认值</p>
+<h1><span id="download-the-new-metadata-and-pay-for-it-by-yum-not-having-correct">download the new metadata and “pay” for it by yum not having correct</span></h1><h1><span id="information">information.</span></h1><h1><span id="it-is-esp-important-to-have-correct-metadata-for-distributions-like">It is esp. important, to have correct metadata, for distributions like</span></h1><h1><span id="fedora-which-dont-keep-old-packages-around-if-you-dont-like-this-checking">Fedora which don’t keep old packages around. If you don’t like this checking</span></h1><h1><span id="interupting-your-command-line-usage-its-much-better-to-have-something">interupting your command line usage, it’s much better to have something</span></h1><h1><span id="manually-check-the-metadata-once-an-hour-yum-updatesd-will-do-this">manually check the metadata once an hour (yum-updatesd will do this).</span></h1><h1><span id="metadata_expirex3d90m">metadata_expire&#x3D;90m</span></h1><p>&#x2F;&#x2F;此处是一空行</p>
+<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-x2fetcx2fyumreposd">in &#x2F;etc&#x2F;yum.repos.d</span></h1><p>显示最后10 行，这是默认值</p>
 <p>[root@localhost etc]# tail -n 2 yum.conf</p>
-<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-etcyumreposd">in /etc/yum.repos.d</span></h1><p>显示最后2 行</p>
+<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-x2fetcx2fyumreposd">in &#x2F;etc&#x2F;yum.repos.d</span></h1><p>显示最后2 行</p>
 <p>[root@localhost etc]# tail -n +21 yum.conf</p>
-<p>//此处是一空行</p>
-<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-etcyumreposd">in /etc/yum.repos.d</span></h1><p>从第21 行开始显示后面的所有行，即第21 行到第23 行</p>
+<p>&#x2F;&#x2F;此处是一空行</p>
+<h1><span id="put-your-repos-here-or-in-separate-files-named-filerepo">PUT YOUR REPOS HERE OR IN separate files named file.repo</span></h1><h1><span id="in-x2fetcx2fyumreposd">in &#x2F;etc&#x2F;yum.repos.d</span></h1><p>从第21 行开始显示后面的所有行，即第21 行到第23 行</p>
 <p>显示第11 行到第20 行(总共23 行)：</p>
 <p>从第11 行开始显示，但不包括最后3 行</p>
 <p>[huage@localhost etc]$ head -n -3 yum.conf |tail -n +11</p>

@@ -26,7 +26,7 @@
 <meta property="og:description" content="android 手机做王能的服务器，Now you can run a CVS, DC Hub, DHCP, DLNA, DNS, DDNS, eDonkey, Email (POP3 &#x2F; SMTP), FTP Proxy, FTP, FTPS, Flash Policy, Git, Gopher, HTTP Snoop, ICAP, IRC Bot, IRC, ISCSI, Icecast, L">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2013-09-04T19:43:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -379,16 +379,16 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>公司代码不让外传，自己的代码server又不方便，就找了android下的一个git server –》Gidder 。具体不描述了，自己研究吧，挺好玩，添加个用户名，repo，使用ssh://user@ip/test.git就可以提交代码了。</p>
+        <p>公司代码不让外传，自己的代码server又不方便，就找了android下的一个git server –》Gidder 。具体不描述了，自己研究吧，挺好玩，添加个用户名，repo，使用ssh:&#x2F;&#x2F;user@ip&#x2F;test.git就可以提交代码了。</p>
 <p>核心来了，无意中发现了另一个软件Servers Ultimate，可以支持基本上所有的常用服务器，摘一段e文简介：</p>
-<p>Now you can run a CVS, DC Hub, DHCP, DLNA, DNS, DDNS, eDonkey, Email (POP3 / SMTP), FTP Proxy, FTP, FTPS, Flash Policy, Git, Gopher, HTTP Snoop, ICAP, IRC Bot, IRC, ISCSI, Icecast, LPD, Load Balancer, MQTT, Memcached, MongoDB, MySQL, NFS, NTP, NZB Client, Napster, PHP and Lighttpd, PXE, Port Forwarder, Proxy, RTMP, Remote Control, Rsync, SMB/CIFS, SMPP, SMS, Socks, SFTP, SSH, Server Monitor, Stomp, Styx, Syslog, TFTP, Telnet, Test, Time, Torrent Client, Torrent Tracker, Trigger, UPnP Port Mapper, VNC, Wake On Lan, Web, WebDAV, WebSocket, X11 and/or XMPP server!</p>
+<p>Now you can run a CVS, DC Hub, DHCP, DLNA, DNS, DDNS, eDonkey, Email (POP3 &#x2F; SMTP), FTP Proxy, FTP, FTPS, Flash Policy, Git, Gopher, HTTP Snoop, ICAP, IRC Bot, IRC, ISCSI, Icecast, LPD, Load Balancer, MQTT, Memcached, MongoDB, MySQL, NFS, NTP, NZB Client, Napster, PHP and Lighttpd, PXE, Port Forwarder, Proxy, RTMP, Remote Control, Rsync, SMB&#x2F;CIFS, SMPP, SMS, Socks, SFTP, SSH, Server Monitor, Stomp, Styx, Syslog, TFTP, Telnet, Test, Time, Torrent Client, Torrent Tracker, Trigger, UPnP Port Mapper, VNC, Wake On Lan, Web, WebDAV, WebSocket, X11 and&#x2F;or XMPP server!</p>
 <p>看到没有。哈哈，强大的一塌糊涂啊，这里仅仅介绍一下ddns吧（主要是他本身提供的全都是国外的ddns，天朝的网络环境你懂的，这里添加个花生壳吧），毕竟使用随时变化的手机ip还是很不方便的 。</p>
 <p>添加一个</p>
 <p>进到SPECIFIC ,填写花生壳的ip更新地址 ：</p>
-<p>http://%username%:%password%@ddns.oray.com/ph/update?hostname=%hostname%&amp;myip=%ip%</p>
+<p>http:&#x2F;&#x2F;%username%:%password%@ddns.oray.com&#x2F;ph&#x2F;update?hostname&#x3D;%hostname%&amp;myip&#x3D;%ip%</p>
 <p>点击help可以看到帮助 ：</p>
 <p>输入自己在花生壳的申请的免费域名和花生壳账户密码，点击test Now，出现200 信息一般都成功了</p>
-<p>windows可以使用ipconfig /flushdns 清空一下dns缓冲，这个时候你就可以ping 你的域名，你的ip就通了。</p>
+<p>windows可以使用ipconfig &#x2F;flushdns 清空一下dns缓冲，这个时候你就可以ping 你的域名，你的ip就通了。</p>
 <p>在上边开通自己的服务吧，你可以拥有移动的万能服务器了，省去折腾服务器了，当然是临时的</p>
 <p>想想下边的组合：</p>
 <p>android + cvs git</p>

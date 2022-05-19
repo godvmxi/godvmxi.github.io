@@ -26,7 +26,7 @@
 <meta property="og:description" content="AAC原始码流无法直接播放，一般需要封装为ADTS格式才能再次使用，本博主在android中用MediaCodec编码得到的AAC就是raw格式，为了保存为.aac格式，需要增加adts头，这样就可以通过vlc或者windows Media player直接播放了。现在把网上搜集的资料和代码总结一下，以备自己以后参考，也分享给有需要的同仁。源码来自：http:&#x2F;&#x2F;stackover">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2016-10-20T01:33:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.505Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -388,8 +388,8 @@
 <p>以下理论转载自博客：<a target="_blank" rel="noopener" href="http://wiki.multimedia.cx/index.php?title=ADTS">http://wiki.multimedia.cx/index.php?title=ADTS</a><br>Audio Data Transport Stream (ADTS) is a format, used by MPEG TS or Shoutcast to stream audio, usually AAC.</p>
 <p>Structure<br>AAAAAAAA AAAABCCD EEFFFFGH HHIJKLMM MMMMMMMM MMMOOOOO OOOOOOPP (QQQQQQQQ QQQQQQQQ)<br>Header consists of 7 or 9 bytes (without or with CRC).</p>
 <p>Letter Length (bits) Description<br>A 12 syncword 0xFFF, all bits must be 1<br>B 1 MPEG Version: 0 for MPEG-4, 1 for MPEG-2<br>C 2 Layer: always 0<br>D 1 protection absent, Warning, set to 1 if there is no CRC and 0 if there is CRC<br>E 2 profile, the MPEG-4 Audio Object Type minus 1<br>F 4 MPEG-4 Sampling Frequency Index (15 is forbidden)<br>G 1 private stream, set to 0 when encoding, ignore when decoding<br>H 3 MPEG-4 Channel Configuration (in the case of 0, the channel configuration is sent via an inband</p>
-<p>PCE)<br>I 1 originality, set to 0 when encoding, ignore when decoding<br>J 1 home, set to 0 when encoding, ignore when decoding<br>K 1 copyrighted stream, set to 0 when encoding, ignore when decoding<br>L 1 copyright start, set to 0 when encoding, ignore when decoding<br>M 13 frame length, this value must include 7 or 9 bytes of header length: FrameLength =</p>
-<p>(ProtectionAbsent == 1 ? 7 : 9) + size(AACFrame)<br>O 11 Buffer fullness<br>P 2 Number of AAC frames (RDBs) in ADTS frame minus 1, for maximum compatibility always use 1 AAC frame</p>
+<p>PCE)<br>I 1 originality, set to 0 when encoding, ignore when decoding<br>J 1 home, set to 0 when encoding, ignore when decoding<br>K 1 copyrighted stream, set to 0 when encoding, ignore when decoding<br>L 1 copyright start, set to 0 when encoding, ignore when decoding<br>M 13 frame length, this value must include 7 or 9 bytes of header length: FrameLength &#x3D;</p>
+<p>(ProtectionAbsent &#x3D;&#x3D; 1 ? 7 : 9) + size(AACFrame)<br>O 11 Buffer fullness<br>P 2 Number of AAC frames (RDBs) in ADTS frame minus 1, for maximum compatibility always use 1 AAC frame</p>
 <p>per ADTS frame<br>Q 16 CRC if protection absent is 0</p>
 <p>Usage in MPEG-TS<br>ADTS packet must be a content of PES packet. Pack AAC data inside ADTS frame, than pack inside PES packet, then mux</p>
 <p>by TS packetizer.</p>

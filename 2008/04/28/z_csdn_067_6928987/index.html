@@ -26,7 +26,7 @@
 <meta property="og:description" content="linux下获取时间的若干函数(z)2008-04-29 14:13asctime（将时间和日期以字符串格式表示）相关函数time，ctime，gmtime，localtime表头文件#include定义函数char * asctime(con">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2008-04-28T22:13:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -415,7 +415,7 @@
 <p>定义函数</p>
 <p>int gettimeofday ( struct timeval * tv , struct timezone * tz )</p>
 <p>函数说明</p>
-<p>gettimeofday()会把目前的时间有tv所指的结构返回，当地时区的信息则放到tz所指的结构中。<br>timeval结构定义为:<br>struct timeval{<br>long tv_sec; /<em>秒</em>/<br>long tv_usec; /<em>微秒</em>/<br>};<br>timezone 结构定义为:<br>struct timezone{<br>int tz_minuteswest; /<em>和Greenwich 时间差了多少分钟</em>/<br>int tz_dsttime; /<em>日光节约时间的状态</em>/<br>};<br>上述两个结构都定义在/usr/include/sys/time.h。tz_dsttime 所代表的状态如下<br>DST_NONE /<em>不使用</em>/<br>DST_USA /<em>美国</em>/<br>DST_AUST /<em>澳洲</em>/<br>DST_WET /<em>西欧</em>/<br>DST_MET /<em>中欧</em>/<br>DST_EET /<em>东欧</em>/<br>DST_CAN /<em>加拿大</em>/<br>DST_GB /<em>大不列颠</em>/<br>DST_RUM /<em>罗马尼亚</em>/<br>DST_TUR /<em>土耳其</em>/<br>DST_AUSTALT /<em>澳洲（1986年以后）</em>/</p>
+<p>gettimeofday()会把目前的时间有tv所指的结构返回，当地时区的信息则放到tz所指的结构中。<br>timeval结构定义为:<br>struct timeval{<br>long tv_sec; &#x2F;<em>秒</em>&#x2F;<br>long tv_usec; &#x2F;<em>微秒</em>&#x2F;<br>};<br>timezone 结构定义为:<br>struct timezone{<br>int tz_minuteswest; &#x2F;<em>和Greenwich 时间差了多少分钟</em>&#x2F;<br>int tz_dsttime; &#x2F;<em>日光节约时间的状态</em>&#x2F;<br>};<br>上述两个结构都定义在&#x2F;usr&#x2F;include&#x2F;sys&#x2F;time.h。tz_dsttime 所代表的状态如下<br>DST_NONE &#x2F;<em>不使用</em>&#x2F;<br>DST_USA &#x2F;<em>美国</em>&#x2F;<br>DST_AUST &#x2F;<em>澳洲</em>&#x2F;<br>DST_WET &#x2F;<em>西欧</em>&#x2F;<br>DST_MET &#x2F;<em>中欧</em>&#x2F;<br>DST_EET &#x2F;<em>东欧</em>&#x2F;<br>DST_CAN &#x2F;<em>加拿大</em>&#x2F;<br>DST_GB &#x2F;<em>大不列颠</em>&#x2F;<br>DST_RUM &#x2F;<em>罗马尼亚</em>&#x2F;<br>DST_TUR &#x2F;<em>土耳其</em>&#x2F;<br>DST_AUSTALT &#x2F;<em>澳洲（1986年以后）</em>&#x2F;</p>
 <p>返回值</p>
 <p>成功则返回0，失败返回－1，错误代码存于errno。附加说明EFAULT指针tv和tz所指的内存空间超出存取权限。</p>
 <p>#include</p>
@@ -432,7 +432,7 @@
 <p>返回值</p>
 <p>返回结构tm代表目前UTC 时间</p>
 <p>#include</p>
-<p>2000/10/28 Sat 8:15:38</p>
+<p>2000&#x2F;10&#x2F;28 Sat 8:15:38</p>
 <p>localtime（取得当地目前时间和日期）</p>
 <p>相关函数</p>
 <p>time, asctime, ctime, gmtime</p>
@@ -445,7 +445,7 @@
 <p>返回值</p>
 <p>返回结构tm代表目前的当地时间。</p>
 <p>#include</p>
-<p>2000/10/28 Sat 11:12:22</p>
+<p>2000&#x2F;10&#x2F;28 Sat 11:12:22</p>
 <p>mktime（将时间结构数据转换成经过的秒数）</p>
 <p>相关函数</p>
 <p>time，asctime，gmtime，localtime</p>
@@ -457,7 +457,7 @@
 <p>mktime()用来将参数timeptr所指的tm结构数据转换成从公元1970年1月1日0时0分0 秒算起至今的UTC时间所经过的秒数。</p>
 <p>返回值</p>
 <p>返回经过的秒数。</p>
-<p>/* 用time()取得时间（秒数），利用localtime()<br>转换成struct tm 再利用mktine（）将struct tm转换成原来的秒数*/<br>#include</p>
+<p>&#x2F;* 用time()取得时间（秒数），利用localtime()<br>转换成struct tm 再利用mktine（）将struct tm转换成原来的秒数*&#x2F;<br>#include</p>
 <p>time():974943297<br>time()-&gt;localtime()-&gt;mktime():974943297</p>
 <p>settimeofday（设置目前时间）</p>
 <p>相关函数</p>

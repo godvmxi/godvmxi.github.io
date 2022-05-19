@@ -18,22 +18,22 @@
   
   
   <title>Force Download View Only Video From Microsoft Sharepoint / Streams | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="BackgroundThere are some many teams meeting records shared by other teams, but only be available for 21 days, view only but no download. Hate it. &amp;#x1F643;&amp;#x1F928; Talk is cheap, show me the code.For">
+  <meta name="description" content="BackgroundThere are some many teams meeting records shared by other teams, but only be available for 21 days, view only but no download. Hate it. &amp;#x1F643;&amp;#x1F928; Talk is cheap, show me the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Force Download View Only Video From Microsoft Sharepoint &#x2F; Streams">
 <meta property="og:url" content="http://vball.fun/2021/12/10/download-view-only-video-from-microsoft-sharepoint/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="BackgroundThere are some many teams meeting records shared by other teams, but only be available for 21 days, view only but no download. Hate it. &amp;#x1F643;&amp;#x1F928; Talk is cheap, show me the code.For">
+<meta property="og:description" content="BackgroundThere are some many teams meeting records shared by other teams, but only be available for 21 days, view only but no download. Hate it. &amp;#x1F643;&amp;#x1F928; Talk is cheap, show me the">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://vball.fun/2021/12/10/download-view-only-video-from-microsoft-sharepoint/sharepoint_inspection.png">
+<meta property="og:image" content="http://vball.fun/sharepoint_inspection.png">
 <meta property="article:published_time" content="2021-12-10T06:06:45.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.648Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.473Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="Ffmpeg">
 <meta property="article:tag" content="Microsoft">
 <meta property="article:tag" content="Sharepoint">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://vball.fun/2021/12/10/download-view-only-video-from-microsoft-sharepoint/sharepoint_inspection.png">
+<meta name="twitter:image" content="http://vball.fun/sharepoint_inspection.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://vball.fun/2021/12/10/download-view-only-video-from-microsoft-sharepoint/index.html">
   
@@ -383,8 +383,8 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1><span id="background">Background</span></h1><p>There are some many teams meeting records shared by other teams, but only be available for 21 days, view only but no download. Hate it. &#x1F643;&#x1F928;</p>
-<h1><span id="talk-is-cheap-show-me-the-code">Talk is cheap, show me the code.</span></h1><h2><span id="force-downlaod-from-share-point">Force downlaod from Share Point</span></h2><p>Chrome/Edge(F12) -&gt; Inspector -&gt; Network -&gt; <strong>videomanifest?privode</strong></p>
+        <h1><span id="background">Background</span></h1><p>There are some many teams meeting records shared by other teams, but only be available for 21 days, view only but no download. Hate it. &amp;#x1F643;&amp;#x1F928;</p>
+<h1><span id="talk-is-cheap-show-me-the-code">Talk is cheap, show me the code.</span></h1><h2><span id="force-downlaod-from-share-point">Force downlaod from Share Point</span></h2><p>Chrome&#x2F;Edge(F12) -&gt; Inspector -&gt; Network -&gt; <strong>videomanifest?privode</strong></p>
 <ol>
 <li><p>Open the Sharepoint page with the video you want to download</p>
 </li>
@@ -396,12 +396,12 @@
 </li>
 <li><p>Refresh the Sharepoint page</p>
 </li>
-<li><p>After a few seconds you should now see 1 result in the browser inspector’s network part. That should be something looking like:<br>videomanifest?provider=spo… =&gt; that right there is the manifest URL you will need later on. Right-click on it and copy the link address.</p>
+<li><p>After a few seconds you should now see 1 result in the browser inspector’s network part. That should be something looking like:<br>videomanifest?provider&#x3D;spo… &#x3D;&gt; that right there is the manifest URL you will need later on. Right-click on it and copy the link address.</p>
 </li>
 <li><p>Use ffmpeg to download the video.</p>
 </li>
 </ol>
-<p><img src="sharepoint_inspection.png" alt="inspection"></p>
+<p><img src="/sharepoint_inspection.png" alt="inspection"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">&quot;https://theURLtoTheManifestYouCopiedHere&quot;</span> -codec copy downloadedVideo.mp4</span><br></pre></td></tr></table></figure>
 <h2><span id="force-downlaod-from-stream">Force downlaod from Stream</span></h2><p>Get <a target="_blank" rel="noopener" href="https://github.com/snobu/destreamer">destreamer</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/snobu/destreamer</span><br><span class="line">$ <span class="built_in">cd</span> destreamer</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run build</span><br></pre></td></tr></table></figure>

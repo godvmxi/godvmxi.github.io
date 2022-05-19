@@ -25,17 +25,17 @@
 <meta property="og:site_name" content="Godvmxi Blog">
 <meta property="og:description" content="There are two methods to view STL types under GDB.From Zhangxu  Method 1: gdb-stl-viewsgdb-stl-views is a set of GDB macros that can display the contents of many STL containers: list, vector, map, mul">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://vball.fun/2020/08/13/view-stl-under-gdb/image2020-8-13_17-4-3.png">
-<meta property="og:image" content="http://vball.fun/2020/08/13/view-stl-under-gdb/image2020-8-13_16-56-4.png">
+<meta property="og:image" content="http://vball.fun/image2020-8-13_17-4-3.png">
+<meta property="og:image" content="http://vball.fun/image2020-8-13_16-56-4.png">
 <meta property="article:published_time" content="2020-08-13T12:46:25.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.680Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.501Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="gdb">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="stl">
 <meta property="article:tag" content="gnu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://vball.fun/2020/08/13/view-stl-under-gdb/image2020-8-13_17-4-3.png">
+<meta name="twitter:image" content="http://vball.fun/image2020-8-13_17-4-3.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://vball.fun/2020/08/13/view-stl-under-gdb/index.html">
   
@@ -398,23 +398,23 @@
 </ul>
 <h3><span id="enable-marco">Enable Marco</span></h3><p>Two ways to enable this Marco:</p>
 <ul>
-<li>copy the content in stl-views-1.0.3.gdb to to ~/.gdbinit</li>
-<li>source path/to/stl-views-1.0.3.gdb in gdb anytime before you want to use it. In this way you will need to source it every time after open gdb</li>
+<li>copy the content in stl-views-1.0.3.gdb to to ~&#x2F;.gdbinit</li>
+<li>source path&#x2F;to&#x2F;stl-views-1.0.3.gdb in gdb anytime before you want to use it. In this way you will need to source it every time after open gdb</li>
 </ul>
 <p>Here is an example after Macro is loaded:</p>
-<p><img src="image2020-8-13_17-4-3.png" alt="图片pic1"></p>
+<p><img src="/image2020-8-13_17-4-3.png" alt="图片pic1"></p>
 <h2><span id="method-2-python-printer">Method 2: Python printer</span></h2><p>GDB7.0 or higer version include support for writing pretty-printers in Python. </p>
-<h3><span id="check-out-the-latest-python-libstdc-printers-to-a-place-on-your-machine">Check-out the latest Python libstdc++ printers to a place on your machine</span></h3><p>In a local directory, clone gcc code, Then you can find SomeLocalDir/gcc/libstdc++-v3/python/libstdcxx/v6/printers.py</p>
+<h3><span id="check-out-the-latest-python-libstdc-printers-to-a-place-on-your-machine">Check-out the latest Python libstdc++ printers to a place on your machine</span></h3><p>In a local directory, clone gcc code, Then you can find SomeLocalDir&#x2F;gcc&#x2F;libstdc++-v3&#x2F;python&#x2F;libstdcxx&#x2F;v6&#x2F;printers.py</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gcc.gnu.org/git/gcc.git  SomeLocalDir</span><br></pre></td></tr></table></figure>
 
 
 
-<h3><span id="add-the-following-to-your-~gdbinit">Add the following to your ~/.gdbinit.</span></h3><p>The path needs to match where the python module above was checked-out. So if checked out to: SomeLocalDir, the path would be as written in the example:</p>
+<h3><span id="add-the-following-to-your-~x2fgdbinit">Add the following to your ~&#x2F;.gdbinit.</span></h3><p>The path needs to match where the python module above was checked-out. So if checked out to: SomeLocalDir, the path would be as written in the example:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.insert(<span class="number">0</span>, <span class="string">&#x27;SomeLocalDir/gcc/libstdc++-v3/python&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> libstdcxx.v6.printers <span class="keyword">import</span> register_libstdcxx_printers</span><br><span class="line">register_libstdcxx_printers (<span class="literal">None</span>)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
-<p>Once loaded, STL classes that the printers support should printed in a more human-readable format. To print the classes in the old style, use the /r (raw) switch in the print command (i.e., print /r foo). This will print the classes as if the Python pretty-printers were not loaded.</p>
+<p>Once loaded, STL classes that the printers support should printed in a more human-readable format. To print the classes in the old style, use the &#x2F;r (raw) switch in the print command (i.e., print &#x2F;r foo). This will print the classes as if the Python pretty-printers were not loaded.</p>
 <p>Here is an example after the Python printer is loaded:</p>
-<p><img src="image2020-8-13_16-56-4.png" alt="图片pic1"></p>
+<p><img src="/image2020-8-13_16-56-4.png" alt="图片pic1"></p>
 <p>Reference Links<br><a target="_blank" rel="noopener" href="https://sourceware.org/gdb/wiki/STLSupport">https://sourceware.org/gdb/wiki/STLSupport</a></p>
 <p><a target="_blank" rel="noopener" href="https://gcc.gnu.org/git.html">https://gcc.gnu.org/git.html</a></p>
 <p>some links in Chinese(mainly translation of above link): </p>

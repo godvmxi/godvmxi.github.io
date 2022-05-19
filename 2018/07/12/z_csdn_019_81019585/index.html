@@ -25,13 +25,13 @@
 <meta property="og:site_name" content="Godvmxi Blog">
 <meta property="og:description" content="修改备注：config文件中的ProxyCommand中不需要&#x3D;大致起源是公司的网络审核超级严格，本地access美国server只能先使用link到审核服务器，然后vnc到中间服务器，然后再bbb。。。。总不能这边修改一行代码再去vnc上重新敲一遍吧。。。于是萌生了打洞的想法（操作完全违规，请参考员工离职手册，做好被fire的准备）先描述几个概念：ssh tunnel...">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://vball.fun/2018/07/12/z_csdn_019_81019585/70">
+<meta property="og:image" content="http://vball.fun/70">
 <meta property="article:published_time" content="2018-07-12T02:38:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.505Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://vball.fun/2018/07/12/z_csdn_019_81019585/70">
+<meta name="twitter:image" content="http://vball.fun/70">
   <!-- Canonical links -->
   <link rel="canonical" href="http://vball.fun/2018/07/12/z_csdn_019_81019585/index.html">
   
@@ -382,7 +382,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <p>修改备注：</p>
-<p>config文件中的ProxyCommand中不需要=</p>
+<p>config文件中的ProxyCommand中不需要&#x3D;</p>
 <p>大致起源是公司的网络审核超级严格，本地access美国server只能先使用link到审核服务器，然后vnc到中间服务器，然后再bbb。。。。总不能这边修改一行代码再去vnc上重新敲一遍吧。。。于是萌生了打洞的想法（操作完全违规，请参考员工离职手册，做好被fire的准备）</p>
 <blockquote>
 <p>Note: 追加BB一句，该限制仅限制大中华地区，可见国人把自己名声搞得多坏。。</p>
@@ -459,7 +459,7 @@
 <p>第二步：A ssh 到 B, 注意此时地址是A的本机地址。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -P  2222 user_B@127.0.0.1</span><br></pre></td></tr></table></figure>
 
-<p>此刻你就可以用B做跳板access C,D,E ，然后在反复不断敲ssh命令中，手指开始生疼，在A的~/.ssh/config中添加一行：</p>
+<p>此刻你就可以用B做跳板access C,D,E ，然后在反复不断敲ssh命令中，手指开始生疼，在A的~&#x2F;.ssh&#x2F;config中添加一行：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">host B</span><br><span class="line">    hostname 127.0.0.1</span><br><span class="line">    port 2222</span><br><span class="line">    user user_B</span><br></pre></td></tr></table></figure>
 
 <p>每次只要ssh B,就可以登录B了。（什么密钥登录或者sshpass登录自己的百度。懒人一个）</p>
@@ -468,10 +468,10 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh  -NfD 0.0.0.0:1080     -P 2222   user_B@127.0.0.1</span><br></pre></td></tr></table></figure>
 
 <p>然后本地打开了1080端口时能socks 5代理，浏览器配置代理什么的，自己百度</p>
-<p>这里说明一下，如果不写0.0.0.0 ，1080端口只接受本机发起的连接，如果需要支持局域网其他client访问，可能需要增加一步，在A的/etc/ssh/sshd_config 中添加一句（懒得验证是否需要，大家可以留言告知我）：</p>
+<p>这里说明一下，如果不写0.0.0.0 ，1080端口只接受本机发起的连接，如果需要支持局域网其他client访问，可能需要增加一步，在A的&#x2F;etc&#x2F;ssh&#x2F;sshd_config 中添加一句（懒得验证是否需要，大家可以留言告知我）：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GatewayPorts yes</span><br></pre></td></tr></table></figure>
 
-<p>此刻其实我们的浏览器数据的http/https —&gt; ssh –&gt; ssh –&gt;404 , 简单的就是说socks over ssh</p>
+<p>此刻其实我们的浏览器数据的http&#x2F;https —&gt; ssh –&gt; ssh –&gt;404 , 简单的就是说socks over ssh</p>
 <p>战果2 ： A直接ssh访问C，D, E（好处就是可以使用sftp，scp等命令直接复制数据。。。。我不会告诉你可以使用用mobaxterm和filezilla管理这些东西）</p>
 <p>这里有三种思路，</p>
 <p>1: ssh1 over ssh2 (此时ssh2已经是ssh over ssh) ，利用第一步打通的ssh隧道过日子，</p>
@@ -481,7 +481,7 @@
 <p>完整的命令是,同样支持sftp,scp：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh  -o ProxyCommand=&quot;ssh -W %h:%p -P 2222 user_B@127.0.0.1&quot;  user_C@C</span><br></pre></td></tr></table></figure>
 
-<p>简化的用法就是A的~/.ssh/config中添加：</p>
+<p>简化的用法就是A的~&#x2F;.ssh&#x2F;config中添加：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">host C</span><br><span class="line">    hostname server_C</span><br><span class="line">    user user_C</span><br><span class="line">	ProxyCommand ssh -W %h:%p -P 2222 user_B@127.0.0.1</span><br><span class="line"></span><br><span class="line">#这里修了一个坑。。。就是PorxyCommand后边不需要=</span><br></pre></td></tr></table></figure>
 
 <p>然后直接ssh C即可</p>
@@ -493,7 +493,7 @@
 
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh  -o ProxyCommand=&quot;nc -X 5 -x localhost:1080 %h %p&quot;  user_C@C</span><br></pre></td></tr></table></figure>
 
-<p>简化的用法就是A的~/.ssh/config中添加：</p>
+<p>简化的用法就是A的~&#x2F;.ssh&#x2F;config中添加：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">host C</span><br><span class="line">    hostname server_C</span><br><span class="line">    user user_C</span><br><span class="line">    ProxyCommand nc -X 5 -x localhost:1080 %h %p</span><br></pre></td></tr></table></figure>
 
 <p>然后直接ssh C即可</p>
@@ -503,13 +503,13 @@
 <p>此时执行如下命令就可以直接连接到C：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -P 20567 user_C@127.0.01</span><br></pre></td></tr></table></figure>
 
-<p>简化的用法就是A的~/.ssh/config中添加：</p>
+<p>简化的用法就是A的~&#x2F;.ssh&#x2F;config中添加：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">host C</span><br><span class="line">    hostname 127.0.0.1</span><br><span class="line">    port 20567</span><br><span class="line">    user user_C</span><br></pre></td></tr></table></figure>
 
 <p>然后直接ssh C即可</p>
 <p>至于上边提及的public C， 就是多中转一下，隧道套隧道，，俄罗斯套娃娃</p>
 <p>今天看到一个居然CSDN乞讨的，也来凑一下热闹。。。看看能不能买包烟。。</p>
-<p><img src="70"></p>
+<p><img src="/70"></p>
 
       
     </div>

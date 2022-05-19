@@ -25,19 +25,19 @@
 <meta property="og:site_name" content="Godvmxi Blog">
 <meta property="og:description" content="【转】 STM32的can总线实验心得2011年04月13日 星期三 下午 02:29转载自 分享最终编辑 2245106(一) 工业现场总线 CAN 的基本介绍以及 STM32 的 CAN 模块简介首先通读手册中关于CAN的文档，">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/6a76b6dc2bda2ae4cc116608.jpg">
-<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/385a3c8bb9ca2957c9fc7a08.jpg">
-<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/3db78dcec1266c4693457e08.jpg">
-<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/25e942f498775baa7709d708.jpg">
-<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/2174c994ac19ed5bd31b7008.jpg">
-<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/5189331ed8c09eb11ad57608.jpg">
-<meta property="og:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/ee9ee36ed31fc19f80cb4a08.jpg">
+<meta property="og:image" content="http://vball.fun/6a76b6dc2bda2ae4cc116608.jpg">
+<meta property="og:image" content="http://vball.fun/385a3c8bb9ca2957c9fc7a08.jpg">
+<meta property="og:image" content="http://vball.fun/3db78dcec1266c4693457e08.jpg">
+<meta property="og:image" content="http://vball.fun/25e942f498775baa7709d708.jpg">
+<meta property="og:image" content="http://vball.fun/2174c994ac19ed5bd31b7008.jpg">
+<meta property="og:image" content="http://vball.fun/5189331ed8c09eb11ad57608.jpg">
+<meta property="og:image" content="http://vball.fun/ee9ee36ed31fc19f80cb4a08.jpg">
 <meta property="article:published_time" content="2011-04-12T20:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.684Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.501Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://vball.fun/2011/04/12/z_csdn_001_6773192/6a76b6dc2bda2ae4cc116608.jpg">
+<meta name="twitter:image" content="http://vball.fun/6a76b6dc2bda2ae4cc116608.jpg">
   <!-- Canonical links -->
   <link rel="canonical" href="http://vball.fun/2011/04/12/z_csdn_001_6773192/index.html">
   
@@ -387,23 +387,23 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>**(一) 工业现场总线 CAN 的基本介绍以及 STM32 的 CAN 模块简介<br>**<br>首先通读手册中关于CAN的文档，必须精读。<br>STM32F10xxx 参考手册Rev7V3.pdf<br><a target="_blank" rel="noopener" href="http://www.mystm32.com/bbs/redirect.php?tid=255&goto=lastpost#lastpost">http://www.mystm32.com/bbs/redirect.php?tid=255&amp;goto=lastpost#lastpost</a></p>
+        <p>**(一) 工业现场总线 CAN 的基本介绍以及 STM32 的 CAN 模块简介<br>**<br>首先通读手册中关于CAN的文档，必须精读。<br>STM32F10xxx 参考手册Rev7V3.pdf<br><a target="_blank" rel="noopener" href="http://www.mystm32.com/bbs/redirect.php?tid=255&goto=lastpost#lastpost">http://www.mystm32.com/bbs/redirect.php?tid=255&goto=lastpost#lastpost</a></p>
 <p>需要精读的部分为 RCC 和 CAN 两个章节。<br>为什么需要精读 RCC 呢？因为我们将学习 CAN 的波特率的设置，将要使用到 RCC 部分的设置，因此推荐大家先复习下这部分中的几个时钟。</p>
 <p>关于 STM32 的 can 总线简单介绍<br>bxCAN 是基本扩展 CAN (Basic Extended CAN) 的缩写，它支持 CAN 协议 2.0A 和 2.0B 。它的设计目标是，以最小的 CPU 负荷来高效处理大量收到的报文。它也支持报文发送的优先级要求（优先级特性可软件配置）。<br>对于安全紧要的应用，bxCAN 提供所有支持时间触发通信模式所需的硬件功能。</p>
-<p>**主要特点<br>**· 支持 CAN 协议 2.0A 和 2.0B 主动模式<br>· 波特率最高可达 1 兆位 / 秒<br>· 支持时间触发通信功能</p>
+<p>**主要特点<br>**· 支持 CAN 协议 2.0A 和 2.0B 主动模式<br>· 波特率最高可达 1 兆位 &#x2F; 秒<br>· 支持时间触发通信功能</p>
 <p>**发送<br>**· 3 个发送邮箱<br>· 发送报文的优先级特性可软件配置<br>· 记录发送 SOF 时刻的时间戳</p>
 <p>**接收<br>**· 3 级深度的2个接收 FIFO<br>· 14 个位宽可变的过滤器组 － 由整个 CAN 共享<br>· 标识符列表<br>· FIFO 溢出处理方式可配置<br>· 记录接收 SOF 时刻的时间戳</p>
 <p>**可支持时间触发通信模式<br>**· 禁止自动重传模式<br>· 16 位自由运行定时器<br>· 定时器分辨率可配置<br>· 可在最后 2 个数据字节发送时间戳</p>
 <p>**管理<br>**· 中断可屏蔽<br>· 邮箱占用单独 1 块地址空间，便于提高软件效率</p>
-<p><strong>(二) STM32 CAN 模块工作模式<br><br>STM32 的 can 的工作模式分为:</strong><br>/* CAN operating mode <em>/<br>#define CAN_Mode_Normal ((u8)0x00) /</em> normal mode <em>/<br>#define CAN_Mode_LoopBack ((u8)0x01) /</em> loopback mode <em>/<br>#define CAN_Mode_Silent ((u8)0x02) /</em> silent mode <em>/<br>#define CAN_Mode_Silent_LoopBack ((u8)0x03) /</em> loopback combined with silent mode */</p>
+<p><strong>(二) STM32 CAN 模块工作模式<br><br>STM32 的 can 的工作模式分为:</strong><br>&#x2F;* CAN operating mode <em>&#x2F;<br>#define CAN_Mode_Normal ((u8)0x00) &#x2F;</em> normal mode <em>&#x2F;<br>#define CAN_Mode_LoopBack ((u8)0x01) &#x2F;</em> loopback mode <em>&#x2F;<br>#define CAN_Mode_Silent ((u8)0x02) &#x2F;</em> silent mode <em>&#x2F;<br>#define CAN_Mode_Silent_LoopBack ((u8)0x03) &#x2F;</em> loopback combined with silent mode *&#x2F;</p>
 <p>在此章我们的 Mini-STM32 教程中我们将使用到 <strong>CAN_Mode_LoopBack</strong> 和 <strong>CAN_Mode_Normal</strong> 两种模式。<br>我们第一步做的就是使用运行在 CAN_Mode_LoopBack 下进行自测试。</p>
-<p>在参考手册中 CAN_Mode_LoopBack (环回模式) 的定义如下:<br>环回模式可用于自测试。为了避免外部的影响，在环回模式下 CAN 内核忽略确认错误 (在数据 / 远程帧的确认位时刻，不检测是否有显性位) 。在环回模式下，bxCAN 在内部把 Tx 输出回馈到 Rx 输入上，而完全忽略 CANRX 引脚的实际状态。发送的报文可以在 CANTX 引脚上检测到。<br>因此这种模式也特别适合大家做好硬件后自测程序。</p>
-<p><img src="6a76b6dc2bda2ae4cc116608.jpg"></p>
+<p>在参考手册中 CAN_Mode_LoopBack (环回模式) 的定义如下:<br>环回模式可用于自测试。为了避免外部的影响，在环回模式下 CAN 内核忽略确认错误 (在数据 &#x2F; 远程帧的确认位时刻，不检测是否有显性位) 。在环回模式下，bxCAN 在内部把 Tx 输出回馈到 Rx 输入上，而完全忽略 CANRX 引脚的实际状态。发送的报文可以在 CANTX 引脚上检测到。<br>因此这种模式也特别适合大家做好硬件后自测程序。</p>
+<p><img src="/6a76b6dc2bda2ae4cc116608.jpg"></p>
 <p>**(三) CAN 接口端口映射<br>**</p>
 <p>STM32 中的 CAN 物理引脚脚位可以设置成三种：</p>
 <p><strong>默认模式，重定义地址1模式，重定义地址2模式</strong></p>
 <p>。</p>
-<p><img src="385a3c8bb9ca2957c9fc7a08.jpg"></p>
+<p><img src="/385a3c8bb9ca2957c9fc7a08.jpg"></p>
 <p>在我们的 Mini-STM32 上面没有接出 CAN 的接口芯片, 所以我们可以利用</p>
 <p>RealView MDK</p>
 <p>的 CAN 软件</p>
@@ -411,87 +411,87 @@
 <p>模块来做实验.</p>
 <hr>
 <p><strong>默认模式</strong></p>
-<p>/* Configure CAN pin: RX */</p>
+<p>&#x2F;* Configure CAN pin: RX *&#x2F;</p>
 <p>GPIO</p>
-<p>_InitStructure.GPIO_Pin = GPIO_Pin_11;</p>
-<p>GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
-<p>GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</p>
+<p>_InitStructure.GPIO_Pin &#x3D; GPIO_Pin_11;</p>
+<p>GPIO_InitStructure.GPIO_Speed &#x3D; GPIO_Speed_50MHz;</p>
+<p>GPIO_InitStructure.GPIO_Mode &#x3D; GPIO_Mode_IPU;</p>
 <p>GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</p>
-<p>/* Configure CAN pin: TX */</p>
-<p>GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;</p>
-<p>GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
-<p>GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</p>
+<p>&#x2F;* Configure CAN pin: TX *&#x2F;</p>
+<p>GPIO_InitStructure.GPIO_Pin &#x3D; GPIO_Pin_12;</p>
+<p>GPIO_InitStructure.GPIO_Speed &#x3D; GPIO_Speed_50MHz;</p>
+<p>GPIO_InitStructure.GPIO_Mode &#x3D; GPIO_Mode_AF_PP;</p>
 <p>GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</p>
 <hr>
 <p><strong>重定义地址1模式</strong></p>
-<p>/* Configure CAN pin: RX */</p>
-<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;</p>
-<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
-<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</p>
-<p>//GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</p>
-<p>/* Configure CAN pin: TX */</p>
-<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;</p>
-<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
-<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</p>
-<p>//GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</p>
-<p>/* Configure CAN Remap 重影射 */</p>
-<p>//GPIO_PinRemapConfig(GPIO_Remap1_CAN, ENABLE);</p>
+<p>&#x2F;* Configure CAN pin: RX *&#x2F;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Pin &#x3D; GPIO_Pin_8;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Speed &#x3D; GPIO_Speed_50MHz;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Mode &#x3D; GPIO_Mode_IPU;</p>
+<p>&#x2F;&#x2F;GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</p>
+<p>&#x2F;* Configure CAN pin: TX *&#x2F;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Pin &#x3D; GPIO_Pin_9;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Speed &#x3D; GPIO_Speed_50MHz;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Mode &#x3D; GPIO_Mode_AF_PP;</p>
+<p>&#x2F;&#x2F;GPIO_Init(GPIOB, &amp;GPIO_InitStructure);</p>
+<p>&#x2F;* Configure CAN Remap 重影射 *&#x2F;</p>
+<p>&#x2F;&#x2F;GPIO_PinRemapConfig(GPIO_Remap1_CAN, ENABLE);</p>
 <hr>
 <p>**重定义地址2模式<br>**</p>
-<p>/* Configure CAN pin: RX */</p>
-<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;</p>
-<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
-<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;</p>
-<p>//GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</p>
-<p>/* Configure CAN pin: TX */</p>
-<p>//GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;</p>
-<p>//GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</p>
-<p>//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;</p>
-<p>//GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</p>
-<p>/* Configure CAN Remap 重影射 */</p>
-<p>//GPIO_PinRemapConfig(GPIO_Remap2_CAN, ENABLE);</p>
+<p>&#x2F;* Configure CAN pin: RX *&#x2F;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Pin &#x3D; GPIO_Pin_0;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Speed &#x3D; GPIO_Speed_50MHz;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Mode &#x3D; GPIO_Mode_IPU;</p>
+<p>&#x2F;&#x2F;GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</p>
+<p>&#x2F;* Configure CAN pin: TX *&#x2F;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Pin &#x3D; GPIO_Pin_1;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Speed &#x3D; GPIO_Speed_50MHz;</p>
+<p>&#x2F;&#x2F;GPIO_InitStructure.GPIO_Mode &#x3D; GPIO_Mode_AF_PP;</p>
+<p>&#x2F;&#x2F;GPIO_Init(GPIOD, &amp;GPIO_InitStructure);</p>
+<p>&#x2F;* Configure CAN Remap 重影射 *&#x2F;</p>
+<p>&#x2F;&#x2F;GPIO_PinRemapConfig(GPIO_Remap2_CAN, ENABLE);</p>
 <hr>
 <p><strong>设置完 CAN 的引脚之后还需要打开 CAN 的时钟：</strong></p>
-<p>/* CAN Periph clock enable */</p>
+<p>&#x2F;* CAN Periph clock enable *&#x2F;</p>
 <p>RCC_APB1PeriphClockCmd(RCC_APB1Periph_CAN, ENABLE);</p>
 <p>**(四) CAN 波特率设置<br>**</p>
 <p>4、我们需要搞明白CAN波特率的设置，这个章节也是使用CAN的最重要的部分之一，因为这实际应用中我们需要根据我们实际的场合来选择 CAN 的波特率。</p>
 <p>一般情况下面1M bps 的速率下可以最高可靠传输 40 米以内的距离。</p>
 <p>在 50K 以下的波特率中一般可以可靠传输数公里远。</p>
 <p>对于波特率的设置需要详细学习参考手册对应部分的解释。我们在调试软件的时候可以使用示波器来测试 CANTX 引脚上的波形的波特率，这样可以得到事半功倍的效果，大大的缩短调试学习的时间。</p>
-<p>// ***************************************************************</p>
-<p>// BaudRate = 1 / NominalBitTime</p>
-<p>// NominalBitTime = 1tq + tBS1 + tBS2</p>
-<p>// tq = (BRP[9:0] + 1) x tPCLK</p>
-<p>// tPCLK = CAN’s clock = APB1’s clock</p>
-<p>// ****************************************************************</p>
-<p>也就是BaudRate = APB1 / ((BS1 + BS2 + 1) * Prescaler)</p>
+<p>&#x2F;&#x2F; ***************************************************************</p>
+<p>&#x2F;&#x2F; BaudRate &#x3D; 1 &#x2F; NominalBitTime</p>
+<p>&#x2F;&#x2F; NominalBitTime &#x3D; 1tq + tBS1 + tBS2</p>
+<p>&#x2F;&#x2F; tq &#x3D; (BRP[9:0] + 1) x tPCLK</p>
+<p>&#x2F;&#x2F; tPCLK &#x3D; CAN’s clock &#x3D; APB1’s clock</p>
+<p>&#x2F;&#x2F; ****************************************************************</p>
+<p>也就是BaudRate &#x3D; APB1 &#x2F; ((BS1 + BS2 + 1) * Prescaler)</p>
 <p>这里注意的是采用点的位置,也就时BS1,BS2的设置问题，这里我也找了一些资料，抄录下来给大家,是 CANopen 协议中推荐的设置。</p>
-<p>1Mbps 速率下，采用点的位置在6tq位置处，BS1=5, BS2=2</p>
-<p>500kbps 速率下，采用点的位置在8tq位置处，BS1=7, BS2=3</p>
-<p>250kbps 速率下，采用点的位置在14tq位置处，BS1=13, BS2=2</p>
+<p>1Mbps 速率下，采用点的位置在6tq位置处，BS1&#x3D;5, BS2&#x3D;2</p>
+<p>500kbps 速率下，采用点的位置在8tq位置处，BS1&#x3D;7, BS2&#x3D;3</p>
+<p>250kbps 速率下，采用点的位置在14tq位置处，BS1&#x3D;13, BS2&#x3D;2</p>
 <p>125k, 100k, 50k, 20k, 10k 的采用点位置与 250K 相同。</p>
 <p>因此我们需要重视的有软件中的这么几个部分：</p>
-<p>// 设置 AHB 时钟（HCLK）</p>
-<p>// RCC_SYSCLK_Div1 AHB 时钟 = 系统时钟</p>
+<p>&#x2F;&#x2F; 设置 AHB 时钟（HCLK）</p>
+<p>&#x2F;&#x2F; RCC_SYSCLK_Div1 AHB 时钟 &#x3D; 系统时钟</p>
 <p>RCC_HCLKConfig(RCC_SYSCLK_Div8);</p>
-<p>// 设置低速 AHB 时钟（PCLK1）</p>
-<p>// RCC_HCLK_Div2 APB1 时钟 = HCLK / 2</p>
+<p>&#x2F;&#x2F; 设置低速 AHB 时钟（PCLK1）</p>
+<p>&#x2F;&#x2F; RCC_HCLK_Div2 APB1 时钟 &#x3D; HCLK &#x2F; 2</p>
 <p>RCC_PCLK1Config(RCC_HCLK_Div2);</p>
-<p>// PLLCLK = 8MHz * 8 = 64 MHz</p>
-<p>// 设置 PLL 时钟源及倍频系数</p>
+<p>&#x2F;&#x2F; PLLCLK &#x3D; 8MHz * 8 &#x3D; 64 MHz</p>
+<p>&#x2F;&#x2F; 设置 PLL 时钟源及倍频系数</p>
 <p>RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_8);</p>
 <p>CAN 波特率设置中需要的就是PCLK1 的时钟。</p>
-<p>CAN_InitStructure.CAN_Mode=CAN_Mode_LoopBack;</p>
-<p>CAN_InitStructure.CAN_SJW=CAN_SJW_1tq;</p>
-<p>CAN_InitStructure.CAN_BS1=CAN_BS1_8tq;</p>
-<p>CAN_InitStructure.CAN_BS2=CAN_BS2_7tq;</p>
-<p>CAN_InitStructure.CAN_Prescaler=5;</p>
+<p>CAN_InitStructure.CAN_Mode&#x3D;CAN_Mode_LoopBack;</p>
+<p>CAN_InitStructure.CAN_SJW&#x3D;CAN_SJW_1tq;</p>
+<p>CAN_InitStructure.CAN_BS1&#x3D;CAN_BS1_8tq;</p>
+<p>CAN_InitStructure.CAN_BS2&#x3D;CAN_BS2_7tq;</p>
+<p>CAN_InitStructure.CAN_Prescaler&#x3D;5;</p>
 <p>通过上面部分的时钟设置我们已经可以算出我们的波特率了</p>
-<p>CAN_bps = PCLK1 / ((1 + 7 + 8) * 5) = 25K bps</p>
+<p>CAN_bps &#x3D; PCLK1 &#x2F; ((1 + 7 + 8) * 5) &#x3D; 25K bps</p>
 <p>大家也可以实际测试中修改时钟值来通过示波器测试我们需要的波特率是否正确例如将PLLCLK 设置降低一半：</p>
-<p>// PLLCLK = 8MHz * 4 = 32 MHz</p>
-<p>// 设置 PLL 时钟源及倍频系数</p>
+<p>&#x2F;&#x2F; PLLCLK &#x3D; 8MHz * 4 &#x3D; 32 MHz</p>
+<p>&#x2F;&#x2F; 设置 PLL 时钟源及倍频系数</p>
 <p>RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_4);</p>
 <p>那么我们得到的CAN_bps也会降低一半。</p>
 <p>接下来还可以修改 HCLK 和 PCLK1 ，其实最终这几个分频和倍频值最终影响的都是 PCLK1。</p>
@@ -499,67 +499,67 @@
 <p>设置完波特率我们直接测试函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* CAN transmit at 100Kb/s and receive by polling in loopback mode*/</span></span><br><span class="line"></span><br><span class="line">TestRx = CAN_Polling();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (TestRx == FAILED)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn on led connected to PA.00 pin (LD1) */</span></span><br><span class="line"></span><br><span class="line">GPIO_SetBits(GPIOA, GPIO_Pin_0);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn off led connected to PA.00 pin (LD1) */</span></span><br><span class="line"></span><br><span class="line">GPIO_ResetBits(GPIOA, GPIO_Pin_0);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* CAN transmit at 500Kb/s and receive by interrupt in loopback mode*/</span></span><br><span class="line"></span><br><span class="line">TestRx = CAN_Interrupt();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (TestRx == FAILED)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn on led connected to PA.01 pin (LD2) */</span></span><br><span class="line"></span><br><span class="line">GPIO_SetBits(GPIOA, GPIO_Pin_1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Turn off led connected to PA.01 pin (LD2) */</span></span><br><span class="line"></span><br><span class="line">GPIO_ResetBits(GPIOA, GPIO_Pin_1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>将<strong>CAN 软件仿真模拟器</strong>调用出来.</p>
-<p><img src="3db78dcec1266c4693457e08.jpg"></p>
+<p><img src="/3db78dcec1266c4693457e08.jpg"></p>
 <p>大家可以仿真程序，当程序中 Test 等于 Passed 那么说明 Loopback 模式测试通过了。</p>
 <p>并且在 CAN 通讯框中我们可以看到发送和接收到的数据:</p>
-<p><img src="25e942f498775baa7709d708.jpg"></p>
-<p><strong>回循模式下的源代码, 基于 MDK3.5:</strong><br><img src="2174c994ac19ed5bd31b7008.jpg"></p>
+<p><img src="/25e942f498775baa7709d708.jpg"></p>
+<p><strong>回循模式下的源代码, 基于 MDK3.5:</strong><br><img src="/2174c994ac19ed5bd31b7008.jpg"></p>
 <p>(493.79 KB)</p>
 <p>到此时说明如果大家只有一块CAN模块的时候学习可以告一个段落了，不过这个并不代表大家就已经掌握了 CAN 了，正真要掌握它，大家还是需要看大量的 CAN 部分的资料，参考手册部分的也是不够的，市面上有几本专门介绍现场总线和CAN总线的书，推荐大家买来经常翻翻看看，这样到需要实际应用的时候才可以做到 如鱼得水。</p>
 <p>**(五) 正常模式<br>**</p>
 <p>完成了 loopback 模式的测试之后接下来我们需要学习的就是多机通讯了，当然由于我们的 Mini-STM32 没有将 CAN 接口引出来, 所以我们没有办法在板子上面做这部分的试验了，只能在 RealView MDK 的软件中进行模拟。</p>
 <p>如果您拥有两块带 CAN 硬件的 STM32 的板子，您需要自己构建硬件的物理层的连接, 使用三根线将 CANH,CANL,GND 三根线直连，当然你要接好终端电阻才能保证通讯的正常通讯，当两块板子都跳好后我们使用万用表测量下 CANH和CANL之间的电阻是否为 60 欧姆。多块板子多机通讯的是否你只需要在总线的主机端和最后一端接上终端电阻就可以了.</p>
-<p><img src="5189331ed8c09eb11ad57608.jpg"></p>
+<p><img src="/5189331ed8c09eb11ad57608.jpg"></p>
 <p>在初始化完成后，软件应该让硬件进入正常模式，以便正常接收和发送报文。软件可以通过对 CAN_MCR 寄存器的INRQ位清 ‘0’，来请求从初始化模式进入正常模式，然后要等待硬件对 CAN_MSR 寄存器的 INAK 位置 ‘1’ 的确认。在跟 CAN 总线取得同步，即在 CANRX 引脚上监测到 11 个连续的隐性位 (等效于总线空闲) 后，bxCAN 才能正常接收和发送报文。</p>
 <p>不需要在初始化模式下进行过滤器初值的设置，但必须在它处在非激活状态下完成 (相应的 FACT 位为 ‘0’ ) 。而过滤器的位宽和模式的设置，则必须在初始化模式中进入正常模式前完成。</p>
 <p>准备工作做完我们需要设置 CAN 通讯部份软件。</p>
 <p>我们把 TestStatus CAN_Polling(void) 函数和 TestStatus CAN_Interrupt(void) 函数中的 LoopBack 模式修改为 Normal 模式.</p>
-<p>//CAN_InitStructure.CAN_Mode=CAN_Mode_LoopBack;</p>
-<p>CAN_InitStructure.CAN_Mode=CAN_Mode_Normal;</p>
+<p>&#x2F;&#x2F;CAN_InitStructure.CAN_Mode&#x3D;CAN_Mode_LoopBack;</p>
+<p>CAN_InitStructure.CAN_Mode&#x3D;CAN_Mode_Normal;</p>
 <p>接下来我们就可以做实验了. 但是由于 RealView MDK 的 CAN 模块没有办法接收, 所以我们只做发送的例子.</p>
 <p>我们的例子中分别发送两帧数据:</p>
 <p><strong>(1) TestStatus CAN_Polling(void) 查询发送</strong></p>
 <p>第一帧数据为: ID 为 0x11, 数据为 8 个字节的一个数据包.</p>
-<p>TxMessage.StdId=0x11;</p>
-<p>TxMessage.RTR=CAN_RTR_DATA;</p>
-<p>TxMessage.IDE=CAN_ID_STD;</p>
-<p>TxMessage.DLC=8;</p>
-<p>TxMessage.Data[0]=0x01;</p>
-<p>TxMessage.Data[1]=0x02;</p>
-<p>TxMessage.Data[2]=0x03;</p>
-<p>TxMessage.Data[3]=0x04;</p>
-<p>TxMessage.Data[4]=0x05;</p>
-<p>TxMessage.Data[5]=0x06;</p>
-<p>TxMessage.Data[6]=0x07;</p>
-<p>TxMessage.Data[7]=0x08;</p>
+<p>TxMessage.StdId&#x3D;0x11;</p>
+<p>TxMessage.RTR&#x3D;CAN_RTR_DATA;</p>
+<p>TxMessage.IDE&#x3D;CAN_ID_STD;</p>
+<p>TxMessage.DLC&#x3D;8;</p>
+<p>TxMessage.Data[0]&#x3D;0x01;</p>
+<p>TxMessage.Data[1]&#x3D;0x02;</p>
+<p>TxMessage.Data[2]&#x3D;0x03;</p>
+<p>TxMessage.Data[3]&#x3D;0x04;</p>
+<p>TxMessage.Data[4]&#x3D;0x05;</p>
+<p>TxMessage.Data[5]&#x3D;0x06;</p>
+<p>TxMessage.Data[6]&#x3D;0x07;</p>
+<p>TxMessage.Data[7]&#x3D;0x08;</p>
 <p>**(2) TestStatus CAN_Interrupt(void) 中断发送<br>**</p>
 <p>第二帧数据为:ID 为 0x1234, 数据为 8 个字节的一个数据包.</p>
-<p>TxMessage.StdId=0x12;</p>
-<p>TxMessage.ExtId=0x34;</p>
-<p>TxMessage.IDE=CAN_ID_EXT;</p>
-<p>TxMessage.RTR=CAN_RTR_DATA;</p>
-<p>TxMessage.DLC=8;</p>
-<p>TxMessage.Data[0]=0x11;</p>
-<p>TxMessage.Data[1]=0x22;</p>
-<p>TxMessage.Data[2]=0x33;</p>
-<p>TxMessage.Data[3]=0x44;</p>
-<p>TxMessage.Data[4]=0x55;</p>
-<p>TxMessage.Data[5]=0x66;</p>
-<p>TxMessage.Data[6]=0x77;</p>
-<p>TxMessage.Data[7]=0x88;</p>
+<p>TxMessage.StdId&#x3D;0x12;</p>
+<p>TxMessage.ExtId&#x3D;0x34;</p>
+<p>TxMessage.IDE&#x3D;CAN_ID_EXT;</p>
+<p>TxMessage.RTR&#x3D;CAN_RTR_DATA;</p>
+<p>TxMessage.DLC&#x3D;8;</p>
+<p>TxMessage.Data[0]&#x3D;0x11;</p>
+<p>TxMessage.Data[1]&#x3D;0x22;</p>
+<p>TxMessage.Data[2]&#x3D;0x33;</p>
+<p>TxMessage.Data[3]&#x3D;0x44;</p>
+<p>TxMessage.Data[4]&#x3D;0x55;</p>
+<p>TxMessage.Data[5]&#x3D;0x66;</p>
+<p>TxMessage.Data[6]&#x3D;0x77;</p>
+<p>TxMessage.Data[7]&#x3D;0x88;</p>
 <p>CAN_Transmit(&amp;TxMessage);</p>
 <p>在主函数中初始化之后加上这两句发送函数:</p>
-<p>/* CAN transmit at 100Kb/s and receive by polling in Normal mode*/</p>
+<p>&#x2F;* CAN transmit at 100Kb&#x2F;s and receive by polling in Normal mode*&#x2F;</p>
 <p>CAN_Polling();</p>
 <p>while(i++ &lt; 1000);</p>
-<p>/* CAN transmit at 500Kb/s and receive by interrupt in Normal mode*/</p>
+<p>&#x2F;* CAN transmit at 500Kb&#x2F;s and receive by interrupt in Normal mode*&#x2F;</p>
 <p>CAN_Interrupt();</p>
 <p>程序改完了, 我们需要编译通过后, 点软件仿真.</p>
 <p>将</p>
 <p><strong>CAN 软件仿真模拟器</strong></p>
 <p>调用出来.</p>
 <p>接下来我们全速运行到 while(1) 就可以看到结果了.</p>
-<p><img src="ee9ee36ed31fc19f80cb4a08.jpg"></p>
+<p><img src="/ee9ee36ed31fc19f80cb4a08.jpg"></p>
 
       
     </div>

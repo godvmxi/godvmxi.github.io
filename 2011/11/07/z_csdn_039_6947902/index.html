@@ -26,7 +26,7 @@
 <meta property="og:description" content="linux的线程同步机制 (2009-1-16 11:07) 互斥锁尽管在Posix Thread中同样可以使用IPC的信号量机制来实现互斥锁mutex功能，但显然semphore的功能过于强大了，在Posix Thread中定义了另外一套专门用于线程同步的mutex函数。1． 创建和销毁有两种方法创建互斥锁，静态方式和动态方式。POSIX定义了一个宏PTHREAD_MUT">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2011-11-07T22:11:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -380,7 +380,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <p>尽管在Posix Thread中同样可以使用IPC的信号量机制来实现互斥锁mutex功能，但显然semphore的功能过于强大了，在Posix Thread中定义了另外一套专门用于线程同步的mutex函数。</p>
-<p>有两种方法创建互斥锁，静态方式和动态方式。POSIX定义了一个宏PTHREAD_MUTEX_INITIALIZER来静态初始化互斥锁，方法如下： pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER; 在LinuxThreads实现中，pthread_mutex_t是一个结构，而PTHREAD_MUTEX_INITIALIZER则是一个结构常量。</p>
+<p>有两种方法创建互斥锁，静态方式和动态方式。POSIX定义了一个宏PTHREAD_MUTEX_INITIALIZER来静态初始化互斥锁，方法如下： pthread_mutex_t mutex&#x3D;PTHREAD_MUTEX_INITIALIZER; 在LinuxThreads实现中，pthread_mutex_t是一个结构，而PTHREAD_MUTEX_INITIALIZER则是一个结构常量。</p>
 <p>动态方式是采用pthread_mutex_init()函数来初始化互斥锁，API定义如下： int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *mutexattr) 其中mutexattr用于指定互斥锁属性（见下），如果为NULL则使用缺省属性。</p>
 <p>pthread_mutex_destroy()用于注销一个互斥锁，API定义如下： int pthread_mutex_destroy(pthread_mutex_t *mutex) 销毁一个互斥锁即意味着释放它所占用的资源，且要求锁当前处于开放状态。由于在Linux中，互斥锁并不占用任何资源，因此LinuxThreads中的pthread_mutex_destroy()除了检查锁状态以外（锁定状态则返回EBUSY）没有其他动作。</p>
 <p>互斥锁的属性在创建锁的时候指定，在LinuxThreads实现中仅有一个锁类型属性，不同的锁类型在试图对一个已经被锁定的互斥锁加锁时表现不同。当前（glibc2.2.3,linuxthreads0.9）有四个值可供选择：</p>
@@ -397,7 +397,7 @@
 <p>POSIX线程锁机制的Linux实现都不是取消点，因此，延迟取消类型的线程不会因收到取消信号而离开加锁等待。值得注意的是，如果线程在加锁后解锁前被取消，锁将永远保持锁定状态，因此如果在关键区段内有取消点存在，或者设置了异步取消类型，则必须在退出回调函数中解锁。</p>
 <p>这个锁机制同时也不是异步信号安全的，也就是说，不应该在信号处理过程中使用互斥锁，否则容易造成死锁。</p>
 <p>条件变量是利用线程间共享的全局变量进行同步的一种机制，主要包括两个动作：一个线程等待”条件变量的条件成立”而挂起；另一个线程使”条件成立”（给出条件成立信号）。为了防止竞争，条件变量的使用总是和一个互斥锁结合在一起。</p>
-<p>条件变量和互斥锁一样，都有静态动态两种创建方式，静态方式使用PTHREAD_COND_INITIALIZER常量，如下：<br>pthread_cond_t cond=PTHREAD_COND_INITIALIZER</p>
+<p>条件变量和互斥锁一样，都有静态动态两种创建方式，静态方式使用PTHREAD_COND_INITIALIZER常量，如下：<br>pthread_cond_t cond&#x3D;PTHREAD_COND_INITIALIZER</p>
 <p>动态方式调用pthread_cond_init()函数，API定义如下：<br>int pthread_cond_init(pthread_cond_t *cond, pthread_condattr_t *cond_attr)</p>
 <p>尽管POSIX标准中为条件变量定义了属性，但在LinuxThreads中没有实现，因此cond_attr值通常为NULL，且被忽略。</p>
 <p>注销一个条件变量需要调用pthread_cond_destroy()，只有在没有线程在该条件变量上等待的时候才能注销这个条件变量，否则返回EBUSY。因为Linux实现的条件变量没有分配什么资源，所以注销动作只包括检查是否有等待线程。API定义如下：<br>int pthread_cond_destroy(pthread_cond_t *cond)</p>
@@ -413,7 +413,7 @@
 <p>如果不做注释5的pthread_cancel()动作，即使没有那些sleep()延时操作，child1和child2都能正常工作。注释3和注释4的延迟使得child1有时间完成取消动作，从而使child2能在child1退出之后进入请求锁操作。如果没有注释1和注释2的回调函数定义，系统将挂起在child2请求锁的地方；而如果同时也不做注释3和注释4的延时，child2能在child1完成取消动作以前得到控制，从而顺利执行申请锁的操作，但却可能挂起在pthread_cond_wait()中，因为其中也有申请mutex的操作。child1函数给出的是标准的条件变量的使用方式：回调函数保护，等待条件前锁定，pthread_cond_wait()返回后解锁。</p>
 <p>条件变量机制不是异步信号安全的，也就是说，在信号处理函数中调用pthread_cond_signal()或者pthread_cond_broadcast()很可能引起死锁。</p>
 <p>信号灯与互斥锁和条件变量的主要不同在于”灯”的概念，灯亮则意味着资源可用，灯灭则意味着不可用。如果说后两中同步方式侧重于”等待”操作，即资源不可用的话，信号灯机制则侧重于点灯，即告知资源可用；没有等待线程的解锁或激发条件都是没有意义的，而没有等待灯亮的线程的点灯操作则有效，且能保持灯亮状态。当然，这样的操作原语也意味着更多的开销。</p>
-<p>信号灯的应用除了灯亮/灯灭这种二元灯以外，也可以采用大于1的灯数，以表示资源数大于1，这时可以称之为多元灯。</p>
+<p>信号灯的应用除了灯亮&#x2F;灯灭这种二元灯以外，也可以采用大于1的灯数，以表示资源数大于1，这时可以称之为多元灯。</p>
 <p>POSIX信号灯标准定义了有名信号灯和无名信号灯两种，但LinuxThreads的实现仅有无名灯，同时有名灯除了总是可用于多进程之间以外，在使用上与无名灯并没有很大的区别，因此下面仅就无名灯进行讨论。</p>
 <p>int sem_init(sem_t *sem, int pshared, unsigned int value)<br>这是创建信号灯的API，其中value为信号灯的初值，pshared表示是否为多进程共享而不仅仅是用于一个进程。LinuxThreads没有实现多进程共享信号灯，因此所有非0值的pshared输入都将使sem_init()返回-1，且置errno为ENOSYS。初始化好的信号灯由sem变量表征，用于以下点灯、灭灯操作。</p>
 <p>int sem_destroy(sem_t * sem)<br>被注销的信号灯sem要求已没有线程在等待该信号灯，否则返回-1，且置errno为EBUSY。除此之外，LinuxThreads的信号灯注销函数不做其他动作。</p>

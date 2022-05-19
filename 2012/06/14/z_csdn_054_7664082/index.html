@@ -26,7 +26,7 @@
 <meta property="og:description" content="完整且超简化的linux下stm32开发环境(编译，下载)最近要用stm32开发产品，考虑到以前作高端arm,or32开发以及低端的avr开发都用gcc，因此为了降低学习难度和省钱，决定继续使用gcc。 经过搜索网络查阅资料，发现stm32的gcc支持虽然没有问题，但是对普通开发者而言，实在过于复杂，至少比avr-gcc复杂太多， 开发者在编写makefile之外，不得不自己搞定启">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2012-06-14T02:22:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T09:39:18.688Z">
+<meta property="article:modified_time" content="2022-05-19T09:40:13.509Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="CSDN">
 <meta name="twitter:card" content="summary">
@@ -407,14 +407,14 @@
 <p>adc及lcd测试示例</p>
 <p>同上，为修改的adc测试程序，额外添加了TIM测试,休眠测试,按键测试及浮点数计算等，默认编译需要使用IAP来下载它。</p>
 <p>编程注意事项：</p>
-<p>1&gt;makefile中，是通过添加OBJS += xxx.o来添加用户文件的，注意后缀不是.c</p>
+<p>1&gt;makefile中，是通过添加OBJS +&#x3D; xxx.o来添加用户文件的，注意后缀不是.c</p>
 <p>2&gt;makefile第一行指定SDK目录位置，自己按自己路径修改</p>
 <p>3&gt;为了使同一个程序代码无须修改即可运行于rom offset模式(使用IAP加载)</p>
 <p>NVIC_Configuration中对应代码需要修改为如下</p>
 <p>#ifdef VECT_TAB_RAM</p>
-<p>/* Set the Vector Table base location at 0x20000000 */</p>
+<p>&#x2F;* Set the Vector Table base location at 0x20000000 *&#x2F;</p>
 <p>NVIC_SetVectorTable(NVIC_VectTab_RAM, 0x0);</p>
-<p>#else /* VECT_TAB_FLASH */</p>
+<p>#else &#x2F;* VECT_TAB_FLASH *&#x2F;</p>
 <p>NVIC_SetVectorTable(NVIC_VectTab_FLASH, ROM_OFFSET_SIZE);</p>
 <p>#endif</p>
 
