@@ -43,12 +43,13 @@ tags:
 
 # 初始化使用
 ## github账号注册跳过
-[githug](https://www.github.com)
+[github](https://www.github.com)
 ## 新建存放日记的repo
 ### 修改默认的分支为master
 讨厌白左政治正确，搞得软件也不好用
 ![](github_change_master.png)
-### 新建分支
+### 新建代码库repo，存放未来的日记
+貌似私有的会有bug，暂时用公共的吧，有隐私需求的孩子，可以试试gitlab或者放在其他地方。
 
 ![](github_new_repo.png)
 ![](github_new_repo2.png)
