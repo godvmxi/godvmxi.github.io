@@ -41,7 +41,10 @@ external_link:
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
-relative_link: false
+marked:
+  prependRoot: true
+  postAsset: true
+relative_link: true
 future: true
 highlight:
   enable: true
