@@ -29,3 +29,6 @@ tags:
 * [徐晓冬北京格斗狂人](https://www.youtube.com/c/%E5%BE%90%E6%99%93%E5%86%AC%E5%8C%97%E4%BA%AC%E6%A0%BC%E6%96%97%E7%8B%82%E4%BA%BA)
 
 
+## 如果你觉得疫情没有影响到你
+这里是个人私货
+[时间机器](https://t.me/cn_timemachine)
