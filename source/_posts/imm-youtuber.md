@@ -23,6 +23,11 @@ tags:
 
 
 
+
+# 财经类
+* [小翠時政財經](https://www.youtube.com/channel/UCOhck8oLoIwSJzmwYMXsSnQ)
+
+# 思想之路
 ## 如果你还在摇摆
 * [亚军王歪嘴](https://www.youtube.com/c/%E4%BA%9A%E5%86%9B%E7%8E%8B%E6%AD%AA%E5%98%B4)
 
@@ -32,3 +37,5 @@ tags:
 ## 如果你觉得疫情没有影响到你
 这里是个人私货
 [时间机器](https://t.me/cn_timemachine)
+
+
