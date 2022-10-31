@@ -11,11 +11,12 @@ tags:
 ![](never.jpg)
 
 # TODO
-- [x] [新加坡](https://vball.fun/2022/10/28/imm-sg-01/) 
+- [x] [新加坡 - 80%](https://vball.fun/2022/10/28/imm-sg-01/) 
 - [ ] 加拿大
-    - [ ] [靠谱博主](https://vball.fun/2022/10/28/imm-sg-01/) 
-    - [ ] [签证篇](https://vball.fun/2022/10/28/imm-ca-visa/) 
+    - [ ] [靠谱博主 - 30% ](https://vball.fun/2022/10/28/imm-sg-01/) 
+    - [ ] [签证篇 - 10%](https://vball.fun/2022/10/28/imm-ca-visa/) 
     - [ ] 旅转学篇
     - [ ] 低龄留学
 - [ ] 资料准备
+- [X] [我需要顾问吗-50%](https://vball.fun/2022/10/29/imm-consultant/) 
     

@@ -262,5 +262,5 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
     #startOnload: true  // default true
 tracker:
   baidu: "https://tongji.baidu.com/web/welcome/login"
-  google: "#"
+  google: "https://analytics.google.com/analytics/web/"
   tencent: "#"
