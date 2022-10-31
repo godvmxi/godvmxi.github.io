@@ -18,5 +18,5 @@ tags:
     - [ ] 旅转学篇
     - [ ] 低龄留学
 - [ ] 资料准备
-- [X] [我需要顾问吗-50%](https://vball.fun/2022/10/29/imm-consultant/) 
-    
+- [x] [我需要顾问吗-50%](https://vball.fun/2022/10/29/imm-consultant/) 
+- [x] [签证审核路径 - 10% ](https://vball.fun/2022/10/29/imm-visa-review/)
