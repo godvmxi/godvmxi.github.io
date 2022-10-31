@@ -12,7 +12,7 @@ tags:
 * 2022/10/28 初稿
 
 # 归纳黄页
-[移民归纳--鸽总计划](https://vball.fun/2022/10/28/imm-geziwang-roadmap/)
+[移民归纳--鸽总日记](https://vball.fun/2022/10/28/imm-geziwang-roadmap/)
 
 # 跑路新加坡的优缺点
 这编文章的目的是简要介绍，给你各种可以搜索的关键词。 
