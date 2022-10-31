@@ -1,74 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_046_9949741/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2010/12/26/z_csdn_047_6098974/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_048_9948781/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_049_9948821/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_050_9948741/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2017/04/25/z_csdn_051_70763496/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2011/07/31/z_csdn_052_6649998/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2015/09/24/z_csdn_053_48713829/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2012/06/14/z_csdn_054_7664082/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2016/10/20/z_csdn_055_52875058/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_056_9949449/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2011/11/18/z_csdn_057_6989602/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2014/12/05/z_csdn_058_41774851/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2011/10/26/z_csdn_059_6908297/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_060_9948929/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/13/z_csdn_061_9949779/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2016/11/07/z_csdn_062_53069439/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
     <loc>http://vball.fun/2009/05/04/z_csdn_063_6900328/</loc>
     <lastmod>2022-10-31</lastmod>
   </url>
@@ -293,6 +225,74 @@
     <lastmod>2022-10-31</lastmod>
   </url>
   <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_046_9949741/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2010/12/26/z_csdn_047_6098974/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_048_9948781/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_049_9948821/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_050_9948741/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2017/04/25/z_csdn_051_70763496/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2011/07/31/z_csdn_052_6649998/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2015/09/24/z_csdn_053_48713829/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2012/06/14/z_csdn_054_7664082/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2016/10/20/z_csdn_055_52875058/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_056_9949449/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2011/11/18/z_csdn_057_6989602/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2014/12/05/z_csdn_058_41774851/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2011/10/26/z_csdn_059_6908297/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_060_9948929/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/13/z_csdn_061_9949779/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2016/11/07/z_csdn_062_53069439/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
     <loc>http://vball.fun/2011/04/12/z_csdn_001_6773192/</loc>
     <lastmod>2022-10-31</lastmod>
   </url>
@@ -341,6 +341,10 @@
     <lastmod>2022-10-31</lastmod>
   </url>
   <url>
+    <loc>http://vball.fun/2022/10/31/imm-my-choice/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
     <loc>http://vball.fun/2022/10/31/imm-sg-01/</loc>
     <lastmod>2022-10-31</lastmod>
   </url>
@@ -370,6 +374,10 @@
   </url>
   <url>
     <loc>http://vball.fun/2021/12/16/h264-avc-codec/</loc>
+    <lastmod>2022-10-31</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2021/12/16/codec-reference-summary/</loc>
     <lastmod>2022-10-31</lastmod>
   </url>
   <url>
@@ -406,10 +414,6 @@
   </url>
   <url>
     <loc>http://vball.fun/2021/12/16/cabac-cavlc/</loc>
-    <lastmod>2022-10-31</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2021/12/16/codec-reference-summary/</loc>
     <lastmod>2022-10-31</lastmod>
   </url>
   <url>

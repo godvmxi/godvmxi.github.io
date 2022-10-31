@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>循环位移-C | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="循环位移-C分类： C&#x2F;C++2011-09-07 21:52 16人阅读 评论(0) 收藏 举报0x20是十进制的32，你是多少位的类型就换成多少就好了，这里是int。原理也很简单，两边一来一去然后或一下把空出来的0补全...循环左移:#define CROL(value, bits) ((value &gt; (0x20 - bits)))循环右移">
+  <title>移民归纳--我前后的思考 | Ball Virtual&#39; Blog</title>
+  <meta name="description" content="修改日志 TODO 归纳黄页 想法萌生 候选国指数 途径 关于跳板 我的跳板选择      修改日志 2022&#x2F;10&#x2F;29 初稿，吐吐槽 简单说说跑路的缘由 简单的说一下自己的国家选择TODO      穷逼如何跑路  跑路中的思想变化  归纳黄页移民归纳–鸽总日记 想法萌生 校内网我一个个文章的消失 微博大佬们挨个背井离乡，排名没有先后，我也一时记不起那么多人 高耀洁">
 <meta property="og:type" content="article">
-<meta property="og:title" content="循环位移-C">
-<meta property="og:url" content="http://vball.fun/2011/09/07/z_csdn_010_7046188/index.html">
+<meta property="og:title" content="移民归纳--我前后的思考">
+<meta property="og:url" content="http://vball.fun/2022/10/31/imm-my-choice/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="循环位移-C分类： C&#x2F;C++2011-09-07 21:52 16人阅读 评论(0) 收藏 举报0x20是十进制的32，你是多少位的类型就换成多少就好了，这里是int。原理也很简单，两边一来一去然后或一下把空出来的0补全...循环左移:#define CROL(value, bits) ((value &gt; (0x20 - bits)))循环右移">
+<meta property="og:description" content="修改日志 TODO 归纳黄页 想法萌生 候选国指数 途径 关于跳板 我的跳板选择      修改日志 2022&#x2F;10&#x2F;29 初稿，吐吐槽 简单说说跑路的缘由 简单的说一下自己的国家选择TODO      穷逼如何跑路  跑路中的思想变化  归纳黄页移民归纳–鸽总日记 想法萌生 校内网我一个个文章的消失 微博大佬们挨个背井离乡，排名没有先后，我也一时记不起那么多人 高耀洁">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2011-09-07T05:52:00.000Z">
-<meta property="article:modified_time" content="2022-10-31T08:40:09.137Z">
+<meta property="article:published_time" content="2022-10-31T07:41:48.000Z">
+<meta property="article:modified_time" content="2022-10-31T08:40:09.121Z">
 <meta property="article:author" content="Bright Jiang">
-<meta property="article:tag" content="CSDN">
+<meta property="article:tag" content="移民">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://vball.fun/2011/09/07/z_csdn_010_7046188/index.html">
+  <link rel="canonical" href="http://vball.fun/2022/10/31/imm-my-choice/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Godvmxi Blog" type="application/atom+xml">
   
@@ -344,14 +344,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-z_csdn_010_7046188" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-imm-my-choice" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      循环位移-C
+      移民归纳--我前后的思考
     </h1>
   
 
@@ -359,31 +359,274 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2011/09/07/z_csdn_010_7046188/" class="article-date">
-	  <time datetime="2011-09-07T05:52:00.000Z" itemprop="datePublished">2011-09-07</time>
+	<a href="/2022/10/31/imm-my-choice/" class="article-date">
+	  <time datetime="2022-10-31T07:41:48.000Z" itemprop="datePublished">2022-10-31</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/CSDN/" rel="tag">CSDN</a>
+	<a class="article-tag-link-link" href="/tags/%E7%A7%BB%E6%B0%91/" rel="tag">移民</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2011/09/07/z_csdn_010_7046188/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/31/imm-my-choice/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>0x20是十进制的32，你是多少位的类型就换成多少就好了，这里是int。<br>原理也很简单，两边一来一去然后或一下把空出来的0补全…</p>
-<p>循环左移:</p>
-<p>#define CROL(value, bits) ((value &lt;&lt; bits) | (value &gt;&gt; (0x20 - bits)))</p>
-<p>循环右移:</p>
-<p>#define CROR(value, bits) ((value &gt;&gt; bits) | (value &lt;&lt; (0x20 - bits)))</p>
+        <!-- toc -->
+
+<ul>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%97%A5%E5%BF%97">修改日志</a></li>
+<li><a href="#todo">TODO</a></li>
+<li><a href="#%E5%BD%92%E7%BA%B3%E9%BB%84%E9%A1%B5">归纳黄页</a></li>
+<li><a href="#%E6%83%B3%E6%B3%95%E8%90%8C%E7%94%9F">想法萌生</a></li>
+<li><a href="#%E5%80%99%E9%80%89%E5%9B%BD%E6%8C%87%E6%95%B0">候选国指数</a></li>
+<li><a href="#%E9%80%94%E5%BE%84">途径</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E8%B7%B3%E6%9D%BF">关于跳板</a><ul>
+<li><a href="#%E6%88%91%E7%9A%84%E8%B7%B3%E6%9D%BF%E9%80%89%E6%8B%A9">我的跳板选择</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="修改日志">修改日志</span></h1><ul>
+<li>2022&#x2F;10&#x2F;29<ul>
+<li>初稿，吐吐槽</li>
+<li>简单说说跑路的缘由</li>
+<li>简单的说一下自己的国家选择<h1><span id="todo">TODO</span></h1></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><input disabled type="checkbox"> 穷逼如何跑路</li>
+<li><input disabled type="checkbox"> 跑路中的思想变化</li>
+</ul>
+<h1><span id="归纳黄页">归纳黄页</span></h1><p><a href="https://vball.fun/2022/10/28/imm-geziwang-roadmap/">移民归纳–鸽总日记</a></p>
+<h1><span id="想法萌生">想法萌生</span></h1><ul>
+<li>校内网我一个个文章的消失</li>
+<li>微博大佬们挨个背井离乡，排名没有先后，我也一时记不起那么多人<ul>
+<li>高耀洁</li>
+<li>五岳散人</li>
+<li>王小山</li>
+<li>王亚军</li>
+<li>作业本</li>
+<li>变态辣椒</li>
+<li>艾未未</li>
+<li>染香姐姐</li>
+<li>珍珠</li>
+<li>太多，一时却又没有思路</li>
+</ul>
+</li>
+<li>一个个调查记者的惨死或消失<ul>
+<li>余刘文</li>
+<li>赵世龙</li>
+<li>孙保罗</li>
+<li>李玉霄</li>
+<li>王克勤</li>
+<li>太多了。。</li>
+</ul>
+</li>
+<li>有关人士的逐渐闭嘴<ul>
+<li>贺卫方</li>
+<li>袁腾飞</li>
+<li>崔永元</li>
+<li>李大眼</li>
+<li>太多，一时却又没有思路</li>
+</ul>
+</li>
+<li>各种迟到的正义迟迟不来</li>
+<li>刘晓波老师的离世</li>
+<li>绕瑾系群魔乱舞<ul>
+<li>李毅、司马夹头，算了，写他们名字挺恶心的</li>
+</ul>
+</li>
+<li>疯狂的多元宇宙<ul>
+<li>有人在现实中星辰大海，我们在梦境中虽远必征</li>
+<li>别人在讨论人类文明，我们在推崇社会达尔文</li>
+<li>国家社会主义工人党是什么，我们又是什么。。</li>
+</ul>
+</li>
+<li>穷逼打工人患得患失的家庭责任<ul>
+<li>孩子的教育应该是什么样子的</li>
+<li>父母能否在生老病死面前体面</li>
+<li>自己的这节人肉干电池还能干多久</li>
+</ul>
+</li>
+<li>疫情自始自终的观察<ul>
+<li>一个完善的疾控报警系统怎么在xx的想法下彻底失效</li>
+<li>自己的同事连夜从武汉潜逃回上海</li>
+<li>一个个的寻衅滋事让事情一点点发酵</li>
+<li>管轶的百倍起跳论还清晰可见</li>
+<li>封控的前一刻还不忘疯掉我的微信</li>
+<li>大年初一凌晨逃回上海的慌张</li>
+<li>肉喇叭页面上自豪的记录着修饰病毒的文章</li>
+<li>疫情两周不到，有关PLA部门就自豪的拿出了疫苗</li>
+<li>总的来说，第一年交了一份勉强可以看的答卷</li>
+<li>。。。。。。</li>
+<li>王立军-&gt;澳洲的质疑-&gt;制裁澳洲。。然后国内能源飙涨，缺电，原来我们一直都是代价</li>
+<li>全世界指责，那就职责全世界，突然间全世界又成我们的敌人了</li>
+<li>突然肇事者和受害者分不清了，好朋友也能因为这个指责我，可能是我瞎</li>
+<li>。。。。。</li>
+<li>外汇储备从3万亿到接近清零</li>
+<li>突然核酸成了大产业了</li>
+<li>病毒和我们和解了，突然我们拒绝和病毒和解了</li>
+<li>新疆封门封路，我不信，虽然他们野蛮，结果上海也风门封路了</li>
+<li>突然上海都能饿死人了，不对那叫做电解质严重失衡</li>
+<li>东海养老院没有死人</li>
+<li>也没有半夜母亲的哀嚎</li>
+<li>更没有火葬场翻倍的业绩</li>
+<li>。。。。</li>
+<li>不写了，我还能祥林嫂一整天不停</li>
+</ul>
+</li>
+</ul>
+<p><strong>温水煮青蛙的故事是假的，因为青蛙最后都跳出来了</strong><br><strong>温水煮人的故事也是假的，但是最后却被其他人按在水里活活煮死，只是因为你和他们不一样</strong>  </p>
+<h1><span id="候选国指数">候选国指数</span></h1><p>当决定离开时，那就认真考虑候选国吧。<br>作为穷人，选择不多，但是也要努力，我告诉自己，你才35岁，还能为了家庭拼搏。  </p>
+<p>自己按照自己的主观臆断评估的，不要太较真</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>加拿大</th>
+<th>美国</th>
+<th>日本</th>
+<th>德国</th>
+<th>澳洲</th>
+<th>新加坡</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作指数</td>
+<td>8</td>
+<td>10</td>
+<td>7</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr>
+<td>子女教育</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>子女福利</td>
+<td>8</td>
+<td>0</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>医疗福利</td>
+<td>8</td>
+<td>6</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>包容度</td>
+<td>8</td>
+<td>8</td>
+<td>5</td>
+<td>6</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>安全感</td>
+<td>9</td>
+<td>6</td>
+<td>9</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>生活舒适度</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<h1><span id="途径">途径</span></h1><ul>
+<li>加拿大<ul>
+<li>工签（LIMA太难，亚麻我太菜）</li>
+<li>爱人SDS学签（爱人生病学习顶不住）</li>
+<li>旅游签（被拒）</li>
+<li>低龄学签(还算顺利，有惊无险)</li>
+</ul>
+</li>
+<li>美国<ul>
+<li>工签（搞不定算了，以后还是TN签去工作赚钱）</li>
+<li>我对政治正确方案，更对政府对0元购无作为愤怒</li>
+</ul>
+</li>
+<li>日本<ul>
+<li>工签（不难，但是确实不想学日语了）</li>
+<li>学签（同上）</li>
+</ul>
+</li>
+<li>德国<ul>
+<li>工签（不难，但是确实不想学德语了，另外面试准备上也没上心）</li>
+</ul>
+</li>
+<li>澳洲<ul>
+<li>工签（有机会，不在第一考虑队列）</li>
+<li>学签</li>
+<li>打工旅行签（老了，错过了)</li>
+</ul>
+</li>
+<li>新加坡<ul>
+<li>工签（高中低档工签都不难，临时停留一下吧，我挺喜欢，也原因常驻）</li>
+</ul>
+</li>
+</ul>
+<h1><span id="关于跳板">关于跳板</span></h1><p>我知道很多心里只有灯塔国，但是300年大限是否将至，我无法预期，但是确实越来越群魔乱舞   </p>
+<p>穷人要有自知之明，很多事情如果无法一蹴而就，那就考虑跳板吧。 </p>
+<p>所谓跳板，就是进可攻退可守，不是让你提臀迎众基，是生活，是旅程。</p>
+<p>英联邦是个很好的选择，互通有无，互相认可。</p>
+<h2><span id="我的跳板选择">我的跳板选择</span></h2><p>我心目中的跳板，生活不错，如果想赚钱，还能去灯塔刷存在感。</p>
+<table>
+<thead>
+<tr>
+<th>国家</th>
+<th>灯塔小绿卡</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新加坡</td>
+<td>H1B1</td>
+<td>入籍太慢，子女要服兵役</td>
+</tr>
+<tr>
+<td>澳洲</td>
+<td>E3</td>
+<td>只能看鸵鸟了，没啥科技公司</td>
+</tr>
+<tr>
+<td>加拿大</td>
+<td>TN</td>
+<td>地理优势</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -393,7 +636,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://vball.fun/2011/09/07/z_csdn_010_7046188/" title="循环位移-C" target="_blank" rel="external">http://vball.fun/2011/09/07/z_csdn_010_7046188/</a>
+      <a href="http://vball.fun/2022/10/31/imm-my-choice/" title="移民归纳--我前后的思考" target="_blank" rel="external">http://vball.fun/2022/10/31/imm-my-choice/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -442,12 +685,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2011/10/17/z_csdn_073_6881663/" title="一些收集"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/2022/10/31/imm-sg-01/" title="移民小结-新加坡"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2011/08/09/z_csdn_014_6673901/" title="VC学习资料，"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2022/10/31/imm-visa-review/" title="移民归纳 - 签证审核路径篇"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -539,9 +782,9 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     <script defer>
     var disqus_config = function () {
         
-            this.page.url = 'http://vball.fun/2011/09/07/z_csdn_010_7046188/';
+            this.page.url = 'http://vball.fun/2022/10/31/imm-my-choice/';
         
-        this.page.identifier = 'z_csdn_010_7046188';
+        this.page.identifier = 'imm-my-choice';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
