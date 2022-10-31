@@ -11,7 +11,7 @@ tags:
 ![](never.jpg)
 
 # TODO
-- [x] [我前后的思考 - 10% ](https://vball.fun/2022/10/29/imm-my-choice/)
+- [x] [我前后的思考 - 10% ](https://vball.fun/2022/10/31/imm-my-choice/)
 - [x] [新加坡 - 80%](https://vball.fun/2022/10/28/imm-sg-01/) 
 - [ ] 加拿大
     - [ ] [靠谱博主 - 30% ](https://vball.fun/2022/10/28/imm-sg-01/) 
