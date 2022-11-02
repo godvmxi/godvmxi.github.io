@@ -10,7 +10,7 @@ tags:
 * 2022/10/29 初稿, 汇总一下当天别人的问题
 
 # 归纳黄页
-[移民归纳--鸽总日记](https://vball.fun/2022/10/28/imm-geziwang-roadmap/)
+[移民归纳--鸽总日记](/2022/10/28/imm-geziwang-roadmap/)
 
 
 # 签证审核

@@ -13,22 +13,22 @@ tags:
 ![](never.jpg)
 
 # TODO
-- [x] [我前后的思考与目标国的挑选 - 80% ](https://vball.fun/2022/10/31/imm-my-choice/)
-- [x] [穷逼移民](https://vball.fun/2022/11/02/imm-poor/)
-- [x] [我需要顾问吗 - 50%](https://vball.fun/2022/10/31/imm-consultant/)
+- [x] [我前后的思考与目标国的挑选 - 80% ](/2022/10/31/imm-my-choice/)
+- [x] [穷逼移民](/2022/11/02/imm-poor/)
+- [x] [我需要顾问吗 - 50%](/2022/10/31/imm-consultant/)
 - [ ] 资料准备
-- [ ] [靠谱博主 - 30% ](https://vball.fun/2022/10/28/imm-youtuber/)
+- [ ] [靠谱博主 - 30% ](/2022/10/28/imm-youtuber/)
 - [x] 新加坡
-    - [x] [我经历的签证总结 - 80%](https://vball.fun/2022/11/02/imm-sg-01/)
+    - [x] [我经历的签证总结 - 80%](/2022/10/31/imm-sg-01/)
     - [ ] 文明感悟
     - [ ] 琐事记忆
     - [ ] 感谢朋友
 - [ ] 加拿大
-    - [ ] [签证路径篇 - 10%](https://vball.fun/2022/10/28/imm-ca-visa/) 
-    - [x] [签证审核路径 - 80% ](https://vball.fun/2022/10/31/imm-visa-review/)
+    - [ ] [签证路径篇 - 10%](/2022/10/28/imm-ca-visa/) 
+    - [x] [签证审核路径 - 80% ](/2022/10/31/imm-visa-review/)
     - [ ] 旅转学/低龄留学
     - [ ] 坑底的雇主担保
 - [ ] 美国
-    - [x] [跳板篇 - 80% ](https://vball.fun/2022/11/02/imm-usa-jump/) 
+    - [x] [跳板篇 - 80% ](/2022/11/02/imm-usa-jump/) 
 
 

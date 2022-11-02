@@ -11,7 +11,7 @@ tags:
     - 初稿
 
 # 归纳黄页
-[移民归纳--鸽总日记](https://vball.fun/2022/10/28/imm-geziwang-roadmap/)
+[移民归纳--鸽总日记](/2022/10/28/imm-geziwang-roadmap/)
 
 # 推荐博主
 信息很大一部分来源都是这里，因为我一开始就选择了加麻大。

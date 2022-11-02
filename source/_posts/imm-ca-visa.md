@@ -13,7 +13,7 @@ tags:
 # 修改日志
 * 2022/10/28 初稿
 # 归纳黄页
-[移民归纳--鸽总日记](https://vball.fun/2022/10/28/imm-geziwang-roadmap/)
+[移民归纳--鸽总日记](/2022/10/28/imm-geziwang-roadmap/)
 
 # TODO
 
