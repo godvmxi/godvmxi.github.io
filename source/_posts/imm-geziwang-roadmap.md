@@ -1,6 +1,8 @@
 ---
 title: 移民归纳--鸽总日记
 date: 2022-10-28 17:12:49
+categories:
+    - 移民
 tags:
     - 移民
 top: 100
