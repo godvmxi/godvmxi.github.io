@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://vball.fun/2011/08/02/z_csdn_043_6655777/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/09/04/z_csdn_044_11119349/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_045_9948833/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_046_9949741/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2010/12/26/z_csdn_047_6098974/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_048_9948781/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2013/08/12/z_csdn_049_9948821/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
     <loc>http://vball.fun/2013/08/12/z_csdn_050_9948741/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
@@ -293,15 +265,39 @@
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
-    <loc>http://vball.fun/2011/04/12/z_csdn_001_6773192/</loc>
+    <loc>http://vball.fun/2011/08/02/z_csdn_043_6655777/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
-    <loc>http://vball.fun/2020/08/13/view-stl-under-gdb/</loc>
+    <loc>http://vball.fun/2013/09/04/z_csdn_044_11119349/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_045_9948833/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_046_9949741/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2010/12/26/z_csdn_047_6098974/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_048_9948781/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2013/08/12/z_csdn_049_9948821/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
     <loc>http://vball.fun/2022/05/21/write-note-with-git-cn/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2011/04/12/z_csdn_001_6773192/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
@@ -317,23 +313,11 @@
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
-    <loc>http://vball.fun/2021/10/25/hello-world/</loc>
+    <loc>http://vball.fun/2020/08/13/view-stl-under-gdb/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
-    <loc>http://vball.fun/2022/05/21/hexo-post-import-img-error/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2019/11/12/hexo-pure-theme-add-mermaid-support/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2022/10/28/imm-ca-visa/</loc>
-    <lastmod>2022-11-02</lastmod>
-  </url>
-  <url>
-    <loc>http://vball.fun/2022/10/31/imm-consultant/</loc>
+    <loc>http://vball.fun/2022/10/29/imm-evaluate/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
@@ -345,7 +329,15 @@
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
+    <loc>http://vball.fun/2022/11/02/imm-poor/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
     <loc>http://vball.fun/2022/11/02/imm-sg-01/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2022/11/02/imm-usa-jump/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
@@ -374,6 +366,26 @@
   </url>
   <url>
     <loc>http://vball.fun/2021/12/16/h264-avc-codec/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2021/10/25/hello-world/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2022/05/21/hexo-post-import-img-error/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2019/11/12/hexo-pure-theme-add-mermaid-support/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2022/10/28/imm-ca-visa/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://vball.fun/2022/10/31/imm-consultant/</loc>
     <lastmod>2022-11-02</lastmod>
   </url>
   <url>
