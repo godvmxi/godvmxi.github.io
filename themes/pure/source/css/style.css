@@ -5008,7 +5008,11 @@ table {
 }
 
 table > thead > tr > th,
-table > thead > tr > td,
+table > thead > tr > td
+{
+  background-color: #6c7ae0;
+  border: 1px solid #8a8080ec;
+}
 table > tbody > tr > th,
 table > tbody > tr > td,
 table > tfoot > tr > th,
@@ -5017,7 +5021,7 @@ table > tfoot > tr > td {
 }
 
 table > tbody > tr:nth-of-type(odd) {
-  background-color: #f8f8f8;
+  background-color: #fad8d8;
 }
 
 table > tbody > tr:hover {
