@@ -16,7 +16,8 @@ tags:
 
 
 # Download from telegram private chat/channel
-There always some special video in some private chat&channel. we can use some tools to download it.
+There always some special video in some private chat&channel.    
+And they are not allowded to be downloaded, so we can use some tools to download it.
 
 
 
