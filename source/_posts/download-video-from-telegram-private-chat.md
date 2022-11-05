@@ -46,7 +46,7 @@ Open your video in telegram web, and you will find the download icon, click to d
    
    
    
-   
+Now you can download the protected video or privated video as your wish. Enjoy it.
 
 # Download from telegram normal chat/channel
 Normal chat and channel will be easy.
