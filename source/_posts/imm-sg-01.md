@@ -158,10 +158,11 @@ indeed各国都适用(https://sg.indeed.com/)
 我不清楚哪个是原装哪个是假货了。  
 
 
-注意中介骗子挺多，不过不重要，信息的渠道很关键，完事开头难。
+注意中介骗子挺多，不过不重要，信息的渠道很关键，万事开头难。
 - [狮城论坛-sgcn.com](https://bbs.sgcn.com/forum-1255-1.html)
 - [狮城论坛-shichengbbs..com](https://www.shichengbbs.com/c47)
 - [狮城论坛-gongzuo.sg](https://www.gongzuo.sg/)
+- [https://twitter.com/marcushkheroes 谨慎参考](https://twitter.com/marcushkheroes])
 
 新加坡中介收費一般是5000RMB， 国内外中介会抬高到10000左右，太高就想想吧。  
 #### 中介可以提供的服务
