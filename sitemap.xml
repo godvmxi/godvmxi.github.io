@@ -2,33 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://vball.fun/2011/11/07/z_csdn_039_6947902/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://vball.fun/2018/08/15/z_csdn_040_81707199/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://vball.fun/2011/10/17/z_csdn_041_6883585/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://vball.fun/2011/10/17/z_csdn_042_6883611/</loc>
     
     <lastmod>2022-11-11</lastmod>
@@ -713,6 +686,33 @@
   </url>
   
   <url>
+    <loc>http://vball.fun/2011/11/07/z_csdn_039_6947902/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://vball.fun/2018/08/15/z_csdn_040_81707199/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://vball.fun/2011/10/17/z_csdn_041_6883585/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://vball.fun/2022/05/21/write-note-with-git-cn/</loc>
     
     <lastmod>2022-11-11</lastmod>
@@ -830,24 +830,6 @@
   </url>
   
   <url>
-    <loc>http://vball.fun/2022/10/31/imm-my-choice/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://vball.fun/2022/11/02/imm-passport/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://vball.fun/2022/11/02/imm-poor/</loc>
     
     <lastmod>2022-11-11</lastmod>
@@ -866,7 +848,7 @@
   </url>
   
   <url>
-    <loc>http://vball.fun/2022/11/11/imm-sg-01/</loc>
+    <loc>http://vball.fun/2022/11/07/imm-sg-01/</loc>
     
     <lastmod>2022-11-11</lastmod>
     
@@ -876,15 +858,6 @@
   
   <url>
     <loc>http://vball.fun/2022/11/02/imm-usa-jump/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://vball.fun/2021/12/16/h264-avc-codec/</loc>
     
     <lastmod>2022-11-11</lastmod>
     
@@ -983,7 +956,34 @@
   </url>
   
   <url>
+    <loc>http://vball.fun/2022/10/31/imm-my-choice/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://vball.fun/2022/11/02/imm-passport/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://vball.fun/2022/09/30/git-checkout-PR/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://vball.fun/2021/12/16/h264-avc-codec/</loc>
     
     <lastmod>2022-11-11</lastmod>
     
@@ -1019,34 +1019,7 @@
   </url>
   
   <url>
-    <loc>http://vball.fun/2021/12/16/codec-reference-summary/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://vball.fun/2021/10/27/csdn-export/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://vball.fun/2022/11/05/download-video-from-telegram-private-chat/</loc>
-    
-    <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://vball.fun/2021/11/16/add-watermarker-to-h264-tool/</loc>
     
     <lastmod>2022-11-11</lastmod>
     
@@ -1100,7 +1073,34 @@
   </url>
   
   <url>
+    <loc>http://vball.fun/2021/12/16/codec-reference-summary/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://vball.fun/2021/10/27/csdn-export/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://vball.fun/2021/10/27/1984/</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://vball.fun/2021/11/16/add-watermarker-to-h264-tool/</loc>
     
     <lastmod>2022-11-11</lastmod>
     
