@@ -19,9 +19,31 @@ tags:
 The problem is that conan does download/compile gtest binaries by default with libstdc++ even if my compiler (gcc 6.3) uses libstdc++11 by default. Thus there is a mismatch between libstdc++ and libstdc++11.
 
 To workaround this issue you have to explicit tell conan to compile with libstdc++11:
-
+## Solution 1
 ```c
 conan install .. --build missing -s compiler=gcc -s compiler.version=6.3 -s compiler.libcxx=libstdc++11
+```
+
+## Solution 2
+```c
+compiler.libcxx=libstdc++ --> compiler.libcxx=libstdc++11
+```
+   
+example: 
+```c
+cat ~/.conan/profiles/default 
+[settings]
+os=Linux
+os_build=Linux
+arch=x86_64
+arch_build=x86_64
+compiler=gcc
+compiler.version=9
+compiler.libcxx=libstdc++11
+build_type=Release
+[options]
+[build_requires]
+[env]
 ```
 
 [**Reference page**](https://www.appsloveworld.com/cplus/100/127/gtest-installed-with-conan-undefined-reference)
