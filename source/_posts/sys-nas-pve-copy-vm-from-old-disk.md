@@ -43,7 +43,7 @@ vgrename UUID_old_disk new_vg_name
 
 ### Active the old pve disk
 ```bash
-vgactive vgchange  -a y new_vg_name
+vgchange  -a y new_vg_name
 ```
 ### Locathe the disk of your old VM
 you will find your vm node disk in **/dev/new_vg_name/vm_1xx_disk_0**
