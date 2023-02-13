@@ -94,12 +94,69 @@ gitGraph
 
 ## Pie
 ```mermaid
+
 pie title Pets adopted by volunteers
     "Dogs" : 386
     "Cats" : 85
     "Rats" : 15
 ```
 
+## Class
+Simple usage, many item will report fail: such as **<--**
+```mermaid
+---
+title: Bank example
+---
+classDiagram
+    class Animal{
+      int age
+      mate()
+    }
+    class D0{
+      +String beakColor
+      +quack()
+    }
+    class D1{
+      -int sizeInFeet
+      -canEat()
+    }
+    class D2{
+      +bool is_wild
+      +run()
+    }
+    class D3{
+      +bool is_wild
+      +run()
+    }
+    class D4{
+      +bool is_wild
+      +run()
+    }
+    class D5{
+      +bool is_wild
+      +run()
+    }
+    class D6
+    class D7
+
+    Animal *-- D0
+    Animal o-- D1
+    Animal --> D2
+    Animal ..> D3
+    Animal -- D4
+    Animal .. D5
+    Animal --|> D6
+    D7 --|> Animal
+
+```
+
+
+## Mindmap
+
+```mermaid
+mindmap
+  root((mindmap))
+```
 # Not support 
 ## Mindmap
 
