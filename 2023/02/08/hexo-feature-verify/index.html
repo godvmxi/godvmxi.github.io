@@ -18,15 +18,15 @@
   
   
   <title>mermaid support check page | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="Diagram Example State State v2 ER Gantt User Journey GitGraph Pie   Not support Mindmap Class C4Context      Diagram ExampleStatestateDiagram        [*] --&gt; Active        state Active {">
+  <meta name="description" content="Diagram Example State State v2 ER Gantt User Journey GitGraph Pie Class Mindmap   Not support Mindmap Class C4Context      Diagram ExampleStatestateDiagram        [*] --&gt; Active        state Active">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mermaid support check page">
 <meta property="og:url" content="http://vball.fun/2023/02/08/hexo-feature-verify/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="Diagram Example State State v2 ER Gantt User Journey GitGraph Pie   Not support Mindmap Class C4Context      Diagram ExampleStatestateDiagram        [*] --&gt; Active        state Active {">
+<meta property="og:description" content="Diagram Example State State v2 ER Gantt User Journey GitGraph Pie Class Mindmap   Not support Mindmap Class C4Context      Diagram ExampleStatestateDiagram        [*] --&gt; Active        state Active">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-08T07:46:34.000Z">
-<meta property="article:modified_time" content="2023-02-10T10:38:18.835Z">
+<meta property="article:modified_time" content="2023-02-13T10:50:12.701Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="蛋种, 母体, godvmxi, Virtual, Ball, JavaScript, 前端, 设计">
 <meta name="twitter:card" content="summary">
@@ -385,11 +385,13 @@
 <li><a href="#user-journey">User Journey</a></li>
 <li><a href="#gitgraph">GitGraph</a></li>
 <li><a href="#pie">Pie</a></li>
+<li><a href="#class">Class</a></li>
+<li><a href="#mindmap">Mindmap</a></li>
 </ul>
 </li>
 <li><a href="#not-support">Not support</a><ul>
-<li><a href="#mindmap">Mindmap</a></li>
-<li><a href="#class">Class</a></li>
+<li><a href="#mindmap-1">Mindmap</a></li>
+<li><a href="#class-1">Class</a></li>
 <li><a href="#c4context">C4Context</a></li>
 </ul>
 </li>
@@ -463,11 +465,60 @@
     commit</pre>
 
 
-<h2><span id="pie">Pie</span></h2><pre class="mermaid">pie title Pets adopted by volunteers
+<h2><span id="pie">Pie</span></h2><pre class="mermaid">
+pie title Pets adopted by volunteers
     "Dogs" : 386
     "Cats" : 85
     "Rats" : 15</pre>
 
+<h2><span id="class">Class</span></h2><p>Simple usage, many item will report fail: such as <strong>&lt;–</strong></p>
+<pre class="mermaid">---
+title: Bank example
+---
+classDiagram
+    class Animal{
+      int age
+      mate()
+    }
+    class D0{
+      +String beakColor
+      +quack()
+    }
+    class D1{
+      -int sizeInFeet
+      -canEat()
+    }
+    class D2{
+      +bool is_wild
+      +run()
+    }
+    class D3{
+      +bool is_wild
+      +run()
+    }
+    class D4{
+      +bool is_wild
+      +run()
+    }
+    class D5{
+      +bool is_wild
+      +run()
+    }
+    class D6
+    class D7
+
+    Animal *-- D0
+    Animal o-- D1
+    Animal --> D2
+    Animal ..> D3
+    Animal -- D4
+    Animal .. D5
+    Animal --|> D6
+    D7 --|> Animal</pre>
+
+
+<h2><span id="mindmap">Mindmap</span></h2><pre class="mermaid">mindmap
+  root((mindmap))</pre>
 <h1><span id="not-support">Not support</span></h1><h2><span id="mindmap">Mindmap</span></h2><pre class="mermaid">mindmap
   root((mindmap))
     Origins
