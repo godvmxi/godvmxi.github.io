@@ -26,7 +26,7 @@
 <meta property="og:description" content="TODO You can use web backup and restore always Let’s go Link the old disk to your new PVE machine Mount old disk Scan your lvm disk Identify the old and new disk Rename the old one   Active the old">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-13T10:50:35.000Z">
-<meta property="article:modified_time" content="2023-02-13T11:23:03.030Z">
+<meta property="article:modified_time" content="2023-02-13T11:27:59.134Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="Sysadmin">
 <meta property="article:tag" content="Nas">
@@ -425,7 +425,7 @@
 
 <h4><span id="rename-the-old-one">Rename the old one</span></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgrename UUID_old_disk new_vg_name</span><br></pre></td></tr></table></figure>
 
-<h3><span id="active-the-old-pve-disk">Active the old pve disk</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgactive vgchange  -a y new_vg_name</span><br></pre></td></tr></table></figure>
+<h3><span id="active-the-old-pve-disk">Active the old pve disk</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgchange  -a y new_vg_name</span><br></pre></td></tr></table></figure>
 <h3><span id="locathe-the-disk-of-your-old-vm">Locathe the disk of your old VM</span></h3><p>you will find your vm node disk in <strong>&#x2F;dev&#x2F;new_vg_name&#x2F;vm_1xx_disk_0</strong></p>
 <h2><span id="dump-the-old-disk-to-qcow2-format">Dump the old disk to qcow2 format</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-img convert -f -O qcow2 /dev/new_vg_name/vm_1xx_disk_0 vm_1xx_disk.qcow2</span><br></pre></td></tr></table></figure>
 
