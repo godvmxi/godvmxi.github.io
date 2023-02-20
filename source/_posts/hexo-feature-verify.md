@@ -156,13 +156,6 @@ classDiagram
 ```mermaid
 mindmap
   root((mindmap))
-```
-# Not support 
-## Mindmap
-
-```mermaid
-mindmap
-  root((mindmap))
     Origins
       Long history
       ::icon(fa fa-book)
@@ -180,6 +173,7 @@ mindmap
       Mermaid
 ```
 
+# Not support 
 
 ## Class
 
