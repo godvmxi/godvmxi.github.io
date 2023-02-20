@@ -60,8 +60,8 @@ graph TB
 
 ```mermaid
 graph TB
-    BrDial(虚拟网桥/光猫拨号网络/分配物理网口ens0p1)
-    BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p1)
+    BrDial(虚拟网桥/光猫拨号网络/分配物理网口ens0p0)
+    BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p0)
 
     
     BrDialPhy(一体机物理网口ens0p0)
@@ -71,27 +71,20 @@ graph TB
     SwitchPoe(交换机/选配POE)  
 
 
-    
-    
-
     subgraph VmSubDial[Vm拨号主路由]
         DialRouter[拨号, 流控, AC管理器]
         DiagWan0[Wan0] --> DialRouter
-        DialRouter --> DialLan0[Lan0]
+        DialRouter --> DialLan0[Lan0<br>192.168.0.1]
     end
 
-    
     BrDialPhy --> BrDial
 
     BrDial  --> DiagWan0
 
-
-
-
     subgraph SubPhyRouter[实体拨号主路由]
         SubPhyRouterWan[Wan0]
         SubPhyRouterWan --> SubPhyRouterOp[物理拨号路由]
-        SubPhyRouterOp --> SubPhyRouterOpLan0[Lan0]
+        SubPhyRouterOp --> SubPhyRouterOpLan0[Lan0<br>192.168.0.1]
     end
 
     subgraph SubVmService[虚拟服务节点]
@@ -159,7 +152,10 @@ graph TB
 
     class SubRealDevice CssReal
     class SubPhyRouter CssReal
-    class SubGfwService CssGfw
+    class Modem CssReal
+
+
+    class SubGfwService CssGreen
 
 
 ```
@@ -169,121 +165,58 @@ graph TB
 
 ```mermaid
 graph TB
-    BrDial(虚拟网桥/光猫拨号网络/分配物理网口ens0p1)
-    BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p1)
-    BrGfw(虚拟网桥/Gfw科学网络/分配物理网口ens1p1)
+
+    BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p0)
+    BrGfw(虚拟网桥/Gfw科学网络/分配物理网口ens2p0)
     
-    BrDialPhy(一体机物理网口ens0p0)
     BrHomePhy(一体机物理网口ens1p0)
     BrGfwPhy(一体机物理网口ens2p0/即插即纯科学)
-    Modem(光猫)
-    SwitchPoe(交换机/选配POE)
 
+    DialLan0[主网关192.168.0.1]
 
-
-    
-
-
-    
-    
-
-    subgraph VmSubDial[Vm拨号主路由]
-        DialRouter[拨号, 流控, AC管理器]
-        DiagWan0[Wan0] --> DialRouter
-        DiagWan1[Wan1] -.-> DialRouter
-        DialRouter --> DialLan0[Lan0]
-        DialRouter -.-> DialLan1[Lan1]
-    end
-
-    
-    BrDialPhy --> BrDial
-
-    BrDial  --> DiagWan0
+    DialLan0 --> BrHome
 
 
     subgraph SubVmWin0[Vm科学机/Win7]
-        SubVmWin0Eth(网卡/静态)
-        GfwSw(科学软件Clash/Ssr)
-        GfwProxy(代理服务socks/http)
+        SubVmWin0Eth(网卡/静态<br>192.168.0.112)
+        GfwSw(科学软件<br>Clash/SSR/熊猫)
+        GfwProxy(代理服务socks/http<br>socks:1090<br>http:1091)
         GfwVpn(对内VPN)
         SubVmWin0Eth --> GfwSw
         GfwSw --> GfwProxy
         GfwSw -.-> GfwVpn
-        
 
     end
 
 
-    subgraph SubVmOp1[Vm路由/全局子网流量转socks]
-        SubVmOp1OpWan[Wan0] --> SubVmOp1Op
-        SubVmOp1Op[全局子网流量转socks]
-        SubVmOp1Op --> SubVmOp1OpLan[Lan0]
+    subgraph SubVmOp1[Vm路由1]
+        SubVmOp1OpWan[Wan0<br>192.168.0.x] --> SubVmOp1Op
+        SubVmOp1Op[全局子网流量转代理<br>LAN->Proxy<br>Clash/SSR/PassWall]
+        SubVmOp1Op --> SubVmOp1OpLan[Lan0<br>192.168.2.1]
     end
 
 
-    subgraph SubVmOp2[Vm路由/旁路由网关]
-        SubVmOp2OpWan[Wan0] --> SubVmOp2Op
+    subgraph SubVmOp2[Vm路由2/旁路由网关]
+        SubVmOp2OpWan[Wan0<br>192.168.2.x] --> SubVmOp2Op
         SubVmOp2Op[旁路由器/关闭DHCP]
-        SubVmOp2Op --> SubVmOp2OpLan[Lan0]
+        SubVmOp2Op --> SubVmOp2OpLan[Lan0<br>192.168.0.254]
     end
 
-    subgraph SubPhyRouter[实体拨号主路由]
-        SubPhyRouterWan[Wan0]
-        SubPhyRouterWan --> SubPhyRouterOp[物理拨号路由]
-        SubPhyRouterOp --> SubPhyRouterOpLan0[Lan0]
-    end
 
-    subgraph SubVmService[虚拟服务节点]
-        LXC -.-> Media(多媒体服务)
-        Media -.-> Emby        
-        Media -.-> NasTools
-        Media -.-> Dsm
-        Media -.-> Alist
-        Media -.-> Qb[Qb/Tr下载]
-        LXC -.-> HA
-        LXC -.-> Frp
-        
-    end
 
-    subgraph SubGfwService[科学服务部分]
-        SubVmOp2
-        SubVmOp1
-        SubVmWin0
-    end
 
     BrHome --> SubVmWin0Eth
 
     GfwProxy --> BrHome
     BrHome === BrHomePhy
 
-    BrHomePhy === SwitchPoe
-
-
-    subgraph SubRealDevice[实体物理设备]
-        SwitchPoe --> APx(AP0/AP1/APx)    
-        SwitchPoe --> IPTV(IPTV)
-        SwitchPoe --> TV(电视/台式机)
-
-        APx --> Mobile(手机)
-        APx --> Tablet(平板)
-        APx --> Laptio(笔记本)
-        APx --> Device(智能家居)
-    end
-
 
     
     
 
+    BrHome --> SubVmOp1OpWan
 
-    BrHome -.-> LXC(家用服务Vm/Docker/LXC)
-
-
-    
-
-    
-
-
-    BrHome -.->  SubVmOp1OpWan
+    SubVmOp1Op -.->  GfwProxy
 
 
 
@@ -295,24 +228,6 @@ graph TB
     BrGfw --> BrGfwPhy
 
     SubVmOp2OpLan --> BrHome
-
-
-
-    
-
-    
-    Modem -->|使用虚拟路由拨号| BrDialPhy
-    
-
-
-    DialLan0 -->|使用虚拟路由拨号| BrHome
-
-
-    Modem -.->|使用物理路由拨号| SubPhyRouterWan
-    SubPhyRouterOpLan0 -.->|使用物理路由拨号| BrHomePhy
-
-
-
     
 
     classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
