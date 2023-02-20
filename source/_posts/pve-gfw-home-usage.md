@@ -120,6 +120,12 @@ graph TB
         
     end
 
+    subgraph SubGfwService[科学服务部分]
+        SubVmOp2
+        SubVmOp1
+        SubVmWin0
+    end
+
     BrHome --> SubVmWin0Eth
 
     GfwProxy --> BrHome
@@ -182,54 +188,29 @@ graph TB
 
 
 
-
-
-
-
-
+    
 
     classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
-    classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+    classDef CssOrange fill:#f96,stroke:#333,stroke-width:4px;
     classDef CssRed    fill:#ff0,stroke:#333,stroke-width:4px;
 
-    classDef CssReal    fill:#990,stroke:#333,stroke-width:4px;
+    classDef CssReal    fill:#666,stroke:#333,stroke-width:4px;
 
-    class BrDial,BrHome,BrGfw orange
+    class BrDial,BrHome,BrGfw CssOrange
     class SubVmWin0,SubVmOp1,SubVmOp2,VmSubDial,SubVmService CssGreen
 
-    class SubVmService green
+    class SubVmService CssGreen
     class BrGfwPhy,BrHomePhy,BrDialPhy CssRed
 
     class SubRealDevice CssReal
     class SubPhyRouter CssReal
+
+
+
      
 
 ```
-
-
-```mermaid
-graph TB
-    A0 --> A1
-    A1 --> A2
-    A2 --> A3
-    A3 --> A4
-    A4 --> A5
-    A5 --> A6
-    A6 --> A7
-    A7 --> A8
-    A8 --> A9
-    A9 --> A10
-    A10 --> A11
-    A11 --> A12
-    A12 --> A13
-    A13 --> A14
-    A14 --> A15
-    A15 --> A16
-    A16 --> A17
-    A17 --> A18
-    A18 --> A19
-    A19 --> A20
-```
+ 
 # 以下是未整理的部分,为完成，稍后整理
 
 
