@@ -62,6 +62,7 @@ graph TB
 graph TB
     BrDial(虚拟网桥/光猫拨号网络/分配物理网口ens0p0)
     BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p0)
+    BrGfwPhy(一体机物理网口ens2p0/即插即纯科学)
 
     
     BrDialPhy(一体机物理网口ens0p0)
@@ -74,7 +75,7 @@ graph TB
     subgraph VmSubDial[Vm拨号主路由]
         DialRouter[拨号, 流控, AC管理器]
         DiagWan0[Wan0] --> DialRouter
-        DialRouter --> DialLan0[Lan0<br>192.168.0.1]
+        DialRouter --> DialLan0[Lan0<br>192.168.1.1]
     end
 
     BrDialPhy --> BrDial
@@ -84,7 +85,7 @@ graph TB
     subgraph SubPhyRouter[实体拨号主路由]
         SubPhyRouterWan[Wan0]
         SubPhyRouterWan --> SubPhyRouterOp[物理拨号路由]
-        SubPhyRouterOp --> SubPhyRouterOpLan0[Lan0<br>192.168.0.1]
+        SubPhyRouterOp --> SubPhyRouterOpLan0[Lan0<br>192.168.1.1]
     end
 
     subgraph SubVmService[虚拟服务节点]
@@ -98,8 +99,11 @@ graph TB
         LXC -.-> Frp
         
     end
-
-    SubGfwService[科学服务部分]
+    subgraph SubGfwService[科学服务]
+        GfwClash[各种科学软件<br>Clash/SSR/熊猫]
+        GfwProxy[代理服务<br>socks:1090<br>http:1091]
+        GfwPhyIface[完全科学网口<br>192.168.2.x/dhcp/dns]
+    end
 
     BrHome === BrHomePhy
 
@@ -123,6 +127,9 @@ graph TB
     BrHome === SubGfwService
 
 
+    SubRealDevice -.-> SubGfwService
+
+    SubVmService -.-> SubGfwService 
     
     Modem -->|使用虚拟路由拨号| BrDialPhy
     
@@ -133,10 +140,6 @@ graph TB
 
     Modem -.->|使用物理路由拨号| SubPhyRouterWan
     SubPhyRouterOpLan0 -.->|使用物理路由拨号| BrHomePhy
-
-
-
-    
 
     classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
     classDef CssOrange fill:#f96,stroke:#333,stroke-width:4px;
@@ -172,13 +175,13 @@ graph TB
     BrHomePhy(一体机物理网口ens1p0)
     BrGfwPhy(一体机物理网口ens2p0/即插即纯科学)
 
-    DialLan0[主网关192.168.0.1]
+    DialLan0[主网关192.168.1.1]
 
     DialLan0 --> BrHome
 
 
     subgraph SubVmWin0[Vm科学机/Win7]
-        SubVmWin0Eth(网卡/静态<br>192.168.0.112)
+        SubVmWin0Eth(网卡/静态<br>192.168.1.112)
         GfwSw(科学软件<br>Clash/SSR/熊猫)
         GfwProxy(代理服务socks/http<br>socks:1090<br>http:1091)
         GfwVpn(对内VPN)
@@ -190,7 +193,7 @@ graph TB
 
 
     subgraph SubVmOp1[Vm路由1]
-        SubVmOp1OpWan[Wan0<br>192.168.0.x] --> SubVmOp1Op
+        SubVmOp1OpWan[Wan0<br>192.168.1.x] --> SubVmOp1Op
         SubVmOp1Op[全局子网流量转代理<br>LAN->Proxy<br>Clash/SSR/PassWall]
         SubVmOp1Op --> SubVmOp1OpLan[Lan0<br>192.168.2.1]
     end
@@ -199,7 +202,7 @@ graph TB
     subgraph SubVmOp2[Vm路由2/旁路由网关]
         SubVmOp2OpWan[Wan0<br>192.168.2.x] --> SubVmOp2Op
         SubVmOp2Op[旁路由器/关闭DHCP]
-        SubVmOp2Op --> SubVmOp2OpLan[Lan0<br>192.168.0.254]
+        SubVmOp2Op --> SubVmOp2OpLan[Lan0<br>192.168.1.254]
     end
 
 
