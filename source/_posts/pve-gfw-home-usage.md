@@ -47,27 +47,33 @@ graph TB
     BrDial(虚拟网桥/光猫拨号网络/分配物理网口ens0p1)
     BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p1)
     BrGfw(虚拟网桥/Gfw科学网络/分配物理网口ens1p1)
-    BrHomePhy(一体机物理网口ens1p1)
-    BrDialPhy(一体机物理网口ens0p1)
-    BrGfwPhy(一体机物理网口ens0p2/即插即纯科学)
+    
+    BrDialPhy(一体机物理网口ens0p0)
+    BrHomePhy(一体机物理网口ens1p0)
+    BrGfwPhy(一体机物理网口ens2p0/即插即纯科学)
     Modem(光猫)
     SwitchPoe(交换机/选配POE)
+
+
+
     
 
 
+    
+    
+
     subgraph Sub0[Vm拨号主路由]
         DialRouter[拨号, 流控, AC管理器]
-        DiagWan0 --> DialRouter
-        DiagWan1 -.-> DialRouter
+        DiagWan0[Wan0] --> DialRouter
+        DiagWan1[Wan1] -.-> DialRouter
         DialRouter --> DialLan0[Lan0]
         DialRouter -.-> DialLan1[Lan1]
     end
 
     
     BrDialPhy --> BrDial
-    Modem --> BrDialPhy
+
     BrDial  --> DiagWan0
-    DialLan0 --> BrHome
 
 
     subgraph Sub1[Vm科学机/Win7]
@@ -84,41 +90,62 @@ graph TB
 
 
     subgraph Sub2[Vm路由/全局子网流量转socks]
-        Sub2OpWan --> Sub2Op
+        Sub2OpWan[Wan0] --> Sub2Op
         Sub2Op[全局子网流量转socks]
-        Sub2Op --> Sub2OpLan
+        Sub2Op --> Sub2OpLan[Lan0]
     end
 
 
     subgraph Sub3[Vm路由/旁路由网关]
-        Sub3OpWan --> Sub3Op
+        Sub3OpWan[Wan0] --> Sub3Op
         Sub3Op[旁路由器/关闭DHCP]
-        Sub3Op --> Sub3OpLan
+        Sub3Op --> Sub3OpLan[Lan0]
+    end
+
+    subgraph Sub4[外置拨号主路由]
+        Sub4Wan[Wan0]
+        Sub4Wan --> Sub4Op[物理拨号路由]
+        Sub4Op --> Sub4OpLan0[Lan0]
     end
 
     BrHome --> Sub1Eth
 
     GfwProxy --> BrHome
-    BrHome --> BrHomePhy
-    BrHomePhy --> SwitchPoe
-    SwitchPoe --> AP1(AP1)
-    SwitchPoe --> APx(APx)
-    SwitchPoe --> TV(电视)
-    SwitchPoe --> PC(电脑)
+    BrHome === BrHomePhy
 
-    BrHome -.-> Emby
-    BrHome -.-> Dsm
-    BrHome -.-> NasTools
-    BrHome -.-> Alist
+    BrHomePhy === SwitchPoe
 
 
-    BrHome -->  Sub2OpWan
+    
+    SwitchPoe --> APx(AP0/AP1/APx)    
+    SwitchPoe --> IPTV(IPTV)
+    SwitchPoe --> TV(电视/台式机)
+
+    APx --> Mobile(手机)
+    APx --> Tablet(平板)
+    APx --> Laptio(笔记本)
+    APx --> Device(智能家居)
+
+
+    BrHome -.-> LXC(家用服务Vm/Docker/LXC)
+
+
+
+    LXC -.-> Emby
+    LXC -.-> Dsm
+    LXC -.-> NasTools
+    LXC -.-> Alist
+    LXC -.-> Qb[Qb/Tr下载]
+    LXC -.-> HA
+    LXC -.-> Frp
+
+
+    BrHome -.->  Sub2OpWan
 
 
 
     Sub2OpLan --> BrGfw
 
-    Op2Lan --> BrHome
 
     BrGfw --> Sub3OpWan
 
@@ -131,6 +158,21 @@ graph TB
     
 
     
+    Modem -->|使用虚拟路由拨号| BrDialPhy
+    
+
+
+    DialLan0 -->|使用虚拟路由拨号| BrHome
+
+
+    Modem -.->|使用物理路由拨号| Sub4Wan
+    Sub4OpLan0 -.->|使用物理路由拨号| BrHomePhy
+
+
+
+
+
+
 
 
 
@@ -145,6 +187,30 @@ graph TB
 
 ```
 
+
+```mermaid
+graph TB
+    A0 --> A1
+    A1 --> A2
+    A2 --> A3
+    A3 --> A4
+    A4 --> A5
+    A5 --> A6
+    A6 --> A7
+    A7 --> A8
+    A8 --> A9
+    A9 --> A10
+    A10 --> A11
+    A11 --> A12
+    A12 --> A13
+    A13 --> A14
+    A14 --> A15
+    A15 --> A16
+    A16 --> A17
+    A17 --> A18
+    A18 --> A19
+    A19 --> A20
+```
 # 以下是未整理的部分,为完成，稍后整理
 
 
