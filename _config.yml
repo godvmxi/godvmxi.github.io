@@ -111,7 +111,7 @@ deploy:
   message: "ci gone"
 
 heading_index:
-  enable: true
+  enable: false
   index_styles: "{1} {1} {1} {1} {1} {1}"
   connector: "."
   global_prefix: ""
