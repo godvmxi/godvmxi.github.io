@@ -110,3 +110,9 @@ deploy:
   branch: gh_pages
   message: "ci gone"
 
+heading_index:
+  enable: true
+  index_styles: "{1} {1} {1} {1} {1} {1}"
+  connector: "."
+  global_prefix: ""
+  global_suffix: " ) "
