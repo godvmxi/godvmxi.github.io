@@ -18,12 +18,12 @@
   
   
   <title>家庭科学一体机方案-GFW all in one | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="需求说明 需求收集 科学方法及规划 整体网络结构 科学部分 测试点预期流量   PVE配置 网络配置 网络主机分配 使用方法 模式一 模式二   打开任意主机的控制台 诊断方法 快照功能 创建快照 回滚快照   关于备份 重置密码 服务器密码重置      需求说明需求收集 所有设备都想访问Samba共享 部分设备需要完全科学网络 机顶盒原生 数据安全考量（仅供参考） 强制数据流走向   部">
+  <meta name="description" content="需求说明 需求收集 科学方法及规划 整体网络结构 科学部分 测试点预期流量 旁路由有简化版本   PVE配置 网络配置 网络主机分配 使用方法 模式一 模式二   打开任意主机的控制台 诊断方法 快照功能 创建快照 回滚快照   关于备份 重置密码 服务器密码重置      需求说明需求收集 所有设备都想访问Samba共享 部分设备需要完全科学网络 机顶盒原生 数据安全考量（仅供参考） 强制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="家庭科学一体机方案-GFW all in one">
 <meta property="og:url" content="http://vball.fun/2023/02/20/pve-gfw-home-usage/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="需求说明 需求收集 科学方法及规划 整体网络结构 科学部分 测试点预期流量   PVE配置 网络配置 网络主机分配 使用方法 模式一 模式二   打开任意主机的控制台 诊断方法 快照功能 创建快照 回滚快照   关于备份 重置密码 服务器密码重置      需求说明需求收集 所有设备都想访问Samba共享 部分设备需要完全科学网络 机顶盒原生 数据安全考量（仅供参考） 强制数据流走向   部">
+<meta property="og:description" content="需求说明 需求收集 科学方法及规划 整体网络结构 科学部分 测试点预期流量 旁路由有简化版本   PVE配置 网络配置 网络主机分配 使用方法 模式一 模式二   打开任意主机的控制台 诊断方法 快照功能 创建快照 回滚快照   关于备份 重置密码 服务器密码重置      需求说明需求收集 所有设备都想访问Samba共享 部分设备需要完全科学网络 机顶盒原生 数据安全考量（仅供参考） 强制">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://vball.fun/2023/02/20/pve-gfw-home-usage/pve_node.png">
 <meta property="og:image" content="http://vball.fun/2023/02/20/pve-gfw-home-usage/open_node.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://vball.fun/2023/02/20/pve-gfw-home-usage/ifconfig.png">
 <meta property="og:image" content="http://vball.fun/2023/02/20/pve-gfw-home-usage/snapshot.png">
 <meta property="article:published_time" content="2023-02-20T03:59:15.000Z">
-<meta property="article:modified_time" content="2023-02-20T08:54:28.187Z">
+<meta property="article:modified_time" content="2023-02-20T09:13:49.505Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="GFW">
 <meta property="article:tag" content="PVE">
@@ -398,6 +398,7 @@
 <li><a href="#%E6%95%B4%E4%BD%93%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84">整体网络结构</a></li>
 <li><a href="#%E7%A7%91%E5%AD%A6%E9%83%A8%E5%88%86">科学部分</a></li>
 <li><a href="#%E6%B5%8B%E8%AF%95%E7%82%B9%E9%A2%84%E6%9C%9F%E6%B5%81%E9%87%8F">测试点预期流量</a></li>
+<li><a href="#%E6%97%81%E8%B7%AF%E7%94%B1%E6%9C%89%E7%AE%80%E5%8C%96%E7%89%88%E6%9C%AC">旁路由有简化版本</a></li>
 </ul>
 </li>
 <li><a href="#pve%E9%85%8D%E7%BD%AE">PVE配置</a></li>
@@ -599,7 +600,7 @@
     end
 
 
-    subgraph SubVmOp1[Vm路由1]
+    subgraph SubVmOp1[Vm路由1<br>]
         SubVmOp1OpWan[Wan0<br>192.168.1.x] --> SubVmOp1Op
         SubVmOp1Op[全局子网流量转代理<br>LAN->Proxy<br>Clash/SSR/PassWall]
         SubVmOp1Op --> SubVmOp1OpLan[Lan0<br>192.168.2.242]
@@ -656,6 +657,7 @@
 
     class SubRealDevice CssReal
     class SubPhyRouter CssReal</pre>
+
 <h2><span id="测试点预期流量">测试点预期流量</span></h2><pre class="mermaid">graph TB
 
     BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p0)
@@ -732,6 +734,83 @@
     TestPoint0 -.->|预期流量2| GfwProxy
     TestPoint1 -.->|预期流量| SubVmOp2OpLan
     TestPoint2 -.->|预期流量| SubVmOp1OpLan
+    
+
+    classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
+    classDef CssOrange fill:#f96,stroke:#333,stroke-width:4px;
+    classDef CssRed    fill:#ff0,stroke:#333,stroke-width:4px;
+
+    classDef CssReal    fill:#666,stroke:#333,stroke-width:4px;
+
+    class BrDial,BrHome,BrGfw CssOrange
+    class SubVmWin0,SubVmOp1,SubVmOp2,VmSubDial,SubVmService CssGreen
+
+    class SubVmService CssGreen
+    class BrGfwPhy,BrHomePhy,BrDialPhy CssRed
+
+    class SubRealDevice CssReal
+    class SubPhyRouter CssReal</pre>
+
+
+<h2><span id="旁路由有简化版本">旁路由有简化版本</span></h2><p>如果你不需要一个可以即插即用的物理科学网口，可以做一些简化，去掉VM路由1部分</p>
+<pre class="mermaid">graph TB
+
+    BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p0)
+
+    
+    BrHomePhy(一体机物理网口ens1p0)
+
+    DialLan0[主网关192.168.1.1]
+
+    DialLan0 ==> BrHome
+
+
+
+
+    subgraph SubVmWin0[Vm科学机/Win7]
+        SubVmWin0Eth(网卡/静态<br>192.168.1.112)
+        GfwSw(科学软件<br>Clash/SSR/熊猫)
+        GfwProxy(代理服务socks/http<br>socks:1090<br>http:1091)
+        GfwVpn(对内VPN)
+        SubVmWin0Eth --> GfwSw
+        GfwSw --> GfwProxy
+        GfwSw -.-> GfwVpn
+
+    end
+
+
+
+
+
+    subgraph SubVmOp2[Vm路由2/旁路由网关]
+        SubVmOp2OpWan[Wan0<br>192.168.2.x<br>非必须设置<br>网卡都可以不需要] -.-> SubVmOp2Op
+        SubVmOp2Op[旁路由器/关闭DHCP<br>流量转代理<br>LAN->Proxy<br>Clash/SSR/PassWall]
+        SubVmOp2Op --- SubVmOp2OpLan[Lan0<br>192.168.1.242]
+    end
+
+
+
+
+    BrHome --> SubVmWin0Eth
+
+    GfwProxy --> BrHome
+    BrHome === BrHomePhy
+
+
+    SubVmOp2Op -.->|预期科学流量| GfwProxy
+
+    SubVmOp2Op -.->|预期普通流量| BrHome
+
+
+    
+    
+
+
+
+
+    SubVmOp2OpLan --- BrHome
+
+
     
 
     classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
