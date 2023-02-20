@@ -194,7 +194,7 @@ graph TB
     end
 
 
-    subgraph SubVmOp1[Vm路由1]
+    subgraph SubVmOp1[Vm路由1<br>]
         SubVmOp1OpWan[Wan0<br>192.168.1.x] --> SubVmOp1Op
         SubVmOp1Op[全局子网流量转代理<br>LAN->Proxy<br>Clash/SSR/PassWall]
         SubVmOp1Op --> SubVmOp1OpLan[Lan0<br>192.168.2.242]
@@ -257,7 +257,7 @@ graph TB
      
 
 ```
- 
+
 ## 测试点预期流量
 ```mermaid
 graph TB
@@ -336,6 +336,93 @@ graph TB
     TestPoint0 -.->|预期流量2| GfwProxy
     TestPoint1 -.->|预期流量| SubVmOp2OpLan
     TestPoint2 -.->|预期流量| SubVmOp1OpLan
+    
+
+    classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
+    classDef CssOrange fill:#f96,stroke:#333,stroke-width:4px;
+    classDef CssRed    fill:#ff0,stroke:#333,stroke-width:4px;
+
+    classDef CssReal    fill:#666,stroke:#333,stroke-width:4px;
+
+    class BrDial,BrHome,BrGfw CssOrange
+    class SubVmWin0,SubVmOp1,SubVmOp2,VmSubDial,SubVmService CssGreen
+
+    class SubVmService CssGreen
+    class BrGfwPhy,BrHomePhy,BrDialPhy CssRed
+
+    class SubRealDevice CssReal
+    class SubPhyRouter CssReal
+
+
+
+     
+
+```
+
+
+## 旁路由有简化版本
+如果你不需要一个可以即插即用的物理科学网口，可以做一些简化，去掉VM路由1部分
+
+
+```mermaid
+graph TB
+
+    BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p0)
+
+    
+    BrHomePhy(一体机物理网口ens1p0)
+
+    DialLan0[主网关192.168.1.1]
+
+    DialLan0 ==> BrHome
+
+
+
+
+    subgraph SubVmWin0[Vm科学机/Win7]
+        SubVmWin0Eth(网卡/静态<br>192.168.1.112)
+        GfwSw(科学软件<br>Clash/SSR/熊猫)
+        GfwProxy(代理服务socks/http<br>socks:1090<br>http:1091)
+        GfwVpn(对内VPN)
+        SubVmWin0Eth --> GfwSw
+        GfwSw --> GfwProxy
+        GfwSw -.-> GfwVpn
+
+    end
+
+
+
+
+
+    subgraph SubVmOp2[Vm路由2/旁路由网关]
+        SubVmOp2OpWan[Wan0<br>192.168.2.x<br>非必须设置<br>网卡都可以不需要] -.-> SubVmOp2Op
+        SubVmOp2Op[旁路由器/关闭DHCP<br>流量转代理<br>LAN->Proxy<br>Clash/SSR/PassWall]
+        SubVmOp2Op --- SubVmOp2OpLan[Lan0<br>192.168.1.242]
+    end
+
+
+
+
+    BrHome --> SubVmWin0Eth
+
+    GfwProxy --> BrHome
+    BrHome === BrHomePhy
+
+
+    SubVmOp2Op -.->|预期科学流量| GfwProxy
+
+    SubVmOp2Op -.->|预期普通流量| BrHome
+
+
+    
+    
+
+
+
+
+    SubVmOp2OpLan --- BrHome
+
+
     
 
     classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
