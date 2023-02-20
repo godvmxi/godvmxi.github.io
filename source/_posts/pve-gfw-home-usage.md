@@ -235,14 +235,6 @@ graph TB
     SubVmOp2OpLan --> BrHome
 
 
-    TestPoint0[测试点0<br>网关192.168.1.1] --> BrHome
-    TestPoint1[测试点1<br>网关192.168.1.242] --> BrHome
-    TestPoint2[测试点2<br>网关192.168.2.244] --> BrGfw
-
-    TestPoint0 -.->|预期流量1| DialLan0
-    TestPoint0 -.->|预期流量2| GfwProxy
-    TestPoint1 -.->|预期流量| SubVmOp2OpLan
-    TestPoint2 -.->|预期流量| SubVmOp1OpLan
     
 
     classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
