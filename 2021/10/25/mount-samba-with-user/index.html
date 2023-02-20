@@ -18,15 +18,15 @@
   
   
   <title>Mount samba with current user | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="When you want to mount a samba to modify the file , there are always some issues :  all kind of file permission issues how to auto mount samba Samba server setting  0.1 ) file permissiongid&#x3D;1000,">
+  <meta name="description" content="When you want to mount a samba to modify the file , there are always some issues :  all kind of file permission issues how to auto mount samba Samba server setting  file permissiongid&#x3D;1000,uid&amp;#x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mount samba with current user">
 <meta property="og:url" content="http://vball.fun/2021/10/25/mount-samba-with-user/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="When you want to mount a samba to modify the file , there are always some issues :  all kind of file permission issues how to auto mount samba Samba server setting  0.1 ) file permissiongid&#x3D;1000,">
+<meta property="og:description" content="When you want to mount a samba to modify the file , there are always some issues :  all kind of file permission issues how to auto mount samba Samba server setting  file permissiongid&#x3D;1000,uid&amp;#x">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-25T07:35:08.000Z">
-<meta property="article:modified_time" content="2023-02-20T08:17:58.907Z">
+<meta property="article:modified_time" content="2023-02-20T08:52:16.526Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Samba">
@@ -386,17 +386,17 @@
 <li>how to auto mount samba</li>
 <li>Samba server setting</li>
 </ul>
-<h2><span id="01-file-permission">0.1 ) file permission</span></h2><p>gid&#x3D;1000,uid&#x3D;1000,<code>you can use id command to find your current user info </code></p>
+<h2><span id="file-permission">file permission</span></h2><p>gid&#x3D;1000,uid&#x3D;1000,<code>you can use id command to find your current user info </code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">id</span></span><br><span class="line">uid=1000(user) gid=1000(user) <span class="built_in">groups</span>=1000(user),4(adm),</span><br><span class="line">24(cdrom),27(sudo),30(dip),46(plugdev),112(lpadmin),128(sambashare)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<h2><span id="02-how-to-auto-mount-samba">0.2 ) how to auto mount samba</span></h2><p>here is my &#x2F;etc&#x2F;fstab</p>
+<h2><span id="how-to-auto-mount-samba">how to auto mount samba</span></h2><p>here is my &#x2F;etc&#x2F;fstab</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//dbs-04/data /nfs/data/ cifs credentials=/home/.smbcredentials,uid=1000,gid=1000 0 0</span><br><span class="line">//dbs-04/home /nfs/home/ cifs credentials=/home/.smbcredentials,uid=1000,gid=1000 0 0</span><br></pre></td></tr></table></figure>
 
 <p>the client user info is in &#x2F;home&#x2F;user&#x2F;.smbcredentials,</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> /home/user/.smbcredentials</span><br><span class="line">username=smbuser</span><br><span class="line">password=smbuserpasswd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2><span id="03-my-server-setting">0.3 ) my server setting</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[data]</span><br><span class="line">    comment = user</span><br><span class="line">    path = /data/user</span><br><span class="line">    browseable = <span class="built_in">yes</span></span><br><span class="line">    writeable = <span class="built_in">yes</span></span><br><span class="line">    guest ok = <span class="built_in">yes</span></span><br><span class="line">    force user = jbright</span><br></pre></td></tr></table></figure>
+<h2><span id="my-server-setting">my server setting</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[data]</span><br><span class="line">    comment = user</span><br><span class="line">    path = /data/user</span><br><span class="line">    browseable = <span class="built_in">yes</span></span><br><span class="line">    writeable = <span class="built_in">yes</span></span><br><span class="line">    guest ok = <span class="built_in">yes</span></span><br><span class="line">    force user = jbright</span><br></pre></td></tr></table></figure>
 
 <p>remember add your samba user into your server</p>
 

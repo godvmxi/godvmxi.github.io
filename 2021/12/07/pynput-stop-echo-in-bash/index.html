@@ -18,15 +18,15 @@
   
   
   <title>pynput stop key echo in bash | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="1 ) Optional descriptions optionally block propagation of keyboard events python block key events python listen to keyboards and stop the event message  2 ) Code talk firstset suppress&#x3D;True will">
+  <meta name="description" content="Optional descriptions optionally block propagation of keyboard events python block key events python listen to keyboards and stop the event message  Code talk firstset suppress&#x3D;True will swallow.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pynput stop key echo in bash">
 <meta property="og:url" content="http://vball.fun/2021/12/07/pynput-stop-echo-in-bash/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="1 ) Optional descriptions optionally block propagation of keyboard events python block key events python listen to keyboards and stop the event message  2 ) Code talk firstset suppress&#x3D;True will">
+<meta property="og:description" content="Optional descriptions optionally block propagation of keyboard events python block key events python listen to keyboards and stop the event message  Code talk firstset suppress&#x3D;True will swallow.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-07T09:16:18.000Z">
-<meta property="article:modified_time" content="2023-02-20T08:17:58.911Z">
+<meta property="article:modified_time" content="2023-02-20T08:52:16.530Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="pynput">
@@ -380,23 +380,23 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1><span id="1-optional-descriptions">1 ) Optional descriptions</span></h1><ol>
+        <h1><span id="optional-descriptions">Optional descriptions</span></h1><ol>
 <li>optionally block propagation of keyboard events</li>
 <li>python block key events</li>
 <li>python listen to keyboards and stop the event message</li>
 </ol>
-<h1><span id="2-code-talk-first">2 ) Code talk first</span></h1><p>set suppress&#x3D;True will swallow. ALL keypresses</p>
+<h1><span id="code-talk-first">Code talk first</span></h1><p>set suppress&#x3D;True will swallow. ALL keypresses</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">from</span> pynput.keyboard <span class="keyword">import</span> Key, Listener</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_press</span>(<span class="params">key</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125; pressed&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        key))</span><br><span class="line">    <span class="keyword">if</span> key == Key.esc:</span><br><span class="line">        <span class="comment"># Stop listener</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Collect events until released</span></span><br><span class="line"><span class="keyword">with</span> Listener(</span><br><span class="line">        on_press=on_press, suppress=<span class="literal">True</span>) <span class="keyword">as</span> listener:</span><br><span class="line">    listener.join()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h1><span id="3-issue">3 ) Issue</span></h1><p>When use pynput to capture keyboard input like this:</p>
+<h1><span id="issue">Issue</span></h1><p>When use pynput to capture keyboard input like this:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> Listener(</span><br><span class="line">        on_press=on_press) <span class="keyword">as</span> listener:</span><br><span class="line">    listener.join()</span><br></pre></td></tr></table></figure>
 <p>the terminal will auto echo the key info, even special echo for up&#x2F;down , such as:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ python3 key_listener.py </span><br><span class="line">Key.up pressed</span><br><span class="line">^[[AKey.right pressed</span><br><span class="line">^[[CKey.left pressed</span><br><span class="line">^[[DKey.down pressed</span><br><span class="line">^[[BKey.right pressed</span><br><span class="line">^[[CKey.left pressed</span><br><span class="line">^[[DKey.up pressed</span><br><span class="line">^[[A<span class="string">&#x27;a&#x27;</span> pressed</span><br><span class="line">a<span class="string">&#x27;s&#x27;</span> pressed</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Now the world is slient and clean.</p>
-<h1><span id="4-note">4 ) NOTE</span></h1><p>but if you forget to exit the app, other apps will never get a valid key input forever.</p>
-<h1><span id="5-you-can-also-just-read-input-from-stdinuse-get_char-to-do-it">5 ) You can also just read input from stdin,use get_char to do it</span></h1>
+<h1><span id="note">NOTE</span></h1><p>but if you forget to exit the app, other apps will never get a valid key input forever.</p>
+<h1><span id="you-can-also-just-read-input-from-stdinuse-get_char-to-do-it">You can also just read input from stdin,use get_char to do it</span></h1>
       
     </div>
     <div class="article-footer">

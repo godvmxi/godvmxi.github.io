@@ -18,15 +18,15 @@
   
   
   <title>hexo post import local img error since hexo update | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="1 ) error happen in hexo-asset-imageI accepted some PR from the github about the hexo, then the image can not displayed since that.. 1all the image link updated to a error link &quot;: &#x2F;.io&#x2F;&#x2F;02&#x2F;08&#x2F;&amp;qu">
+  <meta name="description" content="error happen in hexo-asset-imageI accepted some PR from the github about the hexo, then the image can not displayed since that.. 1all the image link updated to a error link &quot;: &#x2F;.io&#x2F;&#x2F;02&#x2F;08&#x2F;&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo post import local img error since hexo update">
 <meta property="og:url" content="http://vball.fun/2022/05/21/hexo-post-import-img-error/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="1 ) error happen in hexo-asset-imageI accepted some PR from the github about the hexo, then the image can not displayed since that.. 1all the image link updated to a error link &quot;: &#x2F;.io&#x2F;&#x2F;02&#x2F;08&#x2F;&amp;qu">
+<meta property="og:description" content="error happen in hexo-asset-imageI accepted some PR from the github about the hexo, then the image can not displayed since that.. 1all the image link updated to a error link &quot;: &#x2F;.io&#x2F;&#x2F;02&#x2F;08&#x2F;&quot;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-21T06:16:54.000Z">
-<meta property="article:modified_time" content="2023-02-20T08:17:58.899Z">
+<meta property="article:modified_time" content="2023-02-20T08:52:16.518Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="error">
@@ -380,17 +380,17 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1><span id="1-error-happen-in-hexo-asset-image">1 ) error happen in hexo-asset-image</span></h1><p>I accepted some PR from the github about the hexo, then the image can not displayed since that..</p>
+        <h1><span id="error-happen-in-hexo-asset-image">error happen in hexo-asset-image</span></h1><p>I accepted some PR from the github about the hexo, then the image can not displayed since that..</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all the image <span class="built_in">link</span> updated to a error <span class="built_in">link</span> <span class="string">&quot;: /.io//02/08/&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h1><span id="2-hexo-insert-local-image-in-markdown">2 ) Hexo insert local image in markdown</span></h1><h2><span id="21-enable-assert">2.1 ) enable assert</span></h2><p>update _config.yml of hexo</p>
+<h1><span id="hexo-insert-local-image-in-markdown">Hexo insert local image in markdown</span></h1><h2><span id="enable-assert">enable assert</span></h2><p>update _config.yml of hexo</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h1><span id="3-install-plugin">3 ) install plugin</span></h1><p>Execute commands in the Hexo directory. <strong>hexo-asset-img</strong>, Do not use <strong>hexo-asset-image</strong>, it’s too old and there is nobody to update it and merge PR.</p>
+<h1><span id="install-plugin">install plugin</span></h1><p>Execute commands in the Hexo directory. <strong>hexo-asset-img</strong>, Do not use <strong>hexo-asset-image</strong>, it’s too old and there is nobody to update it and merge PR.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-img --save</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://github.com/yiyungent/hexo-asset-img">hexo-asset-img</a></p>
 <p>if you want to Typora to show image correctly, refer <a target="_blank" rel="noopener" href="https://moeci.com/posts/hexo-typora/">LINK</a></p>
-<h1><span id="4-delete-your-hexo-asset-image-in-your-packagejson">4 ) delete your hexo-asset-image in your package.json</span></h1>
+<h1><span id="delete-your-hexo-asset-image-in-your-packagejson">delete your <strong>hexo-asset-image</strong> in your package.json</span></h1>
       
     </div>
     <div class="article-footer">

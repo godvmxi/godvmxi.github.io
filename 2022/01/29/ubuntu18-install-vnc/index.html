@@ -18,15 +18,15 @@
   
   
   <title>ubuntu18 install vnc server and start xfce | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="核心两块： xfc4 and vnc4server 1 ) code talk1sudo apt install xfce4* vnc4server 2 ) setup xstart12345678$ cat ~&#x2F;.vnc&#x2F;xstartup #!&#x2F;bin&#x2F;shxrdb $HOME&#x2F;.Xresourcesunset SESSION_MANAGERunset DBUS_SESSION_BUS_ADDR">
+  <meta name="description" content="核心两块： xfc4 and vnc4server code talk1sudo apt install xfce4* vnc4server setup xstart12345678$ cat ~&#x2F;.vnc&#x2F;xstartup #!&#x2F;bin&#x2F;shxrdb $HOME&#x2F;.Xresourcesunset SESSION_MANAGERunset DBUS_SESSION_BUS_ADDRESSstart">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu18 install vnc server and start xfce">
 <meta property="og:url" content="http://vball.fun/2022/01/29/ubuntu18-install-vnc/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="核心两块： xfc4 and vnc4server 1 ) code talk1sudo apt install xfce4* vnc4server 2 ) setup xstart12345678$ cat ~&#x2F;.vnc&#x2F;xstartup #!&#x2F;bin&#x2F;shxrdb $HOME&#x2F;.Xresourcesunset SESSION_MANAGERunset DBUS_SESSION_BUS_ADDR">
+<meta property="og:description" content="核心两块： xfc4 and vnc4server code talk1sudo apt install xfce4* vnc4server setup xstart12345678$ cat ~&#x2F;.vnc&#x2F;xstartup #!&#x2F;bin&#x2F;shxrdb $HOME&#x2F;.Xresourcesunset SESSION_MANAGERunset DBUS_SESSION_BUS_ADDRESSstart">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-29T02:16:44.000Z">
-<meta property="article:modified_time" content="2023-02-20T08:17:58.915Z">
+<meta property="article:modified_time" content="2023-02-20T08:52:16.538Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="Ubuntu">
 <meta property="article:tag" content="VNC">
@@ -381,13 +381,13 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <p>核心两块： xfc4 and vnc4server</p>
-<h1><span id="1-code-talk">1 ) code talk</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install xfce4* vnc4server</span><br></pre></td></tr></table></figure>
-<h1><span id="2-setup-xstart">2 ) setup xstart</span></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.vnc/xstartup </span><br><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1><span id="3-add-run-exex-to-xstartup">3 ) add run exex to xstartup</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x ~/.vcn/xstartup</span><br></pre></td></tr></table></figure>
+<h1><span id="code-talk">code talk</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install xfce4* vnc4server</span><br></pre></td></tr></table></figure>
+<h1><span id="setup-xstart">setup xstart</span></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.vnc/xstartup </span><br><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1><span id="add-run-exex-to-xstartup">add run exex to xstartup</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x ~/.vcn/xstartup</span><br></pre></td></tr></table></figure>
 
-<h1><span id="4-start-vcn4server">4 ) Start vcn4server</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vnc4server </span><br></pre></td></tr></table></figure>
+<h1><span id="start-vcn4server">Start vcn4server</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vnc4server </span><br></pre></td></tr></table></figure>
 
-<h1><span id="5-enjoy-it">5 ) Enjoy it</span></h1>
+<h1><span id="enjoy-it">Enjoy it</span></h1>
       
     </div>
     <div class="article-footer">
