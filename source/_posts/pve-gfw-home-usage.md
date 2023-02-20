@@ -44,6 +44,131 @@ tags:
 
 ```mermaid
 graph TB
+    PhyIface>实体硬件网口]
+    VmBridge>虚拟网桥]
+    VmMachine>虚拟机]
+
+    classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
+    classDef CssOrange fill:#f96,stroke:#333,stroke-width:4px;
+    classDef CssRed    fill:#ff0,stroke:#333,stroke-width:4px;
+    classDef CssReal    fill:#666,stroke:#333,stroke-width:4px;
+
+    class PhyIface CssOrange
+    class VmBridge CssRed
+    class VmMachine CssGreen
+```
+
+```mermaid
+graph TB
+    BrDial(虚拟网桥/光猫拨号网络/分配物理网口ens0p1)
+    BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p1)
+
+    
+    BrDialPhy(一体机物理网口ens0p0)
+    BrHomePhy(一体机物理网口ens1p0)
+
+    Modem(光猫)
+    SwitchPoe(交换机/选配POE)  
+
+
+    
+    
+
+    subgraph VmSubDial[Vm拨号主路由]
+        DialRouter[拨号, 流控, AC管理器]
+        DiagWan0[Wan0] --> DialRouter
+        DialRouter --> DialLan0[Lan0]
+    end
+
+    
+    BrDialPhy --> BrDial
+
+    BrDial  --> DiagWan0
+
+
+
+
+    subgraph SubPhyRouter[实体拨号主路由]
+        SubPhyRouterWan[Wan0]
+        SubPhyRouterWan --> SubPhyRouterOp[物理拨号路由]
+        SubPhyRouterOp --> SubPhyRouterOpLan0[Lan0]
+    end
+
+    subgraph SubVmService[虚拟服务节点]
+        LXC -.-> Media(多媒体服务)
+        Media -.-> Emby        
+        Media -.-> NasTools
+        Media -.-> Dsm
+        Media -.-> Alist
+        Media -.-> Qb[Qb/Tr下载]
+        LXC -.-> HA
+        LXC -.-> Frp
+        
+    end
+
+    SubGfwService[科学服务部分]
+
+    BrHome === BrHomePhy
+
+    BrHomePhy === SwitchPoe
+
+
+    subgraph SubRealDevice[实体物理设备]
+        SwitchPoe --> APx(AP0/AP1/APx)    
+        SwitchPoe --> IPTV(IPTV)
+        SwitchPoe --> TV(电视/台式机)
+
+        APx --> Mobile(手机)
+        APx --> Tablet(平板)
+        APx --> Laptio(笔记本)
+        APx --> Device(智能家居)
+    end
+
+
+    BrHome --> LXC(家用服务Vm/Docker/LXC)
+
+    BrHome === SubGfwService
+
+
+    
+    Modem -->|使用虚拟路由拨号| BrDialPhy
+    
+
+
+    DialLan0 -->|使用虚拟路由拨号| BrHome
+
+
+    Modem -.->|使用物理路由拨号| SubPhyRouterWan
+    SubPhyRouterOpLan0 -.->|使用物理路由拨号| BrHomePhy
+
+
+
+    
+
+    classDef CssGreen fill:#9f6,stroke:#333,stroke-width:2px;
+    classDef CssOrange fill:#f96,stroke:#333,stroke-width:4px;
+    classDef CssRed    fill:#ff0,stroke:#333,stroke-width:4px;
+    classDef CssReal    fill:#666,stroke:#333,stroke-width:4px;
+    classDef CssGfw    fill:#AAAAAA,stroke:#333,stroke-width:4px;
+
+    class BrDial,BrHome,BrGfw CssOrange
+    class VmSubDial,SubVmService CssGreen
+
+    class SubVmService CssGreen
+    class BrGfwPhy,BrHomePhy,BrDialPhy CssRed
+
+    class SubRealDevice CssReal
+    class SubPhyRouter CssReal
+    class SubGfwService CssGfw
+
+
+```
+
+
+## 科学部分
+
+```mermaid
+graph TB
     BrDial(虚拟网桥/光猫拨号网络/分配物理网口ens0p1)
     BrHome(虚拟网桥/普通家庭网络/分配物理网口ens1p1)
     BrGfw(虚拟网桥/Gfw科学网络/分配物理网口ens1p1)
