@@ -18,12 +18,12 @@
   
   
   <title>红米K40s刷国际版记录，过play，gpay，网银认证 | Ball Virtual&#39; Blog</title>
-  <meta name="description" content="问题进度 起因 填坑开始 购机，转运 解锁 刷机 ROM下载 开始刷机 安装magisk 下载magisk 下载fastboot 对Ramdisk打补丁 重新刷入打了补丁的Ramdisk 治疗不明白，请移步MagiskCN详细教程研读   配置CTS信息过play验证 安装MagiskHide Props Config 模块 安装termux 配置Props信息   检查安全通过 Safet">
+  <meta name="description" content="Change Log 问题进度 起因 填坑开始 购机，转运 解锁 刷机 ROM下载 开始刷机 安装magisk 下载magisk 下载fastboot 对Ramdisk打补丁 重新刷入打了补丁的Ramdisk 治疗不明白，请移步MagiskCN详细教程研读   配置CTS信息过play验证 安装MagiskHide Props Config 模块 安装termux 配置Props信息   检">
 <meta property="og:type" content="article">
 <meta property="og:title" content="红米K40s刷国际版记录，过play，gpay，网银认证">
 <meta property="og:url" content="http://vball.fun/2023/05/03/android-redmi-k40s-flash-global-rom-cn/index.html">
 <meta property="og:site_name" content="Godvmxi Blog">
-<meta property="og:description" content="问题进度 起因 填坑开始 购机，转运 解锁 刷机 ROM下载 开始刷机 安装magisk 下载magisk 下载fastboot 对Ramdisk打补丁 重新刷入打了补丁的Ramdisk 治疗不明白，请移步MagiskCN详细教程研读   配置CTS信息过play验证 安装MagiskHide Props Config 模块 安装termux 配置Props信息   检查安全通过 Safet">
+<meta property="og:description" content="Change Log 问题进度 起因 填坑开始 购机，转运 解锁 刷机 ROM下载 开始刷机 安装magisk 下载magisk 下载fastboot 对Ramdisk打补丁 重新刷入打了补丁的Ramdisk 治疗不明白，请移步MagiskCN详细教程研读   配置CTS信息过play验证 安装MagiskHide Props Config 模块 安装termux 配置Props信息   检">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://vball.fun/2023/05/03/android-redmi-k40s-flash-global-rom-cn/miflash.jpg">
 <meta property="og:image" content="http://vball.fun/2023/05/03/android-redmi-k40s-flash-global-rom-cn/MagiskDeltaHide.jpg">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://vball.fun/2023/05/03/android-redmi-k40s-flash-global-rom-cn/SafetyNetTest.jpg">
 <meta property="og:image" content="http://vball.fun/2023/05/03/android-redmi-k40s-flash-global-rom-cn/GpayFail.jpg">
 <meta property="article:published_time" content="2023-05-03T08:19:18.000Z">
-<meta property="article:modified_time" content="2023-05-18T06:27:55.136Z">
+<meta property="article:modified_time" content="2023-05-19T15:24:53.096Z">
 <meta property="article:author" content="Bright Jiang">
 <meta property="article:tag" content="Redmi">
 <meta property="article:tag" content="K40s">
@@ -397,6 +397,7 @@
         <!-- toc -->
 
 <ul>
+<li><a href="#change-log">Change Log</a></li>
 <li><a href="#%E9%97%AE%E9%A2%98%E8%BF%9B%E5%BA%A6">问题进度</a></li>
 <li><a href="#%E8%B5%B7%E5%9B%A0">起因</a></li>
 <li><a href="#%E5%A1%AB%E5%9D%91%E5%BC%80%E5%A7%8B">填坑开始</a><ul>
@@ -428,12 +429,17 @@
 </ul>
 </li>
 <li><a href="#%E6%97%A0%E6%B3%95%E6%8B%A8%E5%8F%B7">无法拨号</a></li>
+<li><a href="#%E6%91%84%E5%83%8F%E5%A4%B4%E4%BF%AE%E5%A4%8D">摄像头修复</a></li>
 </ul>
 </li>
 <li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
 </ul>
 <!-- tocstop -->
 
+<h1><span id="change-log">Change Log</span></h1><ul>
+<li>大致记录</li>
+<li>2023&#x2F;05&#x2F;19 修复摄像头错误</li>
+</ul>
 <h1><span id="问题进度">问题进度</span></h1><p>解决的问题汇总：</p>
 <ul>
 <li>刷入国际版</li>
@@ -447,12 +453,13 @@
 <li>原生拨号软件没有支持volte，运营商又不支持GSM等</li>
 </ul>
 </li>
+<li>前后相机翻转<ul>
+<li>网银人脸识别摄像头错误</li>
+<li>支付宝摄像头报错</li>
+</ul>
+</li>
 </ul>
 <p>待解决问题：</p>
-<ul>
-<li>微信视频相机镜像, 替换对应的相机控制文件即可</li>
-<li>支付宝扫码卡死（反正又不用）</li>
-</ul>
 <p>发现：</p>
 <ul>
 <li>国行内置老大哥不是吹的，插卡进手机就是反诈骗中心、大使馆短信，垃圾短信三联</li>
@@ -520,6 +527,7 @@
 <h4><span id="google-验证">google 验证</span></h4><p>play商店中，应该已经没有了未验证设备信息了，gpay也不会出现错误了<br><img src="/2023/05/03/android-redmi-k40s-flash-global-rom-cn/GpayFail.jpg"></p>
 <h3><span id="后续安装lsposed">后续安装LSPosed</span></h3><p>这个移步<a target="_blank" rel="noopener" href="https://magiskcn.com/lsposed-install">magiskcn</a></p>
 <h2><span id="无法拨号">无法拨号</span></h2><p>坡县或者其他地方的运营商默认关闭了GSM网络，导致google 拨号不能打电话，安装对应运营商的volte软件即可  </p>
+<h2><span id="摄像头修复">摄像头修复</span></h2><p>使用同一版本号CN镜像的的摄像头配置文件替换即可, 这里写了一个magisk module，使用magisk刷入即可 <a target="_blank" rel="noopener" href="https://github.com/godvmxi/magisk-module-fix-redmi-k40s-camera">magisk module</a></p>
 <h1><span id="总结">总结</span></h1><p>不得不说中国手机供应商做的真好，各种适配和二次开发确实厉害， 相比之下，谷歌原生就是个半成品，如果没有圣上翻大饼和各种老大哥应用的嵌入，养蛊玩法的大陆手机，玩死其他手机厂商不是梦。<br>其实在各行各业，大陆的厂家都是养蛊式的内卷，相比之下，外边真是一个能打的都没有。<br>圣上赶紧滚蛋吧，给中国经济一条活路。</p>
 
       
