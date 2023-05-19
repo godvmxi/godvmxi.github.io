@@ -23,8 +23,6 @@ tags:
 * [DecisionMade加拿大移民频道](https://www.youtube.com/c/DecisionMade)
 * [刀刀在枫叶国](https://www.youtube.com/c/%E5%88%80%E5%88%80%E5%9C%A8%E6%9E%AB%E5%8F%B6%E5%9B%BD)
 
-## 美国
-* [立党](https://www.youtube.com/channel/UC4gzU_8MxRDiQrSFOiT79tQ)
 
 # 
 

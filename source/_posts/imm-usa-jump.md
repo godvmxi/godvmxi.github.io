@@ -19,18 +19,8 @@ tags:
 # 推荐博主
 信息很大一部分来源都是这里，因为我一开始就选择了加麻大。
 
-- 立党，他经常开各种space解答问题，可以关注
-    - [主页-https://linktr.ee/lidang](https://linktr.ee/lidang)，后边的几个信息他的主页都有，但是我还是放这里吧
-    - [youtube](https://www.youtube.com/channel/UC4gzU_8MxRDiQrSFOiT79tQ)
-    - [twitter](https://twitter.com/lidangzzz)
-    - [discord](http://discord.gg/2tAVYG4YQr)
 
 
-  
-**感谢他的信息**
-- 虽然他经常疯疯癫癫的，其实感觉越爱那片洼地，越容易那样吧
-- 虽然从国内就关注，不是啥正经人，哈哈
-- 可能和我一样罪恶感深重吧，妄想渡两个人化解一下今生罪恶
 
 # 跑路美国自我评估
 美国篇其实我研究的不多，不是不喜欢，只是觉得当前年龄下难度不合适   
@@ -84,5 +74,3 @@ tags:
 所以认清现实吧，多数情况下你都不具备，甚至走线也基本没有啥空间了
 ![](no_run_2.jpg)
 
-# 再次感谢
-![](lidang.jpg?200x200)
