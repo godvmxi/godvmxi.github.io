@@ -1,8 +1,10 @@
 ---
-title: program_debug_python_in_vscode
+title: Debug Python With Vscode
 date: 2023-05-26 11:39:49
 tags:
 ---
+- python
+
 <!-- toc -->
 # Demo app
 ```python
