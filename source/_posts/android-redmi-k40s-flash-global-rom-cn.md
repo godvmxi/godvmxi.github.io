@@ -12,6 +12,7 @@ tags:
 
 - 大致记录
 - 2023/05/19 修复摄像头错误
+- 2023/07/12 雷猴偷摸升级导致CTS错误，修复之，顺便补充Shamiko和Hide My Applist install， 现在除了singpass不能用，其他都可以了
 # 问题进度
 解决的问题汇总：
 - 刷入国际版
@@ -111,9 +112,14 @@ fastboot.exe reboot
 #### 治疗不明白，请移步MagiskCN详细教程研读
 **如果觉得我写的不清楚，移步[magiskcn](https://magiskcn.com/)反复研读**
 
+
 ### 配置CTS信息过play验证
+
+#### 安装safetynet-fix--最新填坑
+下载[safetynet-fix](https://github.com/Displax/safetynet-fix/releases/tag/v2.3.1-MOD_3.0),一开始安装了2.4.0，结果雷猴升级后，CTS会花样失败，降级到2.3.1就可以了
+
 #### 安装MagiskHide Props Config 模块
-下载[github](https://github.com/Magisk-Modules-Repo/MagiskHidePropsConf/releases)
+下载[MagiskHide Props Config](https://github.com/Magisk-Modules-Repo/MagiskHidePropsConf/releases)
 复制zip包到手机中，回到magisk delta，选择模块，安装，选择对应的zip包，安装完成重启。
 
 #### 安装termux
@@ -136,11 +142,35 @@ su -c props
 [safetynetchecker](https://play.google.com/store/apps/details?id=rikka.safetynetchecker) OR
 [safetynettest](https://play.google.com/store/apps/details?id=org.freeandroidtools.safetynettest)
 
+验证结果
 ![](SafetyNetTest.jpg)
 
 #### google 验证
 play商店中，应该已经没有了未验证设备信息了，gpay也不会出现错误了
 ![](GpayFail.jpg)
+### 隐藏
+#### 隐藏root
+可以使用magisk_delta自带的hide功能，也可以使用Shamiko，我倾向于使用后者，毕竟跟着magisk代码主枝最稳，维护delta的孩子太忙了，啥也别说，充电就行了。   
+
+   
+下载[Shamiko](https://github.com/LSPosed/LSPosed.github.io/releases), 安装完后创建对应的模式文件就进入白名单模式:   
+白名单：
+```bash
+mkdir /data/adb/shamiko
+touch /data/adb/shamiko/whitelist
+```
+如果需要获取root权限，临时禁用点Shamiko即可。
+
+- 白名单模式：[Shamiko-whitelist ](https://magiskcn.com/shamiko-whitelist)
+- 黑名单模式：[Magisk-configure-denylist ](https://magiskcn.com/shamiko-whitelist) 
+只能选一个模式运行。
+
+#### 隐藏应用列表
+隐藏应用列表：[Hide My Applist install](https://magiskcn.com/hide-my-applist-install), 核心步骤是：
+1. 创建黑白名单模块
+2：选择应用匹配模板
+
+
 
 ### 后续安装LSPosed
 这个移步[magiskcn](https://magiskcn.com/lsposed-install)
