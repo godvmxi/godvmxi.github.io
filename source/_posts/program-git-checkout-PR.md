@@ -5,6 +5,7 @@ tags:
    - git
    - PR
    - github
+   - tips
 ---
 
 How to checkout a git pull request using step-by-step instructions.
