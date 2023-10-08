@@ -45,6 +45,8 @@ https://xlsxwriter.readthedocs.io/
 
 ## 网络相关
 
+### scapy
+数据包分析，构造，强大到发质的库，自带cli操作
 
 ### requests
 请求http资源的神器，最好用，没有之一
