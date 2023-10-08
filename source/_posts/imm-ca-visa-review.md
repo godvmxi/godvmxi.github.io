@@ -92,7 +92,7 @@ graph TB
     Citizen("公民护照")
     ImmJail("移民监")
     ChildFreeStudy("孩子免费教育")
-    IELTS666("雅思A类6666+")
+    IELTS666("雅思A类总分6分+")
     SDS("SDS快速通道")
     CustomsDepartureStudy("学签出境")
     CustomsDepartureStudy2("学签出境")
