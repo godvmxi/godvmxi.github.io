@@ -33,5 +33,6 @@ gdb was skipped: it has incompatible license(s): GPL-3.0 LGPL-3.0
 | bitbake linux-telechips -c menuconfig	| Enter the menuconfig of kernel	|
 | bitbake linux-telechips -c devshell	| Enter the devshell of a package	|
 | bitbake-layers show-recipes "*-image-*"	| Show all support target images	|
+| bitbake <image > -g -u depexp | Show the package dependency for image. <p>Example: To show all packages included on fsl-image-gui <p>$ bitbake fsl-image-gui -g -u depexp <p>NOTE: This command will open a UI window, so it must be execute on a console inside the host machine (either virtual or native).  |
 
 [More](https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/Useful-bitbake-commands/ta-p/1128559)
