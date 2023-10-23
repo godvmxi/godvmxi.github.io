@@ -2,10 +2,10 @@
 title: git checkout PR
 date: 2022-09-30 10:51:30
 tags:
-   - git
+   - Git
    - PR
    - github
-   - tips
+   - Tips
 ---
 
 How to checkout a git pull request using step-by-step instructions.
