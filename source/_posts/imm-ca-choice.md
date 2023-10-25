@@ -103,7 +103,7 @@ graph TB
 
     ChildStudyPermit --> AdultChildTravelPermit
     AdultTravelPermit --> AdultStudyPermit
-    AdultChildTravelPermit --> EntrySchool
+    AdultChildTravelPermit --> AdultStudyPermit
     SDSStudyPermit --> EntrySchool
     AdultStudyPermit --> EntrySchool
     NormalStudyPermit --> EntrySchool
