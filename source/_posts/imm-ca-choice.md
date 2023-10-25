@@ -87,7 +87,7 @@ graph TB
     ChildStudyPermit("孩子低龄学签")
     AdultChildTravelPermit("成人陪读旅游签")
     AdultTravelPermit("成人旅游签")
-    AdultStudyPermit("成人旅专学学签")
+    AdultStudyPermit("成人旅转学学签")
     SDSStudyPermit("SDS学签")
     NormalStudyPermit("普通学签")
     SpouseWorkPermit("配偶开放工签")
