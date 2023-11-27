@@ -32,4 +32,13 @@ chmod +x ~/.vcn/xstartup
 $ vnc4server 
 ```
 
+# Error on Ubuntu20.04
+No windows title, xfwm bugs on 
+
+```bash
+ubuntu20.04 error, 
+https://askubuntu.com/questions/1242168/ubuntu-20-04-vnc-no-window-decorations-to-allow-resize-of-apps
+https://launchpad.net/ubuntu/groovy/amd64/xfwm4/4.14.5-1
+http://launchpadlibrarian.net/494460182/xfwm4_4.14.5-1_amd64.deb
+```
 # Enjoy it

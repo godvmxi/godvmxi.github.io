@@ -23,16 +23,33 @@ ERROR: Nothing RPROVIDES 'gdb' (but /srv/build-autolinux/poky/meta/recipes-core/
 gdb was skipped: it has incompatible license(s): GPL-3.0 LGPL-3.0
 ```
 
+# Resize root file system size
+```bash
+diff --git a/recipes-xxx-subcore/images/xxx-subcore-image.bb b/recipes-xxx-subcore/images/xxx-subcore-image.bb
+index 63cfb05..d7a817f 100644
+--- a/recipes-xxx-subcore/images/xxx-subcore-image.bb
++++ b/recipes-xxx-subcore/images/xxx-subcore-image.bb
+@@ -6,7 +6,7 @@ inherit core-image chk_security ${@bb.utils.contains('INVITE_PLATFORM', 'fw-upda
+ IMAGE_FSTYPES ?= "ext4"
+ IMAGE_FSTYPES_xxxxxx= "ext4"
+ IMAGE_FSTYPES_xxxxxx = "cpio"
+-IMAGE_ROOTFS_SIZE = "10240"
++IMAGE_ROOTFS_SIZE = "409600"
+```
+
+
 # Yocto command
 
 | Useful  |  commands  |
 | ---     |   ---      |
 | bitbake-layers show-recipes | 	Show all recipes |
-| bitbake linux-telechips -c do_listtasks	| Show all task of a package	 |
+| bitbake linux-xxx -c do_listtasks	| Show all task of a package	 |
 | bitbake-layers show-appends	| Show bbappends are used	|
-| bitbake linux-telechips -c menuconfig	| Enter the menuconfig of kernel	|
-| bitbake linux-telechips -c devshell	| Enter the devshell of a package	|
+| bitbake linux-xxx -c menuconfig	| Enter the menuconfig of kernel	|
+| bitbake linux-xxx -c devshell	| Enter the devshell of a package	|
 | bitbake-layers show-recipes "*-image-*"	| Show all support target images	|
 | bitbake <image > -g -u depexp | Show the package dependency for image. <p>Example: To show all packages included on fsl-image-gui <p>$ bitbake fsl-image-gui -g -u depexp <p>NOTE: This command will open a UI window, so it must be execute on a console inside the host machine (either virtual or native).  |
 
 [More](https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/Useful-bitbake-commands/ta-p/1128559)
+
+
