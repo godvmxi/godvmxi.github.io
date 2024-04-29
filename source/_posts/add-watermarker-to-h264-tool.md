@@ -12,6 +12,17 @@ Index:
 ## Usage
 In daily test, I need to add number watermarker to the bitstream, then dump it to different yuv formats.
 
+### Opencv environment setup
+Do not setup it unless you can want encouter maigc errors.   
+-  freetype
+-  ffmpeg codec
+-  xxxx
+
+
+So use docker to do it:
+```bash
+docker run -it -v "${HOME}":"${HOME}" opencvcourses/opencv-docker  /bin/bash
+```
 ### read and write bitstream by frames with opencv2
 ```python
     cap = cv2.VideoCapture(args.input)
