@@ -8,6 +8,14 @@ tags:
 ---
 
 # Remote GDB server
+## Install vscode extention - Native Debug
+[Market](https://marketplace.visualstudio.com/items?itemName=webfreak.debug)
+Press ctrl-p (cmd+p on OS X) and run
+```bash
+ext install webfreak.debug
+```
+
+## Set a gdb attach task
 .vscode/launch.json
 ```bash
 {
@@ -20,7 +28,7 @@ tags:
             "type": "gdb",
             "request": "attach",
             "name": "Attach to gdbserver",
-            "executable": "${workspaceRoot}/recipes-eth/ethapi_test",            
+            "executable": "${workspaceRoot}/recipes-eth/ethapi_test",
             "target": ":7777",
             "stopAtEntry": true,
             "remote": true,
